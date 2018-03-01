@@ -1,0 +1,7 @@
+django==1.11.2
+django-extensions
+django-autocomplete-light
+django-select2
+django-multiselectfield
+django-crispy-forms
+xlwt

@@ -1,0 +1,6 @@
+{% extends 'base.html' %}
+
+
+<form role="form" method="post" action='{% url "logout" %}'>{% csrf_token%}
+
+</form>

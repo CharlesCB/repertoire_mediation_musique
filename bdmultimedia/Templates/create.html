@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+
+{% block title %} Nouvel Outil {% endblock %}
+
+{% block body %}
+{% if user.is_authenticated %}
+<div class="container-fluid">
+
+    <form method="post" action="/">
+    <div class="row">
+
+        <div class="col-sm-12 col-md-12">
+
+            <div class="panel panel-default">
+                <div class="panel-body">
+
+                <form action="" method="POST">
+                    {% csrf_token %}
+
+                    <div class="col-lg-12">
+                        <div id="div_id_titre" class="form-group  ">
+                            <label for="id_titre" class="control-label required-field">
+                            {{ form.titre.label_tag }}
+                            </label>
+                            <div class="">
+                                <input class=" form-control" id="id_titre" maxlength="200" name="titre" type="text" required="required"/>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-12">
+                        <div id="div_id_url" class="form-group  ">
+                            <label for="id_url" class="control-label required-field">
+                            {{ form.url.label_tag }}
+                            </label>
+                            <div class="">
+                                <input class=" form-control" id="id_url" maxlength="200" name="url" type="url" required="required"/>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-12">
+                        <div id="div_id_" class="form-group  ">
+                            <label for="id_lien_actif" class="control-label  ">
+                            {{ form.lien_actif.label_tag }}
+                            </label>
+                                <input  id="id_lien_actif" name="lien_actif" type="checkbox" checked/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-lg-3" id="div_id_date_verif">
+                                <label for="id_date_verif" class="control-label  ">
+                                    {{ form.date_verif.label_tag }}
+                                </label>
+                                    <div class="">
+                                        <input class=" form-control" id="id_date_verif" name="date_verif" type="date" />
+                                    </div><br>
+                        </div>
+                    </div>
+                    <div class="col-lg-12">
+                        <div id="div_id_site" class="form-group  ">
+                            <label for="id_site" class="control-label  ">
+                            {{ form.site.label_tag }}
+                            </label>
+                            <div class="">
+                                <input class=" form-control" id="id_site" maxlength="200" name="site" type="url" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-12">
+                        <div id="div_id_producteur_type" class="form-group  ">
+                                <label for="id_producteur_type" class="control-label">
+                                    {{ form.producteur_type.label_tag }}
+                                </label>
+                                <div class="">
+                                        <div class="radio">
+                                            <label>
+                                                <input type="checkbox"  name="producteur_type" id="id_producteur_type_1" value="Particulier"> Particulier
+                                            </label>
+                                        </div>
+
+                                        <div class="radio">
+                                            <label>
+                                                <input type="checkbox"  name="producteur_type" id="id_producteur_type_2" value="Organisme de diffusion (OSM, Festival)"> Organisme de diffusion (OSM, Festival)
+                                            </label>
+                                        </div>
+                                        <div class="radio">
+                                            <label>
+                                                <input type="checkbox"  name="producteur_type" id="id_producteur_type_3" value="Organisme de formation professionnelle (CQM, ARIAM, CFMI)"> Organisme de formation professionnelle (CQM, ARIAM, CFMI)
+                                            </label>
+                                        </div>
+                                        <div class="radio">
+                                            <label>
+                                                <input type="checkbox"  name="producteur_type" id="id_producteur_type_4" value="Groupe de recherche (P2M, Groupe de recherche sur la médiation culturelle)"> Groupe de recherche (P2M, Groupe de recherche sur la médiation culturelle)
+                                            </label>
+                                        </div>
+                                        <div class="radio">
+                                            <label>
+                                                <input type="checkbox"  name="producteur_type" id="id_producteur_type_5" value="Organismes éducatif (Ecole de musique, TEDX)"> Organismes éducatif (Ecole de musique, TEDX)
+                                            </label>
+                                        </div>
+                                        <div class="radio">
+                                            <label>
+                                                <input type="checkbox"  name="producteur_type" id="id_producteur_type_6" value="Autre"> Autre
+                                            </label>
+                                        </div>
+
+                                </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-10">
+                        <div id="div_autre_producteur" class="form-group">
+                            <div class="">
+                                <input class=" form-control" id="id_autre_producteur" maxlength="200" name="autre_producteur" type="text" placeholder="Si autre, précisez"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12">
+                        <div id="div_id_producteur_nom" class="form-group  ">
+                            <label for="id_producteur_nom" class="control-label">
+                            {{ form.producteur_nom.label_tag }}
+                            </label>
+                            <div class="">
+                                <input class=" form-control" id="id_producteur_nom" maxlength="200" name="producteur_nom" type="text"/>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+
+                    <div class="col-lg-12">
+                        <div id="div_id_support_diffusion" class="form-group  ">
+                                <label for="id_support_diffusion" class="control-label">
+                                    {{ form.support_diffusion.label_tag }}
+                                </label>
+                                <div class="">
+                                        <div class="radio">
+                                            <label>
+                                                <input type="checkbox"  name="support_diffusion" id="id_support_diffusion_1" value="Ordinateur"> Ordinateur
+                                            </label>
+                                        </div>
+
+                                        <div class="radio">
+                                            <label>
+                                                <input type="checkbox"  name="support_diffusion" id="id_support_diffusion_2" value="Smartphone"> Smartphone
+                                            </label>
+                                        </div>
+                                        <div class="radio">
+                                            <label>
+                                                <input type="checkbox"  name="support_diffusion" id="id_support_diffusion_3" value="Tablette"> Tablette
+                                            </label>
+                                        </div>
+                                        <div class="radio">
+                                            <label>
+                                                <input type="checkbox"  name="support_diffusion" id="id_support_diffusion_4" value="Lunettes 3D"> Lunettes 3D
+                                            </label>
+                                        </div>
+                                        <div class="radio">
+                                            <label>
+                                                <input type="checkbox"  name="support_diffusion" id="id_support_diffusion_5" value="Consoles de JV"> Consoles de JV
+                                            </label>
+                                        </div>
+                                       <div class="radio">
+                                            <label>
+                                                <input type="checkbox"  name="support_diffusion" id="id_support_diffusion_6" value="DVD"> DVD
+                                            </label>
+                                        </div>
+                                       <div class="radio">
+                                            <label>
+                                                <input type="checkbox"  name="support_diffusion" id="id_support_diffusion_7" value="CD"> CD
+                                            </label>
+                                        </div>
+                                        <div class="radio">
+                                            <label>
+                                                <input type="checkbox"  name="support_diffusion" id="id_support_diffusion_8" value="Autre"> Autre
+                                            </label>
+                                        </div>
+
+                                </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-10">
+                        <div id="div_autre_support_diffusion" class="form-group">
+                            <div class="">
+                                <input class=" form-control" id="id_support_diffusion" maxlength="200" name="autre_support_diffusion" type="text" placeholder="Si autre, précisez"/>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="col-lg-3">
+                        <div id="div_id_duree" class="form-group">
+                            <label for="id_duree" class="control-label">
+                            {{ form.duree.label_tag }}
+                            </label>
+                            <div class="">
+                                <input class=" form-control" id="id_duree" maxlength="8" name="duree" type="text" placeholder="hh:mm:ss"/>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="col-lg-3">
+                        <div id="div_nb_pages" class="form-group">
+                            <label for="id_nb_pages" class="control-label">
+                            {{ form.nb_pages.label_tag }}
+                            </label>
+                            <div class="">
+                                <input class=" form-control" id="id_nb_pages"  name="nb_pages" type="number"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-lg-3" id="div_id_mise_en_ligne_date" >
+                                <label for="id_mise_en_ligne_date" class="control-label  ">
+                                    {{ form.mise_en_ligne_date.label_tag }}
+                                </label>
+                                    <div class="">
+                                        <input class=" form-control" id="id_mise_en_ligne_date" name="mise_en_ligne_date" type="date" />
+                                    </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-lg-3" id="div_id_depouillement_date">
+                                <label for="id_depouillement_date" class="control-label  ">
+                                    {{ form.depouillement_date.label_tag }}
+                                </label>
+                                    <div class="">
+                                        <input class=" form-control" id="id_depouillement_date" name="depouillement_date" type="date" />
+                                    </div>
+                        </div>
+                    </div>
+
+
+
+                   <!-- <div class="form-group  ">
+                        <label class="control-label">
+                        {{ form.liste_materiau.label_tag }}
+                        </label>
+                        <a class="related-widget-wrapper-link add-related" id="add_id_liste_materiau"
+                            href="JavaScript:newPopup('admin/bdmultimedia/elemmus/add/?_to_field=id&amp;_popup=1');"
+                            title="Ajouter un autre élément à la liste">
+                            <img src="/static/media/icon-addlink.svg" alt="Ajouter"/>
+                        </a>
+
+                        <div class="">
+                            <select multiple="multiple" class=" form-control" data-autocomplete-light-function="select2" data-autocomplete-light-url="/elemmus-autocomplete/" id="id_elemmus" name="elemmus">
+                                <option value="" selected="selected">---------</option>
+                            </select>
+                        </div>
+                    </div>  -->
+
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="submit" class="btn btn-success"> Enregistrer </button>
+                        </div>
+                    </div>
+                </form>
+                </div>
+            </div>
+    </div>
+</div>
+    </form>
+</div>
+
+{% else %}
+<div class="col-md-1"></div>
+<div class="text-danger"><h4> Vous devez vous identifier pour créer un nouvel outil </h4></div>
+</div>
+{% endif %}
+
+
+
+
+{% endblock %}

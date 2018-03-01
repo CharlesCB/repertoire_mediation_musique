@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="fr">
+{% extends 'base.html' %}
+
+{% block body %}
+
+<div class="container-fluid">
+    <div class="col-md-10">
+    <div class="page-header"><h4> Liste des outils disponibles: </h4></div>
+        {% if all_outils %}
+            <ul>
+                {% for outil in all_outils %}
+                <li><a href="{% url 'detail' outil.id %}"> {{ outil.titre }} </a></li>
+                {% endfor %}
+            </ul>
+
+        {% else %}
+
+        <div class="text-danger"><h6> Aucun outil n'est disponible </h6></div>
+
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
+
+{% block footer %}
+
+<!--
+<a href="{% url 'exporter_outils' %}">Expoter les données en fichier Excel</a>
+-->
+
+{% endblock %}

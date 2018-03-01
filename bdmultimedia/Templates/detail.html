@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="fr">
+{% extends 'base.html' %}
+
+{% block title %} Outil de médiation - {{outil.titre}} {% endblock %}
+
+{% block body %}
+    <div class="col-md-10">
+        <div class="page-header"><h3> {{ outil.titre }} </h3></div>
+    </div>
+    {% if user.is_authenticated %}
+        <div class="">
+            <a href="JavaScript:newPopup('/admin/bdmultimedia/outil/{{ outil.id }}/change/?_to_field=id&amp;_popup=1');">
+                <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>&nbsp; Modifier </a>
+        </div>
+        <div class="">
+            <a href="JavaScript:newPopup('/admin/bdmultimedia/outil/{{ outil.id }}/delete/?_to_field=id&amp;_popup=1');">
+                <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>&nbsp; Suprimer </a>
+        </div>
+    {% endif %}
+    <div class="col-md-10"><div class="page-header"><h4>Référencement de l'outil</h4></div></div>
+    <div class="col-md-10"><b> Titre de l'outil : </b> {{ outil.titre }} </div>
+    <div class="col-md-10"><b> Chemin d'accès direct : </b> <a href={{outil.url}} target="_blank"> {{ outil.url }} </a></div>
+    <div class="col-md-10"><b> Chemin d'accès au site d'hébergement : </b> <a href={{outil.site}} target="_blank"> {{ outil.site }} </a></div>
+    {% if outil.ensemble_thematique == "Oui" %}
+        <div class="col-md-10"><b><br>Cet outil fait partie d'un ensemble thématique du même type (regroupé par l'organisme producteur)</b></div>
+        <div class="col-md-10"><b>Nom de l'ensemble : </b>{{ outil.ensemble_thematique_nom }}</div>
+        <div class="col-md-10"><br></div>
+    {% else %}
+        <div class="col-md-10">Cet outil ne fait pas partie d'un ensemble thématique du même type (regroupé par l'organisme producteur)</div>
+    {% endif %}
+    <div class="col-md-10"><b> Producteurs : </b>
+        {% for i in outil.producteur_type.all %}
+            {{ i.nom }}{% if not forloop.last %},{% else %}{% endif %}
+        {% endfor %}
+    </div>
+    <div class="col-md-10"><b> Nom du producteur :</b> {{ outil.producteur_nom }} </div>
+    <div class="col-md-10"><b> Support(s) de diffusion : </b>
+        {% for i in outil.support_diffusion.all %}
+        {{ i.nom }}{% if not forloop.last %},{% endif %}
+        {% endfor %}
+    </div>
+
+    <div class="col-md-10"><b> Format de l'outil : </b>
+        {% for i in outil.format.all %}
+            {{ i.nom }}{% if not forloop.last %},{% else %}{% endif %}
+        {% endfor %}</div>
+    <div class="col-md-10"><b> Forme narrative :</b>
+        {% for i in outil.forme_narrative.all %}
+            {{ i.nom }}{% if not forloop.last %},{% else %}{% endif %}
+        {% endfor %}
+    </div>
+    <div class="col-md-10"><b> Durée (hh:mm:ss) : </b> {{ outil.duree }} </div>
+    {% if outil.nb_pages != 0%}
+        <div class="col-md-10"><b> Nombre de pages : </b> {{ outil.nb_pages }} </div>
+    {% endif %}
+    <div class="col-md-10"><b> Date de la mise en ligne : </b> {{ outil.mise_en_ligne_date }} </div>
+    <div class="col-md-10"><b> Date du dépouillement : </b> {{ outil.depouillement_date }} </div>
+    <div class="col-md-10"><b> L'interface permet : </b>{{ outil.interface }}</div>
+    {% if outil.interface_autre != None %}
+        <div class="col-md-10"><b> Autre : </b> {{ outil.interface_autre }} </div>
+    {% endif %}
+    <div class="col-md-10"><b> Degré de personnification du service : </b>{{ outil.personnification_service }}</div>
+    {% if outil.personnification != None %}
+        <div class="col-md-10"><b> Autre : </b> {{ outil.interface_autre }} </div>
+    {% endif %}
+    {% if outil.commentaire_possible %}
+        <div class="col-md-10"><b> Possibilité de laisser des commentaires :</b> Oui </div>
+        <div class="col-md-10"><b> Nombre de commentaires :</b> {{ outil.commentaire_nombre }} </div>
+    {% else %}
+        <div class="col-md-10"> <b> Possibilité de laisser des commentaires :</b> Non </div>
+    {% endif %}
+
+    <div class="col-md-10"><div class="page-header"><h4>Servuction</h4></div></div>
+    <div class="col-md-10"><b>Premier onglet à ouvrir pour trouver l'outil :</b> {{ outil.premier_onglet }}
+        {% if outil.prem_onglet_autre != None %}
+         : {{ outil.prem_onglet_autre }}
+        {% endif %} </div>
+    <div class="col-md-10"><b>Deuxième onglet à ouvrir pour trouver l'outil :</b> {{ outil.deuxieme_onglet }}
+        {% if outil.deux_onglet_autre != None %}
+         : {{ outil.deux_onglet_autre }}
+        {% endif %} </div>
+    <div class="col-md-10"><b>Troisième onglet à ouvrir pour trouver l'outil :</b> {{ outil.troisieme_onglet }}
+        {% if outil.trois_onglet_autre != None %}
+         : {{ outil.trois_onglet_autre }}
+        {% endif %}</div>
+    <div class="col-md-10"><b> Mode d'hébergement sur la toile :</b>
+        {% for i in outil.mode_hebergement.all %}
+            {{ i.nom }}{% if not forloop.last %},{% else %}{% endif %}
+        {% endfor %}</div>
+
+    <div class="col-md-10"><b> Mode de consultation offert au public :</b>
+        {% for i in outil.mode_consultation.all %}
+            {{ i.nom }}{% if not forloop.last %},{% else %}{% endif %}
+        {% endfor %}</div>
+
+    <div class="col-md-10"><b> Langue(s) de la narration :</b>
+        {% for i in outil.narration_langue.all %}
+            {{ i.nom }}{% if not forloop.last %},{% else %}{% endif %}
+        {% endfor %}</div>
+
+    <div class="col-md-10"><b> Sous-titrage :</b>
+        {% for i in outil.sous_titre.all %}
+            {{ i.nom }}{% if not forloop.last %},{% else %}{% endif %}
+        {% endfor %}</div>
+
+    <div class="col-md-10"><b>Accessibilité pour malentendants :</b> {{ outil.malentendants }}</div>
+    <div class="col-md-10"><b>Accessibilité pour malvoyants :</b> {{ outil.malvoyants }}</div>
+
+    <div class="col-md-10"><div class="page-header"><h4>Quid du matériau musical</h4></div></div>
+    <div class="col-md-10"><b>Mention du matériau musical :</b> {{ outil.materiau_musical }}</div>
+    <div class="col-md-10"><b>Mention de l'orchestration : </b>
+        {% for i in outil.orchestration.all %}
+            {{ i }}
+            {% if not forloop.last %},{% else %}{% endif %}
+        {% endfor %}
+    </div>
+    <div class="col-md-10"><b>Mention de la structure :</b>
+        {% for i in outil.structure.all %}
+        {{ i }}
+        {% if not forloop.last %},{% else %}{% endif %}
+        {% endfor %}
+    </div>
+
+    <div class="col-md-10"><b>Mention du language musical : </b>
+        {% for i in outil.language_musical.all %}
+            {{ i }}
+            {% if not forloop.last %},{% else %}{% endif %}
+        {% endfor %}
+    </div>
+    <div class="col-md-10"><b>Mention du genre musical : </b>
+        {% for i in outil.genre_musical.all %}
+            {{ i }}
+            {% if not forloop.last %},{% else %}{% endif %}
+        {% endfor %}
+    </div>
+    <div class="col-md-10"><b>Mention du style musical : </b>
+        {% for i in outil.style_musical.all %}
+            {{ i }}
+            {% if not forloop.last %},{% else %}{% endif %}
+        {% endfor %}
+    </div>
+
+    <div class="col-md-10"><div class="page-header"><h4>Quid de...</h4></div></div>
+
+    <div class="col-md-10"><b>Mention de l'expérience musicale : </b>
+        {% for i in outil.experience_musicale.all %}
+            {{ i }}
+            {% if not forloop.last %},{% else %}{% endif %}
+        {% endfor %}
+    </div>
+    <div class="col-md-10"><b>Mention des éléments socioculturels et historique : </b>{{ outil.elements_socioculturels }}</div>
+    <div class="col-md-10"><b> Époque :</b> {{ outil.epoque }} siècle</div>
+    <div class="col-md-10"><b>Mention du contexte de composition, création interprétation de l'oeuvre, de l'instrument : </b>
+        {% for i in outil.contexte.all %}
+            {{ i }}{% if not forloop.last %},{% else %}{% endif %}
+        {% endfor %}
+    </div>
+    <div class="col-md-10"><b>Mention du rôle de l'évolution de : </b>
+        {% for i in outil.role_evolution.all %}
+            {{ i }}{% if not forloop.last %},{% else %}{% endif %}
+        {% endfor %}
+    </div>
+    <div class="col-md-10"><div class="page-header"><h4>Sollicitations de l'usager</h4></div></div>
+
+    <div class="col-md-10"><b>Sollicitation musicale : </b>
+        {% for i in outil.sollicitation_musicale.all %}
+            {{ i }}{% if not forloop.last %},{% else %}{% endif %}
+        {% endfor %}
+    </div>
+    <div class="col-md-10"><b>Sollicitation générale : </b>
+        {% for i in outil.sollicitation_generale.all %}
+        {{ i }}{% if not forloop.last %},{% else %}{% endif %}
+        {% endfor %}
+    </div>
+
+    <div class="col-md-10"><div class="page-header"><h4>Quelle place pour la musique?</h4></div></div>
+
+    <div class="col-md-10"><b> Temps de musique seule (hh:mm:ss) :</b> {{ outil.temps_mus }} </div>
+    <div class="col-md-10"><b> Temps de parole seule (hh:mm:ss) :</b> {{ outil.temps_par }} </div>
+    <div class="col-md-10"><b> Temps de parole et musique superposées (hh:mm:ss) : </b> {{ outil.temps_mus_par }} </div>
+    <div class="col-md-10"><b> Mise en valeur du sonore : </b> {{ outil.sonore_valeur }} </div>
+
+    <div class="col-md-10"><div class="page-header"><h4>Outre les sons, comment évoque-t-on le matériau musical?</h4></div></div>
+
+    <div class="col-md-10"><b> Évocation graphique : </b>
+        {% for i in outil.evocation_graphique.all %}
+        {{ i }}{% if not forloop.last %},{% else %}{% endif %}
+        {% endfor %}
+    </div>
+    <div class="col-md-10"><b> Évocation plastique : </b>
+        {% for i in outil.evocation_plastique.all %}
+        {{ i }}{% if not forloop.last %},{% else %}{% endif %}
+        {% endfor %}
+    </div>
+
+    <div class="col-md-10"><b> Évocation litteraire : </b> {{ outil.evocation_litteraire }} </div>
+
+    <div class="col-md-10"><div class="page-header"><h4>Quel lien cet outil fait-il avec d'autres disciplines?</h4></div></div>
+
+    <div class="col-md-10"><b> Autre discipline évoquée : </b>
+        {% for i in outil.evocation_autre.all %}
+        {{ i }}{% if not forloop.last %},{% else %}{% endif %}
+        {% endfor %}
+    </div>
+
+    <div class="col-md-10"><b><h5>À partir de quelle notion?</h5>Notions communes (luminosité, transparence, vitesse, mouvement) : </b>
+        {% if outil.notion_concepts == "Nsp" %}
+        Ne s'applique pas
+        {% else %}
+            {{ outil.notion_concepts }}
+        {% endif %}
+    </div>
+        <div class="col-md-10"><b>Expérience, sensation (émotions, haptiques, etc.) : </b>
+            {% if outil.notion_experiences == "Nsp" %}
+        Ne s'applique pas
+        {% else %}
+            {{ outil.notion_experiences }}
+        {% endif %}
+        </div>
+    <div class="col-md-10"><b>Pratique (processus de création, recherche, travail, répétition) : </b>
+        {% if outil.notion_pratiques == "Nsp" %}
+        Ne s'applique pas
+        {% else %}
+            {{ outil.notion_pratiques }}
+        {% endif %}
+    </div>
+    <div class="col-md-10"><b>Exemples de notions évoquées de façon interdisciplinaires : </b>
+            {% for NotionsInter in outil.exemples_notions_interdisciplinaires.all %}
+                {{ NotionsInter }}
+            {% if not forloop.last %},{% else %}{% endif %}
+        {% endfor %}
+    </div>
+
+    <div class="col-md-10"><div class="page-header"><h4>Stéréotypes et clichés</h4></div></div>
+
+    <div class="col-md-10"><b> Y a-t-il des humains? </b> {{ outil.humain }} </div>
+    {% if outil.humain == "Oui" %}
+        <div class="col-md-10"><b> Nombre total d'humains : </b> {{ outil.nb_humains_total }} </div>
+        <div class="col-md-10"><b> Nombre d'hommes : </b> {{ outil.nb_hommes }} </div>
+        <div class="col-md-10"><b> Nombre de femmes : </b> {{ outil.nb_femmes }} </div>
+        <div class="col-md-10"><b> Nombre d'humains au genre indéterminé : </b> {{ outil.nb_humains_indetermines }} </div>
+        <div class="col-md-10"><b> Rôle des hommes : </b>
+            {% for i in outil.role_humain_homme.all %}
+            {{ i }}{% if not forloop.last %},{%endif%}
+            {% endfor %}
+        </div>
+        <div class="col-md-10"><b> Rôle des femmes : </b>
+            {% for i in outil.role_humain_femme.all %}
+                {{ i }}{% if not forloop.last %},{%endif%}
+            {% endfor %}
+        </div>
+        <div class="col-md-10"><b> Rôle des indéterminés : </b>
+            {% for i in outil.role_humain_neutre.all %}
+                    {{ i }}{% if not forloop.last %},{%endif%}
+            {% endfor %}
+        </div>
+    {% endif %}
+
+    <div class="col-md-10"><div class="page-header"><h4>Personnages animés</h4></div></div>
+    <div class="col-md-10"><b>Y a-t-il des personnages annimés?</b> {{ outil.pers_anime }} </div>
+    {% if outil.pers_anime == "Oui" %}
+        <div class="col-md-10"><b> Nombre total de personnages animés : </b> {{ outil.nb_pers_anime_total }} </div>
+        <div class="col-md-10"><b> Nombre de personnages animés hommes : </b> {{ outil.nb_pers_anime_hommes }} </div>
+        <div class="col-md-10"><b> Nombre de personnages animés femmes : </b> {{ outil.nb_pers_anime_femmes }} </div>
+        <div class="col-md-10"><b> Nombre de personnages animés au genre indéterminé : </b> {{ outil.nb_pers_anime_indetermines }} </div>
+        <div class="col-md-10"><b> Rôle personnages masculins : </b>
+            {% for i in outil.role_pers_anime_homme.all %}
+            {{ i }}{% if not forloop.last %},{%endif%}
+            {% endfor %}
+        </div>
+        <div class="col-md-10"><b> Rôle personnages féminins : </b>
+            {% for i in outil.role_pers_anime_femme.all %}
+                {{ i }}{% if not forloop.last %},{%endif%}
+            {% endfor %}
+        </div>
+        <div class="col-md-10"><b> Rôle des personnages indéterminés : </b>
+            {% for i in outil.role_pers_anime_neutre.all %}
+                    {{ i }}{% if not forloop.last %},{%endif%}
+            {% endfor %}
+        </div>
+    {% endif %}
+    <div class="col-md-10"><div class="page-header"><h4>Animaux</h4></div></div>
+    <div class="col-md-10"><b>Y a-t-il des animaux?</b> {{ outil.animaux }} </div>
+    {% if outil.animaux == "Oui" %}
+    <div class="col-md-10"><b> Nombre total d'animaux : </b> {{ outil.nb_animaux_total }} </div>
+    <div class="col-md-10"><b> Nombre d'animaux mâles : </b> {{ outil.nb_males }} </div>
+    <div class="col-md-10"><b> Nombre d'animaux femelles : </b> {{ outil.nb_femelles }} </div>
+    <div class="col-md-10"><b> Nombre d'animaux au genre indéterminé : </b> {{ outil.nb_animaux_indetermines }} </div>
+        <div class="col-md-10"><b> Rôle animaux males : </b>
+            {% for i in outil.role_animaux_homme.all %}
+            {{ i }}{% if not forloop.last %},{%endif%}
+            {% endfor %}
+        </div>
+        <div class="col-md-10"><b> Rôle animaux femelles : </b>
+            {% for i in outil.role_animaux_femme.all %}
+                {{ i }}{% if not forloop.last %},{%endif%}
+            {% endfor %}
+        </div>
+        <div class="col-md-10"><b> Rôle des animaux indéterminés : </b>
+            {% for i in outil.role_animaux_neutre.all %}
+                    {{ i }}{% if not forloop.last %},{%endif%}
+            {% endfor %}
+        </div>
+    {% endif %}
+    <div class="col-md-10"><div class="page-header"><h4>Instruments animés</h4></div></div>
+    <div class="col-md-10"><b>Y a-t-il des instruments animés?</b> {{ outil.instr_anime }} </div>
+    {% if outil.instr_anime == "Oui" %}
+    <div class="col-md-10"><b> Nombre total d'instruments animés : </b> {{ outil.nb_instr_anime_total }} </div>
+    <div class="col-md-10"><b> Nombre d'instruments animés hommes : </b> {{ outil.nb_instr_anime_hommes }} </div>
+    <div class="col-md-10"><b> Nombre d'instruments animés femmes : </b> {{ outil.nb_instr_anime_femmes }} </div>
+    <div class="col-md-10"><b> Nombre d'instruments animés au genre indéterminé : </b> {{ outil.nb_instr_anime_indetermines }} </div>
+        <div class="col-md-10"><b> Rôle instruments animée males : </b>
+            {% for i in outil.role_instr_anime_homme.all %}
+            {{ i }}{% if not forloop.last %},{%endif%}
+            {% endfor %}
+        </div>
+        <div class="col-md-10"><b> Rôle instruments animés femelles : </b>
+            {% for i in outil.role_instr_anime_femme.all %}
+                {{ i }}{% if not forloop.last %},{%endif%}
+            {% endfor %}
+        </div>
+        <div class="col-md-10"><b> Rôle des instruments animés indéterminés : </b>
+            {% for i in outil.role_instr_anime_neutre.all %}
+                    {{ i }}{% if not forloop.last %},{%endif%}
+            {% endfor %}
+        </div>
+    {% endif %}
+{% endblock %}

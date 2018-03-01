@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Répertoire d'outils de médiation{% endblock %}</title>
+    {% load staticfiles %}
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Satisfy' rel='stylesheet' type='text/css'>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#barreNav">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="{% url 'home' %}">Répertoire d'outils de médiation</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="barreNav">
+
+            {% if not user.is_authenticated %}
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="">
+                        <a href='/login/'>
+                            <span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp; S'identifier
+                    </li>
+                </ul>
+            {% else %}
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="">
+                        <a href='/logout'>
+                            <span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp; Déconnection
+                        </a>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="">
+                        <a href="JavaScript:newPopup('/admin/bdmultimedia/outil/add/?_to_field=id&amp;_popup=1');">
+                            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>&nbsp; Nouvel Outil
+                        </a>
+                    </li>
+                </ul>
+        {% endif %}
+        </div>
+
+    </div>
+</nav>
+
+<script type="text/javascript">
+     // Popup window code
+    function newPopup(url) {
+        popupWindow = window.open(
+            url,'popUpWindow','height=800,width=1000,left=500,top=10,resizable=yes,scrollbars=yes,toolbar=yes,menubar=no,location=no,directories=no,status=yes')
+    }
+</script>
+{% block body%}
+
+{% endblock%}
+
+{% block footer %}
+    <footer>
+        <div class="col-md-10 col-md-offset-1" align="center" style="color:#808080;font-size:10px;">
+            <br><br><br>
+        </div>
+    </footer>
+{% endblock %}
+
+</body>
+</html>
