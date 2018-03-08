@@ -429,7 +429,7 @@ class SousTitre(models.Model):
         return self.nom
 
     class Meta:
-        verbose_name = "Langue de la narration"
+        verbose_name = "Sous-titre"
 
 
 @python_2_unicode_compatible
@@ -583,7 +583,7 @@ class RoleHomme(models.Model):
         return self.nom
 
     class Meta:
-        verbose_name = "Role des hommes"
+        verbose_name = "Role des homme"
 
 
 @python_2_unicode_compatible
@@ -594,7 +594,7 @@ class RoleFemmes(models.Model):
         return self.nom
 
     class Meta:
-        verbose_name = "Role des femmes"
+        verbose_name = "Role des femme"
 
 
 @python_2_unicode_compatible
@@ -605,7 +605,7 @@ class RoleHumainNeutre(models.Model):
         return self.nom
 
     class Meta:
-        verbose_name = "Role des humain neutre"
+        verbose_name = "Role des humain indéterminé"
 
 
 @python_2_unicode_compatible
@@ -616,7 +616,7 @@ class RolePersAnimHomme(models.Model):
         return self.nom
 
     class Meta:
-        verbose_name = "Role des hommes"
+        verbose_name = "Role des personnages animés homme"
 
 
 @python_2_unicode_compatible
@@ -627,7 +627,7 @@ class RolePersAnimFemmes(models.Model):
         return self.nom
 
     class Meta:
-        verbose_name = "Role des femmes"
+        verbose_name = "Role des personnages animés femme"
 
 
 @python_2_unicode_compatible
@@ -638,7 +638,7 @@ class RolePersAnimNeutre(models.Model):
         return self.nom
 
     class Meta:
-        verbose_name = "Role des humain neutre"
+        verbose_name = "Role des personnages animés indéterminé"
 
 
 @python_2_unicode_compatible
@@ -649,7 +649,7 @@ class RoleAnimauxHomme(models.Model):
         return self.nom
 
     class Meta:
-        verbose_name = "Role des hommes"
+        verbose_name = "Role des male"
 
 
 @python_2_unicode_compatible
@@ -660,7 +660,7 @@ class RoleAnimauxFemmes(models.Model):
         return self.nom
 
     class Meta:
-        verbose_name = "Role des femmes"
+        verbose_name = "Role des femelle"
 
 
 @python_2_unicode_compatible
@@ -671,7 +671,7 @@ class RoleAnimauxNeutre(models.Model):
         return self.nom
 
     class Meta:
-        verbose_name = "Role des humain neutre"
+        verbose_name = "Role des animaux indéterminé"
 
 
 @python_2_unicode_compatible
@@ -682,7 +682,7 @@ class RoleInstrHomme(models.Model):
         return self.nom
 
     class Meta:
-        verbose_name = "Role des hommes"
+        verbose_name = "Role des instruments homme"
 
 
 @python_2_unicode_compatible
@@ -693,7 +693,7 @@ class RoleInstrFemmes(models.Model):
         return self.nom
 
     class Meta:
-        verbose_name = "Role des femmes"
+        verbose_name = "Role des instruments femme"
 
 
 @python_2_unicode_compatible
@@ -704,7 +704,7 @@ class RoleInstrNeutre(models.Model):
         return self.nom
 
     class Meta:
-        verbose_name = "Role des humain neutre"
+        verbose_name = "Role des instruments indéterminé"
 
 
 @python_2_unicode_compatible
@@ -733,6 +733,7 @@ class NotionsInter(models.Model):
 @python_2_unicode_compatible
 class Outil(models.Model):
     titre = models.CharField(max_length=200, verbose_name="R.1 Titre de l'outil")
+    #image = models.ImageField(blank = True, null = True, verbose_name = "Capture d'écran", upload_to = '.')
     url = models.CharField(unique=True, max_length=200, verbose_name="R.2 Chemin d'accès direct",
                            help_text="Dernier URL à suivre pour ateindre l'outil - nsp = ne s'applique pas")
     site = models.URLField(max_length=200, verbose_name="R.3 Chemin d'accès au site d'hébergement", blank=False,
