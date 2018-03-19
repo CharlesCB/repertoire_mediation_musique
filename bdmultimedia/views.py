@@ -50,56 +50,6 @@ class DeleteForm(generic.CreateView):
     sucess_url = reverse_lazy('/')
 
 
-class ElemMusAutocomplete(autocomplete.Select2QuerySetView):
-    def get_queryset(self):
-        if not self.request.user.is_authenticated():
-            return ElemMus.objects.none()
-
-        qs = ElemMus.objects.all()
-
-        if self.q:
-            qs = qs.filter(nom__icontains=self.q)
-
-        return qs
-
-
-class ExpMusAutocomplete(autocomplete.Select2QuerySetView):
-    def get_queryset(self):
-        if not self.request.user.is_authenticated():
-            return ExpMus.objects.none()
-
-        qs = ExpMus.objects.all()
-
-        if self.q:
-            qs = qs.filter(name__istartswith=self.q)
-
-        return qs
-
-
-class PratMusAutocomplete(autocomplete.Select2QuerySetView):
-    def get_queryset(self):
-        if not self.request.user.is_authenticated():
-            return PratMus.objects.none()
-
-        qs = PratMus.objects.all()
-
-        if self.q:
-            qs = qs.filter(nom__icontains=self.q)
-
-        return qs
-
-class ElemSocioAutocomplete(autocomplete.Select2QuerySetView):
-    def get_queryset(self):
-        if not self.request.user.is_authenticated():
-            return ElemSocio.objects.none()
-
-        qs = ElemSocio.objects.all()
-
-        if self.q:
-            qs = qs.filter(nom__icontains=self.q)
-
-        return qs
-
 class NotionsInterAutocomplete(autocomplete.Select2QuerySetView):
     def get_queryset(self):
         if not self.request.user.is_authenticated():
@@ -112,42 +62,6 @@ class NotionsInterAutocomplete(autocomplete.Select2QuerySetView):
 
         return qs
 
-
-class NotConceptAutocomplete(autocomplete.Select2QuerySetView):
-    def get_queryset(self):
-        if not self.request.user.is_authenticated():
-            return NotConcept.objects.none()
-
-        qs = NotConcept.objects.all()
-
-        if self.q:
-            qs = qs.filter(nom__icontains=self.q)
-
-        return qs
-
-class NotExpAutocomplete(autocomplete.Select2QuerySetView):
-    def get_queryset(self):
-        if not self.request.user.is_authenticated():
-            return NotExp.objects.none()
-
-        qs = NotExp.objects.all()
-
-        if self.q:
-            qs = qs.filter(nom__icontains=self.q)
-
-        return qs
-
-class NotPratiqueAutocomplete(autocomplete.Select2QuerySetView):
-    def get_queryset(self):
-        if not self.request.user.is_authenticated():
-            return NotPratique.objects.none()
-
-        qs = NotPratique.objects.all()
-
-        if self.q:
-            qs = qs.filter(nom__icontains=self.q)
-
-        return qs
 
 
 def export_xls(request):

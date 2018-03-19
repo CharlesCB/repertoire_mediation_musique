@@ -30,11 +30,10 @@ urlpatterns = [
     url(r'^(?P<pk>[0-9]+)/delete/$', views.DeleteForm.as_view()),
    # url('^', include('django.contrib.auth.urls')),
     url('^login/$', auth_views.LoginView.as_view(), name = 'login'),
-    url('^logout/$', auth_views.LogoutView.as_view(), name = 'logout'),
+    url('^logout/$', auth_views.LogoutView.as_view(), {'next_page': '/'}, name = 'logout'),
     url('^password_change/$',auth_views.PasswordChangeView.as_view(), name='password_change'),
     url('^password_change/done/$',auth_views.PasswordChangeDoneView.as_view(), name='password_change_done'),
-    url(r'^elemmus-autocomplete/$', views.ElemMusAutocomplete.as_view(), name='elemmus-autocomplete', ),
-    url(r'^export/xls/$', views.export_xls, name='exporter_outils'),
+    url(r'^export/xls/$', views.export_xls, name='exporter_xls'),
 
-] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+              ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 

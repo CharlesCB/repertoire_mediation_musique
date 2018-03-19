@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>{% block title %}Répertoire d'outils de médiation{% endblock %}</title>
+    <title>{% block title %}Répertoire d'outils de médiation de la musique{% endblock %}</title>
     {% load staticfiles %}
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <link href='https://fonts.googleapis.com/css?family=Satisfy' rel='stylesheet' type='text/css'>
@@ -31,12 +31,13 @@
                     <li class="">
                         <a href='/login/'>
                             <span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp; S'identifier
+                        </a>
                     </li>
                 </ul>
             {% else %}
                 <ul class="nav navbar-nav navbar-right">
                     <li class="">
-                        <a href='/logout'>
+                        <a href='{% url "logout" %}?next={% url "home" %}'>
                             <span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp; Déconnection
                         </a>
                     </li>

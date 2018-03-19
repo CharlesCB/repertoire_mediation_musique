@@ -5,6 +5,8 @@ from django.db import models
 from multiselectfield import MultiSelectField
 from django.utils.encoding import python_2_unicode_compatible
 from django.core.urlresolvers import reverse
+from django_currentuser.db.models import CurrentUserField
+
 
 OUINON = (
     ("Oui", "Oui"),
@@ -734,6 +736,7 @@ class NotionsInter(models.Model):
 class Outil(models.Model):
     titre = models.CharField(max_length=200, verbose_name="R.1 Titre de l'outil")
     #image = models.ImageField(blank = True, null = True, verbose_name = "Capture d'écran", upload_to = '.')
+    integration = models.TextField(blank = True, verbose_name = "code pour l'integration de l'outil")
     url = models.CharField(unique=True, max_length=200, verbose_name="R.2 Chemin d'accès direct",
                            help_text="Dernier URL à suivre pour ateindre l'outil - nsp = ne s'applique pas")
     site = models.URLField(max_length=200, verbose_name="R.3 Chemin d'accès au site d'hébergement", blank=False,
@@ -951,6 +954,8 @@ class Outil(models.Model):
                                                     verbose_name="Sté.42.2 Rôle des instruments anthropomorphes masculins")
     role_instr_anime_neutre = models.ManyToManyField(RoleInstrNeutre,
                                                      verbose_name="Sté.42.4 Rôle des instruments anthropomorphes neutres")
+
+    utilisateur = CurrentUserField()
 
     def get_absolute_url(self):
         return reverse('home')
