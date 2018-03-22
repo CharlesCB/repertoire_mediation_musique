@@ -12,6 +12,7 @@
     <div class="col-md-10">
         <div class="page-header"><h3>{{ outil.titre }} </h3></div>
     </div>
+    <aside>
         {% for i in tout.reverse %}
             {% if outil.id == i.id %}
                 {% assign prev forloop.counter|add:1 %}
@@ -44,6 +45,7 @@
             </div>
 
     {% endif %}
+    </aside>
     {% autoescape off %}
         <div class="col-md-10">
         {{ outil.integration }}

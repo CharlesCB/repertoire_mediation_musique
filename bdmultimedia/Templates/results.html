@@ -1,3 +1,38 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 {% extends "base.html" %}
+
+{% load staticfiles %}
+{% load bootstrap_pagination %}
+{% load bootstrap3 %}
+{% load bootstrap_tags %}
+
+{% block title %} résultat de la recherche {% endblock %}
+
+{% block body %}
+    <center>
+        <h3 class="page-header">Résultats de la recherche<br>
+            <small>
+                {% if data_total == 0 %}
+                    Aucun outil trouvé
+                {% elif data_total == 1 %}
+                    1 outil trouvé
+                {% else %}
+                    {{ data_total }} outils trouvés
+                {% endif %}
+            </small>
+        </h3>
+    </center>
+
+<div class="container-fluid">
+    <div class="col-md-10">
+        <ul>
+            {% for outil in items %}
+                <li><a href="{% url 'detail' outil.id %}"> {{ outil.titre }} </a></li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+
+
+{% endblock %}

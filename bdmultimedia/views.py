@@ -6,6 +6,7 @@ from django.contrib.auth import authenticate, login
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views import generic
 from dal import autocomplete
+from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from bdmultimedia.models import *
 from django.core.urlresolvers import reverse_lazy
 import operator
@@ -14,6 +15,7 @@ from django.template import loader
 from django.http import HttpResponse
 import xlwt
 from .filters import OutilFilter
+from forms import Search
 
 # Create your views here.
 
@@ -57,10 +59,32 @@ class DeleteForm(generic.CreateView):
     sucess_url = reverse_lazy('/')
 
 
-def outil_list(request):
-    f = OutilFilter
-    return render(request, 'results.html', {'filter':f})
+class OutilList(generic.View):
+    def get(self, request):
 
+        data = OutilFilter(self.request.GET, queryset = Outil.objects.all())
+        data_total = data.qs.count()
+        all_main_registers = OutilFilter(self.request.GET, queryset=Outil.objects.all().order_by('titre'))
+
+
+        paginator = Paginator(data.qs, 25)
+        page = request.GET.get('page')
+        try:
+            items = paginator.page(page)
+        except PageNotAnInteger:
+            items = paginator.page(1)
+        except EmptyPage:
+            items = paginator.page(paginator.num_pages)
+        return render(request, 'results.html', {'items': items, 'all': all_main_registers, 'form': all_main_registers.form, 'data_total' : data_total})
+
+
+class SearchForm(generic.View):
+    def get(self, request):
+        search_form = Search()
+        return render(request, 'search.html', {'form': search_form})
+
+    def post(self, request):
+        pass
 
 def export_xls(request):
     response = HttpResponse(content_type='application/ms-excel')
