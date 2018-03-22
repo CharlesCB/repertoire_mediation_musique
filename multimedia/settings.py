@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'bdmultimedia',
+    'bdmultimedia.templatetags',
     'multiselectfield',
     'dal',
     'dal_select2',

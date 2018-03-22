@@ -13,13 +13,20 @@ from multimedia.forms import Create
 from django.template import loader
 from django.http import HttpResponse
 import xlwt
+from .filters import OutilFilter
 
 # Create your views here.
+
 
 
 class DetailView(generic.DetailView):
     model = Outil
     template_name = 'detail.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(DetailView, self).get_context_data(**kwargs)
+        context['tout'] = Outil.objects.order_by('titre')
+        return context
 
 
 class HomeView(generic.ListView):
@@ -50,18 +57,9 @@ class DeleteForm(generic.CreateView):
     sucess_url = reverse_lazy('/')
 
 
-class NotionsInterAutocomplete(autocomplete.Select2QuerySetView):
-    def get_queryset(self):
-        if not self.request.user.is_authenticated():
-            return NotionsInter.objects.none()
-
-        qs = NotionsInter.objects.all()
-
-        if self.q:
-            qs = qs.filter(nom__icontains=self.q)
-
-        return qs
-
+def outil_list(request):
+    f = OutilFilter
+    return render(request, 'results.html', {'filter':f})
 
 
 def export_xls(request):
