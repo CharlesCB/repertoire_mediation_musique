@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <link rel="stylesheet" href="../static/style.css">
     <link href='https://fonts.googleapis.com/css?family=Satisfy' rel='stylesheet' type='text/css'>
+    <link rel="icon" type="image/png" href="/static/media/icone.png" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 </head>
@@ -57,6 +58,13 @@
                             <a href='/search/'><span class="glyphicon glyphicon-search" aria-hidden="true"></span>&nbsp; Recherche</a>
                         </li>
                     </ul>
+                    {% if user.is_authenticated %}
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="">
+                            <a href='/export/xls'><span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span>&nbsp; Exporter</a>
+                        </li>
+                    </ul>
+                    {% endif %}
                 </div>
 
             </div>

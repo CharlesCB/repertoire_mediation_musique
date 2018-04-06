@@ -72,14 +72,12 @@ INTERFACE_LIST = (
     ("Simple consultation", "Simple consultation"),
     ("Participation limitée", "Participation limitée (l'usager est actif mais se contente de répondre aux consignes)"),
     ("Participation dynamique", "Participation dynamique (l'usager co-construit le service)"),
-    ("Autre", "Autre"),
 )
 
 PERSONNIFICATION_LIST = (
     ("Service générique", "Service générique"),
     ("Service spécialisé", "Service spécialisé (public catégorisé)"),
     ("Service personnalisé et/ou individualisé", "Service personnalisé et/ou individualisé"),
-    ("Autre", "Autre"),
 )
 
 PREM_ONGLET_LIST = (
@@ -94,13 +92,13 @@ PREM_ONGLET_LIST = (
     ("Guide d'écoute", "Guide d'écoute"),
     ("Livret pédagogique", "Livret pédagogique"),
     ("Pour les enseignants, écoles, scolaires", "Pour les enseignants, écoles, scolaires"),
-    ("Le nom de l'outil lui même", "Le nom de l'outil lui même (ex: 'La galerie symphonique')"),
+    ("Le nom du dispositif lui même", "Le nom du dispositif lui même (ex: 'La galerie symphonique')"),
     (
     "Ressources en ligne, ressources numériques, ressources", "Ressources en ligne, ressources numériques, ressources"),
     ("Relatif à la programmation",
      "Est relatif à la programmation à laquelle il fait référence (onglet du concert, titre du compositeur, etc.)"),
-    ("Relatif au format de l'outil dont il s'agit",
-     "Est relatif au format de l'outil dont il s'agit (Balado, vidéo, playlist, web série, etc.)"),
+    ("Relatif au format du dispositif dont il s'agit",
+     "Est relatif au format du dispositif dont il s'agit (Balado, vidéo, playlist, web série, etc.)"),
     ("À propos", "À propos"),
     ("Voir et entendre", "Voir et entendre"),
     ("Actualités, news, nouveauté", "Actualité, news, nouveauté"),
@@ -120,13 +118,13 @@ DEUX_ONGLET_LIST = (
     ("Guide d'écoute", "Guide d'écoute"),
     ("Livret pédagogique", "Livret pédagogique"),
     ("Pour les enseignants, écoles, scolaires", "Pour les enseignants, écoles, scolaires"),
-    ("Le nom de l'outil lui même", "Le nom de l'outil lui même (ex: 'La galerie symphonique')"),
+    ("Le nom du dispositif lui même", "Le nom du dispositif lui même (ex: 'La galerie symphonique')"),
     (
     "Ressources en ligne, ressources numériques, ressources", "Ressources en ligne, ressources numériques, ressources"),
     ("Relatif à la programmation",
      "Est relatif à la programmation à laquelle il fait référence (onglet du concert, titre du compositeur, etc.)"),
-    ("Relatif au format de l'outil dont il s'agit",
-     "Est relatif au format de l'outil dont il s'agit (Balado, vidéo, playlist, web série, etc.)"),
+    ("Relatif au format du dispositif dont il s'agit",
+     "Est relatif au format du dispositif dont il s'agit (Balado, vidéo, playlist, web série, etc.)"),
     ("À propos", "À propos"),
     ("Voir et entendre", "Voir et entendre"),
     ("Actualités, news, nouveauté", "Actualité, news, nouveauté"),
@@ -146,13 +144,13 @@ TROIS_ONGLET_LIST = (
     ("Guide d'écoute", "Guide d'écoute"),
     ("Livret pédagogique", "Livret pédagogique"),
     ("Pour les enseignants, écoles, scolaires", "Pour les enseignants, écoles, scolaires"),
-    ("Le nom de l'outil lui même", "Le nom de l'outil lui même (ex: 'La galerie symphonique')"),
+    ("Le nom du dispositif lui même", "Le nom du dispositif lui même (ex: 'La galerie symphonique')"),
     (
     "Ressources en ligne, ressources numériques, ressources", "Ressources en ligne, ressources numériques, ressources"),
     ("Relatif à la programmation",
      "Est relatif à la programmation à laquelle il fait référence (onglet du concert, titre du compositeur, etc.)"),
-    ("Relatif au format de l'outil dont il s'agit",
-     "Est relatif au format de l'outil dont il s'agit (Balado, vidéo, playlist, web série, etc.)"),
+    ("Relatif au format du dispositif dont il s'agit",
+     "Est relatif au format du dispositif dont il s'agit (Balado, vidéo, playlist, web série, etc.)"),
     ("À propos", "À propos"),
     ("Voir et entendre", "Voir et entendre"),
     ("Actualités, news, nouveauté", "Actualité, news, nouveauté"),
@@ -717,7 +715,7 @@ class FormatOutil(models.Model):
         return self.nom
 
     class Meta:
-        verbose_name = "format de l'outil"
+        verbose_name = "format du dispositif"
 
 
 @python_2_unicode_compatible
@@ -734,24 +732,25 @@ class NotionsInter(models.Model):
 
 @python_2_unicode_compatible
 class Outil(models.Model):
-    titre = models.CharField(max_length=200, verbose_name="R.1 Titre de l'outil")
-    integration = models.TextField(blank = True, verbose_name = "code pour l'integration de l'outil (si applicable)")
-    url = models.CharField(unique=True, max_length=200, verbose_name="R.2 Chemin d'accès direct",
+    titre = models.CharField(max_length=200, verbose_name="R.1 Titre du dispositif")
+    integration = models.TextField(blank = True, verbose_name = "code pour l'integration du dispositif (si applicable)")
+    url = models.CharField(unique=True, max_length=200, verbose_name="R.2 URL d'accès direct",
                            help_text="Dernier URL à suivre pour ateindre l'outil - nsp = ne s'applique pas")
-    site = models.URLField(max_length=200, verbose_name="R.3 Chemin d'accès au site d'hébergement", blank=False,
+    site = models.URLField(max_length=200, verbose_name="R.3 URL d'accès au site d'hébergement", blank=False,
                            help_text="ex. site de la Philharmonie de Paris")
     ensemble_thematique = models.CharField(blank=False, choices=OUINON, max_length=4, default="Non",
-                                           verbose_name="R.3.1 Cet outil fait-il partie d'un ensemble thématique du même type? (regroupé par l'organisme producteur)")
-    ensemble_thematique_nom = models.CharField(max_length=200, verbose_name="R.3.2 Si oui, quel est le nom de cet ensemble?",
-                                               blank=True)
-    producteur_type = models.ManyToManyField(ProdType, verbose_name="R.4 Qui est le producteur de cet outil?")
+                                           verbose_name="R.3.1 Ce dispositif fait-il partie d'un ensemble thématique du même type? (regroupé par l'organisme producteur)")
+    ensemble_thematique_nom = models.CharField(max_length=200, verbose_name="R.3.2 Si oui, sous quel titre est regroupé cet ensemble?",
+                                               blank=True, help_text="Ex: Camille raconte")
+    producteur_type = models.ManyToManyField(ProdType, verbose_name="R.4 Qui est le producteur de ce dispositif?")
     producteur_nom = models.CharField(max_length=200, verbose_name="R.5 Préciser le nom complet du/des producteur(s)")
     support_diffusion = models.ManyToManyField(SupportDiffusion, verbose_name="R.6 Support de diffusion")
-    format = models.ManyToManyField(FormatOutil, verbose_name="R.7 Format de l'outil")
-    forme_narrative = models.ManyToManyField(FormeNarrative, verbose_name="R.8 Forme narrative générale")
+    format = models.ManyToManyField(FormatOutil, verbose_name="R.7 Format du dispositif")
+    forme_narrative = models.ManyToManyField(FormeNarrative, verbose_name="R.8 Formes narratives")
     duree = models.CharField(max_length=8, null=False, verbose_name="R.9 Durée", default="00:00:00",
                              help_text="nsp = ne s'applique pas")
-    nb_pages = models.PositiveIntegerField(null=True, verbose_name="R.10 Nombre de pages", default=0)
+    nb_pages = models.PositiveIntegerField(null=True, verbose_name="R.10 Nombre de pages", default=0,
+                                           help_text="Correspond au nombre de page web sur lesquelles se décline le  dispositif .")
     mise_en_ligne_date = models.DateField(null=True, blank=True, auto_now=False, auto_now_add=False,
                                           verbose_name="R.11 Date de la mise en ligne",
                                           help_text="laisser vide si non disponible")
@@ -761,30 +760,27 @@ class Outil(models.Model):
                                  max_length=200,
                                  null=True,
                                  verbose_name="R.13 Que permet l'interface?")
-    interface_autre = models.CharField(null=True, blank=True, max_length=400, verbose_name="Si autre, précisez")
     personnification_service = models.CharField(null=True, max_length=200, choices=PERSONNIFICATION_LIST,
                                                 verbose_name="R.14 Degrés de personnification du service")
-    personnification_autre = models.CharField(null=True, blank=True, max_length=400, verbose_name="Si autre, précisez")
     commentaire_possible = models.BooleanField(verbose_name="R.15 Possibilité de laisser des commentaires")
-    commentaire_nombre = models.PositiveIntegerField(null=True, blank=True, verbose_name="R.16 Nombre de commentaires",
-                                                     help_text="Laisser vide si les commentaires sont impossibles")
+    commentaire_nombre = models.PositiveIntegerField(null=True, blank=True, verbose_name="R.16 Nombre de commentaires")
     premier_onglet = models.CharField(choices=PREM_ONGLET_LIST,
                                       max_length=200,
                                       default="Ne s'applique pas",
                                       null=True,
-                                      verbose_name="S.17 Quel est le PREMIER onglet à ouvrir pour trouver l'outil?")
+                                      verbose_name="S.17 Quel est le PREMIER onglet à ouvrir pour trouver ce dispositif?")
     prem_onglet_autre = models.CharField(blank=True, null=True, max_length=200, verbose_name="Si autre, précisez")
     deuxieme_onglet = models.CharField(choices=DEUX_ONGLET_LIST,
                                        max_length=200,
                                        default="Ne s'applique pas",
                                        null=True,
-                                       verbose_name="S.18 Quel est le DEUXIEME onglet à ouvrir pour trouver l'outil?")
+                                       verbose_name="S.18 Quel est le DEUXIEME onglet à ouvrir pour trouver ce dispositif?")
     deux_onglet_autre = models.CharField(blank=True, null=True, max_length=200, verbose_name="Si autre, précisez")
     troisieme_onglet = models.CharField(choices=TROIS_ONGLET_LIST,
                                         max_length=200,
                                         default="Ne s'applique pas",
                                         null=True,
-                                        verbose_name="S.19 Quel est le TROISIEME onglet à ouvrir pour trouver l'outil?")
+                                        verbose_name="S.19 Quel est le TROISIEME onglet à ouvrir pour trouver ce dispositif?")
     trois_onglet_autre = models.CharField(blank=True, null=True, max_length=200, verbose_name="Si autre, précisez")
 
     mode_hebergement = models.ManyToManyField(ModeHebergement, verbose_name="S.20 Mode d'hébergement sur la toile")
@@ -797,12 +793,12 @@ class Outil(models.Model):
                                      max_length=200,
                                      null=False,
                                      default="Non",
-                                     verbose_name="S.24.1 Cet outil est-il accessible aux malentendants (Sous titrage, language des signes)")
+                                     verbose_name="S.24.1 Ce dispositif est-il intégralement accessible aux malentendants (Sous titrage, language des signes)")
     malvoyants = models.CharField(choices=OUINON,
                                   max_length=200,
                                   null=False,
                                   default="Non",
-                                  verbose_name="S.24.2 Cet outil est-il accessible aux malvoyants (audiodescription)")
+                                  verbose_name="S.24.2 Ce dispositif est-il intégralement accessible aux malvoyants (audiodescription)")
     ## Quid du materiau musical
     materiau_musical = models.CharField(choices=OUINON,
                                         max_length=200,

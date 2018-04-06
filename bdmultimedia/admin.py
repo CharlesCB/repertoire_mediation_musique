@@ -5,6 +5,8 @@ from django.contrib import admin
 from bdmultimedia.models import *
 
 # Register your models here.
+
+
 class OutilAdmin(admin.ModelAdmin):
     list_display = ('titre',)
     search_fields = ['titre']

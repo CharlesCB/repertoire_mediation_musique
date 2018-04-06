@@ -39,6 +39,10 @@ aside{
     left: 83%;
 }
 
+section{
+    margin-left: 1em;
+}
+
 small{
     text-transform: lowercase;
     color: darkgray;

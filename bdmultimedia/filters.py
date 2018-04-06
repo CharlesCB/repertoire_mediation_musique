@@ -1,12 +1,13 @@
+# -*- coding: utf-8 -*-
+
 import django_filters
-from .models import Outil
+from django.db.models.fields import BLANK_CHOICE_DASH
+from .models import *
 from collections import Iterable
 from itertools import chain
 from re import search, sub
 from django_filters.widgets import BaseCSVWidget, CSVWidget
-from django_filters.fields import BaseCSVField
 from django_filters.filters import Filter
-from dal import autocomplete
 from django import forms
 from django.utils.translation import ugettext_lazy as _
 from django.db.models.constants import LOOKUP_SEP
@@ -133,10 +134,27 @@ class MultiValueCharFilter(customCSVFilter, django_filters.CharFilter):
         return qs
 
 
-
 class OutilFilter(django_filters.FilterSet):
+
+    FORMAT_CHOICES = FormatOutil.objects.all().values_list("nom","nom")
+    FORMAT_CHOICES_FILTER = BLANK_CHOICE_DASH + list(FORMAT_CHOICES)
+
+    MODE_HEBERGEMENT_CHOICES = ModeHebergement.objects.all().values_list("nom","nom")
+    MODE_HEBERGEMENT_CHOICES_FILTER = BLANK_CHOICE_DASH + list(MODE_HEBERGEMENT_CHOICES)
+
+    SUPPORT_CHOICES = SupportDiffusion.objects.all().values_list("nom","nom")
+    SUPPORT_CHOICES_FILTER = BLANK_CHOICE_DASH + list(SUPPORT_CHOICES)
+
     titre = MultiValueCharFilter(lookup_expr='icontains')
+    format__nom = django_filters.ChoiceFilter(label="Format de l'outil", choices=FORMAT_CHOICES_FILTER, lookup_expr='iexact')
+    mode_hebergement__nom = django_filters.ChoiceFilter(label="Mode d'hébergement", choices=MODE_HEBERGEMENT_CHOICES_FILTER, lookup_expr='icontains')
+    #support_diffusion__nom = django_filters.ChoiceFilter(label="Support de diffusion", choices = SUPPORT_CHOICES_FILTER,lookup_expr='icontains')
+
 
     class Meta:
         model = Outil
-        fields = ['titre']
+        fields = [
+            'titre',
+            'format__nom',
+            'mode_hebergement__nom'
+        ]
