@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% load bootstrap_tags %}
+
+{% block title %}Gestion de notions d'orchestration{%endblock%}
+
+{% block body %}
+
+    <div class="container-fluid">
+        <div class="col-md-10">
+            <h3 class="page-header">
+                Gérer les notion d'orchestration
+                {% if user.is_authenticated %}
+                     <a class="related-widget-wrapper-link add-related" id="add_id_orchestration"
+                        href="JavaScript:newPopup('/admin/bdmultimedia/orchestration/add/?_to_field=id&amp;_popup=1');"
+                        title="Ajouter une autre notion d'orchestration">
+                        <img src="/static/media/icon-addlink.svg" alt="Ajouter"/>
+                    </a>
+                {% endif %}
+            </h3>
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+<div class="container-fluid">
+    <ul>
+        {% for orchestration in all_orchestration %}
+            <li class="list-group-item"> {{ orchestration.nom }}&nbsp;
+
+                {% if user.is_authenticated %}
+                    <a class="related-widget-wrapper-link add-related" id="change_id_orchestration"
+                        href="JavaScript:newPopup('/admin/bdmultimedia/orchestration/{{ orchestration.id }}/change/?_to_field=id&_popup=1');"
+                        title="Modifier la notion d'orchestration">
+                        <img src="/static/media/icon-changelink.svg" alt="Modifier"/>
+                    </a>
+                    <a class="related-widget-wrapper-link add-related" id="delete_id_orchestration"
+                        href="JavaScript:newPopup('/admin/bdmultimedia/orchestration/{{ orchestration.id }}/delete/?_to_field=id&_popup=1');"
+                        title="Suprimer la notion d'orchestration">
+                        <img src="/static/media/icon-deletelink.svg" alt="Suprimer"/>
+                    </a>
+                {% endif %}
+
+            </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

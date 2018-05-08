@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% load bootstrap_tags %}
+
+{% block title %}Gestion de évocations graphiques{%endblock%}
+
+{% block body %}
+
+    <div class="container-fluid">
+        <div class="col-md-10">
+            <h3 class="page-header">
+                Gérer les évocations graphiques
+                {% if user.is_authenticated %}
+                     <a class="related-widget-wrapper-link add-related" id="add_id_prod_type"
+                        href="JavaScript:newPopup('/admin/bdmultimedia/evocationgraphique/add/?_to_field=id&amp;_popup=1');"
+                        title="Ajouter une autre évocation graphique">
+                        <img src="/static/media/icon-addlink.svg" alt="Ajouter"/>
+                    </a>
+                {% endif %}
+            </h3>
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+<div class="container-fluid">
+    <ul>
+        {% for evocationgraphique in all_evocationGraphique %}
+            <li class="list-group-item"> {{ evocationgraphique.nom }}&nbsp;
+
+                {% if user.is_authenticated %}
+                    <a class="related-widget-wrapper-link add-related" id="change_id_prod_type"
+                        href="JavaScript:newPopup('/admin/bdmultimedia/evocationgraphique/{{ evocationgraphique.id }}/change/?_to_field=id&_popup=1');"
+                        title="Modifier l'évocation graphique">
+                        <img src="/static/media/icon-changelink.svg" alt="Modifier"/>
+                    </a>
+                    <a class="related-widget-wrapper-link add-related" id="delete_id_prod_type"
+                        href="JavaScript:newPopup('/admin/bdmultimedia/evocationgraphique/{{ evocationgraphique.id }}/delete/?_to_field=id&_popup=1');"
+                        title="Suprimer l'évocation graphique">
+                        <img src="/static/media/icon-deletelink.svg" alt="Suprimer"/>
+                    </a>
+                {% endif %}
+
+            </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

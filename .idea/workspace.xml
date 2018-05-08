@@ -2,12 +2,49 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3014c590-a354-461d-9433-6c54c6d92512" name="Default" comment="">
+      <change beforePath="" afterPath="$PROJECT_DIR$/bdmultimedia/Templates/gerer.html" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/bdmultimedia/Templates/gerer_contexte.html" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/bdmultimedia/Templates/gerer_evocationAutre.html" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/bdmultimedia/Templates/gerer_evocationGraphique.html" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/bdmultimedia/Templates/gerer_evocationPlastique.html" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/bdmultimedia/Templates/gerer_experienceMusicale.html" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/bdmultimedia/Templates/gerer_formatOutil.html" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/bdmultimedia/Templates/gerer_formeNarrative.html" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/bdmultimedia/Templates/gerer_genreMusical.html" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/bdmultimedia/Templates/gerer_languageMusical.html" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/bdmultimedia/Templates/gerer_langueNarration.html" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/bdmultimedia/Templates/gerer_modeConsultation.html" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/bdmultimedia/Templates/gerer_modeHebergement.html" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/bdmultimedia/Templates/gerer_notionsInter.html" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/bdmultimedia/Templates/gerer_orchestration.html" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/bdmultimedia/Templates/gerer_prodType.html" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/bdmultimedia/Templates/gerer_roleAnimauxFemmes.html" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/bdmultimedia/Templates/gerer_roleAnimauxHommes.html" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/bdmultimedia/Templates/gerer_roleAnimauxNeutre.html" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/bdmultimedia/Templates/gerer_roleEvolution.html" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/bdmultimedia/Templates/gerer_roleFemmes.html" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/bdmultimedia/Templates/gerer_roleHommes.html" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/bdmultimedia/Templates/gerer_roleHumainNeutre.html" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/bdmultimedia/Templates/gerer_roleInstrFemmes.html" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/bdmultimedia/Templates/gerer_roleInstrHommes.html" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/bdmultimedia/Templates/gerer_roleInstrNeutre.html" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/bdmultimedia/Templates/gerer_rolePersAnimFemmes.html" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/bdmultimedia/Templates/gerer_rolePersAnimNeutre.html" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/bdmultimedia/Templates/gerer_sollicitationGenerale.html" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/bdmultimedia/Templates/gerer_sollicitationMusicale.html" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/bdmultimedia/Templates/gerer_sousTitre.html" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/bdmultimedia/Templates/gerer_structure.html" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/bdmultimedia/Templates/gerer_styleMusical.html" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/bdmultimedia/Templates/gerer_supportDiffusion.html" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/bdmultimedia/Templates/base.html" afterPath="$PROJECT_DIR$/bdmultimedia/Templates/base.html" />
-      <change beforePath="$PROJECT_DIR$/bdmultimedia/Templates/home.html" afterPath="$PROJECT_DIR$/bdmultimedia/Templates/home.html" />
-      <change beforePath="$PROJECT_DIR$/bdmultimedia/static/style.css" afterPath="$PROJECT_DIR$/bdmultimedia/static/style.css" />
+      <change beforePath="$PROJECT_DIR$/bdmultimedia/Templates/detail.html" afterPath="$PROJECT_DIR$/bdmultimedia/Templates/detail.html" />
+      <change beforePath="$PROJECT_DIR$/bdmultimedia/Templates/list_detail.html" afterPath="$PROJECT_DIR$/bdmultimedia/Templates/list_detail.html" />
+      <change beforePath="$PROJECT_DIR$/bdmultimedia/admin.py" afterPath="$PROJECT_DIR$/bdmultimedia/admin.py" />
+      <change beforePath="$PROJECT_DIR$/bdmultimedia/models.py" afterPath="$PROJECT_DIR$/bdmultimedia/models.py" />
       <change beforePath="$PROJECT_DIR$/bdmultimedia/views.py" afterPath="$PROJECT_DIR$/bdmultimedia/views.py" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" afterPath="$PROJECT_DIR$/db.sqlite3" />
+      <change beforePath="$PROJECT_DIR$/multimedia/urls.py" afterPath="$PROJECT_DIR$/multimedia/urls.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -18,57 +55,31 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/bdmultimedia/views.py">
+      <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/bdmultimedia/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="500">
-              <caret line="722" column="23" lean-forward="false" selection-start-line="722" selection-start-column="23" selection-end-line="722" selection-end-column="23" />
-              <folding>
-                <element signature="e#24#63#0" expanded="true" />
-                <element signature="e#13730#14229#0" expanded="false" />
-                <element signature="e#14285#14806#0" expanded="false" />
-                <element signature="e#14863#15399#0" expanded="false" />
-                <element signature="e#15457#16008#0" expanded="false" />
-                <element signature="e#16064#16585#0" expanded="false" />
-                <element signature="e#16640#17146#0" expanded="false" />
-                <element signature="e#17202#17723#0" expanded="false" />
-                <element signature="e#17779#18300#0" expanded="false" />
-                <element signature="e#18356#18877#0" expanded="false" />
-                <element signature="e#18932#19438#0" expanded="false" />
-                <element signature="e#19494#20015#0" expanded="false" />
-                <element signature="e#20100#20636#0" expanded="false" />
-                <element signature="e#20722#21273#0" expanded="false" />
-                <element signature="e#21341#21922#0" expanded="false" />
-                <element signature="e#21980#22531#0" expanded="false" />
-                <element signature="e#22596#23132#0" expanded="false" />
-                <element signature="e#23200#23766#0" expanded="false" />
-                <element signature="e#23854#24420#0" expanded="false" />
-                <element signature="e#24488#25054#0" expanded="false" />
-                <element signature="e#25111#25647#0" expanded="false" />
-                <element signature="e#25738#26334#0" expanded="false" />
-                <element signature="e#26424#27020#0" expanded="false" />
-                <element signature="e#27111#27722#0" expanded="false" />
-                <element signature="e#27814#28440#0" expanded="false" />
-                <element signature="e#28530#29126#0" expanded="false" />
-                <element signature="e#29187#29768#0" expanded="false" />
-                <element signature="e#29858#30454#0" expanded="false" />
-                <element signature="e#30544#31140#0" expanded="false" />
-                <element signature="e#31230#31826#0" expanded="false" />
-                <element signature="e#31912#32463#0" expanded="false" />
-                <element signature="e#32555#33166#0" expanded="false" />
-                <element signature="e#33257#33868#0" expanded="false" />
-                <element signature="e#33960#34586#0" expanded="false" />
-                <element signature="e#34679#35320#0" expanded="false" />
-              </folding>
+            <state relative-caret-position="351">
+              <caret line="545" column="94" lean-forward="true" selection-start-line="545" selection-start-column="94" selection-end-line="545" selection-end-column="94" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/bdmultimedia/models.py">
+      <file leaf-file-name="detail.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/bdmultimedia/Templates/detail.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="305">
-              <caret line="945" column="21" lean-forward="false" selection-start-line="945" selection-start-column="21" selection-end-line="945" selection-end-column="21" />
+            <state relative-caret-position="274">
+              <caret line="51" column="0" lean-forward="false" selection-start-line="51" selection-start-column="0" selection-end-line="59" selection-end-column="15" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="list_detail.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/bdmultimedia/Templates/list_detail.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="321">
+              <caret line="59" column="14" lean-forward="true" selection-start-line="59" selection-start-column="14" selection-end-line="59" selection-end-column="14" />
               <folding />
             </state>
           </provider>
@@ -86,67 +97,68 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>quid</find>
-      <find>Quid de</find>
-      <find>lofl</find>
-      <find>Un</find>
-      <find>Six</find>
-      <find>loflHuit[part]</find>
-      <find>Neuf</find>
-      <find>Dix</find>
-      <find>dix</find>
-      <find>Onze</find>
-      <find>Douze</find>
-      <find>Treize</find>
-      <find>Quatorze</find>
-      <find>Quinze</find>
-      <find>Seize</find>
-      <find>Sept</find>
-      <find>Huit</find>
-      <find>DixNeuf</find>
-      <find>vingt</find>
-      <find>Deux</find>
-      <find>femme</find>
-      <find>Trois</find>
-      <find>Quatre</find>
-      <find>homme</find>
-      <find>Cinq</find>
-      <find>VingtSept</find>
-      <find>Trente</find>
-      <find>pers_anime</find>
-      <find>pers</find>
-      <find>EtUn</find>
+      <find>un au</find>
+      <find>un</find>
+      <find>un autre type de producteur</find>
+      <find>orchestration</find>
+      <find>language</find>
+      <find>ical</find>
+      <find>structure</find>
+      <find>genre</find>
+      <find>type de producteur</find>
+      <find>Style</find>
+      <find>roleevolution</find>
+      <find>Music</find>
+      <find>experience</find>
+      <find>music</find>
+      <find>General</find>
+      <find>le evocation</find>
+      <find>graphique</find>
+      <find>plastique</find>
+      <find>Evolution</find>
+      <find>de l'évolution</find>
+      <find>femmes</find>
+      <find>humain</find>
+      <find>format_outil</find>
+      <find>Humain</find>
+      <find>types de producteurs</find>
+      <find>PersAnim</find>
+      <find>animaux</find>
+      <find>mal</find>
+      <find>de narration</find>
+      <find>role</find>
     </findStrings>
     <replaceStrings>
-      <replace>Parle-t-on</replace>
-      <replace>Ce dispositif</replace>
-      <replace>ce dispositif</replace>
-      <replace>le dispositif</replace>
-      <replace>loflUn</replace>
-      <replace>Six</replace>
-      <replace>Dix</replace>
-      <replace>Onze</replace>
-      <replace>Douze</replace>
-      <replace>Treize</replace>
-      <replace>Quatorze</replace>
-      <replace>Quinze</replace>
-      <replace>Seize</replace>
-      <replace>DixSept</replace>
-      <replace>Neuf</replace>
-      <replace>Vingt</replace>
-      <replace>VingtEtUn</replace>
-      <replace>Deux</replace>
-      <replace>Trois</replace>
-      <replace>homme</replace>
-      <replace>neutre</replace>
-      <replace>Cinq</replace>
-      <replace>Sept</replace>
-      <replace>neute</replace>
-      <replace>Huit</replace>
-      <replace>Trente</replace>
-      <replace>TrenteEtUn</replace>
+      <replace>Plastique</replace>
+      <replace>plastique</replace>
+      <replace>Autre</replace>
+      <replace>autre</replace>
+      <replace>Femmes</replace>
+      <replace>femmes</replace>
+      <replace>humains au genre indéterminé</replace>
+      <replace>humain_neutre</replace>
+      <replace>HumainNeutre</replace>
+      <replace>humainneutre</replace>
+      <replace>PersAnimNeutre</replace>
+      <replace>persanimneutre</replace>
+      <replace>Hommes</replace>
+      <replace>hommes</replace>
+      <replace>pers_anim</replace>
+      <replace>persanim</replace>
+      <replace>formatOutil</replace>
+      <replace>formatoutil</replace>
+      <replace>notionsInter</replace>
+      <replace>notionsinter</replace>
+      <replace>une autre notion interdisciplinaire</replace>
+      <replace>notions_inter</replace>
+      <replace>PersAnim</replace>
+      <replace>formats de dispositif</replace>
+      <replace>Animaux</replace>
+      <replace>animaux</replace>
+      <replace>Instr</replace>
       <replace>instr</replace>
-      <replace>Quatre</replace>
+      <replace>de dispositif</replace>
+      <replace>rôle</replace>
     </replaceStrings>
     <dirStrings>
       <dir>$PROJECT_DIR$</dir>
@@ -158,25 +170,57 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/requirements.txt" />
-        <option value="$PROJECT_DIR$/bdmultimedia/templatetags/common.py" />
-        <option value="$PROJECT_DIR$/bdmultimedia/templatetags/customtags.py" />
-        <option value="$PROJECT_DIR$/bdmultimedia/Templates/create.html" />
-        <option value="$PROJECT_DIR$/bdmultimedia/static/style.css" />
         <option value="$PROJECT_DIR$/bdmultimedia/Templates/search.html" />
         <option value="$PROJECT_DIR$/bdmultimedia/Templates/results.html" />
         <option value="$PROJECT_DIR$/bdmultimedia/forms.py" />
         <option value="$PROJECT_DIR$/manage.py" />
+        <option value="$PROJECT_DIR$/bdmultimedia/filters.py" />
+        <option value="$PROJECT_DIR$/multimedia/settings.py" />
+        <option value="$PROJECT_DIR$/bdmultimedia/Templates/home.html" />
+        <option value="$PROJECT_DIR$/bdmultimedia/Templates/gerer_supportDiffusion.html" />
+        <option value="$PROJECT_DIR$/bdmultimedia/Templates/gerer_prodType.html" />
+        <option value="$PROJECT_DIR$/bdmultimedia/Templates/gerer_modeConsultation.html" />
+        <option value="$PROJECT_DIR$/bdmultimedia/Templates/gerer_modeHebergement.html" />
+        <option value="$PROJECT_DIR$/bdmultimedia/Templates/gerer_orchestration.html" />
+        <option value="$PROJECT_DIR$/bdmultimedia/Templates/gerer_sousTitre.html" />
+        <option value="$PROJECT_DIR$/bdmultimedia/Templates/gerer_structure.html" />
+        <option value="$PROJECT_DIR$/bdmultimedia/Templates/gerer_contexte.html" />
+        <option value="$PROJECT_DIR$/bdmultimedia/Templates/gerer_sollicitationMusicale.html" />
+        <option value="$PROJECT_DIR$/bdmultimedia/Templates/gerer_sollicitationGenerale.html" />
+        <option value="$PROJECT_DIR$/bdmultimedia/Templates/GererRoleFemmes.html" />
+        <option value="$PROJECT_DIR$/bdmultimedia/Templates/role_persAnimHommes.html" />
+        <option value="$PROJECT_DIR$/bdmultimedia/Templates/gerer_formatOutil.html" />
+        <option value="$PROJECT_DIR$/bdmultimedia/Templates/gerer_notionsInter.html" />
+        <option value="$PROJECT_DIR$/bdmultimedia/views.py" />
+        <option value="$PROJECT_DIR$/multimedia/urls.py" />
+        <option value="$PROJECT_DIR$/bdmultimedia/admin.py" />
+        <option value="$PROJECT_DIR$/bdmultimedia/Templates/base.html" />
+        <option value="$PROJECT_DIR$/bdmultimedia/Templates/gerer_formeNarrative.html" />
+        <option value="$PROJECT_DIR$/bdmultimedia/Templates/gerer_langueNarration.html" />
+        <option value="$PROJECT_DIR$/bdmultimedia/Templates/gerer.html" />
+        <option value="$PROJECT_DIR$/bdmultimedia/Templates/gerer_languageMusical.html" />
+        <option value="$PROJECT_DIR$/bdmultimedia/Templates/gerer_genreMusical.html" />
+        <option value="$PROJECT_DIR$/bdmultimedia/Templates/gerer_styleMusical.html" />
+        <option value="$PROJECT_DIR$/bdmultimedia/Templates/gerer_experienceMusicale.html" />
+        <option value="$PROJECT_DIR$/bdmultimedia/Templates/gerer_evocationPlastique.html" />
+        <option value="$PROJECT_DIR$/bdmultimedia/Templates/gerer_evocationGraphique.html" />
+        <option value="$PROJECT_DIR$/bdmultimedia/Templates/gerer_evocationAutre.html" />
+        <option value="$PROJECT_DIR$/bdmultimedia/Templates/gerer_roleFemmes.html" />
+        <option value="$PROJECT_DIR$/bdmultimedia/Templates/gerer_roleHommes.html" />
+        <option value="$PROJECT_DIR$/bdmultimedia/Templates/gerer_roleHumainNeutre.html" />
+        <option value="$PROJECT_DIR$/bdmultimedia/Templates/gerer_roleInstrFemmes.html" />
+        <option value="$PROJECT_DIR$/bdmultimedia/Templates/gerer_roleInstrHommes.html" />
+        <option value="$PROJECT_DIR$/bdmultimedia/Templates/gerer_roleInstrNeutre.html" />
+        <option value="$PROJECT_DIR$/bdmultimedia/Templates/gerer_rolePersAnimFemmes.html" />
+        <option value="$PROJECT_DIR$/bdmultimedia/Templates/gerer_rolePersAnimHommes.html" />
+        <option value="$PROJECT_DIR$/bdmultimedia/Templates/gerer_rolePersAnimNeutre.html" />
+        <option value="$PROJECT_DIR$/bdmultimedia/Templates/gerer_roleEvolution.html" />
+        <option value="$PROJECT_DIR$/bdmultimedia/Templates/gerer_roleAnimauxNeutre.html" />
+        <option value="$PROJECT_DIR$/bdmultimedia/Templates/gerer_roleAnimauxHommes.html" />
+        <option value="$PROJECT_DIR$/bdmultimedia/Templates/gerer_roleAnimauxFemmes.html" />
         <option value="$PROJECT_DIR$/bdmultimedia/models.py" />
         <option value="$PROJECT_DIR$/bdmultimedia/Templates/detail.html" />
         <option value="$PROJECT_DIR$/bdmultimedia/Templates/list_detail.html" />
-        <option value="$PROJECT_DIR$/bdmultimedia/filters.py" />
-        <option value="$PROJECT_DIR$/multimedia/settings.py" />
-        <option value="$PROJECT_DIR$/bdmultimedia/admin.py" />
-        <option value="$PROJECT_DIR$/multimedia/urls.py" />
-        <option value="$PROJECT_DIR$/bdmultimedia/Templates/base.html" />
-        <option value="$PROJECT_DIR$/bdmultimedia/Templates/home.html" />
-        <option value="$PROJECT_DIR$/bdmultimedia/views.py" />
       </list>
     </option>
   </component>
@@ -189,7 +233,7 @@
     <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="ProjectView">
-    <navigator proportions="" version="1">
+    <navigator currentView="ProjectPane" proportions="" version="1">
       <flattenPackages />
       <showMembers />
       <showModules />
@@ -202,7 +246,43 @@
       <manualOrder />
       <foldersAlwaysOnTop value="true" />
     </navigator>
-    <panes />
+    <panes>
+      <pane id="Scratches" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="repertoire_mediation_musique" type="b2602c69:ProjectViewProjectNode" />
+              <item name="repertoire_mediation_musique" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="repertoire_mediation_musique" type="b2602c69:ProjectViewProjectNode" />
+              <item name="repertoire_mediation_musique" type="462c0819:PsiDirectoryNode" />
+              <item name="bdmultimedia" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="repertoire_mediation_musique" type="b2602c69:ProjectViewProjectNode" />
+              <item name="repertoire_mediation_musique" type="462c0819:PsiDirectoryNode" />
+              <item name="bdmultimedia" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="repertoire_mediation_musique" type="b2602c69:ProjectViewProjectNode" />
+              <item name="repertoire_mediation_musique" type="462c0819:PsiDirectoryNode" />
+              <item name="bdmultimedia" type="462c0819:PsiDirectoryNode" />
+              <item name="Templates" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="repertoire_mediation_musique" type="b2602c69:ProjectViewProjectNode" />
+              <item name="repertoire_mediation_musique" type="462c0819:PsiDirectoryNode" />
+              <item name="multimedia" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+    </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
@@ -253,15 +333,14 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="22" width="1263" height="773" extended-state="0" />
-    <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25040257" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20692432" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32977098" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="1.0" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24918832" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24879228" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -274,264 +353,37 @@
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
+    <layout-to-restore>
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32977098" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32947975" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" x="0" y="0" width="263" height="573" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="1.0" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20692432" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24918832" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+    </layout-to-restore>
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="4" />
+      <option name="time" value="5" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/multimedia/settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bdmultimedia/Templates/base.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="18" column="103" lean-forward="false" selection-start-line="18" selection-start-column="103" selection-end-line="18" selection-end-column="103" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bdmultimedia/Templates/detail.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="570">
-          <caret line="38" column="82" lean-forward="false" selection-start-line="38" selection-start-column="82" selection-end-line="38" selection-end-column="82" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bdmultimedia/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="11475">
-          <caret line="771" column="4" lean-forward="false" selection-start-line="771" selection-start-column="4" selection-end-line="771" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/requirements.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="13" column="20" lean-forward="false" selection-start-line="13" selection-start-column="20" selection-end-line="13" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bdmultimedia/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="570">
-          <caret line="52" column="0" lean-forward="false" selection-start-line="52" selection-start-column="0" selection-end-line="52" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bdmultimedia/Templates/home.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="30" column="65" lean-forward="false" selection-start-line="30" selection-start-column="65" selection-end-line="30" selection-end-column="65" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/multimedia/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="525">
-          <caret line="40" column="0" lean-forward="false" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bdmultimedia/Templates/base.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="18" column="103" lean-forward="true" selection-start-line="18" selection-start-column="103" selection-end-line="18" selection-end-column="103" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bdmultimedia/Templates/detail.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="7590">
-          <caret line="506" column="23" lean-forward="true" selection-start-line="506" selection-start-column="23" selection-end-line="506" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bdmultimedia/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bdmultimedia/Templates/home.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="16" lean-forward="false" selection-start-line="4" selection-start-column="16" selection-end-line="4" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/multimedia/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" column="0" lean-forward="false" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bdmultimedia/Templates/detail.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="24" column="4" lean-forward="false" selection-start-line="24" selection-start-column="4" selection-end-line="24" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bdmultimedia/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="11070">
-          <caret line="738" column="67" lean-forward="false" selection-start-line="738" selection-start-column="67" selection-end-line="738" selection-end-column="67" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bdmultimedia/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="27" column="0" lean-forward="false" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bdmultimedia/Templates/detail.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4410">
-          <caret line="294" column="5" lean-forward="false" selection-start-line="294" selection-start-column="5" selection-end-line="294" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bdmultimedia/Templates/home.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" column="1" lean-forward="false" selection-start-line="16" selection-start-column="1" selection-end-line="16" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bdmultimedia/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="10980">
-          <caret line="738" column="67" lean-forward="false" selection-start-line="738" selection-start-column="67" selection-end-line="738" selection-end-column="67" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bdmultimedia/Templates/detail.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4410">
-          <caret line="294" column="5" lean-forward="false" selection-start-line="294" selection-start-column="5" selection-end-line="294" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bdmultimedia/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="27" column="0" lean-forward="true" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bdmultimedia/Templates/home.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" column="1" lean-forward="false" selection-start-line="16" selection-start-column="1" selection-end-line="16" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bdmultimedia/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bdmultimedia/Templates/home.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="22" column="0" lean-forward="false" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bdmultimedia/Templates/detail.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4770">
-          <caret line="318" column="5" lean-forward="false" selection-start-line="318" selection-start-column="5" selection-end-line="318" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bdmultimedia/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bdmultimedia/Templates/home.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="22" column="0" lean-forward="false" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bdmultimedia/Templates/detail.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="24" column="15" lean-forward="true" selection-start-line="24" selection-start-column="15" selection-end-line="24" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bdmultimedia/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bdmultimedia/Templates/home.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="22" column="0" lean-forward="false" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bdmultimedia/Templates/detail.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="25" column="21" lean-forward="false" selection-start-line="25" selection-start-column="21" selection-end-line="25" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bdmultimedia/templatetags/common.py" />
-    <entry file="file://$PROJECT_DIR$/bdmultimedia/templatetags/customtags.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="435">
-          <caret line="29" column="0" lean-forward="false" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/requirements.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="13" column="20" lean-forward="false" selection-start-line="13" selection-start-column="20" selection-end-line="13" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bdmultimedia/Templates/create.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="4" lean-forward="false" selection-start-line="7" selection-start-column="4" selection-end-line="7" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/multimedia/forms.py" />
-    <entry file="file://$PROJECT_DIR$/bdmultimedia/static/style.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/bdmultimedia/Templates/search.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
@@ -560,13 +412,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/bdmultimedia/Templates/list_detail.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="27" column="20" lean-forward="false" selection-start-line="27" selection-start-column="20" selection-end-line="27" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/bdmultimedia/filters.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
@@ -581,90 +426,337 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/bdmultimedia/admin.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/multimedia/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="495">
-          <caret line="38" column="42" lean-forward="false" selection-start-line="38" selection-start-column="42" selection-end-line="38" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bdmultimedia/Templates/detail.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="511" column="19" lean-forward="false" selection-start-line="511" selection-start-column="19" selection-end-line="511" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bdmultimedia/Templates/base.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="26" column="128" lean-forward="false" selection-start-line="26" selection-start-column="128" selection-end-line="26" selection-end-column="128" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/bdmultimedia/Templates/home.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="465">
-          <caret line="31" column="15" lean-forward="false" selection-start-line="31" selection-start-column="15" selection-end-line="31" selection-end-column="15" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="31" selection-end-column="15" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/bdmultimedia/models.py">
+    <entry file="file://$PROJECT_DIR$/bdmultimedia/Templates/gerer_modeHebergement.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="305">
-          <caret line="945" column="21" lean-forward="false" selection-start-line="945" selection-start-column="21" selection-end-line="945" selection-end-column="21" />
-          <folding />
+        <state relative-caret-position="225">
+          <caret line="15" column="66" lean-forward="false" selection-start-line="15" selection-start-column="66" selection-end-line="15" selection-end-column="66" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bdmultimedia/Templates/gerer_supportDiffusion.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="21" column="28" lean-forward="true" selection-start-line="21" selection-start-column="28" selection-end-line="21" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bdmultimedia/Templates/gerer_sousTitre.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="15" column="58" lean-forward="false" selection-start-line="15" selection-start-column="58" selection-end-line="15" selection-end-column="58" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bdmultimedia/Templates/gerer_orchestration.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="20" column="14" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="45" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bdmultimedia/Templates/gerer_structure.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="21" column="28" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="45" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bdmultimedia/Templates/gerer_contexte.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="525">
+          <caret line="35" column="92" lean-forward="false" selection-start-line="35" selection-start-column="92" selection-end-line="35" selection-end-column="92" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bdmultimedia/Templates/gerer_sollicitationMusicale.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="281">
+          <caret line="22" column="10" lean-forward="false" selection-start-line="22" selection-start-column="10" selection-end-line="22" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bdmultimedia/Templates/gerer_sollicitationGenerale.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="470">
+          <caret line="42" column="20" lean-forward="false" selection-start-line="42" selection-start-column="20" selection-end-line="42" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bdmultimedia/Templates/gerer_modeConsultation.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="15" column="68" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="45" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bdmultimedia/Templates/GererRoleFemmes.html" />
+    <entry file="file://$PROJECT_DIR$/bdmultimedia/Templates/role_persAnimHommes.html" />
+    <entry file="file://$PROJECT_DIR$/bdmultimedia/Templates/gerer_prodType.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="39" column="27" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="45" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bdmultimedia/Templates/gerer_notionsInter.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="281">
+          <caret line="25" column="38" lean-forward="true" selection-start-line="25" selection-start-column="38" selection-end-line="25" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bdmultimedia/Templates/gerer_formatOutil.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="19" column="17" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="45" selection-end-column="14" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/bdmultimedia/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="500">
-          <caret line="722" column="23" lean-forward="false" selection-start-line="722" selection-start-column="23" selection-end-line="722" selection-end-column="23" />
+        <state relative-caret-position="303">
+          <caret line="438" column="0" lean-forward="false" selection-start-line="438" selection-start-column="0" selection-end-line="438" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/multimedia/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1035">
+          <caret line="74" column="81" lean-forward="false" selection-start-line="74" selection-start-column="81" selection-end-line="74" selection-end-column="81" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bdmultimedia/Templates/base.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="25" column="21" lean-forward="false" selection-start-line="25" selection-start-column="21" selection-end-line="25" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bdmultimedia/admin.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="28" column="44" lean-forward="false" selection-start-line="28" selection-start-column="44" selection-end-line="28" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bdmultimedia/Templates/gerer_experienceMusicale.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="177">
+          <caret line="15" column="79" lean-forward="true" selection-start-line="15" selection-start-column="79" selection-end-line="15" selection-end-column="79" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bdmultimedia/Templates/gerer_styleMusical.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="25" column="50" lean-forward="true" selection-start-line="25" selection-start-column="50" selection-end-line="25" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bdmultimedia/Templates/gerer_genreMusical.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="16" column="81" lean-forward="true" selection-start-line="16" selection-start-column="81" selection-end-line="16" selection-end-column="81" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bdmultimedia/Templates/gerer_languageMusical.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="36" column="71" lean-forward="true" selection-start-line="36" selection-start-column="71" selection-end-line="36" selection-end-column="71" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bdmultimedia/Templates/gerer.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="249">
+          <caret line="20" column="63" lean-forward="false" selection-start-line="20" selection-start-column="63" selection-end-line="20" selection-end-column="63" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bdmultimedia/Templates/gerer_langueNarration.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bdmultimedia/Templates/gerer_formeNarrative.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="410">
+          <caret line="38" column="24" lean-forward="false" selection-start-line="38" selection-start-column="24" selection-end-line="38" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bdmultimedia/Templates/gerer_evocationPlastique.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="348">
+          <caret line="31" column="43" lean-forward="false" selection-start-line="31" selection-start-column="43" selection-end-line="31" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bdmultimedia/Templates/gerer_evocationAutre.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="21" column="28" lean-forward="true" selection-start-line="21" selection-start-column="28" selection-end-line="21" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bdmultimedia/Templates/gerer_evocationGraphique.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="250">
+          <caret line="21" column="28" lean-forward="true" selection-start-line="21" selection-start-column="28" selection-end-line="21" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bdmultimedia/Templates/gerer_roleFemmes.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="413">
+          <caret line="36" column="45" lean-forward="false" selection-start-line="36" selection-start-column="45" selection-end-line="36" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bdmultimedia/Templates/gerer_roleHommes.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="518">
+          <caret line="36" column="48" lean-forward="false" selection-start-line="36" selection-start-column="48" selection-end-line="36" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bdmultimedia/Templates/gerer_roleHumainNeutre.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="483">
+          <caret line="36" column="48" lean-forward="false" selection-start-line="36" selection-start-column="48" selection-end-line="36" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bdmultimedia/Templates/gerer_roleInstrFemmes.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="540">
+          <caret line="36" column="48" lean-forward="false" selection-start-line="36" selection-start-column="48" selection-end-line="36" selection-end-column="48" />
           <folding>
-            <element signature="e#24#63#0" expanded="true" />
-            <element signature="e#13730#14229#0" expanded="false" />
-            <element signature="e#14285#14806#0" expanded="false" />
-            <element signature="e#14863#15399#0" expanded="false" />
-            <element signature="e#15457#16008#0" expanded="false" />
-            <element signature="e#16064#16585#0" expanded="false" />
-            <element signature="e#16640#17146#0" expanded="false" />
-            <element signature="e#17202#17723#0" expanded="false" />
-            <element signature="e#17779#18300#0" expanded="false" />
-            <element signature="e#18356#18877#0" expanded="false" />
-            <element signature="e#18932#19438#0" expanded="false" />
-            <element signature="e#19494#20015#0" expanded="false" />
-            <element signature="e#20100#20636#0" expanded="false" />
-            <element signature="e#20722#21273#0" expanded="false" />
-            <element signature="e#21341#21922#0" expanded="false" />
-            <element signature="e#21980#22531#0" expanded="false" />
-            <element signature="e#22596#23132#0" expanded="false" />
-            <element signature="e#23200#23766#0" expanded="false" />
-            <element signature="e#23854#24420#0" expanded="false" />
-            <element signature="e#24488#25054#0" expanded="false" />
-            <element signature="e#25111#25647#0" expanded="false" />
-            <element signature="e#25738#26334#0" expanded="false" />
-            <element signature="e#26424#27020#0" expanded="false" />
-            <element signature="e#27111#27722#0" expanded="false" />
-            <element signature="e#27814#28440#0" expanded="false" />
-            <element signature="e#28530#29126#0" expanded="false" />
-            <element signature="e#29187#29768#0" expanded="false" />
-            <element signature="e#29858#30454#0" expanded="false" />
-            <element signature="e#30544#31140#0" expanded="false" />
-            <element signature="e#31230#31826#0" expanded="false" />
-            <element signature="e#31912#32463#0" expanded="false" />
-            <element signature="e#32555#33166#0" expanded="false" />
-            <element signature="e#33257#33868#0" expanded="false" />
-            <element signature="e#33960#34586#0" expanded="false" />
-            <element signature="e#34679#35320#0" expanded="false" />
+            <element signature="e#1029#1035#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bdmultimedia/Templates/gerer_roleInstrHommes.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="540">
+          <caret line="36" column="48" lean-forward="false" selection-start-line="36" selection-start-column="48" selection-end-line="36" selection-end-column="48" />
+          <folding>
+            <element signature="e#1032#1038#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bdmultimedia/Templates/gerer_roleInstrNeutre.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="540">
+          <caret line="36" column="48" lean-forward="false" selection-start-line="36" selection-start-column="48" selection-end-line="36" selection-end-column="48" />
+          <folding>
+            <element signature="e#1051#1057#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bdmultimedia/Templates/gerer_rolePersAnimFemmes.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="540">
+          <caret line="36" column="48" lean-forward="false" selection-start-line="36" selection-start-column="48" selection-end-line="36" selection-end-column="48" />
+          <folding>
+            <element signature="e#1049#1055#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bdmultimedia/Templates/gerer_rolePersAnimHommes.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="540">
+          <caret line="36" column="48" lean-forward="false" selection-start-line="36" selection-start-column="48" selection-end-line="36" selection-end-column="48" />
+          <folding>
+            <element signature="e#1049#1055#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bdmultimedia/Templates/gerer_rolePersAnimNeutre.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="540">
+          <caret line="36" column="48" lean-forward="false" selection-start-line="36" selection-start-column="48" selection-end-line="36" selection-end-column="48" />
+          <folding>
+            <element signature="e#1077#1083#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bdmultimedia/Templates/gerer_roleEvolution.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="540">
+          <caret line="36" column="48" lean-forward="false" selection-start-line="36" selection-start-column="48" selection-end-line="36" selection-end-column="48" />
+          <folding>
+            <element signature="e#1021#1027#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bdmultimedia/Templates/gerer_roleAnimauxNeutre.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="540">
+          <caret line="36" column="48" lean-forward="false" selection-start-line="36" selection-start-column="48" selection-end-line="36" selection-end-column="48" />
+          <folding>
+            <element signature="e#1051#1057#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bdmultimedia/Templates/gerer_roleAnimauxHommes.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="21" column="28" lean-forward="false" selection-start-line="21" selection-start-column="28" selection-end-line="21" selection-end-column="28" />
+          <folding>
+            <element signature="e#1018#1024#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bdmultimedia/Templates/gerer_roleAnimauxFemmes.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="273">
+          <caret line="22" column="10" lean-forward="false" selection-start-line="22" selection-start-column="10" selection-end-line="22" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bdmultimedia/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="351">
+          <caret line="545" column="94" lean-forward="true" selection-start-line="545" selection-start-column="94" selection-end-line="545" selection-end-column="94" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bdmultimedia/Templates/detail.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="274">
+          <caret line="51" column="0" lean-forward="false" selection-start-line="51" selection-start-column="0" selection-end-line="59" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bdmultimedia/Templates/list_detail.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="321">
+          <caret line="59" column="14" lean-forward="true" selection-start-line="59" selection-start-column="14" selection-end-line="59" selection-end-column="14" />
+          <folding />
         </state>
       </provider>
     </entry>

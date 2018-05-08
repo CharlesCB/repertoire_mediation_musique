@@ -81,7 +81,7 @@ class OutilList(generic.View):
         data_total = data.qs.count()
         all_main_registers = OutilFilter(self.request.GET, queryset=Outil.objects.all().order_by('titre'))
 
-        paginator = Paginator(data.qs, 25)
+        paginator = Paginator(data.qs, 40)
         page = request.GET.get('page')
         try:
             items = paginator.page(page)
@@ -100,6 +100,354 @@ class SearchForm(generic.View):
     def post(self, request):
         pass
 
+
+class GererView(generic.ListView):
+    template_name = 'gerer.html'
+
+    def get_queryset(self):
+        return Outil.objects.all()
+
+
+class GererProdType(generic.ListView):
+    model = ProdType
+    template_name = 'gerer_prodType.html'
+    context_object_name = 'all_prodType'
+    liste = ProdType.objects.order_by('nom')
+
+    def get_queryset(self):
+        return GererProdType.liste
+
+
+class GererSupportDiffusion(generic.ListView):
+    model = SupportDiffusion
+    template_name = 'gerer_supportDiffusion.html'
+    context_object_name = 'all_supportDiffusion'
+    liste = SupportDiffusion.objects.order_by('nom')
+
+    def get_queryset(self):
+        return GererSupportDiffusion.liste
+
+
+class GererFormatOutil(generic.ListView):
+    model = FormatOutil
+    template_name = 'gerer_formatOutil.html'
+    context_object_name = 'all_formatOutil'
+    liste = FormatOutil.objects.order_by('nom')
+
+    def get_quertset(self):
+        return GererFormatOutil.liste
+
+
+class GererFormeNarrative(generic.ListView):
+    model = FormeNarrative
+    template_name = 'gerer_formeNarrative.html'
+    context_object_name = 'all_formeNarrative'
+    liste = FormeNarrative.objects.order_by('nom')
+
+    def get_queryset(self):
+        return GererFormeNarrative.liste
+
+
+class GererModeHebergement(generic.ListView):
+    model = ModeHebergement
+    template_name = 'gerer_modeHebergement.html'
+    context_object_name = 'all_modeHebergement'
+    liste = ModeHebergement.objects.order_by('nom')
+
+    def get_queryset(self):
+        return GererModeHebergement.liste
+
+
+class GererModeConsultation(generic.ListView):
+    model = ModeConsultation
+    template_name = 'gerer_modeConsultation.html'
+    context_object_name = 'all_modeConsultation'
+    liste = ModeConsultation.objects.order_by('nom')
+
+    def get_queryset(self):
+        return GererModeConsultation.liste
+
+
+class GererLangueNarration(generic.ListView):
+    model = LangueNarration
+    template_name = 'gerer_langueNarration.html'
+    context_object_name = 'all_langueNarration'
+    liste = LangueNarration.objects.order_by('nom')
+
+    def get_queryset(self):
+        return GererLangueNarration.liste
+
+
+class GererSousTitre(generic.ListView):
+    model = SousTitre
+    template_name = 'gerer_sousTitre.html'
+    context_object_name = 'all_sousTitre'
+    liste = SousTitre.objects.order_by('nom')
+
+    def get_queryset(self):
+        return GererSousTitre.liste
+
+
+class GererOrchestration(generic.ListView):
+    model = Orchestration
+    template_name = 'gerer_orchestration.html'
+    context_object_name = 'all_orchestration'
+    liste = Orchestration.objects.order_by('nom')
+
+    def get_queryset(self):
+        return GererOrchestration.liste
+
+
+class GererStructure(generic.ListView):
+    model = Structure
+    template_name = 'gerer_structure.html'
+    context_object_name = 'all_structure'
+    liste = Structure.objects.order_by('nom')
+
+    def get_queryset(self):
+        return GererStructure.liste
+
+
+class GererLanguageMusical(generic.ListView):
+    model = LanguageMusical
+    template_name = 'gerer_languageMusical.html'
+    context_object_name = 'all_languageMusical'
+    liste = LanguageMusical.objects.order_by('nom')
+
+    def get_queryset(self):
+        return GererLanguageMusical.liste
+
+
+class GererGenreMusical(generic.ListView):
+    model = GenreMusical
+    template_name = 'gerer_genreMusical.html'
+    context_object_name = 'all_genreMusical'
+    liste = GenreMusical.objects.order_by('nom')
+
+    def get_queryset(self):
+        return GererGenreMusical.liste
+
+
+class GererStyleMusical(generic.ListView):
+    model = StyleMusical
+    template_name = 'gerer_styleMusical.html'
+    context_object_name = 'all_styleMusical'
+    liste = StyleMusical.objects.order_by('nom')
+
+    def get_queryset(self):
+        return GererStyleMusical.liste
+
+
+class GererExperienceMusicale(generic.ListView):
+    model = ExperienceMusicale
+    template_name = 'gerer_experienceMusicale.html'
+    context_object_name = 'all_experienceMusicale'
+    liste = ExperienceMusicale.objects.order_by('nom')
+
+    def get_queryset(self):
+        return GererExperienceMusicale.liste
+
+
+class GererContexte(generic.ListView):
+    model = Contexte
+    template_name = "gerer_contexte.html"
+    context_object_name = 'all_contexte'
+    liste = Contexte.objects.order_by('nom')
+
+    def get_queryset(self):
+        return GererContexte.liste
+
+
+class GererRoleEvolution(generic.ListView):
+    model = RoleEvolution
+    template_name = 'gerer_roleEvolution.html'
+    context_object_name = 'all_roleEvolution'
+    liste = RoleEvolution.objects.order_by('nom')
+
+    def get_queryset(self):
+        return GererRoleEvolution.liste
+
+
+class GererSollicitationMusicale(generic.ListView):
+    model = SollicitationMusicale
+    template_name = 'gerer_sollicitationMusicale.html'
+    context_object_name = 'all_sollicitationMusicale'
+    liste = SollicitationMusicale.objects.order_by('nom')
+
+    def get_queryset(self):
+        return GererSollicitationMusicale.liste
+
+
+class GererSollicitationGenerale(generic.ListView):
+    model = SollicitationGenerale
+    template_name = 'gerer_sollicitationGenerale.html'
+    context_object_name = 'all_sollicitationGenerale'
+    liste = SollicitationGenerale.objects.order_by('nom')
+
+    def get_queryset(self):
+        return GererSollicitationGenerale.liste
+
+
+class GererEvocationGraphique(generic.ListView):
+    model = EvocationGraphique
+    template_name = 'gerer_evocationGraphique.html'
+    context_object_name = 'all_evocationGraphique'
+    liste = EvocationGraphique.objects.order_by('nom')
+
+    def get_queryset(self):
+        return GererEvocationGraphique.liste
+
+
+class GererEvocationPlastique(generic.ListView):
+    model = EvocationPlastique
+    template_name = 'gerer_evocationPlastique.html'
+    context_object_name = 'all_evocationPlastique'
+    liste = EvocationPlastique.objects.order_by('nom')
+
+    def get_queryset(self):
+        return GererEvocationPlastique.liste
+    
+
+class GererEvocationAutre(generic.ListView):
+    model = EvocationAutre
+    template_name = 'gerer_evocationAutre.html'
+    context_object_name = 'all_evocationAutre'
+    liste = EvocationAutre.objects.order_by('nom')
+
+    def get_queryset(self):
+        return GererEvocationAutre.liste
+
+
+class GererNotionsInter(generic.ListView):
+    model = NotionsInter
+    template_name = 'gerer_notionsInter.html'
+    context_object_name = 'all_notionsInter'
+    liste = NotionsInter.objects.order_by('nom')
+
+    def get_queryset(self):
+        return GererNotionsInter.liste
+
+
+class GererRoleFemmes(generic.ListView):
+    model = RoleFemmes
+    template_name = 'gerer_roleFemmes.html'
+    context_object_name = 'all_roleFemmes'
+    liste = RoleFemmes.objects.order_by('nom')
+
+    def get_queryset(self):
+        return GererRoleFemmes.liste
+
+
+class GererRoleHommes(generic.ListView):
+    model = RoleHomme
+    template_name = 'gerer_roleHommes.html'
+    context_object_name = 'all_roleHommes'
+    liste = RoleHomme.objects.order_by('nom')
+
+    def get_queryset(self):
+        return GererRoleHommes.liste
+
+
+class GererRoleHumainNeutre(generic.ListView):
+    model = RoleHumainNeutre
+    template_name = 'gerer_roleHumainNeutre.html'
+    context_object_name = 'all_roleHumainNeutre'
+    liste = RoleHumainNeutre.objects.order_by('nom')
+
+    def get_queryset(self):
+        return GererRoleHumainNeutre.liste
+
+
+class GererRolePersAnimFemmes(generic.ListView):
+    model = RolePersAnimFemmes
+    template_name = 'gerer_rolePersAnimFemmes.html'
+    context_object_name = 'all_rolePersAnimFemmes'
+    liste = RolePersAnimFemmes.objects.order_by('nom')
+    
+    def get_queryset(self):
+        return GererRolePersAnimFemmes.liste
+    
+    
+class GererRolePersAnimHommes(generic.ListView):
+    model = RolePersAnimHomme
+    template_name = 'gerer_rolePersAnimHommes.html'
+    context_object_name = 'all_rolePersAnimHommes'
+    liste = RolePersAnimHomme.objects.order_by('nom')
+    
+    def get_queryset(self):
+        return GererRolePersAnimHommes.liste
+
+
+class GererRolePersAnimNeutre(generic.ListView):
+    model = RolePersAnimNeutre
+    template_name = 'gerer_rolePersAnimNeutre.html'
+    context_object_name = 'all_rolePersAnimNeutre'
+    liste = RolePersAnimNeutre.objects.order_by('nom')
+
+    def get_queryset(self):
+        return GererRolePersAnimNeutre.liste
+
+
+class GererRoleAnimauxFemmes(generic.ListView):
+    model = RoleAnimauxFemmes
+    template_name = 'gerer_roleAnimauxFemmes.html'
+    context_object_name = 'all_roleAnimauxFemmes'
+    liste = RoleAnimauxFemmes.objects.order_by('nom')
+
+    def get_queryset(self):
+        return GererRoleAnimauxFemmes.liste
+
+
+class GererRoleAnimauxHommes(generic.ListView):
+    model = RoleAnimauxHomme
+    template_name = 'gerer_roleAnimauxHommes.html'
+    context_object_name = 'all_roleAnimauxHommes'
+    liste = RoleAnimauxHomme.objects.order_by('nom')
+
+    def get_queryset(self):
+        return GererRoleAnimauxHommes.liste
+
+
+class GererRoleAnimauxNeutre(generic.ListView):
+    model = RoleAnimauxNeutre
+    template_name = 'gerer_roleAnimauxNeutre.html'
+    context_object_name = 'all_roleAnimauxNeutre'
+    liste = RoleAnimauxNeutre.objects.order_by('nom')
+
+    def get_queryset(self):
+        return GererRoleAnimauxNeutre.liste
+
+
+class GererRoleInstrFemmes(generic.ListView):
+    model = RoleInstrFemmes
+    template_name = 'gerer_roleInstrFemmes.html'
+    context_object_name = 'all_roleInstrFemmes'
+    liste = RoleInstrFemmes.objects.order_by('nom')
+
+    def get_queryset(self):
+        return GererRoleInstrFemmes.liste
+
+
+class GererRoleInstrHommes(generic.ListView):
+    model = RoleInstrHomme
+    template_name = 'gerer_roleInstrHommes.html'
+    context_object_name = 'all_roleInstrHommes'
+    liste = RoleInstrHomme.objects.order_by('nom')
+
+    def get_queryset(self):
+        return GererRoleInstrHommes.liste
+
+
+class GererRoleInstrNeutre(generic.ListView):
+    model = RoleInstrNeutre
+    template_name = 'gerer_roleInstrNeutre.html'
+    context_object_name = 'all_roleInstrNeutre'
+    liste = RoleInstrNeutre.objects.order_by('nom')
+
+    def get_queryset(self):
+        return GererRoleInstrNeutre.liste
+    
+    
 
 def export_xls(request):
     if request.user.is_authenticated():
@@ -124,7 +472,7 @@ def export_xls(request):
                    "R.14 Personnification du service","R.15 Possibilité de laisser des commentaires", "R.16 Nombre de commentaires",
                    "S.17 Premier Onglet","S.17.1 Autre - Premier Onglet","S.18 Deuxième Onglet","S.18.1 Autre - Deuxième Onglet",
                    "S.19 Troisième Onglet","S19.1 Autre Troisième Onglet","S.20 Mode d'hébergement","S.21 Mode de consultation",
-                   "S.22 langue de la narration","S.23 Sous-titrages", "S.24.1 Accessible aux malentendants","S.24.2 Accessible aux malcoyants",
+                   "S.22 langue de la narration","S.23 Sous-titrages", "S.24.1 Accessible aux malentendants","S.24.2 Accessible aux malvoyants",
                    "M.25 Matériau musical (parle-t-on)","M.25.1 Orchestration (parle-t-on)",
                    "M.25.2 Structure (parle-t-on)", "M.25.3 language musical (parle-t-on)","M.25.4 genre musica (parle-t-on)l", "M.25.5 style musical (parle-t-on)",
                    "M.26 Expérience musicale (parle-t-on)", "M.27 Éléments sociocultutrels et historique (parle-t-on)", "M.27.1 Époque",
@@ -147,79 +495,79 @@ def export_xls(request):
         for col_num in range(len(colones)):
             ws.write(row_num, col_num, colones[col_num], font_style)
 
-        loftUn = list(Outil.objects.all().values_list('titre','url','site','ensemble_thematique','ensemble_thematique_nom', 'producteur_type__nom'))
+        loftUn = list(Outil.objects.all().order_by('titre').values_list('titre','url','site','ensemble_thematique','ensemble_thematique_nom', 'producteur_type__nom'))
         loflUn = [list(elem) for elem in loftUn]
-        loftDeux = list(Outil.objects.all().values_list('titre','producteur_nom','support_diffusion__nom'))
+        loftDeux = list(Outil.objects.all().order_by('titre').values_list('titre','producteur_nom','support_diffusion__nom'))
         loflDeux = [list(elem) for elem in loftDeux]
-        loftTrois = list(Outil.objects.all().values_list('titre','format__nom'))
+        loftTrois = list(Outil.objects.all().order_by('titre').values_list('titre','format__nom'))
         loflTrois = [list(elem) for elem in loftTrois]
-        loftQuatre = list(Outil.objects.all().values_list('titre','forme_narrative__nom','duree','nb_pages','mise_en_ligne_date','depouillement_date','interface',
+        loftQuatre = list(Outil.objects.all().order_by('titre').values_list('titre','forme_narrative__nom','duree','nb_pages','mise_en_ligne_date','depouillement_date','interface',
                                                           'personnification_service','commentaire_possible','commentaire_nombre','premier_onglet', 'prem_onglet_autre',
                                                           'deuxieme_onglet', 'deux_onglet_autre', 'troisieme_onglet', 'trois_onglet_autre'))
         loflQuatre = [list(elem) for elem in loftQuatre]
-        loftCinq = list(Outil.objects.all().values_list('titre','mode_hebergement__nom'))
+        loftCinq = list(Outil.objects.all().order_by('titre').values_list('titre','mode_hebergement__nom'))
         loflCinq = [list(elem) for elem in loftCinq]
-        loftSix = list(Outil.objects.all().values_list('titre','mode_consultation__nom'))
+        loftSix = list(Outil.objects.all().order_by('titre').values_list('titre','mode_consultation__nom'))
         loflSix = [list(elem) for elem in loftSix]
-        loftSept = list(Outil.objects.all().values_list('titre','narration_langue__nom'))
+        loftSept = list(Outil.objects.all().order_by('titre').values_list('titre','narration_langue__nom'))
         loflSept = [list(elem) for elem in loftSept]
-        loftHuit = list(Outil.objects.all().values_list('titre','sous_titre__nom', 'malentendants', 'malvoyants', 'materiau_musical'))
+        loftHuit = list(Outil.objects.all().order_by('titre').values_list('titre','sous_titre__nom', 'malentendants', 'malvoyants', 'materiau_musical'))
         loflHuit = [list(elem) for elem in loftHuit]
-        loftNeuf = list(Outil.objects.all().values_list('titre','orchestration__nom'))
+        loftNeuf = list(Outil.objects.all().order_by('titre').values_list('titre','orchestration__nom'))
         loflNeuf = [list(elem) for elem in loftNeuf]
-        loftDix = list(Outil.objects.all().values_list('titre','structure__nom'))
+        loftDix = list(Outil.objects.all().order_by('titre').values_list('titre','structure__nom'))
         loflDix = [list(elem) for elem in loftDix]
-        loftOnze = list(Outil.objects.all().values_list('titre','language_musical__nom'))
+        loftOnze = list(Outil.objects.all().order_by('titre').values_list('titre','language_musical__nom'))
         loflOnze = [list(elem) for elem in loftOnze]
-        loftDouze = list(Outil.objects.all().values_list('titre','genre_musical__nom'))
+        loftDouze = list(Outil.objects.all().order_by('titre').values_list('titre','genre_musical__nom'))
         loflDouze = [list(elem) for elem in loftDouze]
-        loftTreize = list(Outil.objects.all().values_list('titre','style_musical__nom'))
+        loftTreize = list(Outil.objects.all().order_by('titre').values_list('titre','style_musical__nom'))
         loflTreize = [list(elem) for elem in loftTreize]
-        loftQuatorze = list(Outil.objects.all().values_list('titre','experience_musicale__nom', 'elements_socioculturels', 'epoque'))
+        loftQuatorze = list(Outil.objects.all().order_by('titre').values_list('titre','experience_musicale__nom', 'elements_socioculturels', 'epoque'))
         loflQuatorze = [list(elem) for elem in loftQuatorze]
-        loftQuinze = list(Outil.objects.all().values_list('titre','contexte__nom'))
+        loftQuinze = list(Outil.objects.all().order_by('titre').values_list('titre','contexte__nom'))
         loflQuinze = [list(elem) for elem in loftQuinze]
-        loftSeize = list(Outil.objects.all().values_list('titre','role_evolution__nom'))
+        loftSeize = list(Outil.objects.all().order_by('titre').values_list('titre','role_evolution__nom'))
         loflSeize = [list(elem) for elem in loftSeize]
-        loftDixSept = list(Outil.objects.all().values_list('titre','sollicitation_musicale__nom'))
+        loftDixSept = list(Outil.objects.all().order_by('titre').values_list('titre','sollicitation_musicale__nom'))
         loflDixSept = [list(elem) for elem in loftDixSept]
-        loftDixHuit = list(Outil.objects.all().values_list('titre','sollicitation_generale__nom', 'temps_mus', 'temps_par', 'temps_mus_par', 'sonore_valeur'))
+        loftDixHuit = list(Outil.objects.all().order_by('titre').values_list('titre','sollicitation_generale__nom', 'temps_mus', 'temps_par', 'temps_mus_par', 'sonore_valeur'))
         loflDixHuit = [list(elem) for elem in loftDixHuit]
-        loftDixNeuf = list(Outil.objects.all().values_list('titre', 'evocation_graphique__nom'))
+        loftDixNeuf = list(Outil.objects.all().order_by('titre').values_list('titre', 'evocation_graphique__nom'))
         loflDixNeuf = [list(elem) for elem in loftDixNeuf]
-        loftVingt = list(Outil.objects.all().values_list('titre', 'evocation_plastique__nom', 'evocation_litteraire'))
+        loftVingt = list(Outil.objects.all().order_by('titre').values_list('titre', 'evocation_plastique__nom', 'evocation_litteraire'))
         loflVingt = [list(elem) for elem in loftVingt]
-        loftVingtEtUn = list(Outil.objects.all().values_list('titre', 'evocation_autre__nom', 'notion_concepts', 'notion_experiences', 'notion_pratiques'))
+        loftVingtEtUn = list(Outil.objects.all().order_by('titre').values_list('titre', 'evocation_autre__nom', 'notion_concepts', 'notion_experiences', 'notion_pratiques'))
         loflVingtEtUn = [list(elem) for elem in loftVingtEtUn]
-        loftVingtDeux = list(Outil.objects.all().values_list('titre', 'exemples_notions_interdisciplinaires__nom', 'nb_humains_total', 'nb_hommes', 'nb_femmes',
+        loftVingtDeux = list(Outil.objects.all().order_by('titre').values_list('titre', 'exemples_notions_interdisciplinaires__nom', 'nb_humains_total', 'nb_hommes', 'nb_femmes',
                                                              'nb_humains_indetermines'))
         loflVingtDeux = [list(elem) for elem in loftVingtDeux]
-        loftVingtTrois = list(Outil.objects.all().values_list('titre', 'role_humain_femme__nom'))
+        loftVingtTrois = list(Outil.objects.all().order_by('titre').values_list('titre', 'role_humain_femme__nom'))
         loflVingtTrois = [list(elem) for elem in loftVingtTrois]
-        loftVingtQuatre = list(Outil.objects.all().values_list('titre', 'role_humain_homme__nom'))
+        loftVingtQuatre = list(Outil.objects.all().order_by('titre').values_list('titre', 'role_humain_homme__nom'))
         loflVingtQuatre = [list(elem) for elem in loftVingtQuatre]
-        loftVingtCinq = list(Outil.objects.all().values_list('titre', 'role_humain_neutre__nom', 'nb_pers_anime_total', 'nb_pers_anime_hommes',
+        loftVingtCinq = list(Outil.objects.all().order_by('titre').values_list('titre', 'role_humain_neutre__nom', 'nb_pers_anime_total', 'nb_pers_anime_hommes',
                                                              'nb_pers_anime_femmes', 'nb_pers_anime_indetermines'))
         loflVingtCinq = [list(elem) for elem in loftVingtCinq]
-        loftVingtSix = list(Outil.objects.all().values_list('titre', 'role_pers_anime_femme__nom'))
+        loftVingtSix = list(Outil.objects.all().order_by('titre').values_list('titre', 'role_pers_anime_femme__nom'))
         loflVingtSix = [list(elem) for elem in loftVingtSix]
-        loftVingtSept = list(Outil.objects.all().values_list('titre', 'role_pers_anime_homme__nom'))
+        loftVingtSept = list(Outil.objects.all().order_by('titre').values_list('titre', 'role_pers_anime_homme__nom'))
         loflVingtSept = [list(elem) for elem in loftVingtSept]
-        loftVingtHuit = list(Outil.objects.all().values_list('titre', 'role_pers_anime_neutre__nom', 'nb_animaux_total', 'nb_males', 'nb_femelles',
+        loftVingtHuit = list(Outil.objects.all().order_by('titre').values_list('titre', 'role_pers_anime_neutre__nom', 'nb_animaux_total', 'nb_males', 'nb_femelles',
                                                              'nb_animaux_indetermines'))
         loflVingtHuit = [list(elem) for elem in loftVingtHuit]
-        loftVingtNeuf = list(Outil.objects.all().values_list('titre', 'role_animaux_femme__nom'))
+        loftVingtNeuf = list(Outil.objects.all().order_by('titre').values_list('titre', 'role_animaux_femme__nom'))
         loflVingtNeuf = [list(elem) for elem in loftVingtNeuf]
-        loftTrente = list(Outil.objects.all().values_list('titre', 'role_animaux_homme__nom'))
+        loftTrente = list(Outil.objects.all().order_by('titre').values_list('titre', 'role_animaux_homme__nom'))
         loflTrente = [list(elem) for elem in loftTrente]
-        loftTrenteEtUn = list(Outil.objects.all().values_list('titre','role_animaux_neutre__nom', 'nb_instr_anime_total', 'nb_instr_anime_hommes',
+        loftTrenteEtUn = list(Outil.objects.all().order_by('titre').values_list('titre','role_animaux_neutre__nom', 'nb_instr_anime_total', 'nb_instr_anime_hommes',
                                                               'nb_instr_anime_femmes', 'nb_instr_anime_indetermines'))
         loflTrenteEtUn = [list(elem) for elem in loftTrenteEtUn]
-        loftTrenteDeux = list(Outil.objects.all().values_list('titre', 'role_instr_anime_femme__nom'))
+        loftTrenteDeux = list(Outil.objects.all().order_by('titre').values_list('titre', 'role_instr_anime_femme__nom'))
         loflTrenteDeux = [list(elem) for elem in loftTrenteDeux]
-        loftTrenteTrois = list(Outil.objects.all().values_list('titre', 'role_instr_anime_homme__nom'))
+        loftTrenteTrois = list(Outil.objects.all().order_by('titre').values_list('titre', 'role_instr_anime_homme__nom'))
         loflTrenteTrois = [list(elem) for elem in loftTrenteTrois]
-        loftTrenteQuatre = list(Outil.objects.all().values_list('titre', 'role_instr_anime_neutre__nom'))
+        loftTrenteQuatre = list(Outil.objects.all().order_by('titre').values_list('titre', 'role_instr_anime_neutre__nom'))
         loflTrenteQuatre = [list(elem) for elem in loftTrenteQuatre]
         
         total = Outil.objects.all().count()
@@ -240,7 +588,7 @@ def export_xls(request):
                             del loflUn[loflUn.index(item) + 1]
 
         # deux
-        for i in range(3):
+        for i in range(4):
             for item in loflDeux:
                 if loflDeux.index(item) != len(loflDeux) - 1:
                     prem = loflDeux[loflDeux.index(item)]
@@ -253,7 +601,7 @@ def export_xls(request):
                             del loflDeux[loflDeux.index(item) + 1]
 
         # trois
-        for i in range(3):
+        for i in range(4):
             for item in loflTrois:
                 if loflTrois.index(item) != len(loflTrois) - 1:
                     prem = loflTrois[loflTrois.index(item)]
@@ -266,7 +614,7 @@ def export_xls(request):
                             del loflTrois[loflTrois.index(item) + 1]
 
         # quatre
-        for i in range(3):
+        for i in range(4):
             for item in loflQuatre:
                 if loflQuatre.index(item) != len(loflQuatre) - 1:
                     prem = loflQuatre[loflQuatre.index(item)]
@@ -279,7 +627,7 @@ def export_xls(request):
                             del loflQuatre[loflQuatre.index(item) + 1]
 
         # cinq
-        for i in range(3):
+        for i in range(4):
             for item in loflCinq:
                 if loflCinq.index(item) != len(loflCinq) - 1:
                     prem = loflCinq[loflCinq.index(item)]
@@ -292,7 +640,7 @@ def export_xls(request):
                             del loflCinq[loflCinq.index(item) + 1]
 
         # six
-        for i in range(3):
+        for i in range(4):
             for item in loflSix:
                 if loflSix.index(item) != len(loflSix) - 1:
                     prem = loflSix[loflSix.index(item)]
@@ -305,7 +653,7 @@ def export_xls(request):
                             del loflSix[loflSix.index(item) + 1]
 
         # sept
-        for i in range(3):
+        for i in range(4):
             for item in loflSept:
                 if loflSept.index(item) != len(loflSept) - 1:
                     prem = loflSept[loflSept.index(item)]
@@ -318,7 +666,7 @@ def export_xls(request):
                             del loflSept[loflSept.index(item) + 1]
 
         # huit
-        for i in range(3):
+        for i in range(4):
             for item in loflHuit:
                 if loflHuit.index(item) != len(loflHuit) - 1:
                     prem = loflHuit[loflHuit.index(item)]
@@ -331,7 +679,7 @@ def export_xls(request):
                             del loflHuit[loflHuit.index(item) + 1]
 
         # neuf
-        for i in range(3):
+        for i in range(4):
             for item in loflNeuf:
                 if loflNeuf.index(item) != len(loflNeuf) - 1:
                     prem = loflNeuf[loflNeuf.index(item)]
@@ -344,7 +692,7 @@ def export_xls(request):
                             del loflNeuf[loflNeuf.index(item) + 1]
 
         # dix
-        for i in range(3):
+        for i in range(4):
             for item in loflDix:
                 if loflDix.index(item) != len(loflDix) - 1:
                     prem = loflDix[loflDix.index(item)]
@@ -357,7 +705,7 @@ def export_xls(request):
                             del loflDix[loflDix.index(item) + 1]
 
         # onze
-        for i in range(3):
+        for i in range(4):
             for item in loflOnze:
                 if loflOnze.index(item) != len(loflOnze) - 1:
                     prem = loflOnze[loflOnze.index(item)]
@@ -370,7 +718,7 @@ def export_xls(request):
                             del loflOnze[loflOnze.index(item) + 1]
                             
         # douze
-        for i in range(3):
+        for i in range(4):
             for item in loflDouze:
                 if loflDouze.index(item) != len(loflDouze) - 1:
                     prem = loflDouze[loflDouze.index(item)]
@@ -383,7 +731,7 @@ def export_xls(request):
                             del loflDouze[loflDouze.index(item) + 1]
                             
         # treize
-        for i in range(3):
+        for i in range(4):
             for item in loflTreize:
                 if loflTreize.index(item) != len(loflTreize) - 1:
                     prem = loflTreize[loflTreize.index(item)]
@@ -396,7 +744,7 @@ def export_xls(request):
                             del loflTreize[loflTreize.index(item) + 1]
         
         # quatorze
-        for i in range(3):
+        for i in range(4):
             for item in loflQuatorze:
                 if loflQuatorze.index(item) != len(loflQuatorze) - 1:
                     prem = loflQuatorze[loflQuatorze.index(item)]
@@ -409,7 +757,7 @@ def export_xls(request):
                             del loflQuatorze[loflQuatorze.index(item) + 1]
 
         # quinze
-        for i in range(3):
+        for i in range(4):
             for item in loflQuinze:
                 if loflQuinze.index(item) != len(loflQuinze) - 1:
                     prem = loflQuinze[loflQuinze.index(item)]
@@ -422,7 +770,7 @@ def export_xls(request):
                             del loflQuinze[loflQuinze.index(item) + 1]
         
         # seize
-        for i in range(3):
+        for i in range(4):
             for item in loflSeize:
                 if loflSeize.index(item) != len(loflSeize) - 1:
                     prem = loflSeize[loflSeize.index(item)]
@@ -435,7 +783,7 @@ def export_xls(request):
                             del loflSeize[loflSeize.index(item) + 1]
         
         # dix-sept
-        for i in range(3):
+        for i in range(4):
             for item in loflDixSept:
                 if loflDixSept.index(item) != len(loflDixSept) - 1:
                     prem = loflDixSept[loflDixSept.index(item)]
@@ -448,7 +796,7 @@ def export_xls(request):
                             del loflDixSept[loflDixSept.index(item) + 1]
                             
         # dix-huit
-        for i in range(3):
+        for i in range(4):
             for item in loflDixHuit:
                 if loflDixHuit.index(item) != len(loflDixHuit) - 1:
                     prem = loflDixHuit[loflDixHuit.index(item)]
@@ -461,7 +809,7 @@ def export_xls(request):
                             del loflDixHuit[loflDixHuit.index(item) + 1]
         
         # dix-Neuf
-        for i in range(3):
+        for i in range(4):
             for item in loflDixNeuf:
                 if loflDixNeuf.index(item) != len(loflDixNeuf) - 1:
                     prem = loflDixNeuf[loflDixNeuf.index(item)]
@@ -474,7 +822,7 @@ def export_xls(request):
                             del loflDixNeuf[loflDixNeuf.index(item) + 1]
 
         # vingt
-        for i in range(3):
+        for i in range(4):
             for item in loflVingt:
                 if loflVingt.index(item) != len(loflVingt) - 1:
                     prem = loflVingt[loflVingt.index(item)]
@@ -487,7 +835,7 @@ def export_xls(request):
                             del loflVingt[loflVingt.index(item) + 1]
                             
         # vingt-et-un
-        for i in range(3):
+        for i in range(4):
             for item in loflVingtEtUn:
                 if loflVingtEtUn.index(item) != len(loflVingtEtUn) - 1:
                     prem = loflVingtEtUn[loflVingtEtUn.index(item)]
@@ -500,7 +848,7 @@ def export_xls(request):
                             del loflVingtEtUn[loflVingtEtUn.index(item) + 1]
                             
         # vingt-deux
-        for i in range(3):
+        for i in range(4):
             for item in loflVingtDeux:
                 if loflVingtDeux.index(item) != len(loflVingtDeux) - 1:
                     prem = loflVingtDeux[loflVingtDeux.index(item)]
@@ -513,7 +861,7 @@ def export_xls(request):
                             del loflVingtDeux[loflVingtDeux.index(item) + 1]
                             
         # vingt-trois
-        for i in range(3):
+        for i in range(4):
             for item in loflVingtTrois:
                 if loflVingtTrois.index(item) != len(loflVingtTrois) - 1:
                     prem = loflVingtTrois[loflVingtTrois.index(item)]
@@ -526,7 +874,7 @@ def export_xls(request):
                             del loflVingtTrois[loflVingtTrois.index(item) + 1]
                             
         # vingt-quatre
-        for i in range(3):
+        for i in range(4):
             for item in loflVingtQuatre:
                 if loflVingtQuatre.index(item) != len(loflVingtQuatre) - 1:
                     prem = loflVingtQuatre[loflVingtQuatre.index(item)]
@@ -539,7 +887,7 @@ def export_xls(request):
                             del loflVingtQuatre[loflVingtQuatre.index(item) + 1]
                             
         # vingt-cinq
-        for i in range(3):
+        for i in range(4):
             for item in loflVingtCinq:
                 if loflVingtCinq.index(item) != len(loflVingtCinq) - 1:
                     prem = loflVingtCinq[loflVingtCinq.index(item)]
@@ -552,7 +900,7 @@ def export_xls(request):
                             del loflVingtCinq[loflVingtCinq.index(item) + 1]
 
         # vingt-six
-        for i in range(3):
+        for i in range(4):
             for item in loflVingtSix:
                 if loflVingtSix.index(item) != len(loflVingtSix) - 1:
                     prem = loflVingtSix[loflVingtSix.index(item)]
@@ -565,7 +913,7 @@ def export_xls(request):
                             del loflVingtSix[loflVingtSix.index(item) + 1]
                             
         # vingt-sept
-        for i in range(3):
+        for i in range(4):
             for item in loflVingtSept:
                 if loflVingtSept.index(item) != len(loflVingtSept) - 1:
                     prem = loflVingtSept[loflVingtSept.index(item)]
@@ -578,7 +926,7 @@ def export_xls(request):
                             del loflVingtSept[loflVingtSept.index(item) + 1]
                             
         # vingt-huit
-        for i in range(3):
+        for i in range(4):
             for item in loflVingtHuit:
                 if loflVingtHuit.index(item) != len(loflVingtHuit) - 1:
                     prem = loflVingtHuit[loflVingtHuit.index(item)]
@@ -591,7 +939,7 @@ def export_xls(request):
                             del loflVingtHuit[loflVingtHuit.index(item) + 1]
                             
         # vingt-neuf
-        for i in range(3):
+        for i in range(4):
             for item in loflVingtNeuf:
                 if loflVingtNeuf.index(item) != len(loflVingtNeuf) - 1:
                     prem = loflVingtNeuf[loflVingtNeuf.index(item)]
@@ -604,7 +952,7 @@ def export_xls(request):
                             del loflVingtNeuf[loflVingtNeuf.index(item) + 1]
                             
         # trente
-        for i in range(3):
+        for i in range(4):
             for item in loflTrente:
                 if loflTrente.index(item) != len(loflTrente) - 1:
                     prem = loflTrente[loflTrente.index(item)]
@@ -617,7 +965,7 @@ def export_xls(request):
                             del loflTrente[loflTrente.index(item) + 1]
                             
         # trente-et-un
-        for i in range(3):
+        for i in range(4):
             for item in loflTrenteEtUn:
                 if loflTrenteEtUn.index(item) != len(loflTrenteEtUn) - 1:
                     prem = loflTrenteEtUn[loflTrenteEtUn.index(item)]
@@ -630,7 +978,7 @@ def export_xls(request):
                             del loflTrenteEtUn[loflTrenteEtUn.index(item) + 1]
                             
         # trente-deux
-        for i in range(3):
+        for i in range(4):
             for item in loflTrenteDeux:
                 if loflTrenteDeux.index(item) != len(loflTrenteDeux) - 1:
                     prem = loflTrenteDeux[loflTrenteDeux.index(item)]
@@ -643,7 +991,7 @@ def export_xls(request):
                             del loflTrenteDeux[loflTrenteDeux.index(item) + 1]
                             
         # trente-trois
-        for i in range(3):
+        for i in range(4):
             for item in loflTrenteTrois:
                 if loflTrenteTrois.index(item) != len(loflTrenteTrois) - 1:
                     prem = loflTrenteTrois[loflTrenteTrois.index(item)]
@@ -656,7 +1004,7 @@ def export_xls(request):
                             del loflTrenteTrois[loflTrenteTrois.index(item) + 1]
                             
         # trente-quatre
-        for i in range(3):
+        for i in range(4):
             for item in loflTrenteQuatre:
                 if loflTrenteQuatre.index(item) != len(loflTrenteQuatre) - 1:
                     prem = loflTrenteQuatre[loflTrenteQuatre.index(item)]

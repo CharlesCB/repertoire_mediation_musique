@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% load bootstrap_tags %}
+
+{% block title %}Gestion des rôles de l'évolution de ...{%endblock%}
+
+{% block body %}
+
+    <div class="container-fluid">
+        <div class="col-md-10">
+            <h3 class="page-header">
+                Gérer les rôles de l'évolution de ...
+                {% if user.is_authenticated %}
+                     <a class="related-widget-wrapper-link add-related" id="add_id_role_evolution"
+                        href="JavaScript:newPopup('/admin/bdmultimedia/roleevolution/add/?_to_field=id&amp;_popup=1');"
+                        title="Ajouter un autre rôle de l'évolution">
+                        <img src="/static/media/icon-addlink.svg" alt="Ajouter"/>
+                    </a>
+                {% endif %}
+            </h3>
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+<div class="container-fluid">
+    <ul>
+        {% for roleevolution in all_roleEvolution %}
+            <li class="list-group-item"> {{ roleevolution.nom }}&nbsp;
+
+                {% if user.is_authenticated %}
+                    <a class="related-widget-wrapper-link add-related" id="change_id_role_evolution"
+                        href="JavaScript:newPopup('/admin/bdmultimedia/roleevolution/{{ roleevolution.id }}/change/?_to_field=id&_popup=1');"
+                        title="Modifier le rôle de l'évolution">
+                        <img src="/static/media/icon-changelink.svg" alt="Modifier"/>
+                    </a>
+                    <a class="related-widget-wrapper-link add-related" id="delete_id_role_evolution"
+                        href="JavaScript:newPopup('/admin/bdmultimedia/roleevolution/{{ roleevolution.id }}/delete/?_to_field=id&_popup=1');"
+                        title="Suprimer le rôle de l'évolution">
+                        <img src="/static/media/icon-deletelink.svg" alt="Suprimer"/>
+                    </a>
+                {% endif %}
+
+            </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

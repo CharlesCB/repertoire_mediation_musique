@@ -26,6 +26,11 @@ class ProdTypeAdmin(admin.ModelAdmin):
     search_fields = ['nom',]
 
 
+#class ProducteurNomAdmin(admin.ModelAdmin):
+#    list_display = ('nom',)
+#    search_fields = ['nom',]
+
+
 class SupportDiffusionAdmin(admin.ModelAdmin):
     list_display = ('nom',)
     search_fields = ['nom',]
@@ -191,6 +196,7 @@ admin.site.register(Outil, OutilAdmin)
 
 admin.site.register(ProdType, ProdTypeAdmin)
 admin.site.register(SupportDiffusion,SupportDiffusionAdmin)
+#admin.site.register(ProducteurNom,ProducteurNomAdmin)
 admin.site.register(FormatOutil,FormatOutilAdmin)
 admin.site.register(FormeNarrative,FormeNarrativeAdmin)
 admin.site.register(ModeHebergement,ModeHebergementAdmin)

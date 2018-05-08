@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% load bootstrap_tags %}
+
+{% block title %}Gestion de types de producteurs{%endblock%}
+
+{% block body %}
+
+    <div class="container-fluid">
+        <div class="col-md-10">
+            <h3 class="page-header">
+                Gérer les types de producteurs
+                {% if user.is_authenticated %}
+                     <a class="related-widget-wrapper-link add-related" id="add_id_prod_type"
+                        href="JavaScript:newPopup('/admin/bdmultimedia/prodtype/add/?_to_field=id&amp;_popup=1');"
+                        title="Ajouter un autre type de producteur">
+                        <img src="/static/media/icon-addlink.svg" alt="Ajouter"/>
+                    </a>
+                {% endif %}
+            </h3>
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+<div class="container-fluid">
+    <ul>
+        {% for prodType in all_prodType %}
+            <li class="list-group-item"> {{ prodType.nom }}&nbsp;
+
+                {% if user.is_authenticated %}
+                    <a class="related-widget-wrapper-link add-related" id="change_id_prod_type"
+                        href="JavaScript:newPopup('/admin/bdmultimedia/prodtype/{{ prodType.id }}/change/?_to_field=id&_popup=1');"
+                        title="Modifier le type de producteur">
+                        <img src="/static/media/icon-changelink.svg" alt="Modifier"/>
+                    </a>
+                    <a class="related-widget-wrapper-link add-related" id="delete_id_prod_type"
+                        href="JavaScript:newPopup('/admin/bdmultimedia/prodtype/{{ prodType.id }}/delete/?_to_field=id&_popup=1');"
+                        title="Suprimer le type de producteur">
+                        <img src="/static/media/icon-deletelink.svg" alt="Suprimer"/>
+                    </a>
+                {% endif %}
+
+            </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

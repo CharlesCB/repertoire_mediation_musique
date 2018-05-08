@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% load bootstrap_tags %}
+
+{% block title %}Gestion de évocations plastiques{%endblock%}
+
+{% block body %}
+
+    <div class="container-fluid">
+        <div class="col-md-10">
+            <h3 class="page-header">
+                Gérer les évocations plastiques
+                {% if user.is_authenticated %}
+                     <a class="related-widget-wrapper-link add-related" id="add_id_prod_type"
+                        href="JavaScript:newPopup('/admin/bdmultimedia/evocationplastique/add/?_to_field=id&amp;_popup=1');"
+                        title="Ajouter une autre évocation plastique">
+                        <img src="/static/media/icon-addlink.svg" alt="Ajouter"/>
+                    </a>
+                {% endif %}
+            </h3>
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+<div class="container-fluid">
+    <ul>
+        {% for evocationplastique in all_evocationPlastique %}
+            <li class="list-group-item"> {{ evocationplastique.nom }}&nbsp;
+
+                {% if user.is_authenticated %}
+                    <a class="related-widget-wrapper-link add-related" id="change_id_prod_type"
+                        href="JavaScript:newPopup('/admin/bdmultimedia/evocationplastique/{{ evocationplastique.id }}/change/?_to_field=id&_popup=1');"
+                        title="Modifier l'évocation plastique">
+                        <img src="/static/media/icon-changelink.svg" alt="Modifier"/>
+                    </a>
+                    <a class="related-widget-wrapper-link add-related" id="delete_id_prod_type"
+                        href="JavaScript:newPopup('/admin/bdmultimedia/evocationplastique/{{ evocationplastique.id }}/delete/?_to_field=id&_popup=1');"
+                        title="Suprimer l'évocation plastique">
+                        <img src="/static/media/icon-deletelink.svg" alt="Suprimer"/>
+                    </a>
+                {% endif %}
+
+            </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

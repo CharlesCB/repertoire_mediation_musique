@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% load bootstrap_tags %}
+
+{% block title %}Gestion des sollicitations musicale{%endblock%}
+
+{% block body %}
+
+    <div class="container-fluid">
+        <div class="col-md-10">
+            <h3 class="page-header">
+                Gérer les sollicitations musicales
+                {% if user.is_authenticated %}
+                     <a class="related-widget-wrapper-link add-related" id="add_id_sollicitation_musicale"
+                        href="JavaScript:newPopup('/admin/bdmultimedia/sollicitationmusicale/add/?_to_field=id&amp;_popup=1');"
+                        title="Ajouter un autre sollicitation musicale">
+                        <img src="/static/media/icon-addlink.svg" alt="Ajouter"/>
+                    </a>
+                {% endif %}
+            </h3>
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+<div class="container-fluid">
+    <ul>
+        {% for sollicitationmusicale in all_sollicitationMusicale %}
+            <li class="list-group-item"> {{ sollicitationmusicale.nom }}&nbsp;
+
+                {% if user.is_authenticated %}
+                    <a class="related-widget-wrapper-link add-related" id="change_id_sollicitation_musicale"
+                        href="JavaScript:newPopup('/admin/bdmultimedia/sollicitationmusicale/{{ sollicitationmusicale.id }}/change/?_to_field=id&_popup=1');"
+                        title="Modifier la sollicitation musicale">
+                        <img src="/static/media/icon-changelink.svg" alt="Modifier"/>
+                    </a>
+                    <a class="related-widget-wrapper-link add-related" id="delete_id_sollicitation_musicale"
+                        href="JavaScript:newPopup('/admin/bdmultimedia/sollicitationmusicale/{{ sollicitationmusicale.id }}/delete/?_to_field=id&_popup=1');"
+                        title="Suprimer la sollicitation musicale">
+                        <img src="/static/media/icon-deletelink.svg" alt="Suprimer"/>
+                    </a>
+                {% endif %}
+
+            </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

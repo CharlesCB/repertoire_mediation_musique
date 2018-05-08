@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% load bootstrap_tags %}
+
+{% block title %}Gestion des sous-titres{%endblock%}
+
+{% block body %}
+
+    <div class="container-fluid">
+        <div class="col-md-10">
+            <h3 class="page-header">
+                Gérer les sous-titres
+                {% if user.is_authenticated %}
+                     <a class="related-widget-wrapper-link add-related" id="add_id_soustitre"
+                        href="JavaScript:newPopup('/admin/bdmultimedia/soustitre/add/?_to_field=id&amp;_popup=1');"
+                        title="Ajouter un autre sous-titre">
+                        <img src="/static/media/icon-addlink.svg" alt="Ajouter"/>
+                    </a>
+                {% endif %}
+            </h3>
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+<div class="container-fluid">
+    <ul>
+        {% for soustitre in all_sousTitre %}
+            <li class="list-group-item"> {{ soustitre.nom }}&nbsp;
+
+                {% if user.is_authenticated %}
+                    <a class="related-widget-wrapper-link add-related" id="change_id_soustitre"
+                        href="JavaScript:newPopup('/admin/bdmultimedia/soustitre/{{ soustitre.id }}/change/?_to_field=id&_popup=1');"
+                        title="Modifier le sous-titre">
+                        <img src="/static/media/icon-changelink.svg" alt="Modifier"/>
+                    </a>
+                    <a class="related-widget-wrapper-link add-related" id="delete_id_soustitre"
+                        href="JavaScript:newPopup('/admin/bdmultimedia/soustitre/{{ soustitre.id }}/delete/?_to_field=id&_popup=1');"
+                        title="Suprimer le sous-titre">
+                        <img src="/static/media/icon-deletelink.svg" alt="Suprimer"/>
+                    </a>
+                {% endif %}
+
+            </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

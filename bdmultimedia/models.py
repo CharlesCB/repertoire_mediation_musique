@@ -19,55 +19,6 @@ OUINONNSP = (
     ("Nsp","Ne s'applique pas")
 )
 
-PRODUCTEUR_TYPE_LIST = (
-    ("Particulier", "Particulier"),
-    ("Organisme de diffusion (OSM; Festival)", "Organisme de diffusion (OSM; Festival)"),
-    ("Organisme de formation professionnelle (CQM; ARIAM; CFMI)",
-     "Organisme de formation professionnelle (CQM; ARIAM; CFMI)"),
-    ("Groupe de recherche (P2M; Groupe de recherche sur la médiation culturelle)",
-     "Groupe de recherche (P2M; Groupe de recherche sur la médiation culturelle)"),
-    ("Organismes éducatif (Ecole de musique; TEDX)", "Organismes éducatif (Ecole de musique; TEDX)"),
-    ("Autre", "Autre"),
-)
-
-SUPPORT_DIFFUSION_LIST = (
-    ("Ordinateur", "Ordinateur"),
-    ("Smartphone", "Smartphone"),
-    ("Tablette", "Tablette"),
-    ("Lunettes 3D", "Lunettes 3D"),
-    ("Consoles de JV", "Consoles de JV"),
-    ("DVD", "DVD"),
-    ("CD", "CD"),
-    ("Autre", "Autre"),
-)
-FORMAT_LIST = (
-    ("Ecrit (texte; dessin)", "Ecrit (texte; dessin)"),
-    ("Audio", "Audio"),
-    ("Audiovisuel", "Audiovisuel"),
-    ("Immersif", "Immersif"),
-    ("Réalité augmentée", "Réalité augmentée"),
-    ("Autre", "Autre"),
-)
-FORME_NARRATIVE_LIST = (
-    ("Entrevue", "Entrevue"),
-    ("Fiction", "Fiction"),
-    (
-        "Synopsis (récit fidèle au programme de l'oeuvre)",
-        "Synopsis (récit fidèle au programme de l'oeuvre)",
-    ),
-    (
-        "Web-série (plusieurs occurences qui ont un lien entre elles)",
-        "Web-série (plusieurs occurences qui ont un lien entre elles)",
-    ),
-    ("Animation", "Animation"),
-    ("Art et essai", "Art et essai"),
-    ("Vulgarisation", "Vulgarisation"),
-    ("Creative commons (sur le modèle wiki)", "Creative commons (sur le modèle wiki)"),
-    ("Reportage", "Reportage"),
-    ("Jeu", "Jeu"),
-    ("Autre", "Autre"),
-)
-
 INTERFACE_LIST = (
     ("Simple consultation", "Simple consultation"),
     ("Participation limitée", "Participation limitée (l'usager est actif mais se contente de répondre aux consignes)"),
@@ -102,6 +53,9 @@ PREM_ONGLET_LIST = (
     ("À propos", "À propos"),
     ("Voir et entendre", "Voir et entendre"),
     ("Actualités, news, nouveauté", "Actualité, news, nouveauté"),
+    ("Pour tous les publics","Pour tous les publics"),
+    ("Pour un public spécifique","Pour un public spécifique"),
+    ("Musique","Musique"),
     ("Autre", "Autre")
 )
 
@@ -128,11 +82,15 @@ DEUX_ONGLET_LIST = (
     ("À propos", "À propos"),
     ("Voir et entendre", "Voir et entendre"),
     ("Actualités, news, nouveauté", "Actualité, news, nouveauté"),
+    ("Pour tous les publics", "Pour tous les publics"),
+    ("Pour un public spécifique", "Pour un public spécifique"),
+    ("Musique", "Musique"),
     ("Autre", "Autre")
 )
 
 TROIS_ONGLET_LIST = (
-    ("Ne s'applique pas", "Ne s'applique pas car l'outil était disponible sur la deuxième page"),
+    ("Ne s’applique pas","Ne s’applique pas car le dispositif était disponible sur la page d’accueil"),
+    ("Ne s'applique pas car l'outil était disponible sur la deuxième page", "Ne s'applique pas car l'outil était disponible sur la deuxième page"),
     ("On peut consulter l'outil directement sur cette troisième page",
      "On peut consulter l'outil directement sur cette troisème page"),
     ("Action culturelle", "Action culturelle"),
@@ -154,6 +112,9 @@ TROIS_ONGLET_LIST = (
     ("À propos", "À propos"),
     ("Voir et entendre", "Voir et entendre"),
     ("Actualités, news, nouveauté", "Actualité, news, nouveauté"),
+    ("Pour tous les publics", "Pour tous les publics"),
+    ("Pour un public spécifique", "Pour un public spécifique"),
+    ("Musique", "Musique"),
     ("Autre", "Autre")
 )
 
@@ -168,134 +129,14 @@ EPOQUE_LIST = (
     ("XVIIIè", "XVIIIè"),
     ("XIXè", "XIXè"),
     ("XXè", "XXè"),
-    ("XXIè", "XXIè")
-)
-
-NARRATION_LANGUE_LIST = (
-    ("Français", "Français"),
-    ("Anglais", "Anglais"),
-    ("Espagnol", "Espagnol"),
-    ("Allemand", "Allemand"),
-    ("Italien", "Italien"),
-    ("Portugais", "Portugais"),
-    ("Autre", "Autre"),
-)
-
-SOUS_TITRE_LIST = (
-    ("Pas de sous titrage", "Pas de sous titrage"),
-    ("Français", "Français"),
-    ("Anglais", "Anglais"),
-    ("Espagnol", "Espagnol"),
-    ("Allemand", "Allemand"),
-    ("Italien", "Italien"),
-    ("Portugais", "Portugais"),
-    ("Autre", "Autre"),
+    ("XXIè", "XXIè"),
+    ("nsp","nsp")
 )
 
 ACCESSIBILITE_LIST = (
     ("Oui", "Oui"),
     ("Non", "Non"),
     ("Ne s'applique pas", "Ne s'applique pas")
-)
-
-MATERIAU_MUSICAL_LIST = (
-    ("Non", "Non"),
-    ("Son", "Son"),
-    ("Structure", "Structure"),
-    ("Language musical", "Language musical"),
-    ("Genre (opéra; symphonique)", "Genre (opéra; symphonique)"),
-    ("Style (Classique; Romantique; Contemporain)", "Style (Classique; Romantique; Contemporain)"),
-    ("Autre", "Autre"),
-)
-PRATIQUE_MUSICALE_LIST = (
-    (
-        "Non",
-        "Non"
-    ),
-    (
-        "Techniques instrumentales (mode de production du son)",
-        "Techniques instrumentales (mode de production du son)"
-    ),
-    (
-        "Activité du musicien; du compositeur; de l'interprète; du luthier etc.",
-        "Activité du musicien; du compositeur; de l'interprète; du luthier etc."
-    ),
-    (
-        "Pratique professionnelle",
-        "Pratique professionnelle"
-    ),
-    (
-        "Pratique amateur",
-        "Pratique amateur"
-    ),
-    (
-        "Autre",
-        "Autre"
-    ),
-)
-EXPERIENCES_LIST = (
-    (
-        "Non",
-        "Non"
-    ),
-    (
-        "Techniques d'écoute",
-        "Techniques d'écoute"
-    ),
-    (
-        "Expérience vécue",
-        "Expérience vécue"
-    ),
-    (
-        "Le concert",
-        "Le concert"
-    ),
-    (
-        "Les répétitions (générale; raccord; etc.)",
-        "Les répétitions (générale; raccord; etc.)"
-    ),
-    (
-        "Autre",
-        "Autre"
-    ),
-)
-
-ELEMENTS_SOCIO_LIST = (
-    ("Non", "Non"),
-    ("Vie du compositeur; interprète; dédicaçaire; mécène",
-     "Vie du compositeur; interprète; dédicaçaire; mécène"),
-    ("Organologie", "Organologie"),
-    ("Lutherie", "Lutherie"),
-    ("Évolution de la profession",
-     "Évolution de la profession"),
-    ("Conventions", "Conventions"),
-    ("Epoques datées (ex. les dates du Romantisme ou référence au 18è)",
-     "Epoques datées (ex. les dates du Romantisme ou référence au 18è)"),
-    ("Oeuvres (à titre documentaires)", "Oeuvres (à titre documentaires)"),
-    ("Contexte de production", "Contexte de production"),
-    ("Contexte de réception", "Contexte de réception"),
-    ('Contexte de création (au sens de "la première")',
-     'Contexte de création (au sens de "la première")'),
-    ("Autre", "Autre")
-)
-
-SOLICITATION_MUSICALE_LIST = (
-    ("Interpréter", "Interpréter"),
-    ("Reproduire", "Reproduire"),
-    ("Écouter", "Écouter"),
-    ("Inventer/composer/improviser", "Inventer/composer/improviser"),
-    ("Lire", "Lire"),
-    ("Regarder", "Regarder"),
-    ("Autre", "Autre")
-)
-
-SOLICITATION_AUTRE_LIST = (
-    ("Lire", "Lire"),
-    ("Regarder", "Regarder"),
-    ("Bricoler", "Bricoler"),
-    ("Jouer (au sens ludique)", "Jouer (au sens ludique)"),
-    ("Écrire", "Écrire"),
-    ("Autre", "Autre")
 )
 
 SONORE_VALEUR_LIST = (
@@ -305,55 +146,11 @@ SONORE_VALEUR_LIST = (
     ("Alternance", "Alternance")
 )
 
-EVOCATION_GRAPHIQUE_LIST = (
-    ("Non", "Non"),
-    ("Représentation graphique traditionnelle (partition + notes)",
-     "Représentation graphique traditionnelle (partition + notes)"),
-    ("Représentation graphique traditionnelle augmentée (Ex. les notes s'éclairent quand on les entends)",
-     "Représentation graphique traditionnelle augmentée (Ex. les notes s'éclairent quand on les entends)"),
-    (
-    "Représentation graphique traditionelle illustrée (Ex. les notes sont en fait des oiseaux sur les lignes de la portée)",
-    "Représentation graphique traditionelle illustrée (Ex. les notes sont en fait des oiseaux sur les lignes de la portée)"),
-    (
-    "Représentation graphique schématisée (Ex. il y toujours un portée mais ce sont des courbes qui figurent la mélodie)",
-    "Représentation graphique schématisée (Ex. il y toujours un portée mais ce sont des courbes qui figurent la mélodie)"),
-    ("Représentation graphique symbolisée (Ex. des images animées; cf. ratatouille!!)",
-     "Représentation graphique symbolisée (Ex. des images animées; cf. ratatouille!!)"),
-    ("Autre", "Autre")
-)
-
-EVOCATION_PLASTIQUE_LIST = (
-    ("Non", "Non"),
-    ("Sculpture", "Sculpture"),
-    ("Installation", "Installation"),
-    ("Autre", "Autre")
-)
-
 EVOCATION_LITTERAIRE_LIST = (
     ("Non", "Non"),
     ("Texte oral", "Texte oral"),
     ("Texte écrit", "Texte écrit")
 )
-
-EVOCATION_AUTRE_LIST = (
-    ("Aucune", "Aucune"),
-    ("Littérature", "Littérature"),
-    ("Danse", "Danse"),
-    ("Art plastiques", "Art plastiques"),
-    ("Théâtre", "Théâtre"),
-    ("Cinéma", "Cinéma"),
-    ("Arts numériques", "Arts numériques"),
-    ("Sports", "Sports"),
-    ("Neurosciences", "Neurosciences"),
-    ("Sciences physiques", "Sciences physiques"),
-    ("Architechture", "Architechture"),
-    ("Gastronomie", "Gastronomie"),
-    ("Cirque", "Cirque"),
-    ("Performance", "Performance"),
-    ("Anatomie", "Anatomie"),
-    ("Autre", "Autre")
-)
-
 
 @python_2_unicode_compatible
 class ProdType(models.Model):
@@ -364,6 +161,17 @@ class ProdType(models.Model):
 
     class Meta:
         verbose_name = "types de producteur"
+
+
+@python_2_unicode_compatible
+class ProducteurNom(models.Model):
+    nom = models.CharField(max_length=200, unique = True)
+
+    def __str__(self):
+        return self.nom
+
+    class Meta:
+        verbose_name = "Nom du producteur"
 
 
 @python_2_unicode_compatible
@@ -733,36 +541,43 @@ class NotionsInter(models.Model):
 @python_2_unicode_compatible
 class Outil(models.Model):
     titre = models.CharField(max_length=200, verbose_name="R.1 Titre du dispositif")
+    page_outil = models.BooleanField(default = False, verbose_name = "Afficher directement une page qui fait office de dispositif")
     integration = models.TextField(blank = True, verbose_name = "code pour l'integration du dispositif (si applicable)")
     url = models.CharField(unique=True, max_length=200, verbose_name="R.2 URL d'accès direct",
-                           help_text="Dernier URL à suivre pour ateindre l'outil - nsp = ne s'applique pas")
+                           help_text="Attention, enlever la barre oblique « / » à la fin de l’URL Ex. www.osm.ca/fr/matinees/#1488205065259-011decba-7105")
     site = models.URLField(max_length=200, verbose_name="R.3 URL d'accès au site d'hébergement", blank=False,
-                           help_text="ex. site de la Philharmonie de Paris")
+                           help_text="Attention, enlever la barre oblique « / » à la fin de l’URL www.osm.ca. <br> Si le dispositif est une vidéo d’un-e YouTubeur-e, indiquer le lien vers sa chaîne YouTube.")
     ensemble_thematique = models.CharField(blank=False, choices=OUINON, max_length=4, default="Non",
-                                           verbose_name="R.3.1 Ce dispositif fait-il partie d'un ensemble thématique du même type? (regroupé par l'organisme producteur)")
-    ensemble_thematique_nom = models.CharField(max_length=200, verbose_name="R.3.2 Si oui, sous quel titre est regroupé cet ensemble?",
+                                           verbose_name="R.3.1 Ce dispositif fait-il partie d'un ensemble thématique du même type? (regroupé par l'organisme producteur)",
+                                           help_text = "On parle bien ici d’un ensemble thématique et non pas d’un regroupement par format (ex. vidéo) ou par objectif (ex . ressource pédagogique). ")
+    ensemble_thematique_nom = models.CharField(max_length=200, verbose_name="R.3.2 Si oui, donnez le titre sous lequel est regroupé cet ensemble.",
                                                blank=True, help_text="Ex: Camille raconte")
-    producteur_type = models.ManyToManyField(ProdType, verbose_name="R.4 Qui est le producteur de ce dispositif?")
-    producteur_nom = models.CharField(max_length=200, verbose_name="R.5 Préciser le nom complet du/des producteur(s)")
+    producteur_type = models.ManyToManyField(ProdType, verbose_name="R.4 Qui est le producteur de ce dispositif?",
+                                             help_text = "Attention : répondre à cette question nécessite d’aller vérifier les statuts des organismes impliqués ou le titre auquel ils s’impliquent. Exemple . L’OSM peut agir en tant que producteur pour un concert ou au titre de diffuseur pour un autre évènement.")
+    #producteur_nom = models.ManyToManyField(ProducteurNom, verbose_name="R.5 Préciser le nom complet du/des producteur(s)")
+    producteur_nom = models.CharField(max_length=200, verbose_name="R.5 Préciser le nom complet du/des producteur(s)", blank = True)
     support_diffusion = models.ManyToManyField(SupportDiffusion, verbose_name="R.6 Support de diffusion")
     format = models.ManyToManyField(FormatOutil, verbose_name="R.7 Format du dispositif")
     forme_narrative = models.ManyToManyField(FormeNarrative, verbose_name="R.8 Formes narratives")
     duree = models.CharField(max_length=8, null=False, verbose_name="R.9 Durée", default="00:00:00",
-                             help_text="nsp = ne s'applique pas")
+                             help_text="nsp = ne s'applique pas, ddv = durée d’écoute variable. La durée d’écoute est variable puisque les utilisateurs peuvent décider, ou non, de regarder les vidéos. Concerne les dispositifs qui allient texte et vidéo.")
     nb_pages = models.PositiveIntegerField(null=True, verbose_name="R.10 Nombre de pages", default=0,
                                            help_text="Correspond au nombre de page web sur lesquelles se décline le  dispositif .")
     mise_en_ligne_date = models.DateField(null=True, blank=True, auto_now=False, auto_now_add=False,
                                           verbose_name="R.11 Date de la mise en ligne",
-                                          help_text="laisser vide si non disponible")
+                                          help_text="Si seule l’année de mise en ligne est disponible entrer la date de mise en ligne au 1er janvier de l’année concernée")
     depouillement_date = models.DateField(null=True, blank=True, auto_now=False, auto_now_add=False,
                                           verbose_name="R.12 Date du dépouillement")
     interface = models.CharField(choices=INTERFACE_LIST,
                                  max_length=200,
                                  null=True,
                                  verbose_name="R.13 Que permet l'interface?")
+    materiel_imprimer = models.CharField(choices=OUINON, max_length = 200, default = "Non",
+                                         verbose_name = "R.13.1 Le dispositif comprend-il du matériel à imprimer (ex. livret en pdf) ?")
     personnification_service = models.CharField(null=True, max_length=200, choices=PERSONNIFICATION_LIST,
                                                 verbose_name="R.14 Degrés de personnification du service")
-    commentaire_possible = models.BooleanField(verbose_name="R.15 Possibilité de laisser des commentaires")
+    commentaire_possible = models.BooleanField(verbose_name="R.15 Possibilité de laisser des commentaires",
+                                               help_text="Compter les commentaires qui apparaissent sur la page de consultation du dispositif (ex. Si il n’y a pas de possibilité de commentaire sur les capsules de l’OSM mais que les commentaires sont possibles sur l’hébergement youtube ne pas cocher)")
     commentaire_nombre = models.PositiveIntegerField(null=True, blank=True, verbose_name="R.16 Nombre de commentaires")
     premier_onglet = models.CharField(choices=PREM_ONGLET_LIST,
                                       max_length=200,
@@ -782,11 +597,13 @@ class Outil(models.Model):
                                         null=True,
                                         verbose_name="S.19 Quel est le TROISIEME onglet à ouvrir pour trouver ce dispositif?")
     trois_onglet_autre = models.CharField(blank=True, null=True, max_length=200, verbose_name="Si autre, précisez")
+    plus_de_tois_onglet = models.BooleanField(verbose_name = "S.19. 1 PLUS DE TROIS ONGLETS à ouvrir pour trouver ce dispositif ?", default = False)
 
     mode_hebergement = models.ManyToManyField(ModeHebergement, verbose_name="S.20 Mode d'hébergement sur la toile")
     mode_consultation = models.ManyToManyField(ModeConsultation, verbose_name="S.21 Mode de consultation offert au public")
-    narration_langue = models.ManyToManyField(LangueNarration, verbose_name="S.22 Langue de la narration")
-    sous_titre = models.ManyToManyField(SousTitre, verbose_name="S.23 Sous-titrage")
+    narration_langue = models.ManyToManyField(LangueNarration, verbose_name="S.22 Langue du dispositif")
+    sous_titre = models.ManyToManyField(SousTitre, verbose_name="S.23 Sous-titrage",
+                                        help_text="Les sous-titrages automatiques proposés par YouTube n’entrent pas en considération.")
 
     ##Accessibilité
     malentendants = models.CharField(choices=OUINON,
@@ -803,7 +620,8 @@ class Outil(models.Model):
     materiau_musical = models.CharField(choices=OUINON,
                                         max_length=200,
                                         default="Non",
-                                        verbose_name="M.25 Parle-t-on du matériau musical?")
+                                        verbose_name="M.25 Parle-t-on du matériau musical?",
+                                        help_text = 'Registres (au sens de groupe de hauteur si cela concerne les registres de l’orgue cocher « timbres »)')
     orchestration = models.ManyToManyField(Orchestration,
                                            verbose_name="M.25.1 Parle-t-on du son et de l'orchestration, si oui précisez.")
     structure = models.ManyToManyField(Structure, verbose_name="M.25.2 Parle-t-on de la structure, si oui précisez.")
@@ -823,7 +641,8 @@ class Outil(models.Model):
                               max_length=50,
                               verbose_name="M.27.1 Époque")
     contexte = models.ManyToManyField(Contexte,
-                                      verbose_name="M.27.2 Parle-t-on du contexte de composition, création, interprétation de l'oeuvre, de l'instrument...")
+                                      verbose_name="M.27.2 Parle-t-on du contexte de composition, création, interprétation de l'oeuvre, de l'instrument...",
+                                      help_text='Si il est juste fait mention d’une date sans donner plus d’information sur ce qui se passait à l’époque cocher “Non”.')
     role_evolution = models.ManyToManyField(RoleEvolution, verbose_name="M.27.3 Parle-t-on du rôle et de l'évolution du")
     sollicitation_musicale = models.ManyToManyField(SollicitationMusicale,
                                                     verbose_name="U.28 Comment sollicite-t-on musicalement l'usager?")

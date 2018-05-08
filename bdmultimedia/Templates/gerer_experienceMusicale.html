@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% load bootstrap_tags %}
+
+{% block title %}Gestion des notions d'expérience musicale{%endblock%}
+
+{% block body %}
+
+    <div class="container-fluid">
+        <div class="col-md-10">
+            <h3 class="page-header">
+                Gérer les notions d'expérience musicale
+                {% if user.is_authenticated %}
+                     <a class="related-widget-wrapper-link add-related" id="add_id_experience_musicale"
+                        href="JavaScript:newPopup('/admin/bdmultimedia/experiencemusicale/add/?_to_field=id&amp;_popup=1');"
+                        title="Ajouter une autre notion d'expérience musicale">
+                        <img src="/static/media/icon-addlink.svg" alt="Ajouter"/>
+                    </a>
+                {% endif %}
+            </h3>
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+<div class="container-fluid">
+    <ul>
+        {% for experiencemusicale in all_experienceMusicale %}
+            <li class="list-group-item"> {{ experiencemusicale.nom }}&nbsp;
+
+                {% if user.is_authenticated %}
+                    <a class="related-widget-wrapper-link add-related" id="change_id_experience_musicale"
+                        href="JavaScript:newPopup('/admin/bdmultimedia/experiencemusicale/{{ experiencemusicale.id }}/change/?_to_field=id&_popup=1');"
+                        title="Modifier l'experience musicale">
+                        <img src="/static/media/icon-changelink.svg" alt="Modifier"/>
+                    </a>
+                    <a class="related-widget-wrapper-link add-related" id="delete_id_experience_musicale"
+                        href="JavaScript:newPopup('/admin/bdmultimedia/experiencemusicale/{{ experiencemusicale.id }}/delete/?_to_field=id&_popup=1');"
+                        title="Suprimer l'experience musicale">
+                        <img src="/static/media/icon-deletelink.svg" alt="Suprimer"/>
+                    </a>
+                {% endif %}
+
+            </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

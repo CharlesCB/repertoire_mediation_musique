@@ -51,16 +51,32 @@
     {% endif %}
     </aside>
 <section>
+    {% if outil.page_outil == True and outil.integration == "" %}
+    <iframe src="{{ outil.url }}" height="400" width="1000"></iframe>
+    {% else %}
     {% autoescape off %}
         <div class="col-md-10">
         {{ outil.integration }}
         </div>
     {% endautoescape %}
+    {% endif %}
     <div class="col-md-10" id="referencement" ><div class="page-header"><h4>Référencement du dispositif</h4></div></div>
    <!-- <div class="col-md-10"><img src="{{ outil.image.url }}"> </div>-->
     <div class="col-md-10"><b> Titre du dispositif : </b> {{ outil.titre }} </div>
-    <div class="col-md-10"><b> Chemin d'accès direct : </b> <a href={{outil.url}} target="_blank"> {{ outil.url }} </a></div>
-    <div class="col-md-10"><b> Chemin d'accès au site d'hébergement : </b> <a href={{outil.site}} target="_blank"> {{ outil.site }} </a></div>
+    <div class="col-md-10"><b> Chemin d'accès direct : </b>
+        {% if outil.url != "nsp" %}
+            <a href={{outil.url}} target="_blank"> {{ outil.url }} </a>
+        {% else %}
+            Ne s'applique pas
+        {% endif %}
+    </div>
+    <div class="col-md-10"><b> Chemin d'accès au site d'hébergement : </b>
+        {% if outil.site != "nsp" %}
+            <a href={{outil.site}} target="_blank"> {{ outil.site }} </a>
+        {% else %}
+            Ne s'applique pas.
+        {% endif %}
+    </div>
     {% if outil.ensemble_thematique == "Oui" %}
         <div class="col-md-10"><b><br>Ce dispositif fait partie d'un ensemble thématique du même type (regroupé par l'organisme producteur)</b></div>
         <div class="col-md-10"><b>Nom de l'ensemble : </b>{{ outil.ensemble_thematique_nom }}</div>
