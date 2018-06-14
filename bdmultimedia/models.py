@@ -2,6 +2,7 @@
 from __future__ import unicode_literals
 
 from django.db import models
+from django.db.models import Q
 from multiselectfield import MultiSelectField
 from django.utils.encoding import python_2_unicode_compatible
 from django.core.urlresolvers import reverse
@@ -16,10 +17,10 @@ OUINON = (
 OUINONNSP = (
     ("Oui", "Oui"),
     ("Non", "Non"),
-    ("Nsp","Ne s'applique pas")
+    ("Nsp", "Ne s'applique pas")
 )
 
-INTERFACE_LIST = (
+INTERACTIVITE_LIST = (
     ("Simple consultation", "Simple consultation"),
     ("Participation limitée", "Participation limitée (l'usager est actif mais se contente de répondre aux consignes)"),
     ("Participation dynamique", "Participation dynamique (l'usager co-construit le service)"),
@@ -44,12 +45,10 @@ PREM_ONGLET_LIST = (
     ("Livret pédagogique", "Livret pédagogique"),
     ("Pour les enseignants, écoles, scolaires", "Pour les enseignants, écoles, scolaires"),
     ("Le nom du dispositif lui même", "Le nom du dispositif lui même (ex: 'La galerie symphonique')"),
-    (
-    "Ressources en ligne, ressources numériques, ressources", "Ressources en ligne, ressources numériques, ressources"),
-    ("Relatif à la programmation",
-     "Est relatif à la programmation à laquelle il fait référence (onglet du concert, titre du compositeur, etc.)"),
-    ("Relatif au format du dispositif dont il s'agit",
-     "Est relatif au format du dispositif dont il s'agit (Balado, vidéo, playlist, web série, etc.)"),
+    ("Ressources en ligne, ressources numériques, ressources", "Ressources en ligne, ressources numériques, ressources"),
+    ("Relatif à la programmation","Est relatif à la programmation à laquelle il fait référence (onglet du concert, titre du compositeur, etc.)"),
+    ("Relatif au format du dispositif dont il s'agit", "Est relatif au format du dispositif dont il s'agit (Balado, vidéo, playlist, web série, etc.)"),
+    ("Relatif au site d'hébergement","Est relatif au site d'hébergement"),
     ("À propos", "À propos"),
     ("Voir et entendre", "Voir et entendre"),
     ("Actualités, news, nouveauté", "Actualité, news, nouveauté"),
@@ -79,6 +78,7 @@ DEUX_ONGLET_LIST = (
      "Est relatif à la programmation à laquelle il fait référence (onglet du concert, titre du compositeur, etc.)"),
     ("Relatif au format du dispositif dont il s'agit",
      "Est relatif au format du dispositif dont il s'agit (Balado, vidéo, playlist, web série, etc.)"),
+    ("Relatif au site d'hébergement", "Est relatif au site d'hébergement"),
     ("À propos", "À propos"),
     ("Voir et entendre", "Voir et entendre"),
     ("Actualités, news, nouveauté", "Actualité, news, nouveauté"),
@@ -103,12 +103,12 @@ TROIS_ONGLET_LIST = (
     ("Livret pédagogique", "Livret pédagogique"),
     ("Pour les enseignants, écoles, scolaires", "Pour les enseignants, écoles, scolaires"),
     ("Le nom du dispositif lui même", "Le nom du dispositif lui même (ex: 'La galerie symphonique')"),
-    (
-    "Ressources en ligne, ressources numériques, ressources", "Ressources en ligne, ressources numériques, ressources"),
+    ("Ressources en ligne, ressources numériques, ressources", "Ressources en ligne, ressources numériques, ressources"),
     ("Relatif à la programmation",
      "Est relatif à la programmation à laquelle il fait référence (onglet du concert, titre du compositeur, etc.)"),
     ("Relatif au format du dispositif dont il s'agit",
      "Est relatif au format du dispositif dont il s'agit (Balado, vidéo, playlist, web série, etc.)"),
+    ("Relatif au site d'hébergement", "Est relatif au site d'hébergement"),
     ("À propos", "À propos"),
     ("Voir et entendre", "Voir et entendre"),
     ("Actualités, news, nouveauté", "Actualité, news, nouveauté"),
@@ -130,7 +130,7 @@ EPOQUE_LIST = (
     ("XIXè", "XIXè"),
     ("XXè", "XXè"),
     ("XXIè", "XXIè"),
-    ("nsp","nsp")
+    ("nsp", "nsp")
 )
 
 ACCESSIBILITE_LIST = (
@@ -152,6 +152,7 @@ EVOCATION_LITTERAIRE_LIST = (
     ("Texte écrit", "Texte écrit")
 )
 
+
 @python_2_unicode_compatible
 class ProdType(models.Model):
     nom = models.CharField(max_length=200, unique=True)
@@ -165,7 +166,7 @@ class ProdType(models.Model):
 
 @python_2_unicode_compatible
 class ProducteurNom(models.Model):
-    nom = models.CharField(max_length=200, unique = True)
+    nom = models.CharField(max_length=200, unique=True)
 
     def __str__(self):
         return self.nom
@@ -326,6 +327,17 @@ class RoleEvolution(models.Model):
 
     class Meta:
         verbose_name = "Rôle et évolution"
+
+
+@python_2_unicode_compatible
+class Organologie(models.Model):
+    nom = models.CharField(max_length=200, unique=True)
+
+    def __str__(self):
+        return self.nom
+
+    class Meta:
+        verbose_name = "Organologie"
 
 
 @python_2_unicode_compatible
@@ -537,6 +549,66 @@ class NotionsInter(models.Model):
         verbose_name = "exemples de notions évoquées de façon interdisciplinaires"
 
 
+class OutilManager(models.Manager):
+    def search(self, query=None):
+        qs = self.get_queryset()
+        if query is not None:
+            # maximum 64 table en sqlite
+            or_lookup = (Q(titre__icontains=query) |
+                         Q(url__icontains=query) |
+                         Q(site__icontains=query) |
+                         Q(ensemble_thematique_nom__icontains=query) |
+                         Q(interactivite__icontains=query) |
+                         Q(personnification_service__icontains=query) |
+                         Q(premier_onglet__icontains=query) |
+                         Q(prem_onglet_autre__icontains=query) |
+                         Q(deuxieme_onglet__icontains=query) |
+                         Q(deux_onglet_autre__icontains=query) |
+                         Q(troisieme_onglet__icontains=query) |
+                         Q(trois_onglet_autre__icontains=query) |
+                         Q(elements_socioculturels__icontains=query) |
+                         Q(epoque__icontains=query) |
+                         Q(sonore_valeur__icontains=query) |
+                         Q(evocation_litteraire__icontains=query) |
+                         Q(producteur_type__nom__icontains=query) |
+                         Q(producteur_nom__nom__icontains=query) |
+                         Q(support_diffusion__nom__icontains=query) |
+                         Q(format__nom__icontains=query) |
+                         Q(forme_narrative__nom__icontains=query) |
+                         Q(mode_hebergement__nom__icontains=query) |
+                         Q(mode_consultation__nom__icontains=query) |
+                         Q(narration_langue__nom__icontains=query) |
+                         Q(sous_titre__nom__icontains=query) |
+                         Q(orchestration__nom__icontains=query) |
+                         Q(structure__nom__icontains=query) |
+                         Q(language_musical__nom__icontains=query) |
+                         Q(genre_musical__nom__icontains=query) |
+                         Q(style_musical__nom__icontains=query) |
+                         Q(experience_musicale__nom__icontains=query) |
+                         Q(contexte__nom__icontains=query) |
+                         Q(role_evolution__nom__icontains=query) |
+                         Q(organologie__nom__icontains=query) |
+                         Q(sollicitation_musicale__nom__icontains=query) |
+                         Q(sollicitation_generale__nom__icontains=query) |
+                         Q(evocation_graphique__nom__icontains=query) |
+                         Q(evocation_plastique__nom__icontains=query) |
+                         Q(evocation_autre__nom__icontains=query) |
+                         Q(exemples_notions_interdisciplinaires__nom__icontains=query) |
+                         Q(role_humain_femme__nom__icontains=query) |
+                         Q(role_humain_homme__nom__icontains=query) |
+                         Q(role_humain_neutre__nom__icontains=query) |
+                         Q(role_pers_anime_femme__nom__icontains=query) |
+                         Q(role_pers_anime_homme__nom__icontains=query) |
+                         Q(role_pers_anime_neutre__nom__icontains=query) |
+                         Q(role_animaux_femme__nom__icontains=query) |
+                         Q(role_animaux_homme__nom__icontains=query) |
+                         Q(role_animaux_neutre__nom__icontains=query) |
+                         Q(role_instr_anime_femme__nom__icontains=query) |
+                         Q(role_instr_anime_homme__nom__icontains=query) |
+                         Q(role_instr_anime_neutre__nom__icontains=query)
+                        )
+            qs = qs.filter(or_lookup).distinct() # distinct() is often necessary with Q lookups
+        return qs
 
 @python_2_unicode_compatible
 class Outil(models.Model):
@@ -545,7 +617,7 @@ class Outil(models.Model):
     integration = models.TextField(blank = True, verbose_name = "code pour l'integration du dispositif (si applicable)")
     url = models.CharField(unique=True, max_length=200, verbose_name="R.2 URL d'accès direct",
                            help_text="Attention, enlever la barre oblique « / » à la fin de l’URL Ex. www.osm.ca/fr/matinees/#1488205065259-011decba-7105")
-    site = models.URLField(max_length=200, verbose_name="R.3 URL d'accès au site d'hébergement", blank=False,
+    site = models.CharField(max_length=200, verbose_name="R.3 URL d'accès au site d'hébergement",
                            help_text="Attention, enlever la barre oblique « / » à la fin de l’URL www.osm.ca. <br> Si le dispositif est une vidéo d’un-e YouTubeur-e, indiquer le lien vers sa chaîne YouTube.")
     ensemble_thematique = models.CharField(blank=False, choices=OUINON, max_length=4, default="Non",
                                            verbose_name="R.3.1 Ce dispositif fait-il partie d'un ensemble thématique du même type? (regroupé par l'organisme producteur)",
@@ -554,31 +626,31 @@ class Outil(models.Model):
                                                blank=True, help_text="Ex: Camille raconte")
     producteur_type = models.ManyToManyField(ProdType, verbose_name="R.4 Qui est le producteur de ce dispositif?",
                                              help_text = "Attention : répondre à cette question nécessite d’aller vérifier les statuts des organismes impliqués ou le titre auquel ils s’impliquent. Exemple . L’OSM peut agir en tant que producteur pour un concert ou au titre de diffuseur pour un autre évènement.")
-    #producteur_nom = models.ManyToManyField(ProducteurNom, verbose_name="R.5 Préciser le nom complet du/des producteur(s)")
-    producteur_nom = models.CharField(max_length=200, verbose_name="R.5 Préciser le nom complet du/des producteur(s)", blank = True)
+    producteur_nom = models.ManyToManyField(ProducteurNom, verbose_name="R.5 Préciser le nom complet du/des producteur(s)")
     support_diffusion = models.ManyToManyField(SupportDiffusion, verbose_name="R.6 Support de diffusion")
     format = models.ManyToManyField(FormatOutil, verbose_name="R.7 Format du dispositif")
     forme_narrative = models.ManyToManyField(FormeNarrative, verbose_name="R.8 Formes narratives")
     duree = models.CharField(max_length=8, null=False, verbose_name="R.9 Durée", default="00:00:00",
                              help_text="nsp = ne s'applique pas, ddv = durée d’écoute variable. La durée d’écoute est variable puisque les utilisateurs peuvent décider, ou non, de regarder les vidéos. Concerne les dispositifs qui allient texte et vidéo.")
-    nb_pages = models.PositiveIntegerField(null=True, verbose_name="R.10 Nombre de pages", default=0,
-                                           help_text="Correspond au nombre de page web sur lesquelles se décline le  dispositif .")
+    nb_pages = models.CharField(null=True, verbose_name="R.10 Nombre de pages",
+                                            max_length = 50,
+                                           help_text="Correspond au nombre de page web sur lesquelles se décline le  dispositif. Nsp = ne s'applique pas. Si plus que 20 pages, inscrire : plus de 20 pages")
     mise_en_ligne_date = models.DateField(null=True, blank=True, auto_now=False, auto_now_add=False,
                                           verbose_name="R.11 Date de la mise en ligne",
                                           help_text="Si seule l’année de mise en ligne est disponible entrer la date de mise en ligne au 1er janvier de l’année concernée")
-    depouillement_date = models.DateField(null=True, blank=True, auto_now=False, auto_now_add=False,
+    depouillement_date = models.DateField(null=True, blank=False, auto_now=False, auto_now_add=False,
                                           verbose_name="R.12 Date du dépouillement")
-    interface = models.CharField(choices=INTERFACE_LIST,
+    interactivite = models.CharField(choices=INTERACTIVITE_LIST,
                                  max_length=200,
                                  null=True,
-                                 verbose_name="R.13 Que permet l'interface?")
+                                 verbose_name="R.13 Interactivité")
     materiel_imprimer = models.CharField(choices=OUINON, max_length = 200, default = "Non",
                                          verbose_name = "R.13.1 Le dispositif comprend-il du matériel à imprimer (ex. livret en pdf) ?")
     personnification_service = models.CharField(null=True, max_length=200, choices=PERSONNIFICATION_LIST,
                                                 verbose_name="R.14 Degrés de personnification du service")
     commentaire_possible = models.BooleanField(verbose_name="R.15 Possibilité de laisser des commentaires",
                                                help_text="Compter les commentaires qui apparaissent sur la page de consultation du dispositif (ex. Si il n’y a pas de possibilité de commentaire sur les capsules de l’OSM mais que les commentaires sont possibles sur l’hébergement youtube ne pas cocher)")
-    commentaire_nombre = models.PositiveIntegerField(null=True, blank=True, verbose_name="R.16 Nombre de commentaires")
+    commentaire_nombre = models.CharField(max_length = 50,null=True, blank=True, verbose_name="R.16 Nombre de commentaires")
     premier_onglet = models.CharField(choices=PREM_ONGLET_LIST,
                                       max_length=200,
                                       default="Ne s'applique pas",
@@ -620,10 +692,10 @@ class Outil(models.Model):
     materiau_musical = models.CharField(choices=OUINON,
                                         max_length=200,
                                         default="Non",
-                                        verbose_name="M.25 Parle-t-on du matériau musical?",
-                                        help_text = 'Registres (au sens de groupe de hauteur si cela concerne les registres de l’orgue cocher « timbres »)')
+                                        verbose_name="M.25 Parle-t-on du matériau musical?")
     orchestration = models.ManyToManyField(Orchestration,
-                                           verbose_name="M.25.1 Parle-t-on du son et de l'orchestration, si oui précisez.")
+                                           verbose_name="M.25.1 Parle-t-on du son et de l'orchestration, si oui précisez.",
+                                           help_text='Registres (au sens de groupe de hauteur si cela concerne les registres de l’orgue cocher « timbres »)')
     structure = models.ManyToManyField(Structure, verbose_name="M.25.2 Parle-t-on de la structure, si oui précisez.")
     language_musical = models.ManyToManyField(LanguageMusical,
                                               verbose_name="M.25.3 Parle-t-on du language musical, si oui précisez.")
@@ -638,25 +710,27 @@ class Outil(models.Model):
                                                verbose_name="M.27 Parle-t-on des éléments socioculturels et historiques?")
     epoque = MultiSelectField(choices=EPOQUE_LIST,
                               null=True,
-                              max_length=50,
+                              max_length=100,
                               verbose_name="M.27.1 Époque")
     contexte = models.ManyToManyField(Contexte,
                                       verbose_name="M.27.2 Parle-t-on du contexte de composition, création, interprétation de l'oeuvre, de l'instrument...",
                                       help_text='Si il est juste fait mention d’une date sans donner plus d’information sur ce qui se passait à l’époque cocher “Non”.')
-    role_evolution = models.ManyToManyField(RoleEvolution, verbose_name="M.27.3 Parle-t-on du rôle et de l'évolution du")
+    role_evolution = models.ManyToManyField(RoleEvolution, verbose_name="M.27.3 Parle-t-on du rôle et de l'évolution du [métier liés à la musique précisez]")
+    organologie = models.ManyToManyField(Organologie, verbose_name = "M.27.4 Parle-t-on d’organologie?")
     sollicitation_musicale = models.ManyToManyField(SollicitationMusicale,
-                                                    verbose_name="U.28 Comment sollicite-t-on musicalement l'usager?")
+                                                    verbose_name="U.28 Pour comprendre le discours sur la musique")
     sollicitation_generale = models.ManyToManyField(SollicitationGenerale,
-                                                    verbose_name="U.29 En général (hors musique) comment sollicite-t-on l'usager?")
+                                                    verbose_name="U.29 Pour comprendre le discours général")
 
     # Usages du sonore
     temps_mus = models.CharField(max_length=8, null=False, verbose_name="PM.30 Temps de musique seule (hh:mm:ss)",
-                                 default="00:00:00", help_text="nsp = ne s'applique pas")
+                                 default="00:00:00",
+                                 help_text="ddv = durée d’écoute variable. Concerne les dispositifs qui allient texte et vidéo. La durée d’écoute est variable puisque les utilisateurs peuvent décider, ou non, de regarder les vidéos.<br> 00.00.00 =  signifie qu’il y a bien du son dans le dispositif.<br> nsp signifie qu’il n’y a pas de son dans le dispositif.")
     temps_par = models.CharField(max_length=8, null=False, verbose_name="PM.31 Temps de parole seule (hh:mm:ss)",
-                                 default="00:00:00", help_text="nsp = ne s'applique pas")
+                                 default="00:00:00", help_text="ddv = durée d’écoute variable. Concerne les dispositifs qui allient texte et vidéo. La durée d’écoute est variable puisque les utilisateurs peuvent décider, ou non, de regarder les vidéos. <br> nsp = ne s'applique pas")
     temps_mus_par = models.CharField(max_length=8, null=False,
                                      verbose_name="PM.32 Temps de parole et musique superposées (hh:mm:ss)",
-                                     default="00:00:00", help_text="nsp = ne s'applique pas")
+                                     default="00:00:00", help_text="ddv = durée d’écoute variable. Concerne les dispositifs qui allient texte et vidéo. La durée d’écoute est variable puisque les utilisateurs peuvent décider, ou non, de regarder les vidéos.<br> nsp = ne s'applique pas")
     sonore_valeur = models.CharField(choices=SONORE_VALEUR_LIST,
                                      max_length=200,
                                      null=False,
@@ -672,7 +746,7 @@ class Outil(models.Model):
                                             null=False,
                                             verbose_name="EM.36 Évocation littéraire")
     evocation_autre = models.ManyToManyField(EvocationAutre,
-                                       verbose_name="I.37 Autres disciplines évoquées")
+                                       verbose_name="I.37 Interdisciplinarité")
 
     # à partir de quelle notion?
     notion_concepts = models.CharField(choices = OUINONNSP,
@@ -695,12 +769,15 @@ class Outil(models.Model):
                                                                   verbose_name="I.39 Donner des exemples de notions évoquées de façon interdisciplinaires")
 
     # stéréotypes et clichés
-    humain = models.CharField(choices = OUINON,
-                              max_length = 50,
-                              null = False,
-                              default = "Non",
-                              verbose_name = "Sté.39 Y-a-t-il des humains? (compter les personnes qui ont un rôle dans la narration, qui sont maximum 3 dans le champ ou plein cadre)")
-    nb_humains_total = models.PositiveIntegerField(verbose_name="Sté.39.1 Nombre d'humains total", default=0)
+    # humain = models.CharField(choices = OUINON,
+    #                           max_length = 50,
+    #                           null = False,
+    #                           default = "Non",
+    #                           verbose_name = "Sté.39 Y-a-t-il des humains? (compter les personnes qui ont un rôle dans la narration, qui sont maximum 3 dans le champ ou plein cadre)")
+    nb_humains_total = models.CharField(verbose_name="Sté.39.1 Nombre d'humains total",
+                                        max_length = 50,
+                                        default = "0",
+                                        help_text = 'On compte tous les humains qui sont 3 ou moins dans le cadre. Si le nombre excède 11, écrire "11 et plus"')
     nb_hommes = models.PositiveIntegerField(verbose_name="Sté.39.1 Nombre d'hommes", default=0)
     nb_femmes = models.PositiveIntegerField(verbose_name="Sté.39.1 Nombre de femmes", default=0)
     nb_humains_indetermines = models.PositiveIntegerField(verbose_name="Sté.39.1 Nombre d'humains au genre indéterminé",
@@ -711,13 +788,15 @@ class Outil(models.Model):
                                                 verbose_name="Sté.39.3 Rôle des hommes")
     role_humain_neutre = models.ManyToManyField(RoleHumainNeutre,
                                                 verbose_name="Sté.39.4 Rôle des indeterminés")
-    pers_anime = models.CharField(choices=OUINON,
-                              max_length=50,
-                              null=False,
-                              default="Non",
-                              verbose_name="Sté.40 Y-a-t-il des personnages animés?")
-    nb_pers_anime_total = models.PositiveIntegerField(null=True, verbose_name="Sté.40.1 Nombre de personnages animés total",
-                                                      default=0)
+    # pers_anime = models.CharField(choices=OUINON,
+    #                           max_length=50,
+    #                           null=False,
+    #                           default="Non",
+    #                           verbose_name="Sté.40 Y-a-t-il des personnages animés?")
+    nb_pers_anime_total = models.CharField(null = True, verbose_name="Sté.40.1 Nombre de personnages animés total",
+                                           max_length=50,
+                                           default="0",
+                                           help_text='Si le nombre excède 11, écrire "11 et plus"')
     nb_pers_anime_hommes = models.PositiveIntegerField(null=True, verbose_name="Sté.40.1 Nombre de personnages animés hommes",
                                                        default=0)
     nb_pers_anime_femmes = models.PositiveIntegerField(null=True, verbose_name="Sté.40.1 Nombre de personnages animés femmes",
@@ -731,12 +810,15 @@ class Outil(models.Model):
                                                    verbose_name="Sté.40.2 Rôle des personnages animés masculins")
     role_pers_anime_neutre = models.ManyToManyField(RolePersAnimNeutre,
                                                     verbose_name="Sté.40.4 Rôle des personnages animés indéterminés")
-    animaux = models.CharField(choices=OUINON,
-                              max_length=50,
-                              null=False,
-                              default="Non",
-                              verbose_name="Sté.41 Y-a-t-il des animaux?")
-    nb_animaux_total = models.PositiveIntegerField(null=True, verbose_name="Sté.41.1 Nombre d'animaux total", default=0)
+    # animaux = models.CharField(choices=OUINON,
+    #                           max_length=50,
+    #                           null=False,
+    #                           default="Non",
+    #                           verbose_name="Sté.41 Y-a-t-il des animaux?")
+    nb_animaux_total = models.CharField(null = True, verbose_name="Sté.41.1 Nombre d'animaux total",
+                                        max_length=50,
+                                        default="0",
+                                        help_text='Si le nombre excède 11, écrire "11 et plus"')
     nb_males = models.PositiveIntegerField(null=True, verbose_name="Sté.41.1 Nombre de mâles", default=0)
     nb_femelles = models.PositiveIntegerField(null=True, verbose_name="Sté.41.1 Nombre de femelles", default=0)
     nb_animaux_indetermines = models.PositiveIntegerField(null=True,
@@ -748,13 +830,15 @@ class Outil(models.Model):
                                                 verbose_name="Sté.41.2 Rôle des animaux mâles")
     role_animaux_neutre = models.ManyToManyField(RoleAnimauxNeutre,
                                                  verbose_name="Sté.41.4 Rôle des animaux indéterminés")
-    instr_anime = models.CharField(choices=OUINON,
-                              max_length=50,
-                              null=False,
-                              default="Non",
-                              verbose_name="Sté.42 Y-a-t-il des instruments animés")
-    nb_instr_anime_total = models.PositiveIntegerField(null=True, verbose_name="Sté.42.1 Nombre d'instruments animés total",
-                                                       default=0)
+    # instr_anime = models.CharField(choices=OUINON,
+    #                           max_length=50,
+    #                           null=False,
+    #                           default="Non",
+    #                           verbose_name="Sté.42 Y-a-t-il des instruments animés")
+    nb_instr_anime_total = models.CharField(null=True, verbose_name="Sté.42.1 Nombre d'instruments animés total",
+                                            max_length=50,
+                                            default="0",
+                                            help_text='cf. anthropomorphe. Si le nombre excède 11, écrire "11 et plus"')
     nb_instr_anime_hommes = models.PositiveIntegerField(null=True, verbose_name="Sté.42.1 Nombre d'instruments animés masculins",
                                                         default=0)
     nb_instr_anime_femmes = models.PositiveIntegerField(null=True, verbose_name="Sté.42.1 Nombre d'instruments animés féminins",
@@ -770,6 +854,12 @@ class Outil(models.Model):
                                                      verbose_name="Sté.42.4 Rôle des instruments anthropomorphes neutres")
 
     utilisateur = CurrentUserField()
+
+    objects = OutilManager()
+
+   # @property
+   # def rank(self):
+   #     return 123
 
     def get_absolute_url(self):
         return reverse('home')

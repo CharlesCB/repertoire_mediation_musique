@@ -10,7 +10,7 @@ from bdmultimedia.models import *
 class OutilAdmin(admin.ModelAdmin):
     list_display = ('titre',)
     search_fields = ['titre']
-    filter_horizontal = ('producteur_type','support_diffusion','format','forme_narrative','orchestration',
+    filter_horizontal = ('producteur_type','producteur_nom','support_diffusion','format','forme_narrative','orchestration',
                          'structure','language_musical','genre_musical','style_musical', 'experience_musicale',
                          'contexte', 'role_evolution', 'sollicitation_musicale', 'sollicitation_generale',
                          'evocation_graphique', 'evocation_plastique', 'evocation_autre',
@@ -21,14 +21,20 @@ class OutilAdmin(admin.ModelAdmin):
                          'mode_hebergement', 'mode_consultation', 'narration_langue', 'sous_titre')
 
 
+#class ContreExempleAdmin(admin.ModelAdmin):
+#    list_display = ('titre',)
+#    searche_fields = ['titre',]
+
+
 class ProdTypeAdmin(admin.ModelAdmin):
     list_display = ('nom',)
     search_fields = ['nom',]
 
 
-#class ProducteurNomAdmin(admin.ModelAdmin):
-#    list_display = ('nom',)
-#    search_fields = ['nom',]
+class ProducteurNomAdmin(admin.ModelAdmin):
+    list_display = ('nom',)
+    search_fields = ['nom',]
+    ordering = ['nom', ]
 
 
 class SupportDiffusionAdmin(admin.ModelAdmin):
@@ -69,32 +75,37 @@ class SousTitreAdmin(admin.ModelAdmin):
 class OrchestrationAdmin(admin.ModelAdmin):
     list_display = ('nom',)
     search_fields = ['nom',]
+    ordering = ['nom']
 
 
 class StructureAdmin(admin.ModelAdmin):
     list_display = ('nom',)
     search_fields = ['nom', ]
+    ordering = ['nom']
 
 
 class LanguageMusicalAdmin(admin.ModelAdmin):
     list_display = ('nom',)
     search_fields = ['nom',]
+    ordering = ['nom']
 
 
 class GenreMusicalAdmin(admin.ModelAdmin):
     list_display = ('nom',)
     search_fields = ['nom',]
+    ordering = ['nom']
 
 
 class StyleMusicalAdmin(admin.ModelAdmin):
     list_display = ('nom',)
     search_fields = ['nom',]
+    ordering = ['nom']
 
 
 class ExperienceMusicaleAdmin(admin.ModelAdmin):
     list_display = ('nom',)
     search_fields = ['nom',]
-
+    ordering = ['nom']
 
 
 class ContexteAdmin(admin.ModelAdmin):
@@ -105,6 +116,11 @@ class ContexteAdmin(admin.ModelAdmin):
 class RoleEvolutionAdmin(admin.ModelAdmin):
     list_display = ('nom',)
     search_fields = ['nom',]
+
+
+class OrganologieAdmin(admin.ModelAdmin):
+    list_display = ('nom',)
+    search_fields = ['nom']
 
 
 class SollicitationMusicaleAdmin(admin.ModelAdmin):
@@ -193,10 +209,10 @@ class NotionsInterAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Outil, OutilAdmin)
-
+#admin.site.register(ContreExemple, ContreExempleAdmin)
 admin.site.register(ProdType, ProdTypeAdmin)
 admin.site.register(SupportDiffusion,SupportDiffusionAdmin)
-#admin.site.register(ProducteurNom,ProducteurNomAdmin)
+admin.site.register(ProducteurNom,ProducteurNomAdmin)
 admin.site.register(FormatOutil,FormatOutilAdmin)
 admin.site.register(FormeNarrative,FormeNarrativeAdmin)
 admin.site.register(ModeHebergement,ModeHebergementAdmin)
@@ -211,6 +227,7 @@ admin.site.register(StyleMusical,StyleMusicalAdmin)
 admin.site.register(ExperienceMusicale, ExperienceMusicaleAdmin)
 admin.site.register(Contexte,ContexteAdmin)
 admin.site.register(RoleEvolution, RoleEvolutionAdmin)
+admin.site.register(Organologie, OrganologieAdmin)
 admin.site.register(SollicitationMusicale, SollicitationMusicaleAdmin)
 admin.site.register(SollicitationGenerale,SollicitationGeneraleAdmin)
 admin.site.register(EvocationGraphique, EvocationGraphiqueAdmin)

@@ -58,7 +58,7 @@
         </div>
     {% endautoescape %}
     {% endif %}
-    <div class="col-md-10" id="referencement" ><div class="page-header"><h4>Référencement du dispositif</h4></div></div>
+    <div class="col-md-10" id="referencement" ><div class="page-header"><h4>Référencement</h4></div></div>
     <div class="col-md-10"><b> Titre du dispositif : </b> {{ outil.titre }} </div>
     <div class="col-md-10"><b> Url d'accès direct : </b>
         {% if outil.url != "nsp" %}
@@ -91,7 +91,11 @@
             {% endif %}
         {% endfor %}
     </div>
-    <div class="col-md-10"><b> Nom du producteur :</b> {{ outil.producteur_nom }} </div>
+    <div class="col-md-10"><b> Nom du/des producteur(s) :</b>
+        {% for i in outil.producteur_nom.all %}
+                {{ i.nom  }}{% if not forloop.last %},{% else %}{% endif %}
+        {% endfor %}
+    </div>
     <div class="col-md-10"><b> Support(s) de diffusion : </b>
         {% for i in outil.support_diffusion.all %}
        {% if forloop.first %} {{ i.nom }}{% if not forloop.last %},{% endif %}
@@ -118,17 +122,14 @@
         {% endfor %}
     </div>
     <div class="col-md-10"><b> Durée (hh:mm:ss) : </b> {{ outil.duree }} </div>
-    {% if outil.nb_pages != 0%}
+    {% if outil.nb_pages == 'nsp' %}
+        <div class="col-md-10"><b> Nombre de pages : </b> Ne s'applique pas </div>
+    {% else %}
         <div class="col-md-10"><b> Nombre de pages : </b> {{ outil.nb_pages }} </div>
     {% endif %}
     <div class="col-md-10"><b> Date de la mise en ligne : </b>{{ outil.mise_en_ligne_date|date:" j F Y"  }}</div>
     <div class="col-md-10"><b> Date du dépouillement : </b> {{ outil.depouillement_date|date:" j F Y" }} </div>
-    <div class="col-md-10"><b> L'interface permet : </b>
-        {% if outil.interface == 'Autre' %}
-            {{ outil.interface_autre }}
-        {% else %}
-            {{ outil.interface }}
-        {% endif %}
+    <div class="col-md-10"><b> Interactivité : </b> {{ outil.interactivite }}
     </div>
     <div class="col-md-10"><b> Degré de personnification du service : </b>
         {% if outil.personnification_service == 'Autre' %}
@@ -144,7 +145,7 @@
         <div class="col-md-10"> <b> Possibilité de laisser des commentaires :</b> Non </div>
     {% endif %}
 
-    <div class="col-md-10" id="servuction"><div class="page-header"><h4>Servuction</h4></div></div>
+    <div class="col-md-10" id="Découvrabilité/accessibilité"><div class="page-header"><h4>Découvrabilité/accessibilité</h4></div></div>
     <div class="col-md-10"><b>Premier onglet à ouvrir pour trouver le dispositif :</b>
         {% if outil.premier_onglet == 'Autre' %}
             {{ outil.prem_onglet_autre }}
@@ -166,6 +167,9 @@
             {{ outil.troisieme_onglet }}
         {% endif %}
     </div>
+    {% if outil.plus_de_tois_onglet == True %}
+    <div class="col-md-10"><b>Plus de trois onglets à ouvrir pour trouver le dispositif.</b></div>
+    {% endif %}
     <div class="col-md-10"><b> Mode d'hébergement sur la toile :</b>
         {% for i in outil.mode_hebergement.all %}
        {% if forloop.first %} {{ i.nom }}{% if not forloop.last %},{% endif %}
@@ -205,7 +209,8 @@
     <div class="col-md-10"><b>Accessibilité pour malentendants :</b> {{ outil.malentendants }}</div>
     <div class="col-md-10"><b>Accessibilité pour malvoyants :</b> {{ outil.malvoyants }}</div>
 
-    <div class="col-md-10" id="materiau"><div class="page-header"><h4>Médiation de la musique?</h4></div></div>
+    <div class="col-md-10"><div class="page-header"><h4>Discours sur la musique</h4></div> </div>
+    <div class="col-md-5"><div class="page-header"><h6>Analyses musicales</h6></div></div>
     <div class="col-md-10"><b>Mention du matériau musical :</b> {{ outil.materiau_musical }}</div>
     <div class="col-md-10"><b>Mention de l'orchestration : </b>
         {% for i in outil.orchestration.all %}
@@ -249,7 +254,7 @@
         {% endfor %}
     </div>
 
-    <div class="col-md-10" id="quid"><div class="page-header"><h4>Parle-t-on</h4></div></div>
+    <div class="col-md-5" id="quid"><div class="page-header"><h6>Éléments contextuels</h6></div></div>
 
     <div class="col-md-10"><b>Mention de l'expérience musicale : </b>
         {% for i in outil.experience_musicale.all %}
@@ -260,7 +265,7 @@
         {% endfor %}
     </div>
     <div class="col-md-10"><b>Mention des éléments socioculturels et historique : </b>{{ outil.elements_socioculturels }}</div>
-    <div class="col-md-10"><b> Époque :</b> {{ outil.epoque }} siècle</div>
+    <div class="col-md-10"><b> Époque :</b> {{ outil.epoque }}</div>
     <div class="col-md-10"><b>Mention du contexte de composition, création interprétation de l'oeuvre, de l'instrument : </b>
         {% for i in outil.contexte.all %}
             {% if forloop.first %} {{ i.nom }}{% if not forloop.last %},{% endif %}
@@ -277,9 +282,17 @@
             {% endif %}
         {% endfor %}
     </div>
+    <div class="col-md-10"><b>Mention de l'organologie : </b>
+        {% for i in outil.organologie.all %}
+            {% if forloop.first %} {{ i.nom }}{% if not forloop.last %},{% endif %}
+            {% else %}
+                {{ i.nom | lower }}{% if not forloop.last %},{% else %}{% endif %}
+            {% endif %}
+        {% endfor %}
+    </div>
     <div class="col-md-10" id="sollicitation"><div class="page-header"><h4>Sollicitations de l'usager</h4></div></div>
 
-    <div class="col-md-10"><b>Sollicitation musicale : </b>
+    <div class="col-md-10"><b>Pour comprendre le discours sur la musique : </b>
         {% for i in outil.sollicitation_musicale.all %}
             {% if forloop.first %} {{ i.nom }}{% if not forloop.last %},{% endif %}
             {% else %}
@@ -287,7 +300,7 @@
             {% endif %}
         {% endfor %}
     </div>
-    <div class="col-md-10"><b>Sollicitation générale : </b>
+    <div class="col-md-10"><b>Pour comprendre le discours général : </b>
         {% for i in outil.sollicitation_generale.all %}
             {% if forloop.first %} {{ i.nom }}{% if not forloop.last %},{% endif %}
             {% else %}
@@ -296,7 +309,7 @@
         {% endfor %}
     </div>
 
-    <div class="col-md-10" id="place"><div class="page-header"><h4>Quelle place pour la musique?</h4></div></div>
+    <div class="col-md-10" id="place"><div class="page-header"><h4>Place de la musique</h4></div></div>
 
     <div class="col-md-10"><b> Temps de musique seule (hh:mm:ss) :</b> {% if outil.temps_mus == 'nsp' %} Ne s'aplique pas
          {% else %}{{ outil.temps_mus }}{% endif %}</div>
@@ -305,7 +318,7 @@
     <div class="col-md-10"><b> Temps de parole et musique superposées (hh:mm:ss) : </b> {{ outil.temps_mus_par }} </div>
     <div class="col-md-10"><b> Mise en valeur du sonore : </b> {{ outil.sonore_valeur }} </div>
 
-    <div class="col-md-10" id="commentMateriau"><div class="page-header"><h4>Outre les sons, comment évoque-t-on le matériau musical?</h4></div></div>
+    <div class="col-md-10" id="commentMateriau"><div class="page-header"><h4>Évocation de la musique extra-sonore</h4></div></div>
 
     <div class="col-md-10"><b> Évocation graphique : </b>
         {% for i in outil.evocation_graphique.all %}
@@ -326,7 +339,7 @@
 
     <div class="col-md-10"><b> Évocation litteraire : </b> {{ outil.evocation_litteraire }} </div>
 
-    <div class="col-md-10" id="lien"><div class="page-header"><h4>Quel lien ce dispositif fait-il avec d'autres disciplines?</h4></div></div>
+    <div class="col-md-10" id="lien"><div class="page-header"><h4>Interdisciplinarité</h4></div></div>
 
     <div class="col-md-10"><b> Autre discipline évoquée : </b>
         {% for i in outil.evocation_autre.all %}
@@ -337,7 +350,8 @@
         {% endfor %}
     </div>
 
-    <div class="col-md-10"><b><h5>À partir de quelle notion?</h5>Notions communes (luminosité, transparence, vitesse, mouvement) : </b>
+    <div class="col-md-5"><div class="page-header"><h6>À partir de quelle notion?</h6></div></div>
+    <div class="col-md-10"><b>Notions communes (luminosité, transparence, vitesse, mouvement) : </b>
         {% if outil.notion_concepts == "Nsp" %}
         Ne s'applique pas
         {% else %}
@@ -366,11 +380,11 @@
             {% endif %}
         {% endfor %}
     </div>
-
-    <div class="col-md-10"><div class="page-header"><h4>Stéréotypes et clichés</h4></div></div>
-
-    <div class="col-md-10"><b> Y a-t-il des humains? </b> {{ outil.humain }} </div>
-    {% if outil.humain == "Oui" %}
+    {% if outil.nb_humains_total != "0" or outil.nb_pers_anime_total != "0" or outil.nb_animaux_total != "0" or outil.nb_instr_anime_total != "0" %}
+    <div class="col-md-10"><div class="page-header"><h4>Stéréotypes de genre</h4></div></div>
+    {% endif %}
+   <!-- <div class="col-md-10"><b> Y a-t-il des humains? </b> {{ outil.humain }} </div> -->
+    {% if outil.nb_humains_total != "0" %}
         <div class="col-md-10"><b> Nombre total d'humains : </b> {{ outil.nb_humains_total }} </div>
         <div class="col-md-10"><b> Nombre d'hommes : </b> {{ outil.nb_hommes }} </div>
         <div class="col-md-10"><b> Nombre de femmes : </b> {{ outil.nb_femmes }} </div>
@@ -409,8 +423,8 @@
         {% endif %}
     {% endif %}
 
-    <div class="col-md-10"><b>Y a-t-il des personnages annimés?</b> {{ outil.pers_anime }} </div>
-    {% if outil.pers_anime == "Oui" %}
+    <!--<div class="col-md-10"><b>Y a-t-il des personnages annimés?</b> {{ outil.pers_anime }} </div>-->
+    {% if outil.nb_pers_anime_total != "0" %}
         <div class="col-md-10"><b> Nombre total de personnages animés : </b> {{ outil.nb_pers_anime_total }} </div>
         <div class="col-md-10"><b> Nombre de personnages animés hommes : </b> {{ outil.nb_pers_anime_hommes }} </div>
         <div class="col-md-10"><b> Nombre de personnages animés femmes : </b> {{ outil.nb_pers_anime_femmes }} </div>
@@ -448,8 +462,8 @@
             </div>
         {% endif %}
     {% endif %}
-    <div class="col-md-10"><b>Y a-t-il des animaux?</b> {{ outil.animaux }} </div>
-    {% if outil.animaux == "Oui" %}
+    <!--<div class="col-md-10"><b>Y a-t-il des animaux?</b> {{ outil.animaux }} </div>-->
+    {% if outil.nb_animaux_total != "0" %}
         <div class="col-md-10"><b> Nombre total d'animaux : </b> {{ outil.nb_animaux_total }} </div>
         <div class="col-md-10"><b> Nombre d'animaux mâles : </b> {{ outil.nb_males }} </div>
         <div class="col-md-10"><b> Nombre d'animaux femelles : </b> {{ outil.nb_femelles }} </div>
@@ -487,8 +501,8 @@
             </div>
         {% endif %}
     {% endif %}
-    <div class="col-md-10"><b>Y a-t-il des instruments animés?</b> {{ outil.instr_anime }} </div>
-    {% if outil.instr_anime == "Oui" %}
+    <!--<div class="col-md-10"><b>Y a-t-il des instruments animés?</b> {{ outil.instr_anime }} </div>-->
+    {% if outil.nb_instr_anime_total != "0" %}
         <div class="col-md-10"><b> Nombre total d'instruments animés : </b> {{ outil.nb_instr_anime_total }} </div>
         <div class="col-md-10"><b> Nombre d'instruments animés hommes : </b> {{ outil.nb_instr_anime_hommes }} </div>
         <div class="col-md-10"><b> Nombre d'instruments animés femmes : </b> {{ outil.nb_instr_anime_femmes }} </div>

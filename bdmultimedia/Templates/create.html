@@ -1,10 +1,3207 @@
 <!DOCTYPE html>
-{% extends 'base.html' %}
-{% block title %} Nouvel Outil {% endblock %}
 
-{% block body %}
-<div class="container-fluid">
+<html lang="fr-CA">
+
+<head>
+    <title>Ajout dispositif</title>
+    <link rel="stylesheet" type="text/css" href="/static/admin/css/base.css" />
+    <link rel="stylesheet" type="text/css" href="/static/admin/css/forms.css" />
 
 
-</div>
-{% endblock %}
+    <script type="text/javascript" src="/admin/jsi18n/"></script>
+    <script type="text/javascript" src="/static/admin/js/core.js"></script>
+    <script type="text/javascript" src="/static/admin/js/vendor/jquery/jquery.js"></script>
+    <script type="text/javascript" src="/static/admin/js/jquery.init.js"></script>
+    <script type="text/javascript" src="/static/admin/js/admin/RelatedObjectLookups.js"></script>
+    <script type="text/javascript" src="/static/admin/js/actions.js"></script>
+    <script type="text/javascript" src="/static/admin/js/urlify.js"></script>
+    <script type="text/javascript" src="/static/admin/js/prepopulate.js"></script>
+    <script type="text/javascript" src="/static/admin/js/vendor/xregexp/xregexp.js"></script>
+    <script type="text/javascript" src="/static/admin/js/SelectBox.js"></script>
+    <script type="text/javascript" src="/static/admin/js/SelectFilter2.js"></script>
+    <script type="text/javascript" src="/static/admin/js/calendar.js"></script>
+    <script type="text/javascript" src="/static/admin/js/admin/DateTimeShortcuts.js"></script>
+
+    <meta name="robots" content="NONE,NOARCHIVE" />
+</head>
+
+
+<body class="popup  app-bdmultimedia model-outil change-form" data-admin-utc-offset="-14400">
+
+    <!-- Container -->
+    <div id="container">
+
+
+
+
+
+
+
+        <!-- Content -->
+        <div id="content" class="colM">
+
+            <h1>Ajout dispositif</h1>
+            <div id="content-main">
+
+
+
+                <form enctype="multipart/form-data" action="" method="post" id="outil_form" novalidate>
+                    <input type='hidden' name='csrfmiddlewaretoken' value='IAjYUYtEkCb0U2sqAoxdMmSFEcHTz9VSvj0SHcDyH4N2PAJTEwUpJ8VgfINLrzzT' />
+                    <div>
+                        <input type="hidden" name="_popup" value="1" />
+                        <input type="hidden" name="_to_field" value="id" />
+
+
+
+
+
+                        <fieldset class="module aligned ">
+
+
+
+                            <div class="form-row field-titre">
+
+
+                                <div>
+
+
+                                    <label class="required" for="id_titre">R.1 Titre du dispositif :</label>
+
+                                    <input type="text" name="titre" id="id_titre" required class="vTextField" maxlength="200" />
+
+
+
+                                </div>
+
+                            </div>
+
+                            <div class="form-row field-page_outil">
+
+
+                                <div class="checkbox-row">
+
+
+                                    <input type="checkbox" name="page_outil" id="id_page_outil" /><label class="vCheckboxLabel" for="id_page_outil">Afficher directement une page qui fait office de dispositif</label>
+
+
+                                </div>
+
+                            </div>
+
+                            <div class="form-row field-integration">
+
+
+                                <div>
+
+
+                                    <label for="id_integration">Code pour l&#39;integration du dispositif (si applicable) :</label>
+
+                                    <textarea name="integration" id="id_integration" rows="10" cols="40" class="vLargeTextField">
+</textarea>
+
+
+
+                                </div>
+
+                            </div>
+
+                            <div class="form-row field-url">
+
+
+                                <div>
+
+
+                                    <label class="required" for="id_url">R.2 URL d&#39;accès direct :</label>
+
+                                    <input type="text" name="url" id="id_url" required class="vTextField" maxlength="200" />
+
+
+
+                                    <div class="help">Attention, enlever la barre oblique « / » à la fin de l’URL Ex. www.osm.ca/fr/matinees/#1488205065259-011decba-7105</div>
+
+                                </div>
+
+                            </div>
+
+                            <div class="form-row field-site">
+
+
+                                <div>
+
+
+                                    <label class="required" for="id_site">R.3 URL d&#39;accès au site d&#39;hébergement :</label>
+
+                                    <input type="url" name="site" id="id_site" required class="vURLField" maxlength="200" />
+
+
+
+                                    <div class="help">Attention, enlever la barre oblique « / » à la fin de l’URL www.osm.ca. <br> Si le dispositif est une vidéo d’un-e YouTubeur-e, indiquer le lien vers sa chaîne YouTube.</div>
+
+                                </div>
+
+                            </div>
+
+                            <div class="form-row field-ensemble_thematique">
+
+
+                                <div>
+
+
+                                    <label class="required" for="id_ensemble_thematique">R.3.1 Ce dispositif fait-il partie d&#39;un ensemble thématique du même type? (regroupé par l&#39;organisme producteur) :</label>
+
+                                    <select name="ensemble_thematique" id="id_ensemble_thematique">
+  <option value="Oui">Oui</option>
+
+  <option value="Non" selected>Non</option>
+
+</select>
+
+
+
+                                    <div class="help">On parle bien ici d’un ensemble thématique et non pas d’un regroupement par format (ex. vidéo) ou par objectif (ex . ressource pédagogique). </div>
+
+                                </div>
+
+                            </div>
+
+                            <div class="form-row field-ensemble_thematique_nom">
+
+
+                                <div>
+
+
+                                    <label for="id_ensemble_thematique_nom">R.3.2 Si oui, donnez le titre sous lequel est regroupé cet ensemble.</label>
+
+                                    <input type="text" name="ensemble_thematique_nom" id="id_ensemble_thematique_nom" class="vTextField" maxlength="200" />
+
+
+
+                                    <div class="help">Ex: Camille raconte</div>
+
+                                </div>
+
+                            </div>
+
+                            <div class="form-row field-producteur_type">
+
+
+                                <div>
+
+
+                                    <label class="required" for="id_producteur_type">R.4 Qui est le producteur de ce dispositif?</label>
+
+                                    <div class="related-widget-wrapper">
+                                        <select name="producteur_type" multiple="multiple" data-is-stacked="0" data-field-name="R.4 Qui est le producteur de ce dispositif?" required class="selectfilter" id="id_producteur_type">
+  <option value="10">Organisme de production musicale (Ensemble, orchestre, etc.)</option>
+
+  <option value="11">Organisme de diffusion musicale (festival, salle de concert, etc.)</option>
+
+  <option value="12">Organisme éducatif (École de musique, université, école primaire et secondaire, etc.)</option>
+
+  <option value="13">Organisme d&#39;éducation informelle (tedex, etc.)</option>
+
+  <option value="14">Organisme de production multimedia</option>
+
+  <option value="15">Organisme d&#39;information (radio, TV, site internet d&#39;information)</option>
+
+  <option value="16">Maison d&#39;édition</option>
+
+  <option value="17">Particulier</option>
+
+  <option value="18">Musées</option>
+
+</select>
+
+                                        <a class="related-widget-wrapper-link add-related" id="add_id_producteur_type" href="/admin/bdmultimedia/prodtype/add/?_to_field=id&amp;_popup=1" title="Ajouter un autre objet types de producteur"><img src="/static/admin/img/icon-addlink.svg" alt="Ajouter"/></a>
+
+                                    </div>
+
+
+
+                                    <div class="help">Attention : répondre à cette question nécessite d’aller vérifier les statuts des organismes impliqués ou le titre auquel ils s’impliquent. Exemple . L’OSM peut agir en tant que producteur pour un concert ou au titre de diffuseur pour un autre évènement. Maintenez appuyé « Ctrl », ou « Commande (touche pomme) » sur un Mac, pour en sélectionner plusieurs.</div>
+
+                                </div>
+
+                            </div>
+
+                            <div class="form-row field-producteur_nom">
+
+
+                                <div>
+
+
+                                    <label for="id_producteur_nom">R.5 Préciser le nom complet du/des producteur(s) :</label>
+
+                                    <input type="text" name="producteur_nom" id="id_producteur_nom" class="vTextField" maxlength="200" />
+
+
+
+                                </div>
+
+                            </div>
+
+                            <div class="form-row field-support_diffusion">
+
+
+                                <div>
+
+
+                                    <label class="required" for="id_support_diffusion">R.6 Support de diffusion :</label>
+
+                                    <div class="related-widget-wrapper">
+                                        <select name="support_diffusion" multiple="multiple" data-is-stacked="0" data-field-name="R.6 Support de diffusion" required class="selectfilter" id="id_support_diffusion">
+  <option value="6">Ordinateur</option>
+
+  <option value="7">Smartphone</option>
+
+  <option value="8">Tablette</option>
+
+  <option value="9">Casque VR (lunette 3D)</option>
+
+  <option value="10">Console de JV</option>
+
+  <option value="11">DVD</option>
+
+  <option value="12">CD</option>
+
+</select>
+
+                                        <a class="related-widget-wrapper-link add-related" id="add_id_support_diffusion" href="/admin/bdmultimedia/supportdiffusion/add/?_to_field=id&amp;_popup=1" title="Ajouter un autre objet supports de diffusion"><img src="/static/admin/img/icon-addlink.svg" alt="Ajouter"/></a>
+
+                                    </div>
+
+
+
+                                    <div class="help">Maintenez appuyé « Ctrl », ou « Commande (touche pomme) » sur un Mac, pour en sélectionner plusieurs.</div>
+
+                                </div>
+
+                            </div>
+
+                            <div class="form-row field-format">
+
+
+                                <div>
+
+
+                                    <label class="required" for="id_format">R.7 Format du dispositif :</label>
+
+                                    <div class="related-widget-wrapper">
+                                        <select name="format" multiple="multiple" data-is-stacked="0" data-field-name="R.7 Format du dispositif" required class="selectfilter" id="id_format">
+  <option value="1">Écrit (texte, dessin)</option>
+
+  <option value="2">Audio</option>
+
+  <option value="3">Audiovisuel</option>
+
+  <option value="4">Réalité augmentée AUDIO</option>
+
+  <option value="5">Réalité augmentée VISUELLE</option>
+
+</select>
+
+                                        <a class="related-widget-wrapper-link add-related" id="add_id_format" href="/admin/bdmultimedia/formatoutil/add/?_to_field=id&amp;_popup=1" title="Ajouter un autre objet format du dispositif"><img src="/static/admin/img/icon-addlink.svg" alt="Ajouter"/></a>
+
+                                    </div>
+
+
+
+                                    <div class="help">Maintenez appuyé « Ctrl », ou « Commande (touche pomme) » sur un Mac, pour en sélectionner plusieurs.</div>
+
+                                </div>
+
+                            </div>
+
+                            <div class="form-row field-forme_narrative">
+
+
+                                <div>
+
+
+                                    <label class="required" for="id_forme_narrative">R.8 Formes narratives :</label>
+
+                                    <div class="related-widget-wrapper">
+                                        <select name="forme_narrative" multiple="multiple" data-is-stacked="0" data-field-name="R.8 Formes narratives" required class="selectfilter" id="id_forme_narrative">
+  <option value="1">Entrevue</option>
+
+  <option value="2">Fiction</option>
+
+  <option value="3">Synopsis (récit fidèle au programme de l&#39;oeuvre)</option>
+
+  <option value="4">Web-série (plusieurs occurrences qui ont un lien entre elles)</option>
+
+  <option value="5">Art et essai</option>
+
+  <option value="6">Creative commons (sur le modèle wiki)</option>
+
+  <option value="7">Reportage</option>
+
+  <option value="8">Jeu</option>
+
+  <option value="9">Immersion</option>
+
+  <option value="10">Mode conférence</option>
+
+  <option value="11">Liste de lecture</option>
+
+  <option value="12">Portrait / Biographie</option>
+
+  <option value="13">Mise en scène</option>
+
+  <option value="14">Texte augmenté</option>
+
+</select>
+
+                                        <a class="related-widget-wrapper-link add-related" id="add_id_forme_narrative" href="/admin/bdmultimedia/formenarrative/add/?_to_field=id&amp;_popup=1" title="Ajouter un autre objet forme narrative"><img src="/static/admin/img/icon-addlink.svg" alt="Ajouter"/></a>
+
+                                    </div>
+
+
+
+                                    <div class="help">Maintenez appuyé « Ctrl », ou « Commande (touche pomme) » sur un Mac, pour en sélectionner plusieurs.</div>
+
+                                </div>
+
+                            </div>
+
+                            <div class="form-row field-duree">
+
+
+                                <div>
+
+
+                                    <label class="required" for="id_duree">R.9 Durée :</label>
+
+                                    <input type="text" name="duree" value="00:00:00" id="id_duree" required class="vTextField" maxlength="8" />
+
+
+
+                                    <div class="help">nsp = ne s'applique pas, ddv = durée d’écoute variable. La durée d’écoute est variable puisque les utilisateurs peuvent décider, ou non, de regarder les vidéos. Concerne les dispositifs qui allient texte et vidéo.</div>
+
+                                </div>
+
+                            </div>
+
+                            <div class="form-row field-nb_pages">
+
+
+                                <div>
+
+
+                                    <label class="required" for="id_nb_pages">R.10 Nombre de pages :</label>
+
+                                    <input type="number" name="nb_pages" value="0" id="id_nb_pages" required class="vIntegerField" min="0" />
+
+
+
+                                    <div class="help">Correspond au nombre de page web sur lesquelles se décline le dispositif .</div>
+
+                                </div>
+
+                            </div>
+
+                            <div class="form-row field-mise_en_ligne_date">
+
+
+                                <div>
+
+
+                                    <label for="id_mise_en_ligne_date">R.11 Date de la mise en ligne :</label>
+
+                                    <input type="text" name="mise_en_ligne_date" id="id_mise_en_ligne_date" class="vDateField" size="10" />
+
+
+
+                                    <div class="help">Si seule l’année de mise en ligne est disponible entrer la date de mise en ligne au 1er janvier de l’année concernée</div>
+
+                                </div>
+
+                            </div>
+
+                            <div class="form-row field-depouillement_date">
+
+
+                                <div>
+
+
+                                    <label for="id_depouillement_date">R.12 Date du dépouillement :</label>
+
+                                    <input type="text" name="depouillement_date" id="id_depouillement_date" class="vDateField" size="10" />
+
+
+
+                                </div>
+
+                            </div>
+
+                            <div class="form-row field-interface">
+
+
+                                <div>
+
+
+                                    <label class="required" for="id_interface">R.13 Que permet l&#39;interface?</label>
+
+                                    <select name="interface" required id="id_interface">
+  <option value="" selected>---------</option>
+
+  <option value="Simple consultation">Simple consultation</option>
+
+  <option value="Participation limitée">Participation limitée (l&#39;usager est actif mais se contente de répondre aux consignes)</option>
+
+  <option value="Participation dynamique">Participation dynamique (l&#39;usager co-construit le service)</option>
+
+</select>
+
+
+
+                                </div>
+
+                            </div>
+
+                            <div class="form-row field-materiel_imprimer">
+
+
+                                <div>
+
+
+                                    <label class="required" for="id_materiel_imprimer">R.13.1 Le dispositif comprend-il du matériel à imprimer (ex. livret en pdf) ?</label>
+
+                                    <select name="materiel_imprimer" id="id_materiel_imprimer">
+  <option value="Oui">Oui</option>
+
+  <option value="Non" selected>Non</option>
+
+</select>
+
+
+
+                                </div>
+
+                            </div>
+
+                            <div class="form-row field-personnification_service">
+
+
+                                <div>
+
+
+                                    <label class="required" for="id_personnification_service">R.14 Degrés de personnification du service :</label>
+
+                                    <select name="personnification_service" required id="id_personnification_service">
+  <option value="" selected>---------</option>
+
+  <option value="Service générique">Service générique</option>
+
+  <option value="Service spécialisé">Service spécialisé (public catégorisé)</option>
+
+  <option value="Service personnalisé et/ou individualisé">Service personnalisé et/ou individualisé</option>
+
+</select>
+
+
+
+                                </div>
+
+                            </div>
+
+                            <div class="form-row field-commentaire_possible">
+
+
+                                <div class="checkbox-row">
+
+
+                                    <input type="checkbox" name="commentaire_possible" id="id_commentaire_possible" /><label class="vCheckboxLabel" for="id_commentaire_possible">R.15 Possibilité de laisser des commentaires</label>
+
+
+                                    <div class="help">Compter les commentaires qui apparaissent sur la page de consultation du dispositif (ex. Si il n’y a pas de possibilité de commentaire sur les capsules de l’OSM mais que les commentaires sont possibles sur l’hébergement youtube ne pas cocher)</div>
+
+                                </div>
+
+                            </div>
+
+                            <div class="form-row field-commentaire_nombre">
+
+
+                                <div>
+
+
+                                    <label for="id_commentaire_nombre">R.16 Nombre de commentaires :</label>
+
+                                    <input type="text" name="commentaire_nombre" id="id_commentaire_nombre" class="vTextField" maxlength="50" />
+
+
+
+                                </div>
+
+                            </div>
+
+                            <div class="form-row field-premier_onglet">
+
+
+                                <div>
+
+
+                                    <label class="required" for="id_premier_onglet">S.17 Quel est le PREMIER onglet à ouvrir pour trouver ce dispositif?</label>
+
+                                    <select name="premier_onglet" id="id_premier_onglet">
+  <option value="Ne s&#39;applique pas" selected>Ne s&#39;applique pas</option>
+
+  <option value="Disponible et consultable sur la page d&#39;accès">L&#39;outil est disponible et consultable sur la page d&#39;accès</option>
+
+  <option value="Action culturelle">Action culturelle</option>
+
+  <option value="Médiation">Médiation</option>
+
+  <option value="Éducation, Apprendre, Leçon, Educothèque">Éducation, Apprendre, Leçon, Educothèque</option>
+
+  <option value="Expérimentation, découvrir, expérimental">Expérimentation, découvrir, expérimental</option>
+
+  <option value="Pour tous les publics">Pour tout les publics</option>
+
+  <option value="L&#39;orchestre et vous">L&#39;orchestre et vous</option>
+
+  <option value="Guide d&#39;écoute">Guide d&#39;écoute</option>
+
+  <option value="Livret pédagogique">Livret pédagogique</option>
+
+  <option value="Pour les enseignants, écoles, scolaires">Pour les enseignants, écoles, scolaires</option>
+
+  <option value="Le nom du dispositif lui même">Le nom du dispositif lui même (ex: &#39;La galerie symphonique&#39;)</option>
+
+  <option value="Ressources en ligne, ressources numériques, ressources">Ressources en ligne, ressources numériques, ressources</option>
+
+  <option value="Relatif à la programmation">Est relatif à la programmation à laquelle il fait référence (onglet du concert, titre du compositeur, etc.)</option>
+
+  <option value="Relatif au format du dispositif dont il s&#39;agit">Est relatif au format du dispositif dont il s&#39;agit (Balado, vidéo, playlist, web série, etc.)</option>
+
+  <option value="À propos">À propos</option>
+
+  <option value="Voir et entendre">Voir et entendre</option>
+
+  <option value="Actualités, news, nouveauté">Actualité, news, nouveauté</option>
+
+  <option value="Pour tous les publics">Pour tous les publics</option>
+
+  <option value="Pour un public spécifique">Pour un public spécifique</option>
+
+  <option value="Musique">Musique</option>
+
+  <option value="Autre">Autre</option>
+
+</select>
+
+
+
+                                </div>
+
+                            </div>
+
+                            <div class="form-row field-prem_onglet_autre">
+
+
+                                <div>
+
+
+                                    <label for="id_prem_onglet_autre">Si autre, précisez :</label>
+
+                                    <input type="text" name="prem_onglet_autre" id="id_prem_onglet_autre" class="vTextField" maxlength="200" />
+
+
+
+                                </div>
+
+                            </div>
+
+                            <div class="form-row field-deuxieme_onglet">
+
+
+                                <div>
+
+
+                                    <label class="required" for="id_deuxieme_onglet">S.18 Quel est le DEUXIEME onglet à ouvrir pour trouver ce dispositif?</label>
+
+                                    <select name="deuxieme_onglet" id="id_deuxieme_onglet">
+  <option value="Ne s&#39;applique pas" selected>Ne s&#39;applique pas car l&#39;outil était disponible sur la page d&#39;accueil</option>
+
+  <option value="On peut consulter l&#39;outil directement sur cette deuxième page">On peut consulter l&#39;outil directement sur cette deuxième page</option>
+
+  <option value="Action culturelle">Action culturelle</option>
+
+  <option value="Médiation">Médiation</option>
+
+  <option value="Éducation, Apprendre, Leçon, Educothèque">Éducation, Apprendre, Leçon, Educothèque</option>
+
+  <option value="Expérimentation, découvrir, expérimental">Expérimentation, découvrir, expérimental</option>
+
+  <option value="Pour tous les publics">Pour tout les publics</option>
+
+  <option value="L&#39;orchestre et vous">L&#39;orchestre et vous</option>
+
+  <option value="Guide d&#39;écoute">Guide d&#39;écoute</option>
+
+  <option value="Livret pédagogique">Livret pédagogique</option>
+
+  <option value="Pour les enseignants, écoles, scolaires">Pour les enseignants, écoles, scolaires</option>
+
+  <option value="Le nom du dispositif lui même">Le nom du dispositif lui même (ex: &#39;La galerie symphonique&#39;)</option>
+
+  <option value="Ressources en ligne, ressources numériques, ressources">Ressources en ligne, ressources numériques, ressources</option>
+
+  <option value="Relatif à la programmation">Est relatif à la programmation à laquelle il fait référence (onglet du concert, titre du compositeur, etc.)</option>
+
+  <option value="Relatif au format du dispositif dont il s&#39;agit">Est relatif au format du dispositif dont il s&#39;agit (Balado, vidéo, playlist, web série, etc.)</option>
+
+  <option value="À propos">À propos</option>
+
+  <option value="Voir et entendre">Voir et entendre</option>
+
+  <option value="Actualités, news, nouveauté">Actualité, news, nouveauté</option>
+
+  <option value="Pour tous les publics">Pour tous les publics</option>
+
+  <option value="Pour un public spécifique">Pour un public spécifique</option>
+
+  <option value="Musique">Musique</option>
+
+  <option value="Autre">Autre</option>
+
+</select>
+
+
+
+                                </div>
+
+                            </div>
+
+                            <div class="form-row field-deux_onglet_autre">
+
+
+                                <div>
+
+
+                                    <label for="id_deux_onglet_autre">Si autre, précisez :</label>
+
+                                    <input type="text" name="deux_onglet_autre" id="id_deux_onglet_autre" class="vTextField" maxlength="200" />
+
+
+
+                                </div>
+
+                            </div>
+
+                            <div class="form-row field-troisieme_onglet">
+
+
+                                <div>
+
+
+                                    <label class="required" for="id_troisieme_onglet">S.19 Quel est le TROISIEME onglet à ouvrir pour trouver ce dispositif?</label>
+
+                                    <select name="troisieme_onglet" id="id_troisieme_onglet">
+  <option value="Ne s’applique pas">Ne s’applique pas car le dispositif était disponible sur la page d’accueil</option>
+
+  <option value="Ne s&#39;applique pas car l&#39;outil était disponible sur la deuxième page">Ne s&#39;applique pas car l&#39;outil était disponible sur la deuxième page</option>
+
+  <option value="On peut consulter l&#39;outil directement sur cette troisième page">On peut consulter l&#39;outil directement sur cette troisème page</option>
+
+  <option value="Action culturelle">Action culturelle</option>
+
+  <option value="Médiation">Médiation</option>
+
+  <option value="Éducation, Apprendre, Leçon, Educothèque">Éducation, Apprendre, Leçon, Educothèque</option>
+
+  <option value="Expérimentation, découvrir, expérimental">Expérimentation, découvrir, expérimental</option>
+
+  <option value="Pour tous les publics">Pour tout les publics</option>
+
+  <option value="L&#39;orchestre et vous">L&#39;orchestre et vous</option>
+
+  <option value="Guide d&#39;écoute">Guide d&#39;écoute</option>
+
+  <option value="Livret pédagogique">Livret pédagogique</option>
+
+  <option value="Pour les enseignants, écoles, scolaires">Pour les enseignants, écoles, scolaires</option>
+
+  <option value="Le nom du dispositif lui même">Le nom du dispositif lui même (ex: &#39;La galerie symphonique&#39;)</option>
+
+  <option value="Ressources en ligne, ressources numériques, ressources">Ressources en ligne, ressources numériques, ressources</option>
+
+  <option value="Relatif à la programmation">Est relatif à la programmation à laquelle il fait référence (onglet du concert, titre du compositeur, etc.)</option>
+
+  <option value="Relatif au format du dispositif dont il s&#39;agit">Est relatif au format du dispositif dont il s&#39;agit (Balado, vidéo, playlist, web série, etc.)</option>
+
+  <option value="À propos">À propos</option>
+
+  <option value="Voir et entendre">Voir et entendre</option>
+
+  <option value="Actualités, news, nouveauté">Actualité, news, nouveauté</option>
+
+  <option value="Pour tous les publics">Pour tous les publics</option>
+
+  <option value="Pour un public spécifique">Pour un public spécifique</option>
+
+  <option value="Musique">Musique</option>
+
+  <option value="Autre">Autre</option>
+
+</select>
+
+
+
+                                </div>
+
+                            </div>
+
+                            <div class="form-row field-trois_onglet_autre">
+
+
+                                <div>
+
+
+                                    <label for="id_trois_onglet_autre">Si autre, précisez :</label>
+
+                                    <input type="text" name="trois_onglet_autre" id="id_trois_onglet_autre" class="vTextField" maxlength="200" />
+
+
+
+                                </div>
+
+                            </div>
+
+                            <div class="form-row field-plus_de_tois_onglet">
+
+
+                                <div class="checkbox-row">
+
+
+                                    <input type="checkbox" name="plus_de_tois_onglet" id="id_plus_de_tois_onglet" /><label class="vCheckboxLabel" for="id_plus_de_tois_onglet">S.19. 1 PLUS DE TROIS ONGLETS à ouvrir pour trouver ce dispositif ?</label>
+
+
+                                </div>
+
+                            </div>
+
+                            <div class="form-row field-mode_hebergement">
+
+
+                                <div>
+
+
+                                    <label class="required" for="id_mode_hebergement">S.20 Mode d&#39;hébergement sur la toile :</label>
+
+                                    <div class="related-widget-wrapper">
+                                        <select name="mode_hebergement" multiple="multiple" data-is-stacked="0" data-field-name="S.20 Mode d&#39;hébergement sur la toile" required class="selectfilter" id="id_mode_hebergement">
+  <option value="1">Site d&#39;hébergement de vidéo (Youtube, Daily motion, Viméo)</option>
+
+  <option value="2">Site d&#39;hébergement de audio (Soundcloud)</option>
+
+  <option value="3">Site internet (wordpress, portail institutionnel, etc.)</option>
+
+  <option value="4">Réseaux sociaux</option>
+
+  <option value="5">Bibliothèque partagée (service de stockage et de partage type dropbox, drive, etc.)</option>
+
+  <option value="6">Application</option>
+
+</select>
+
+                                        <a class="related-widget-wrapper-link add-related" id="add_id_mode_hebergement" href="/admin/bdmultimedia/modehebergement/add/?_to_field=id&amp;_popup=1" title="Ajouter un autre objet Mode d&#39;hébergement sur la toile"><img src="/static/admin/img/icon-addlink.svg" alt="Ajouter"/></a>
+
+                                    </div>
+
+
+
+                                    <div class="help">Maintenez appuyé « Ctrl », ou « Commande (touche pomme) » sur un Mac, pour en sélectionner plusieurs.</div>
+
+                                </div>
+
+                            </div>
+
+                            <div class="form-row field-mode_consultation">
+
+
+                                <div>
+
+
+                                    <label class="required" for="id_mode_consultation">S.21 Mode de consultation offert au public :</label>
+
+                                    <div class="related-widget-wrapper">
+                                        <select name="mode_consultation" multiple="multiple" data-is-stacked="0" data-field-name="S.21 Mode de consultation offert au public" required class="selectfilter" id="id_mode_consultation">
+  <option value="1">Consultation gratuite et libre à tous</option>
+
+  <option value="2">Consultation gratuite MAIS réservée aux membres de l&#39;organisme producteur et détenteur d&#39;un code ou d&#39;un identifiant</option>
+
+  <option value="3">Consultation gratuite MAIS suspendue au téléchargement d&#39;un application</option>
+
+  <option value="4">Consultation gratuite MAIS suspendue au téléchargement d&#39;un application ET mises à jour payantes</option>
+
+  <option value="5">Consultation payante à l&#39;abonnement</option>
+
+  <option value="6">Consultation payante à la pièce</option>
+
+  <option value="7">Consultation payante ET suspendue au téléchargement d&#39;une application</option>
+
+</select>
+
+                                        <a class="related-widget-wrapper-link add-related" id="add_id_mode_consultation" href="/admin/bdmultimedia/modeconsultation/add/?_to_field=id&amp;_popup=1" title="Ajouter un autre objet Mode de consultation offert au public"><img src="/static/admin/img/icon-addlink.svg" alt="Ajouter"/></a>
+
+                                    </div>
+
+
+
+                                    <div class="help">Maintenez appuyé « Ctrl », ou « Commande (touche pomme) » sur un Mac, pour en sélectionner plusieurs.</div>
+
+                                </div>
+
+                            </div>
+
+                            <div class="form-row field-narration_langue">
+
+
+                                <div>
+
+
+                                    <label class="required" for="id_narration_langue">S.22 Langue du dispositif :</label>
+
+                                    <div class="related-widget-wrapper">
+                                        <select name="narration_langue" multiple="multiple" data-is-stacked="0" data-field-name="S.22 Langue du dispositif" required class="selectfilter" id="id_narration_langue">
+  <option value="1">Ne s&#39;applique pas</option>
+
+  <option value="2">Français</option>
+
+  <option value="3">Anglais</option>
+
+  <option value="4">Allemand</option>
+
+  <option value="5">Espagnol</option>
+
+  <option value="6">Portugais</option>
+
+  <option value="7">Italien</option>
+
+  <option value="8">Néerlandais</option>
+
+  <option value="9">Latin</option>
+
+</select>
+
+                                        <a class="related-widget-wrapper-link add-related" id="add_id_narration_langue" href="/admin/bdmultimedia/languenarration/add/?_to_field=id&amp;_popup=1" title="Ajouter un autre objet Langue de la narration"><img src="/static/admin/img/icon-addlink.svg" alt="Ajouter"/></a>
+
+                                    </div>
+
+
+
+                                    <div class="help">Maintenez appuyé « Ctrl », ou « Commande (touche pomme) » sur un Mac, pour en sélectionner plusieurs.</div>
+
+                                </div>
+
+                            </div>
+
+                            <div class="form-row field-sous_titre">
+
+
+                                <div>
+
+
+                                    <label class="required" for="id_sous_titre">S.23 Sous-titrage :</label>
+
+                                    <div class="related-widget-wrapper">
+                                        <select name="sous_titre" multiple="multiple" data-is-stacked="0" data-field-name="S.23 Sous-titrage" required class="selectfilter" id="id_sous_titre">
+  <option value="1">Ne s&#39;applique pas</option>
+
+  <option value="2">Pas de sous-titrage</option>
+
+  <option value="3">Français</option>
+
+  <option value="4">Anglais</option>
+
+  <option value="5">Allemand</option>
+
+  <option value="6">Portugais</option>
+
+  <option value="7">Italien</option>
+
+  <option value="8">Arabe</option>
+
+  <option value="9">Chinois</option>
+
+  <option value="10">Coréen</option>
+
+  <option value="11">Espagnol</option>
+
+  <option value="12">Hébreu</option>
+
+  <option value="13">Hongrois</option>
+
+  <option value="14">Japonais</option>
+
+  <option value="15">Persan</option>
+
+  <option value="16">Polonais</option>
+
+  <option value="17">Roumain</option>
+
+  <option value="18">Russe</option>
+
+  <option value="19">Serbe</option>
+
+  <option value="20">Slovène</option>
+
+  <option value="21">Thaï</option>
+
+  <option value="22">Turc</option>
+
+  <option value="23">Ukrainien</option>
+
+  <option value="24">Vietnamien</option>
+
+</select>
+
+                                        <a class="related-widget-wrapper-link add-related" id="add_id_sous_titre" href="/admin/bdmultimedia/soustitre/add/?_to_field=id&amp;_popup=1" title="Ajouter un autre objet Sous-titre"><img src="/static/admin/img/icon-addlink.svg" alt="Ajouter"/></a>
+
+                                    </div>
+
+
+
+                                    <div class="help">Les sous-titrages automatiques proposés par YouTube n’entrent pas en considération. Maintenez appuyé « Ctrl », ou « Commande (touche pomme) » sur un Mac, pour en sélectionner plusieurs.</div>
+
+                                </div>
+
+                            </div>
+
+                            <div class="form-row field-malentendants">
+
+
+                                <div>
+
+
+                                    <label class="required" for="id_malentendants">S.24.1 Ce dispositif est-il intégralement accessible aux malentendants (Sous titrage, language des signes) :</label>
+
+                                    <select name="malentendants" id="id_malentendants">
+  <option value="Oui">Oui</option>
+
+  <option value="Non" selected>Non</option>
+
+</select>
+
+
+
+                                </div>
+
+                            </div>
+
+                            <div class="form-row field-malvoyants">
+
+
+                                <div>
+
+
+                                    <label class="required" for="id_malvoyants">S.24.2 Ce dispositif est-il intégralement accessible aux malvoyants (audiodescription) :</label>
+
+                                    <select name="malvoyants" id="id_malvoyants">
+  <option value="Oui">Oui</option>
+
+  <option value="Non" selected>Non</option>
+
+</select>
+
+
+
+                                </div>
+
+                            </div>
+
+                            <div class="form-row field-materiau_musical">
+
+
+                                <div>
+
+
+                                    <label class="required" for="id_materiau_musical">M.25 Parle-t-on du matériau musical?</label>
+
+                                    <select name="materiau_musical" id="id_materiau_musical">
+  <option value="Oui">Oui</option>
+
+  <option value="Non" selected>Non</option>
+
+</select>
+
+
+
+                                    <div class="help">Registres (au sens de groupe de hauteur si cela concerne les registres de l’orgue cocher « timbres »)</div>
+
+                                </div>
+
+                            </div>
+
+                            <div class="form-row field-orchestration">
+
+
+                                <div>
+
+
+                                    <label class="required" for="id_orchestration">M.25.1 Parle-t-on du son et de l&#39;orchestration, si oui précisez.</label>
+
+                                    <div class="related-widget-wrapper">
+                                        <select name="orchestration" multiple="multiple" data-is-stacked="0" data-field-name="M.25.1 Parle-t-on du son et de l&#39;orchestration, si oui précisez." required class="selectfilter" id="id_orchestration">
+  <option value="1">Non</option>
+
+  <option value="2">Intensité (nuances)</option>
+
+  <option value="3">Timbres</option>
+
+  <option value="4">Registres</option>
+
+  <option value="5">Harmoniques</option>
+
+  <option value="6">Équilibre musical</option>
+
+  <option value="7">Contrastes</option>
+
+  <option value="8">Tessitures</option>
+
+  <option value="9">Mode jeu (legato, pizzicato, etc.)</option>
+
+  <option value="10">Acoustique</option>
+
+  <option value="11">Vibrato</option>
+
+  <option value="12">Couleur</option>
+
+  <option value="13">Consistance, texture</option>
+
+  <option value="14">Reduction</option>
+
+  <option value="15">Orchestration</option>
+
+  <option value="16">Solo</option>
+
+  <option value="17">Transcription</option>
+
+  <option value="18">Ton</option>
+
+  <option value="19">Mixage sonore</option>
+
+</select>
+
+                                        <a class="related-widget-wrapper-link add-related" id="add_id_orchestration" href="/admin/bdmultimedia/orchestration/add/?_to_field=id&amp;_popup=1" title="Ajouter un autre objet Sons et orchestration"><img src="/static/admin/img/icon-addlink.svg" alt="Ajouter"/></a>
+
+                                    </div>
+
+
+
+                                    <div class="help">Maintenez appuyé « Ctrl », ou « Commande (touche pomme) » sur un Mac, pour en sélectionner plusieurs.</div>
+
+                                </div>
+
+                            </div>
+
+                            <div class="form-row field-structure">
+
+
+                                <div>
+
+
+                                    <label class="required" for="id_structure">M.25.2 Parle-t-on de la structure, si oui précisez.</label>
+
+                                    <div class="related-widget-wrapper">
+                                        <select name="structure" multiple="multiple" data-is-stacked="0" data-field-name="M.25.2 Parle-t-on de la structure, si oui précisez." required class="selectfilter" id="id_structure">
+  <option value="1">Non</option>
+
+  <option value="2">Répétitions</option>
+
+  <option value="3">Variations</option>
+
+  <option value="4">Canon</option>
+
+  <option value="5">Fugue</option>
+
+  <option value="6">Mouvements d&#39;une symphonie</option>
+
+  <option value="7">Forme sonate</option>
+
+  <option value="8">Actes</option>
+
+  <option value="9">Thème</option>
+
+  <option value="10">Exposition / réexposition</option>
+
+  <option value="11">Marche</option>
+
+  <option value="12">Imitation</option>
+
+  <option value="13">Contrepoint</option>
+
+  <option value="14">Bourdon</option>
+
+  <option value="15">Récitatif</option>
+
+  <option value="16">Mouvements d&#39;un concerto</option>
+
+  <option value="17">Ouverture</option>
+
+  <option value="18">Improvisation</option>
+
+  <option value="19">Finale</option>
+
+  <option value="20">Couplet</option>
+
+  <option value="21">Refrain</option>
+
+  <option value="22">Pont</option>
+
+  <option value="23">Citation</option>
+
+  <option value="24">Introduction</option>
+
+  <option value="25">Échantillonage</option>
+
+  <option value="26">Transition</option>
+
+  <option value="27">Forme rondo</option>
+
+  <option value="28">Section</option>
+
+  <option value="29">Forme ternaire (ABA)</option>
+
+  <option value="30">Scherzo avec trio</option>
+
+</select>
+
+                                        <a class="related-widget-wrapper-link add-related" id="add_id_structure" href="/admin/bdmultimedia/structure/add/?_to_field=id&amp;_popup=1" title="Ajouter un autre objet Structures"><img src="/static/admin/img/icon-addlink.svg" alt="Ajouter"/></a>
+
+                                    </div>
+
+
+
+                                    <div class="help">Maintenez appuyé « Ctrl », ou « Commande (touche pomme) » sur un Mac, pour en sélectionner plusieurs.</div>
+
+                                </div>
+
+                            </div>
+
+                            <div class="form-row field-language_musical">
+
+
+                                <div>
+
+
+                                    <label class="required" for="id_language_musical">M.25.3 Parle-t-on du language musical, si oui précisez.</label>
+
+                                    <div class="related-widget-wrapper">
+                                        <select name="language_musical" multiple="multiple" data-is-stacked="0" data-field-name="M.25.3 Parle-t-on du language musical, si oui précisez." required class="selectfilter" id="id_language_musical">
+  <option value="1">Non</option>
+
+  <option value="2">Mélodie</option>
+
+  <option value="3">Mesure</option>
+
+  <option value="4">Tempo</option>
+
+  <option value="5">Tonalité</option>
+
+  <option value="6">Accords</option>
+
+  <option value="7">Harmonie</option>
+
+  <option value="8">Consonnance / dissonnances</option>
+
+  <option value="9">Triade</option>
+
+  <option value="10">Battue</option>
+
+  <option value="11">A Cappella</option>
+
+  <option value="12">Rythme</option>
+
+  <option value="13">Citation</option>
+
+  <option value="14">Silence</option>
+
+  <option value="15">Motif</option>
+
+  <option value="16">Dodécaphonisme</option>
+
+  <option value="17">Musicalité</option>
+
+  <option value="18">Ornementation</option>
+
+  <option value="19">Intervalle</option>
+
+  <option value="20">Basse continue</option>
+
+</select>
+
+                                        <a class="related-widget-wrapper-link add-related" id="add_id_language_musical" href="/admin/bdmultimedia/languagemusical/add/?_to_field=id&amp;_popup=1" title="Ajouter un autre objet Languages musical"><img src="/static/admin/img/icon-addlink.svg" alt="Ajouter"/></a>
+
+                                    </div>
+
+
+
+                                    <div class="help">Maintenez appuyé « Ctrl », ou « Commande (touche pomme) » sur un Mac, pour en sélectionner plusieurs.</div>
+
+                                </div>
+
+                            </div>
+
+                            <div class="form-row field-genre_musical">
+
+
+                                <div>
+
+
+                                    <label class="required" for="id_genre_musical">M.25.4 Parle-t-on du genre musical, si oui précisez.</label>
+
+                                    <div class="related-widget-wrapper">
+                                        <select name="genre_musical" multiple="multiple" data-is-stacked="0" data-field-name="M.25.4 Parle-t-on du genre musical, si oui précisez." required class="selectfilter" id="id_genre_musical">
+  <option value="1">Non</option>
+
+  <option value="2">Symphonie</option>
+
+  <option value="3">Philharmonique</option>
+
+  <option value="4">Opéra (Italien, allemand, etc.)</option>
+
+  <option value="5">Drame en musique</option>
+
+  <option value="6">Ouverture</option>
+
+  <option value="7">Musique instrumentale</option>
+
+  <option value="8">Musique à programme</option>
+
+  <option value="9">Oratorio, cantate, passion</option>
+
+  <option value="10">Musique de chambre</option>
+
+  <option value="11">Cantate</option>
+
+  <option value="12">Poème symphonique</option>
+
+  <option value="13">Messe</option>
+
+  <option value="14">Requiem</option>
+
+  <option value="15">Concerto (double concerto, etc.)</option>
+
+  <option value="16">Comédie musicale</option>
+
+  <option value="17">Pièce chorale</option>
+
+  <option value="18">Valse</option>
+
+  <option value="19">Contemporain</option>
+
+  <option value="20">Musique traditionnelle</option>
+
+  <option value="21">Pièce pour orchestre, pièce expérimentale, mélodies, opéra, ballet</option>
+
+  <option value="22">Ballet</option>
+
+  <option value="23">Pop</option>
+
+  <option value="24">Semi-opéra</option>
+
+  <option value="25">Etude</option>
+
+  <option value="26">Musique &quot;savante&quot; vs musique &quot;contemporaine&quot;</option>
+
+  <option value="27">Suite</option>
+
+  <option value="28">Musique symphonique</option>
+
+</select>
+
+                                        <a class="related-widget-wrapper-link add-related" id="add_id_genre_musical" href="/admin/bdmultimedia/genremusical/add/?_to_field=id&amp;_popup=1" title="Ajouter un autre objet Genres musical"><img src="/static/admin/img/icon-addlink.svg" alt="Ajouter"/></a>
+
+                                    </div>
+
+
+
+                                    <div class="help">Maintenez appuyé « Ctrl », ou « Commande (touche pomme) » sur un Mac, pour en sélectionner plusieurs.</div>
+
+                                </div>
+
+                            </div>
+
+                            <div class="form-row field-style_musical">
+
+
+                                <div>
+
+
+                                    <label class="required" for="id_style_musical">M.25.5 Parle-t-on du style musical, si oui précisez.</label>
+
+                                    <div class="related-widget-wrapper">
+                                        <select name="style_musical" multiple="multiple" data-is-stacked="0" data-field-name="M.25.5 Parle-t-on du style musical, si oui précisez." required class="selectfilter" id="id_style_musical">
+  <option value="1">Non</option>
+
+  <option value="2">Verisme</option>
+
+  <option value="3">Style d&#39;un compositeur</option>
+
+  <option value="4">Singspiel</option>
+
+  <option value="5">Classique</option>
+
+  <option value="6">Romantique</option>
+
+  <option value="7">Postromantique</option>
+
+  <option value="8">Hip Hop</option>
+
+  <option value="9">Orientaliste</option>
+
+  <option value="10">Polyphonique</option>
+
+  <option value="11">Hispanique</option>
+
+  <option value="12">Moderne</option>
+
+  <option value="13">Baroque</option>
+
+  <option value="14">Pré-classique</option>
+
+  <option value="15">Galant</option>
+
+  <option value="16">Néoclassique</option>
+
+  <option value="17">Grand opéra français</option>
+
+  <option value="18">Nouveau</option>
+
+  <option value="19">Musique française</option>
+
+  <option value="20">Musique religieuse</option>
+
+  <option value="21">Jazz</option>
+
+  <option value="22">Style local</option>
+
+  <option value="23">Populaire</option>
+
+  <option value="24">Rock</option>
+
+  <option value="25">Techno</option>
+
+  <option value="26">Disco</option>
+
+  <option value="27">Musique du monde</option>
+
+  <option value="28">Minimalisme</option>
+
+  <option value="29">Renaissance</option>
+
+  <option value="30">Moyen-Age</option>
+
+  <option value="31">Contemporain</option>
+
+</select>
+
+                                        <a class="related-widget-wrapper-link add-related" id="add_id_style_musical" href="/admin/bdmultimedia/stylemusical/add/?_to_field=id&amp;_popup=1" title="Ajouter un autre objet Styles musical"><img src="/static/admin/img/icon-addlink.svg" alt="Ajouter"/></a>
+
+                                    </div>
+
+
+
+                                    <div class="help">Maintenez appuyé « Ctrl », ou « Commande (touche pomme) » sur un Mac, pour en sélectionner plusieurs.</div>
+
+                                </div>
+
+                            </div>
+
+                            <div class="form-row field-experience_musicale">
+
+
+                                <div>
+
+
+                                    <label class="required" for="id_experience_musicale">M.26 Parle-t-on de l&#39;experience musicale, si oui précisez.</label>
+
+                                    <div class="related-widget-wrapper">
+                                        <select name="experience_musicale" multiple="multiple" data-is-stacked="0" data-field-name="M.26 Parle-t-on de l&#39;experience musicale, si oui précisez." required class="selectfilter" id="id_experience_musicale">
+  <option value="1">Non</option>
+
+  <option value="2">Déroulement du concert</option>
+
+  <option value="3">Conseils pour les spectateurs (choisir les meilleurs places, se préparer au concert)</option>
+
+  <option value="4">Techniques d&#39;écoute</option>
+
+  <option value="5">L&#39;enregistrement</option>
+
+  <option value="6">Les émotions</option>
+
+  <option value="7">Conventions d&#39;une répétition</option>
+
+  <option value="8">Ce que cela fait de jouer d&#39;un instrument</option>
+
+  <option value="9">Notion de Don, de génie</option>
+
+  <option value="10">Etre soliste</option>
+
+</select>
+
+                                        <a class="related-widget-wrapper-link add-related" id="add_id_experience_musicale" href="/admin/bdmultimedia/experiencemusicale/add/?_to_field=id&amp;_popup=1" title="Ajouter un autre objet Experiences musical"><img src="/static/admin/img/icon-addlink.svg" alt="Ajouter"/></a>
+
+                                    </div>
+
+
+
+                                    <div class="help">Maintenez appuyé « Ctrl », ou « Commande (touche pomme) » sur un Mac, pour en sélectionner plusieurs.</div>
+
+                                </div>
+
+                            </div>
+
+                            <div class="form-row field-elements_socioculturels">
+
+
+                                <div>
+
+
+                                    <label class="required" for="id_elements_socioculturels">M.27 Parle-t-on des éléments socioculturels et historiques?</label>
+
+                                    <select name="elements_socioculturels" id="id_elements_socioculturels">
+  <option value="Oui">Oui</option>
+
+  <option value="Non" selected>Non</option>
+
+</select>
+
+
+
+                                </div>
+
+                            </div>
+
+                            <div class="form-row field-epoque">
+
+
+                                <div>
+
+
+                                    <label class="required">M.27.1 Époque :</label>
+
+                                    <ul id="id_epoque">
+                                        <li><label for="id_epoque_0"><input type="checkbox" name="epoque" value="Avant le XIIè" id="id_epoque_0" />
+ Avant le XIIè</label>
+
+                                        </li>
+                                        <li><label for="id_epoque_1"><input type="checkbox" name="epoque" value="XIIè" id="id_epoque_1" />
+ XIIè</label>
+
+                                        </li>
+                                        <li><label for="id_epoque_2"><input type="checkbox" name="epoque" value="XIIIè" id="id_epoque_2" />
+ XIIIè</label>
+
+                                        </li>
+                                        <li><label for="id_epoque_3"><input type="checkbox" name="epoque" value="XIVè" id="id_epoque_3" />
+ XIVè</label>
+
+                                        </li>
+                                        <li><label for="id_epoque_4"><input type="checkbox" name="epoque" value="XVè" id="id_epoque_4" />
+ XVè</label>
+
+                                        </li>
+                                        <li><label for="id_epoque_5"><input type="checkbox" name="epoque" value="XVIè" id="id_epoque_5" />
+ XVIè</label>
+
+                                        </li>
+                                        <li><label for="id_epoque_6"><input type="checkbox" name="epoque" value="XVIIè" id="id_epoque_6" />
+ XVIIè</label>
+
+                                        </li>
+                                        <li><label for="id_epoque_7"><input type="checkbox" name="epoque" value="XVIIIè" id="id_epoque_7" />
+ XVIIIè</label>
+
+                                        </li>
+                                        <li><label for="id_epoque_8"><input type="checkbox" name="epoque" value="XIXè" id="id_epoque_8" />
+ XIXè</label>
+
+                                        </li>
+                                        <li><label for="id_epoque_9"><input type="checkbox" name="epoque" value="XXè" id="id_epoque_9" />
+ XXè</label>
+
+                                        </li>
+                                        <li><label for="id_epoque_10"><input type="checkbox" name="epoque" value="XXIè" id="id_epoque_10" />
+ XXIè</label>
+
+                                        </li>
+                                        <li><label for="id_epoque_11"><input type="checkbox" name="epoque" value="nsp" id="id_epoque_11" />
+ nsp</label>
+
+                                        </li>
+                                    </ul>
+
+
+
+                                </div>
+
+                            </div>
+
+                            <div class="form-row field-contexte">
+
+
+                                <div>
+
+
+                                    <label class="required" for="id_contexte">M.27.2 Parle-t-on du contexte de composition, création, interprétation de l&#39;oeuvre, de l&#39;instrument...</label>
+
+                                    <div class="related-widget-wrapper">
+                                        <select name="contexte" multiple="multiple" data-is-stacked="0" data-field-name="M.27.2 Parle-t-on du contexte de composition, création, interprétation de l&#39;oeuvre, de l&#39;instrument..." required class="selectfilter" id="id_contexte">
+  <option value="1">Non</option>
+
+  <option value="2">Contexte historique</option>
+
+  <option value="3">Contexte politique</option>
+
+  <option value="4">Contexte artistique</option>
+
+  <option value="5">Contexte religieux</option>
+
+  <option value="6">Contexte scientifique</option>
+
+  <option value="7">Contexte de composition</option>
+
+</select>
+
+                                        <a class="related-widget-wrapper-link add-related" id="add_id_contexte" href="/admin/bdmultimedia/contexte/add/?_to_field=id&amp;_popup=1" title="Ajouter un autre objet Contexte de composition, création, interprétation..."><img src="/static/admin/img/icon-addlink.svg" alt="Ajouter"/></a>
+
+                                    </div>
+
+
+
+                                    <div class="help">Si il est juste fait mention d’une date sans donner plus d’information sur ce qui se passait à l’époque cocher “Non”. Maintenez appuyé « Ctrl », ou « Commande (touche pomme) » sur un Mac, pour en sélectionner plusieurs.</div>
+
+                                </div>
+
+                            </div>
+
+                            <div class="form-row field-role_evolution">
+
+
+                                <div>
+
+
+                                    <label class="required" for="id_role_evolution">M.27.3 Parle-t-on du rôle et de l&#39;évolution du [métier liés à la musique précisez] :</label>
+
+                                    <div class="related-widget-wrapper">
+                                        <select name="role_evolution" multiple="multiple" data-is-stacked="0" data-field-name="M.27.3 Parle-t-on du rôle et de l&#39;évolution du [métier liés à la musique précisez]" required class="selectfilter" id="id_role_evolution">
+  <option value="1">Non</option>
+
+  <option value="2">Métier de chanteur</option>
+
+  <option value="3">Métier de musicien</option>
+
+  <option value="4">Métier de compositeur</option>
+
+  <option value="5">Métier de chef, chef assistant, etc.</option>
+
+  <option value="6">Métier de librettiste</option>
+
+  <option value="7">Professions liées à l&#39;opéra</option>
+
+  <option value="8">Relation chef/musicien</option>
+
+  <option value="9">Métier d&#39;ingénieur du son</option>
+
+  <option value="10">Métier de directeur artistique</option>
+
+  <option value="11">Métier de copiste</option>
+
+  <option value="12">Métier de metteur en scène</option>
+
+  <option value="13">Métier de musicologue</option>
+
+  <option value="14">Métier de chargé de production</option>
+
+  <option value="15">Métier de choriste</option>
+
+</select>
+
+                                        <a class="related-widget-wrapper-link add-related" id="add_id_role_evolution" href="/admin/bdmultimedia/roleevolution/add/?_to_field=id&amp;_popup=1" title="Ajouter un autre objet Rôle et évolution"><img src="/static/admin/img/icon-addlink.svg" alt="Ajouter"/></a>
+
+                                    </div>
+
+
+
+                                    <div class="help">Maintenez appuyé « Ctrl », ou « Commande (touche pomme) » sur un Mac, pour en sélectionner plusieurs.</div>
+
+                                </div>
+
+                            </div>
+
+                            <div class="form-row field-sollicitation_musicale">
+
+
+                                <div>
+
+
+                                    <label class="required" for="id_sollicitation_musicale">U.28 Comment sollicite-t-on musicalement l&#39;usager?</label>
+
+                                    <div class="related-widget-wrapper">
+                                        <select name="sollicitation_musicale" multiple="multiple" data-is-stacked="0" data-field-name="U.28 Comment sollicite-t-on musicalement l&#39;usager?" required class="selectfilter" id="id_sollicitation_musicale">
+  <option value="1">Interpréter</option>
+
+  <option value="2">Reproduire</option>
+
+  <option value="3">Écouter</option>
+
+  <option value="4">Inventer/composer/improviser</option>
+
+  <option value="5">Lire</option>
+
+  <option value="6">Regarder</option>
+
+  <option value="7">Écrire</option>
+
+  <option value="8">Jouer (au sens de s&#39;amuser)</option>
+
+  <option value="9">Dessiner</option>
+
+</select>
+
+                                        <a class="related-widget-wrapper-link add-related" id="add_id_sollicitation_musicale" href="/admin/bdmultimedia/sollicitationmusicale/add/?_to_field=id&amp;_popup=1" title="Ajouter un autre objet Sollicitation musicale"><img src="/static/admin/img/icon-addlink.svg" alt="Ajouter"/></a>
+
+                                    </div>
+
+
+
+                                    <div class="help">Maintenez appuyé « Ctrl », ou « Commande (touche pomme) » sur un Mac, pour en sélectionner plusieurs.</div>
+
+                                </div>
+
+                            </div>
+
+                            <div class="form-row field-sollicitation_generale">
+
+
+                                <div>
+
+
+                                    <label class="required" for="id_sollicitation_generale">U.29 En général (hors musique) comment sollicite-t-on l&#39;usager?</label>
+
+                                    <div class="related-widget-wrapper">
+                                        <select name="sollicitation_generale" multiple="multiple" data-is-stacked="0" data-field-name="U.29 En général (hors musique) comment sollicite-t-on l&#39;usager?" required class="selectfilter" id="id_sollicitation_generale">
+  <option value="1">Lire</option>
+
+  <option value="2">Regarder</option>
+
+  <option value="3">Bricoler</option>
+
+  <option value="4">Jouer (au sens ludique)</option>
+
+  <option value="5">Écrire</option>
+
+  <option value="6">Écouter</option>
+
+  <option value="7">Dessiner</option>
+
+</select>
+
+                                        <a class="related-widget-wrapper-link add-related" id="add_id_sollicitation_generale" href="/admin/bdmultimedia/sollicitationgenerale/add/?_to_field=id&amp;_popup=1" title="Ajouter un autre objet Sollicitation générale"><img src="/static/admin/img/icon-addlink.svg" alt="Ajouter"/></a>
+
+                                    </div>
+
+
+
+                                    <div class="help">Maintenez appuyé « Ctrl », ou « Commande (touche pomme) » sur un Mac, pour en sélectionner plusieurs.</div>
+
+                                </div>
+
+                            </div>
+
+                            <div class="form-row field-temps_mus">
+
+
+                                <div>
+
+
+                                    <label class="required" for="id_temps_mus">PM.30 Temps de musique seule (hh:mm:ss) :</label>
+
+                                    <input type="text" name="temps_mus" value="00:00:00" id="id_temps_mus" required class="vTextField" maxlength="8" />
+
+
+
+                                    <div class="help">ddv = durée d’écoute variable. Concerne les dispositifs qui allient texte et vidéo. La durée d’écoute est variable puisque les utilisateurs peuvent décider, ou non, de regarder les vidéos.<br> 00.00.00 = signifie qu’il y a bien du son dans le dispositif.<br> nsp signifie qu’il n’y a pas de son dans le dispositif.</div>
+
+                                </div>
+
+                            </div>
+
+                            <div class="form-row field-temps_par">
+
+
+                                <div>
+
+
+                                    <label class="required" for="id_temps_par">PM.31 Temps de parole seule (hh:mm:ss) :</label>
+
+                                    <input type="text" name="temps_par" value="00:00:00" id="id_temps_par" required class="vTextField" maxlength="8" />
+
+
+
+                                    <div class="help">ddv = durée d’écoute variable. Concerne les dispositifs qui allient texte et vidéo. La durée d’écoute est variable puisque les utilisateurs peuvent décider, ou non, de regarder les vidéos. <br> nsp = ne s'applique pas</div>
+
+                                </div>
+
+                            </div>
+
+                            <div class="form-row field-temps_mus_par">
+
+
+                                <div>
+
+
+                                    <label class="required" for="id_temps_mus_par">PM.32 Temps de parole et musique superposées (hh:mm:ss) :</label>
+
+                                    <input type="text" name="temps_mus_par" value="00:00:00" id="id_temps_mus_par" required class="vTextField" maxlength="8" />
+
+
+
+                                    <div class="help">ddv = durée d’écoute variable. Concerne les dispositifs qui allient texte et vidéo. La durée d’écoute est variable puisque les utilisateurs peuvent décider, ou non, de regarder les vidéos.<br> nsp = ne s'applique pas</div>
+
+                                </div>
+
+                            </div>
+
+                            <div class="form-row field-sonore_valeur">
+
+
+                                <div>
+
+
+                                    <label class="required" for="id_sonore_valeur">PM.33 Mise en valeur du sonore :</label>
+
+                                    <select name="sonore_valeur" id="id_sonore_valeur">
+  <option value="Nsp" selected>Ne s&#39;applique pas</option>
+
+  <option value="Premier plan">Premier Plan</option>
+
+  <option value="Arrière plan">Arrière plan</option>
+
+  <option value="Alternance">Alternance</option>
+
+</select>
+
+
+
+                                </div>
+
+                            </div>
+
+                            <div class="form-row field-evocation_graphique">
+
+
+                                <div>
+
+
+                                    <label class="required" for="id_evocation_graphique">EM.34 Évocation graphique :</label>
+
+                                    <div class="related-widget-wrapper">
+                                        <select name="evocation_graphique" multiple="multiple" data-is-stacked="0" data-field-name="EM.34 Évocation graphique" required class="selectfilter" id="id_evocation_graphique">
+  <option value="1">Non</option>
+
+  <option value="2">Représentation graphique traditionnelle (partition + notes)</option>
+
+  <option value="3">Représentation graphique traditionnelle augmentée (Ex. les notes s&#39;éclairent quand on les entends)</option>
+
+  <option value="4">Représentation graphique traditionelle illustrée (Ex. les notes sont en fait des oiseaux sur les lignes de la portée)</option>
+
+  <option value="5">Représentation graphique schématisée (Ex. il y toujours un portée mais ce sont des courbes qui figurent la mélodie)</option>
+
+  <option value="6">Représentation graphique symbolisée (Ex. images animées, ratatouille)</option>
+
+</select>
+
+                                        <a class="related-widget-wrapper-link add-related" id="add_id_evocation_graphique" href="/admin/bdmultimedia/evocationgraphique/add/?_to_field=id&amp;_popup=1" title="Ajouter un autre objet Évocations graphique"><img src="/static/admin/img/icon-addlink.svg" alt="Ajouter"/></a>
+
+                                    </div>
+
+
+
+                                    <div class="help">Maintenez appuyé « Ctrl », ou « Commande (touche pomme) » sur un Mac, pour en sélectionner plusieurs.</div>
+
+                                </div>
+
+                            </div>
+
+                            <div class="form-row field-evocation_plastique">
+
+
+                                <div>
+
+
+                                    <label class="required" for="id_evocation_plastique">EM.35 Évocation plastique :</label>
+
+                                    <div class="related-widget-wrapper">
+                                        <select name="evocation_plastique" multiple="multiple" data-is-stacked="0" data-field-name="EM.35 Évocation plastique" required class="selectfilter" id="id_evocation_plastique">
+  <option value="1">Non</option>
+
+  <option value="2">Sculpture</option>
+
+  <option value="3">Installation</option>
+
+</select>
+
+                                        <a class="related-widget-wrapper-link add-related" id="add_id_evocation_plastique" href="/admin/bdmultimedia/evocationplastique/add/?_to_field=id&amp;_popup=1" title="Ajouter un autre objet Évocations plastique"><img src="/static/admin/img/icon-addlink.svg" alt="Ajouter"/></a>
+
+                                    </div>
+
+
+
+                                    <div class="help">Maintenez appuyé « Ctrl », ou « Commande (touche pomme) » sur un Mac, pour en sélectionner plusieurs.</div>
+
+                                </div>
+
+                            </div>
+
+                            <div class="form-row field-evocation_litteraire">
+
+
+                                <div>
+
+
+                                    <label class="required">EM.36 Évocation littéraire :</label>
+
+                                    <ul id="id_evocation_litteraire">
+                                        <li><label for="id_evocation_litteraire_0"><input type="checkbox" name="evocation_litteraire" value="Non" id="id_evocation_litteraire_0" />
+ Non</label>
+
+                                        </li>
+                                        <li><label for="id_evocation_litteraire_1"><input type="checkbox" name="evocation_litteraire" value="Texte oral" id="id_evocation_litteraire_1" />
+ Texte oral</label>
+
+                                        </li>
+                                        <li><label for="id_evocation_litteraire_2"><input type="checkbox" name="evocation_litteraire" value="Texte écrit" id="id_evocation_litteraire_2" />
+ Texte écrit</label>
+
+                                        </li>
+                                    </ul>
+
+
+
+                                </div>
+
+                            </div>
+
+                            <div class="form-row field-evocation_autre">
+
+
+                                <div>
+
+
+                                    <label class="required" for="id_evocation_autre">I.37 Autres disciplines évoquées :</label>
+
+                                    <div class="related-widget-wrapper">
+                                        <select name="evocation_autre" multiple="multiple" data-is-stacked="0" data-field-name="I.37 Autres disciplines évoquées" required class="selectfilter" id="id_evocation_autre">
+  <option value="1">Aucune</option>
+
+  <option value="2">Littéraire</option>
+
+  <option value="3">Danse</option>
+
+  <option value="4">Arts plastiques</option>
+
+  <option value="5">Théatre</option>
+
+  <option value="6">Cinéma</option>
+
+  <option value="7">Arts numériques</option>
+
+  <option value="8">Sport</option>
+
+  <option value="9">Neurosciences</option>
+
+  <option value="10">Sciences physiques</option>
+
+  <option value="11">Architecture</option>
+
+  <option value="12">Gastronomie</option>
+
+  <option value="13">Cirque</option>
+
+  <option value="14">Performance</option>
+
+  <option value="15">Anatomie</option>
+
+  <option value="16">Philosophie</option>
+
+  <option value="17">Psychanalyse</option>
+
+  <option value="18">Mythologie</option>
+
+</select>
+
+                                        <a class="related-widget-wrapper-link add-related" id="add_id_evocation_autre" href="/admin/bdmultimedia/evocationautre/add/?_to_field=id&amp;_popup=1" title="Ajouter un autre objet Évocations d&#39;autre discipline"><img src="/static/admin/img/icon-addlink.svg" alt="Ajouter"/></a>
+
+                                    </div>
+
+
+
+                                    <div class="help">Maintenez appuyé « Ctrl », ou « Commande (touche pomme) » sur un Mac, pour en sélectionner plusieurs.</div>
+
+                                </div>
+
+                            </div>
+
+                            <div class="form-row field-notion_concepts">
+
+
+                                <div>
+
+
+                                    <label class="required" for="id_notion_concepts">I.38 À partir de quelle notion? - Notions communes (luminosité, transparence, vitesse, mouvement) :</label>
+
+                                    <select name="notion_concepts" id="id_notion_concepts">
+  <option value="Oui">Oui</option>
+
+  <option value="Non">Non</option>
+
+  <option value="Nsp" selected>Ne s&#39;applique pas</option>
+
+</select>
+
+
+
+                                </div>
+
+                            </div>
+
+                            <div class="form-row field-notion_experiences">
+
+
+                                <div>
+
+
+                                    <label class="required" for="id_notion_experiences">I.38 À partir de quelle notion? - Expérience (émotions) :</label>
+
+                                    <select name="notion_experiences" id="id_notion_experiences">
+  <option value="Oui">Oui</option>
+
+  <option value="Non">Non</option>
+
+  <option value="Nsp" selected>Ne s&#39;applique pas</option>
+
+</select>
+
+
+
+                                </div>
+
+                            </div>
+
+                            <div class="form-row field-notion_pratiques">
+
+
+                                <div>
+
+
+                                    <label class="required" for="id_notion_pratiques">I.38 À partir de quelle notion? - Pratique (processus de création) :</label>
+
+                                    <select name="notion_pratiques" id="id_notion_pratiques">
+  <option value="Oui">Oui</option>
+
+  <option value="Non">Non</option>
+
+  <option value="Nsp" selected>Ne s&#39;applique pas</option>
+
+</select>
+
+
+
+                                </div>
+
+                            </div>
+
+                            <div class="form-row field-exemples_notions_interdisciplinaires">
+
+
+                                <div>
+
+
+                                    <label for="id_exemples_notions_interdisciplinaires">I.39 Donner des exemples de notions évoquées de façon interdisciplinaires :</label>
+
+                                    <div class="related-widget-wrapper">
+                                        <select name="exemples_notions_interdisciplinaires" data-field-name="I.39 Donner des exemples de notions évoquées de façon interdisciplinaires" multiple="multiple" id="id_exemples_notions_interdisciplinaires" data-is-stacked="0" class="selectfilter">
+  <option value="1">Ne s&#39;applique pas</option>
+
+  <option value="2">Les thèmes romantiques</option>
+
+  <option value="3">Histoire</option>
+
+  <option value="4">Livret</option>
+
+  <option value="5">Personnages</option>
+
+  <option value="6">Structure</option>
+
+  <option value="7">Poème</option>
+
+  <option value="8">Imitation</option>
+
+  <option value="9">Chorégraphie</option>
+
+  <option value="10">Tragédie</option>
+
+  <option value="11">Adaptation</option>
+
+  <option value="12">Drame</option>
+
+  <option value="13">Rythme</option>
+
+  <option value="14">Répétition</option>
+
+  <option value="15">Oeuvre d&#39;art totale</option>
+
+  <option value="16">Inspiration</option>
+
+  <option value="17">Contemporanéité</option>
+
+</select>
+
+                                        <a class="related-widget-wrapper-link add-related" id="add_id_exemples_notions_interdisciplinaires" href="/admin/bdmultimedia/notionsinter/add/?_to_field=id&amp;_popup=1" title="Ajouter un autre objet exemples de notions évoquées de façon interdisciplinaires"><img src="/static/admin/img/icon-addlink.svg" alt="Ajouter"/></a>
+
+                                    </div>
+
+
+
+                                    <div class="help">Maintenez appuyé « Ctrl », ou « Commande (touche pomme) » sur un Mac, pour en sélectionner plusieurs.</div>
+
+                                </div>
+
+                            </div>
+
+                            <div class="form-row field-humain">
+
+
+                                <div>
+
+
+                                    <label class="required" for="id_humain">Sté.39 Y-a-t-il des humains? (compter les personnes qui ont un rôle dans la narration, qui sont maximum 3 dans le champ ou plein cadre) :</label>
+
+                                    <select name="humain" id="id_humain">
+  <option value="Oui">Oui</option>
+
+  <option value="Non" selected>Non</option>
+
+</select>
+
+
+
+                                </div>
+
+                            </div>
+
+                            <div class="form-row field-nb_humains_total">
+
+
+                                <div>
+
+
+                                    <label class="required" for="id_nb_humains_total">Sté.39.1 Nombre d&#39;humains total :</label>
+
+                                    <input type="number" name="nb_humains_total" value="0" id="id_nb_humains_total" required class="vIntegerField" min="0" />
+
+
+
+                                </div>
+
+                            </div>
+
+                            <div class="form-row field-nb_hommes">
+
+
+                                <div>
+
+
+                                    <label class="required" for="id_nb_hommes">Sté.39.1 Nombre d&#39;hommes :</label>
+
+                                    <input type="number" name="nb_hommes" value="0" id="id_nb_hommes" required class="vIntegerField" min="0" />
+
+
+
+                                </div>
+
+                            </div>
+
+                            <div class="form-row field-nb_femmes">
+
+
+                                <div>
+
+
+                                    <label class="required" for="id_nb_femmes">Sté.39.1 Nombre de femmes :</label>
+
+                                    <input type="number" name="nb_femmes" value="0" id="id_nb_femmes" required class="vIntegerField" min="0" />
+
+
+
+                                </div>
+
+                            </div>
+
+                            <div class="form-row field-nb_humains_indetermines">
+
+
+                                <div>
+
+
+                                    <label class="required" for="id_nb_humains_indetermines">Sté.39.1 Nombre d&#39;humains au genre indéterminé :</label>
+
+                                    <input type="number" name="nb_humains_indetermines" value="0" id="id_nb_humains_indetermines" required class="vIntegerField" min="0" />
+
+
+
+                                </div>
+
+                            </div>
+
+                            <div class="form-row field-role_humain_femme">
+
+
+                                <div>
+
+
+                                    <label class="required" for="id_role_humain_femme">Sté.39.2 Rôle des femmes :</label>
+
+                                    <div class="related-widget-wrapper">
+                                        <select name="role_humain_femme" multiple="multiple" data-is-stacked="0" data-field-name="Sté.39.2 Rôle des femmes" required class="selectfilter" id="id_role_humain_femme">
+  <option value="1">Pas de femmes</option>
+
+  <option value="2">Directrice artistique</option>
+
+  <option value="3">Soliste</option>
+
+  <option value="4">Chanteuse</option>
+
+  <option value="5">Choriste</option>
+
+  <option value="6">Instrumentiste</option>
+
+  <option value="7">Cheffe</option>
+
+  <option value="8">Cheffe assistante</option>
+
+  <option value="9">Membre du public</option>
+
+  <option value="10">Narratrice</option>
+
+  <option value="11">Médiatrice culturel</option>
+
+  <option value="12">Élève / étudiante</option>
+
+  <option value="13">Exerce un métier lié à l&#39;opéra (costumier, maquilleur, etc)</option>
+
+  <option value="14">Rôle secondaire</option>
+
+  <option value="15">Membre d&#39;une famille</option>
+
+  <option value="16">Femme de... épouse de...</option>
+
+  <option value="17">Rôle tiré de l&#39;oeuvre</option>
+
+  <option value="18">Écrivain</option>
+
+  <option value="19">Danseuse</option>
+
+</select>
+
+                                        <a class="related-widget-wrapper-link add-related" id="add_id_role_humain_femme" href="/admin/bdmultimedia/rolefemmes/add/?_to_field=id&amp;_popup=1" title="Ajouter un autre objet Role des femme"><img src="/static/admin/img/icon-addlink.svg" alt="Ajouter"/></a>
+
+                                    </div>
+
+
+
+                                    <div class="help">Maintenez appuyé « Ctrl », ou « Commande (touche pomme) » sur un Mac, pour en sélectionner plusieurs.</div>
+
+                                </div>
+
+                            </div>
+
+                            <div class="form-row field-role_humain_homme">
+
+
+                                <div>
+
+
+                                    <label class="required" for="id_role_humain_homme">Sté.39.3 Rôle des hommes :</label>
+
+                                    <div class="related-widget-wrapper">
+                                        <select name="role_humain_homme" multiple="multiple" data-is-stacked="0" data-field-name="Sté.39.3 Rôle des hommes" required class="selectfilter" id="id_role_humain_homme">
+  <option value="1">Pas d&#39;homme</option>
+
+  <option value="2">Directeur artistique</option>
+
+  <option value="3">Soliste</option>
+
+  <option value="4">Chanteur</option>
+
+  <option value="5">Choriste</option>
+
+  <option value="6">Instrumentiste</option>
+
+  <option value="7">Chef</option>
+
+  <option value="8">Chef assistant</option>
+
+  <option value="9">Membre du public</option>
+
+  <option value="10">Narrateur</option>
+
+  <option value="11">Médiateur culturel</option>
+
+  <option value="12">Élève / étudiant</option>
+
+  <option value="13">Exerce un métier lié à l&#39;opéra (costumier, maquilleur, etc)</option>
+
+  <option value="14">Rôle secondaire</option>
+
+  <option value="15">Membre d&#39;une famille</option>
+
+  <option value="16">Époux de... conjoint de...</option>
+
+  <option value="17">Rôle tiré de l&#39;oeuvre</option>
+
+  <option value="18">Animateur</option>
+
+  <option value="19">Compositeur</option>
+
+  <option value="20">Écrivain</option>
+
+  <option value="21">Librettiste</option>
+
+  <option value="22">Musicologue</option>
+
+  <option value="23">Danseur</option>
+
+  <option value="24">Ingénieur du son</option>
+
+</select>
+
+                                        <a class="related-widget-wrapper-link add-related" id="add_id_role_humain_homme" href="/admin/bdmultimedia/rolehomme/add/?_to_field=id&amp;_popup=1" title="Ajouter un autre objet Role des homme"><img src="/static/admin/img/icon-addlink.svg" alt="Ajouter"/></a>
+
+                                    </div>
+
+
+
+                                    <div class="help">Maintenez appuyé « Ctrl », ou « Commande (touche pomme) » sur un Mac, pour en sélectionner plusieurs.</div>
+
+                                </div>
+
+                            </div>
+
+                            <div class="form-row field-role_humain_neutre">
+
+
+                                <div>
+
+
+                                    <label class="required" for="id_role_humain_neutre">Sté.39.4 Rôle des indeterminés :</label>
+
+                                    <div class="related-widget-wrapper">
+                                        <select name="role_humain_neutre" multiple="multiple" data-is-stacked="0" data-field-name="Sté.39.4 Rôle des indeterminés" required class="selectfilter" id="id_role_humain_neutre">
+  <option value="1">Pas d&#39;indéterminé</option>
+
+  <option value="2">Directrice/teur artistique</option>
+
+  <option value="3">Soliste</option>
+
+  <option value="4">Chanteur/euse</option>
+
+  <option value="5">Choriste</option>
+
+  <option value="6">Instrumentiste</option>
+
+  <option value="7">Chef/fe</option>
+
+  <option value="8">Chef/fe assistant/e</option>
+
+  <option value="9">Membre du public</option>
+
+  <option value="10">Narrateur/trice</option>
+
+  <option value="11">Médiateur/trice culturel</option>
+
+  <option value="12">Élève / étudiant/e</option>
+
+  <option value="13">Exerce un métier lié à l&#39;opéra (costumier, maquilleur, etc)</option>
+
+  <option value="14">Rôle secondaire</option>
+
+  <option value="15">Membre d&#39;une famille</option>
+
+  <option value="16">Rôle tiré de l&#39;oeuvre</option>
+
+</select>
+
+                                        <a class="related-widget-wrapper-link add-related" id="add_id_role_humain_neutre" href="/admin/bdmultimedia/rolehumainneutre/add/?_to_field=id&amp;_popup=1" title="Ajouter un autre objet Role des humain indéterminé"><img src="/static/admin/img/icon-addlink.svg" alt="Ajouter"/></a>
+
+                                    </div>
+
+
+
+                                    <div class="help">Maintenez appuyé « Ctrl », ou « Commande (touche pomme) » sur un Mac, pour en sélectionner plusieurs.</div>
+
+                                </div>
+
+                            </div>
+
+                            <div class="form-row field-pers_anime">
+
+
+                                <div>
+
+
+                                    <label class="required" for="id_pers_anime">Sté.40 Y-a-t-il des personnages animés?</label>
+
+                                    <select name="pers_anime" id="id_pers_anime">
+  <option value="Oui">Oui</option>
+
+  <option value="Non" selected>Non</option>
+
+</select>
+
+
+
+                                </div>
+
+                            </div>
+
+                            <div class="form-row field-nb_pers_anime_total">
+
+
+                                <div>
+
+
+                                    <label class="required" for="id_nb_pers_anime_total">Sté.40.1 Nombre de personnages animés total :</label>
+
+                                    <input type="number" name="nb_pers_anime_total" value="0" id="id_nb_pers_anime_total" required class="vIntegerField" min="0" />
+
+
+
+                                </div>
+
+                            </div>
+
+                            <div class="form-row field-nb_pers_anime_hommes">
+
+
+                                <div>
+
+
+                                    <label class="required" for="id_nb_pers_anime_hommes">Sté.40.1 Nombre de personnages animés hommes :</label>
+
+                                    <input type="number" name="nb_pers_anime_hommes" value="0" id="id_nb_pers_anime_hommes" required class="vIntegerField" min="0" />
+
+
+
+                                </div>
+
+                            </div>
+
+                            <div class="form-row field-nb_pers_anime_femmes">
+
+
+                                <div>
+
+
+                                    <label class="required" for="id_nb_pers_anime_femmes">Sté.40.1 Nombre de personnages animés femmes :</label>
+
+                                    <input type="number" name="nb_pers_anime_femmes" value="0" id="id_nb_pers_anime_femmes" required class="vIntegerField" min="0" />
+
+
+
+                                </div>
+
+                            </div>
+
+                            <div class="form-row field-nb_pers_anime_indetermines">
+
+
+                                <div>
+
+
+                                    <label class="required" for="id_nb_pers_anime_indetermines">Sté.40.1 Nombre de personnages animés au genre indéterminé :</label>
+
+                                    <input type="number" name="nb_pers_anime_indetermines" value="0" id="id_nb_pers_anime_indetermines" required class="vIntegerField" min="0" />
+
+
+
+                                </div>
+
+                            </div>
+
+                            <div class="form-row field-role_pers_anime_femme">
+
+
+                                <div>
+
+
+                                    <label class="required" for="id_role_pers_anime_femme">Sté.40.3 Rôle des personnages animés féminins :</label>
+
+                                    <div class="related-widget-wrapper">
+                                        <select name="role_pers_anime_femme" multiple="multiple" data-is-stacked="0" data-field-name="Sté.40.3 Rôle des personnages animés féminins" required class="selectfilter" id="id_role_pers_anime_femme">
+  <option value="1">Pas de femmes</option>
+
+  <option value="2">Directrice artistique</option>
+
+  <option value="3">Soliste</option>
+
+  <option value="4">Chanteuse</option>
+
+  <option value="5">Choriste</option>
+
+  <option value="6">Instrumentiste</option>
+
+  <option value="7">Cheffe</option>
+
+  <option value="8">Cheffe assistante</option>
+
+  <option value="9">Membre du public</option>
+
+  <option value="10">Narratrice</option>
+
+  <option value="11">Médiatrice culturel</option>
+
+  <option value="12">Élève / étudiante</option>
+
+  <option value="13">Exerce un métier lié à l&#39;opéra (costumier, maquilleur, etc)</option>
+
+  <option value="14">Rôle secondaire</option>
+
+  <option value="15">Membre d&#39;une famille</option>
+
+  <option value="16">Femme de... épouse de...</option>
+
+  <option value="17">Rôle tiré de l&#39;oeuvre</option>
+
+  <option value="18">Compositrice</option>
+
+</select>
+
+                                        <a class="related-widget-wrapper-link add-related" id="add_id_role_pers_anime_femme" href="/admin/bdmultimedia/rolepersanimfemmes/add/?_to_field=id&amp;_popup=1" title="Ajouter un autre objet Role des personnages animés femme"><img src="/static/admin/img/icon-addlink.svg" alt="Ajouter"/></a>
+
+                                    </div>
+
+
+
+                                    <div class="help">Maintenez appuyé « Ctrl », ou « Commande (touche pomme) » sur un Mac, pour en sélectionner plusieurs.</div>
+
+                                </div>
+
+                            </div>
+
+                            <div class="form-row field-role_pers_anime_homme">
+
+
+                                <div>
+
+
+                                    <label class="required" for="id_role_pers_anime_homme">Sté.40.2 Rôle des personnages animés masculins :</label>
+
+                                    <div class="related-widget-wrapper">
+                                        <select name="role_pers_anime_homme" multiple="multiple" data-is-stacked="0" data-field-name="Sté.40.2 Rôle des personnages animés masculins" required class="selectfilter" id="id_role_pers_anime_homme">
+  <option value="1">Pas d&#39;homme</option>
+
+  <option value="2">Directeur artistique</option>
+
+  <option value="3">Soliste</option>
+
+  <option value="4">Chanteur</option>
+
+  <option value="5">Choriste</option>
+
+  <option value="6">Instrumentiste</option>
+
+  <option value="7">Chef</option>
+
+  <option value="8">Chef assistant</option>
+
+  <option value="9">Membre du public</option>
+
+  <option value="10">Narrateur</option>
+
+  <option value="11">Médiateur culturel</option>
+
+  <option value="12">Élève / étudiant</option>
+
+  <option value="13">Exerce un métier lié à l&#39;opéra (costumier, maquilleur, etc)</option>
+
+  <option value="14">Rôle secondaire</option>
+
+  <option value="15">Membre d&#39;une famille</option>
+
+  <option value="16">Époux de... conjoint de...</option>
+
+  <option value="17">Rôle tiré de l&#39;oeuvre</option>
+
+  <option value="18">Chorégraphe</option>
+
+  <option value="19">Compositeur</option>
+
+</select>
+
+                                        <a class="related-widget-wrapper-link add-related" id="add_id_role_pers_anime_homme" href="/admin/bdmultimedia/rolepersanimhomme/add/?_to_field=id&amp;_popup=1" title="Ajouter un autre objet Role des personnages animés homme"><img src="/static/admin/img/icon-addlink.svg" alt="Ajouter"/></a>
+
+                                    </div>
+
+
+
+                                    <div class="help">Maintenez appuyé « Ctrl », ou « Commande (touche pomme) » sur un Mac, pour en sélectionner plusieurs.</div>
+
+                                </div>
+
+                            </div>
+
+                            <div class="form-row field-role_pers_anime_neutre">
+
+
+                                <div>
+
+
+                                    <label class="required" for="id_role_pers_anime_neutre">Sté.40.4 Rôle des personnages animés indéterminés :</label>
+
+                                    <div class="related-widget-wrapper">
+                                        <select name="role_pers_anime_neutre" multiple="multiple" data-is-stacked="0" data-field-name="Sté.40.4 Rôle des personnages animés indéterminés" required class="selectfilter" id="id_role_pers_anime_neutre">
+  <option value="1">Pas d&#39;indéterminé</option>
+
+  <option value="2">Directrice/teur artistique</option>
+
+  <option value="3">Soliste</option>
+
+  <option value="4">Chanteur/euse</option>
+
+  <option value="5">Choriste</option>
+
+  <option value="6">Instrumentiste</option>
+
+  <option value="7">Chef/fe</option>
+
+  <option value="8">Chef/fe assistant/e</option>
+
+  <option value="9">Membre du public</option>
+
+  <option value="10">Narrateur/trice</option>
+
+  <option value="11">Médiateur/trice culturel</option>
+
+  <option value="12">Élève / étudiant/e</option>
+
+  <option value="13">Exerce un métier lié à l&#39;opéra (costumier, maquilleur, etc)</option>
+
+  <option value="14">Rôle secondaire</option>
+
+  <option value="15">Membre d&#39;une famille</option>
+
+  <option value="16">Rôle tiré de l&#39;oeuvre</option>
+
+</select>
+
+                                        <a class="related-widget-wrapper-link add-related" id="add_id_role_pers_anime_neutre" href="/admin/bdmultimedia/rolepersanimneutre/add/?_to_field=id&amp;_popup=1" title="Ajouter un autre objet Role des personnages animés indéterminé"><img src="/static/admin/img/icon-addlink.svg" alt="Ajouter"/></a>
+
+                                    </div>
+
+
+
+                                    <div class="help">Maintenez appuyé « Ctrl », ou « Commande (touche pomme) » sur un Mac, pour en sélectionner plusieurs.</div>
+
+                                </div>
+
+                            </div>
+
+                            <div class="form-row field-animaux">
+
+
+                                <div>
+
+
+                                    <label class="required" for="id_animaux">Sté.41 Y-a-t-il des animaux?</label>
+
+                                    <select name="animaux" id="id_animaux">
+  <option value="Oui">Oui</option>
+
+  <option value="Non" selected>Non</option>
+
+</select>
+
+
+
+                                </div>
+
+                            </div>
+
+                            <div class="form-row field-nb_animaux_total">
+
+
+                                <div>
+
+
+                                    <label class="required" for="id_nb_animaux_total">Sté.41.1 Nombre d&#39;animaux total :</label>
+
+                                    <input type="number" name="nb_animaux_total" value="0" id="id_nb_animaux_total" required class="vIntegerField" min="0" />
+
+
+
+                                </div>
+
+                            </div>
+
+                            <div class="form-row field-nb_males">
+
+
+                                <div>
+
+
+                                    <label class="required" for="id_nb_males">Sté.41.1 Nombre de mâles :</label>
+
+                                    <input type="number" name="nb_males" value="0" id="id_nb_males" required class="vIntegerField" min="0" />
+
+
+
+                                </div>
+
+                            </div>
+
+                            <div class="form-row field-nb_femelles">
+
+
+                                <div>
+
+
+                                    <label class="required" for="id_nb_femelles">Sté.41.1 Nombre de femelles :</label>
+
+                                    <input type="number" name="nb_femelles" value="0" id="id_nb_femelles" required class="vIntegerField" min="0" />
+
+
+
+                                </div>
+
+                            </div>
+
+                            <div class="form-row field-nb_animaux_indetermines">
+
+
+                                <div>
+
+
+                                    <label class="required" for="id_nb_animaux_indetermines">Sté.41.1 Nombre d&#39;animaux au genre indéterminé :</label>
+
+                                    <input type="number" name="nb_animaux_indetermines" value="0" id="id_nb_animaux_indetermines" required class="vIntegerField" min="0" />
+
+
+
+                                </div>
+
+                            </div>
+
+                            <div class="form-row field-role_animaux_femme">
+
+
+                                <div>
+
+
+                                    <label class="required" for="id_role_animaux_femme">Sté.41.3 Rôle des animaux femelles :</label>
+
+                                    <div class="related-widget-wrapper">
+                                        <select name="role_animaux_femme" multiple="multiple" data-is-stacked="0" data-field-name="Sté.41.3 Rôle des animaux femelles" required class="selectfilter" id="id_role_animaux_femme">
+  <option value="1">Pas de femelles</option>
+
+  <option value="2">Directrice artistique</option>
+
+  <option value="3">Soliste</option>
+
+  <option value="4">Chanteuse</option>
+
+  <option value="5">Choriste</option>
+
+  <option value="6">Instrumentiste</option>
+
+  <option value="7">Cheffe</option>
+
+  <option value="8">Cheffe assistante</option>
+
+  <option value="9">Membre du public</option>
+
+  <option value="10">Narratrice</option>
+
+  <option value="11">Médiatrice culturel</option>
+
+  <option value="12">Élève / étudiante</option>
+
+  <option value="13">Exerce un métier lié à l&#39;opéra (costumier, maquilleur, etc)</option>
+
+  <option value="14">Rôle secondaire</option>
+
+  <option value="15">Membre d&#39;une famille</option>
+
+  <option value="16">Femme de... épouse de...</option>
+
+  <option value="17">Rôle tiré de l&#39;oeuvre</option>
+
+</select>
+
+                                        <a class="related-widget-wrapper-link add-related" id="add_id_role_animaux_femme" href="/admin/bdmultimedia/roleanimauxfemmes/add/?_to_field=id&amp;_popup=1" title="Ajouter un autre objet Role des femelle"><img src="/static/admin/img/icon-addlink.svg" alt="Ajouter"/></a>
+
+                                    </div>
+
+
+
+                                    <div class="help">Maintenez appuyé « Ctrl », ou « Commande (touche pomme) » sur un Mac, pour en sélectionner plusieurs.</div>
+
+                                </div>
+
+                            </div>
+
+                            <div class="form-row field-role_animaux_homme">
+
+
+                                <div>
+
+
+                                    <label class="required" for="id_role_animaux_homme">Sté.41.2 Rôle des animaux mâles :</label>
+
+                                    <div class="related-widget-wrapper">
+                                        <select name="role_animaux_homme" multiple="multiple" data-is-stacked="0" data-field-name="Sté.41.2 Rôle des animaux mâles" required class="selectfilter" id="id_role_animaux_homme">
+  <option value="1">Pas de mâles</option>
+
+  <option value="2">Directeur artistique</option>
+
+  <option value="3">Soliste</option>
+
+  <option value="4">Chanteur</option>
+
+  <option value="5">Choriste</option>
+
+  <option value="6">Instrumentiste</option>
+
+  <option value="7">Chef</option>
+
+  <option value="8">Chef assistant</option>
+
+  <option value="9">Membre du public</option>
+
+  <option value="10">Narrateur</option>
+
+  <option value="11">Médiateur culturel</option>
+
+  <option value="12">Élève / étudiant</option>
+
+  <option value="13">Exerce un métier lié à l&#39;opéra (costumier, maquilleur, etc)</option>
+
+  <option value="14">Rôle secondaire</option>
+
+  <option value="15">Membre d&#39;une famille</option>
+
+  <option value="16">Époux de... conjoint de...</option>
+
+  <option value="17">Rôle tiré de l&#39;oeuvre</option>
+
+</select>
+
+                                        <a class="related-widget-wrapper-link add-related" id="add_id_role_animaux_homme" href="/admin/bdmultimedia/roleanimauxhomme/add/?_to_field=id&amp;_popup=1" title="Ajouter un autre objet Role des male"><img src="/static/admin/img/icon-addlink.svg" alt="Ajouter"/></a>
+
+                                    </div>
+
+
+
+                                    <div class="help">Maintenez appuyé « Ctrl », ou « Commande (touche pomme) » sur un Mac, pour en sélectionner plusieurs.</div>
+
+                                </div>
+
+                            </div>
+
+                            <div class="form-row field-role_animaux_neutre">
+
+
+                                <div>
+
+
+                                    <label class="required" for="id_role_animaux_neutre">Sté.41.4 Rôle des animaux indéterminés :</label>
+
+                                    <div class="related-widget-wrapper">
+                                        <select name="role_animaux_neutre" multiple="multiple" data-is-stacked="0" data-field-name="Sté.41.4 Rôle des animaux indéterminés" required class="selectfilter" id="id_role_animaux_neutre">
+  <option value="1">Pas d&#39;indéterminé</option>
+
+  <option value="2">Directrice/teur artistique</option>
+
+  <option value="3">Soliste</option>
+
+  <option value="4">Chanteur/euse</option>
+
+  <option value="5">Choriste</option>
+
+  <option value="6">Instrumentiste</option>
+
+  <option value="7">Chef/fe</option>
+
+  <option value="8">Chef/fe assistant/e</option>
+
+  <option value="9">Membre du public</option>
+
+  <option value="10">Narrateur/trice</option>
+
+  <option value="11">Élève / étudiant/e</option>
+
+  <option value="12">Exerce un métier lié à l&#39;opéra (costumier, maquilleur, etc)</option>
+
+  <option value="13">Rôle secondaire</option>
+
+  <option value="14">Membre d&#39;une famille</option>
+
+  <option value="15">Rôle tiré de l&#39;oeuvre</option>
+
+</select>
+
+                                        <a class="related-widget-wrapper-link add-related" id="add_id_role_animaux_neutre" href="/admin/bdmultimedia/roleanimauxneutre/add/?_to_field=id&amp;_popup=1" title="Ajouter un autre objet Role des animaux indéterminé"><img src="/static/admin/img/icon-addlink.svg" alt="Ajouter"/></a>
+
+                                    </div>
+
+
+
+                                    <div class="help">Maintenez appuyé « Ctrl », ou « Commande (touche pomme) » sur un Mac, pour en sélectionner plusieurs.</div>
+
+                                </div>
+
+                            </div>
+
+                            <div class="form-row field-instr_anime">
+
+
+                                <div>
+
+
+                                    <label class="required" for="id_instr_anime">Sté.42 Y-a-t-il des instruments animés :</label>
+
+                                    <select name="instr_anime" id="id_instr_anime">
+  <option value="Oui">Oui</option>
+
+  <option value="Non" selected>Non</option>
+
+</select>
+
+
+
+                                </div>
+
+                            </div>
+
+                            <div class="form-row field-nb_instr_anime_total">
+
+
+                                <div>
+
+
+                                    <label class="required" for="id_nb_instr_anime_total">Sté.42.1 Nombre d&#39;instruments animés total :</label>
+
+                                    <input type="number" name="nb_instr_anime_total" value="0" id="id_nb_instr_anime_total" required class="vIntegerField" min="0" />
+
+
+
+                                </div>
+
+                            </div>
+
+                            <div class="form-row field-nb_instr_anime_hommes">
+
+
+                                <div>
+
+
+                                    <label class="required" for="id_nb_instr_anime_hommes">Sté.42.1 Nombre d&#39;instruments animés masculins :</label>
+
+                                    <input type="number" name="nb_instr_anime_hommes" value="0" id="id_nb_instr_anime_hommes" required class="vIntegerField" min="0" />
+
+
+
+                                </div>
+
+                            </div>
+
+                            <div class="form-row field-nb_instr_anime_femmes">
+
+
+                                <div>
+
+
+                                    <label class="required" for="id_nb_instr_anime_femmes">Sté.42.1 Nombre d&#39;instruments animés féminins :</label>
+
+                                    <input type="number" name="nb_instr_anime_femmes" value="0" id="id_nb_instr_anime_femmes" required class="vIntegerField" min="0" />
+
+
+
+                                </div>
+
+                            </div>
+
+                            <div class="form-row field-nb_instr_anime_indetermines">
+
+
+                                <div>
+
+
+                                    <label class="required" for="id_nb_instr_anime_indetermines">Sté.42.1 Nombre d&#39;instruments animés au genre indéterminé :</label>
+
+                                    <input type="number" name="nb_instr_anime_indetermines" value="0" id="id_nb_instr_anime_indetermines" required class="vIntegerField" min="0" />
+
+
+
+                                </div>
+
+                            </div>
+
+                            <div class="form-row field-role_instr_anime_femme">
+
+
+                                <div>
+
+
+                                    <label class="required" for="id_role_instr_anime_femme">Sté.42.3 Rôle des instruments anthropomorphes féminins :</label>
+
+                                    <div class="related-widget-wrapper">
+                                        <select name="role_instr_anime_femme" multiple="multiple" data-is-stacked="0" data-field-name="Sté.42.3 Rôle des instruments anthropomorphes féminins" required class="selectfilter" id="id_role_instr_anime_femme">
+  <option value="1">Pas de femmes</option>
+
+  <option value="2">Directrice artistique</option>
+
+  <option value="3">Soliste</option>
+
+  <option value="4">Chanteuse</option>
+
+  <option value="5">Choriste</option>
+
+  <option value="6">Instrumentiste</option>
+
+  <option value="7">Cheffe</option>
+
+  <option value="8">Cheffe assistante</option>
+
+  <option value="9">Membre du public</option>
+
+  <option value="10">Narratrice</option>
+
+  <option value="11">Médiatrice culturel</option>
+
+  <option value="12">Élève / étudiante</option>
+
+  <option value="13">Exerce un métier lié à l&#39;opéra (costumier, maquilleur, etc)</option>
+
+  <option value="14">Rôle secondaire</option>
+
+  <option value="15">Membre d&#39;une famille</option>
+
+  <option value="16">Femme de... épouse de...</option>
+
+  <option value="17">Rôle tiré de l&#39;oeuvre</option>
+
+</select>
+
+                                        <a class="related-widget-wrapper-link add-related" id="add_id_role_instr_anime_femme" href="/admin/bdmultimedia/roleinstrfemmes/add/?_to_field=id&amp;_popup=1" title="Ajouter un autre objet Role des instruments femme"><img src="/static/admin/img/icon-addlink.svg" alt="Ajouter"/></a>
+
+                                    </div>
+
+
+
+                                    <div class="help">Maintenez appuyé « Ctrl », ou « Commande (touche pomme) » sur un Mac, pour en sélectionner plusieurs.</div>
+
+                                </div>
+
+                            </div>
+
+                            <div class="form-row field-role_instr_anime_homme">
+
+
+                                <div>
+
+
+                                    <label class="required" for="id_role_instr_anime_homme">Sté.42.2 Rôle des instruments anthropomorphes masculins :</label>
+
+                                    <div class="related-widget-wrapper">
+                                        <select name="role_instr_anime_homme" multiple="multiple" data-is-stacked="0" data-field-name="Sté.42.2 Rôle des instruments anthropomorphes masculins" required class="selectfilter" id="id_role_instr_anime_homme">
+  <option value="1">Pas d&#39;homme</option>
+
+  <option value="2">Directeur artistique</option>
+
+  <option value="3">Soliste</option>
+
+  <option value="4">Chanteur</option>
+
+  <option value="5">Choriste</option>
+
+  <option value="6">Instrumentiste</option>
+
+  <option value="7">Chef</option>
+
+  <option value="8">Chef assistant</option>
+
+  <option value="9">Membre du public</option>
+
+  <option value="10">Narrateur</option>
+
+  <option value="11">Médiateur culturel</option>
+
+  <option value="12">Élève / étudiant</option>
+
+  <option value="13">Exerce un métier lié à l&#39;opéra (costumier, maquilleur, etc)</option>
+
+  <option value="14">Rôle secondaire</option>
+
+  <option value="15">Membre d&#39;une famille</option>
+
+  <option value="16">Époux de... conjoint de...</option>
+
+  <option value="17">Rôle tiré de l&#39;oeuvre</option>
+
+</select>
+
+                                        <a class="related-widget-wrapper-link add-related" id="add_id_role_instr_anime_homme" href="/admin/bdmultimedia/roleinstrhomme/add/?_to_field=id&amp;_popup=1" title="Ajouter un autre objet Role des instruments homme"><img src="/static/admin/img/icon-addlink.svg" alt="Ajouter"/></a>
+
+                                    </div>
+
+
+
+                                    <div class="help">Maintenez appuyé « Ctrl », ou « Commande (touche pomme) » sur un Mac, pour en sélectionner plusieurs.</div>
+
+                                </div>
+
+                            </div>
+
+                            <div class="form-row field-role_instr_anime_neutre">
+
+
+                                <div>
+
+
+                                    <label class="required" for="id_role_instr_anime_neutre">Sté.42.4 Rôle des instruments anthropomorphes neutres :</label>
+
+                                    <div class="related-widget-wrapper">
+                                        <select name="role_instr_anime_neutre" multiple="multiple" data-is-stacked="0" data-field-name="Sté.42.4 Rôle des instruments anthropomorphes neutres" required class="selectfilter" id="id_role_instr_anime_neutre">
+  <option value="1">Pas d&#39;indéterminé</option>
+
+  <option value="2">Directrice/teur artistique</option>
+
+  <option value="3">Soliste</option>
+
+  <option value="4">Chanteur/euse</option>
+
+  <option value="5">Choriste</option>
+
+  <option value="6">Instrumentiste</option>
+
+  <option value="7">Chef/fe</option>
+
+  <option value="8">Chef/fe assistant/e</option>
+
+  <option value="9">Membre du public</option>
+
+  <option value="10">Narrateur/trice</option>
+
+  <option value="11">Élève / étudiant/e</option>
+
+  <option value="12">Exerce un métier lié à l&#39;opéra (costumier, maquilleur, etc)</option>
+
+  <option value="13">Rôle secondaire</option>
+
+  <option value="14">Membre d&#39;une famille</option>
+
+  <option value="15">Rôle tiré de l&#39;oeuvre</option>
+
+</select>
+
+                                        <a class="related-widget-wrapper-link add-related" id="add_id_role_instr_anime_neutre" href="/admin/bdmultimedia/roleinstrneutre/add/?_to_field=id&amp;_popup=1" title="Ajouter un autre objet Role des instruments indéterminé"><img src="/static/admin/img/icon-addlink.svg" alt="Ajouter"/></a>
+
+                                    </div>
+
+
+
+                                    <div class="help">Maintenez appuyé « Ctrl », ou « Commande (touche pomme) » sur un Mac, pour en sélectionner plusieurs.</div>
+
+                                </div>
+
+                            </div>
+
+                            <div class="form-row field-utilisateur">
+
+
+                                <div>
+
+
+                                    <label class="required" for="id_utilisateur">Utilisateur :</label>
+
+                                    <div class="related-widget-wrapper">
+                                        <select name="utilisateur" required id="id_utilisateur">
+  <option value="1" selected>Charles</option>
+
+  <option value="3">Heloise</option>
+
+  <option value="2">Irina</option>
+
+  <option value="5">Martine</option>
+
+  <option value="4">Michel</option>
+
+</select>
+
+                                        <a class="related-widget-wrapper-link change-related" id="change_id_utilisateur" data-href-template="/admin/auth/user/__fk__/change/?_to_field=id&amp;_popup=1" title="Modifier l'objet utilisateur sélectionné"><img src="/static/admin/img/icon-changelink.svg" alt="Modifier"/></a><a class="related-widget-wrapper-link add-related" id="add_id_utilisateur" href="/admin/auth/user/add/?_to_field=id&amp;_popup=1" title="Ajouter un autre objet utilisateur"><img src="/static/admin/img/icon-addlink.svg" alt="Ajouter"/></a>
+
+                                    </div><input type="hidden" name="initial-utilisateur" value="1" id="initial-id_utilisateur" />
+
+
+
+                                </div>
+
+                            </div>
+
+                        </fieldset>
+
+
+
+
+
+
+
+
+
+
+                        <div class="submit-row">
+                            <input type="submit" value="Enregistrer" class="default" name="_save" />
+
+
+
+
+                        </div>
+
+
+
+                        <script type="text/javascript" id="django-admin-form-add-constants" src="/static/admin/js/change_form.js" data-model-name="outil">
+
+
+                        </script>
+
+
+
+
+                        <script type="text/javascript" id="django-admin-prepopulated-fields-constants" src="/static/admin/js/prepopulate_init.js" data-prepopulated-fields="[]">
+
+
+                        </script>
+
+
+                    </div>
+                </form>
+            </div>
+
+
+            <br class="clear" />
+        </div>
+        <!-- END Content -->
+
+        <div id="footer"></div>
+    </div>
+    <!-- END Container -->
+
+</body>
+
+</html>

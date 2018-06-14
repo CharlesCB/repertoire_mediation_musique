@@ -46,3 +46,7 @@ section{
 small{
     color: darkgray;
 }
+
+iframe{
+    border : none;
+}

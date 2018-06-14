@@ -26,19 +26,22 @@ urlpatterns = [
     url(r'^(?P<pk>[0-9]+)/$', views.DetailView.as_view(), name='detail'),
     url(r'^(?P<pk>[0-9]+)/update/$', views.UpdateForm.as_view(), name='update'),
     url(r'^(?P<pk>[0-9]+)/delete/$', views.DeleteForm.as_view()),
-
+    url(r'^create/$', views.CreateForm.as_view(),name = 'create'),
     url(r'^delete/(?P<pk>\d+)/$', views.OutilDelete.as_view(), name="delete_outil"),
-
     url('^login/$', auth_views.LoginView.as_view(), name = 'login'),
     url('^logout/$', auth_views.LogoutView.as_view(), {'next_page': '/'}, name = 'logout'),
     url('^password_change/$',auth_views.PasswordChangeView.as_view(), name='password_change'),
     url('^password_change/done/$',auth_views.PasswordChangeDoneView.as_view(), name='password_change_done'),
     url(r'^list/$', views.OutilList.as_view(), name='list'),
     url(r'^result(?P<pk>[0-9]+)/$', views.ListDetailView.as_view(), name='list_detail'),
-    url(r'^search/$', views.SearchForm.as_view(), name = 'search'),
+    url(r'^recherche/$', views.SearchForm.as_view(), name = 'recherche'),
+
+    url(r'^recherche_motcle', views.SearchView.as_view(), name= 'recherche_motcle'),
+
     url(r'^export/xls/$', views.export_xls, name='exporter_xls'),
     url(r'^gerer/', views.GererView.as_view(), name = 'gerer'),
     url(r'^gerer_prodtype/$', views.GererProdType.as_view(), name='gerer_prodType'),
+    url(r'^gerer_producteurnom', views.GererProducteurNom.as_view(), name = 'gerer_producteurNom'),
     url(r'^gerer_supportdiffusion/$', views.GererSupportDiffusion.as_view(), name='gerer_supportDiffusion'),
     url(r'^gerer_formenarrative/$', views.GererFormeNarrative.as_view(), name = 'gerer_formeNarrative'),
     url(r'^gerer_formatoutil/$', views.GererFormatOutil.as_view(), name = 'gerer_formatOutil'),
@@ -54,6 +57,7 @@ urlpatterns = [
     url(r'^gerer_experiencemusicale/$',views.GererExperienceMusicale.as_view(),name='gerer_experienceMusicale'),
     url(r'^gerer_contexte/$',views.GererContexte.as_view(),name='gerer_contexte'),
     url(r'^gerer_roleevolution/$', views.GererRoleEvolution.as_view(),name='gerer_roleEvolution'),
+    url(r'^gerer_organologie/$', views.GererOrganologie.as_view(),name='gerer_organologie'),
     url(r'^gerer_sollicitationmusicale/$', views.GererSollicitationMusicale.as_view(),name='gerer_sollicitationMusicale'),
     url(r'^gerer_sollicitationgenerale/$', views.GererSollicitationGenerale.as_view(),name='gerer_sollicitationGenerale'),
     url(r'^gerer_evocationgraphique/$', views.GererEvocationGraphique.as_view(), name='gerer_evocationGraphique'),

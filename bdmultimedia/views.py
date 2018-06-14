@@ -77,7 +77,7 @@ class ListDetailView(generic.DetailView):
 class OutilList(generic.View):
     def get(self, request):
 
-        data = OutilFilter(self.request.GET, queryset = Outil.objects.all().order_by('duree').reverse())
+        data = OutilFilter(self.request.GET, queryset = Outil.objects.all().order_by('titre'))
         data_total = data.qs.count()
         all_main_registers = OutilFilter(self.request.GET, queryset=Outil.objects.all().order_by('titre'))
 
@@ -101,6 +101,29 @@ class SearchForm(generic.View):
         pass
 
 
+class SearchView(generic.ListView):
+    template_name = 'recherche_motcle.html'
+    count = 0
+
+    def get_context_data(self, *args, **kwargs):
+        context = super(SearchView,self).get_context_data(*args, **kwargs)
+        context['count'] = self.count or 0
+        context['query'] = self.request.GET.get('q')
+        return context
+
+    def get_queryset(self):
+        request = self.request
+        query = request.GET.get('q', None)
+
+        if query is not None:
+            results = Outil.objects.search(query=query).order_by('titre')
+
+            qs = list(results)
+            self.count = len(qs)
+            return results
+        return Outil.objects.none() # just an empty queryset as default
+
+
 class GererView(generic.ListView):
     template_name = 'gerer.html'
 
@@ -116,6 +139,16 @@ class GererProdType(generic.ListView):
 
     def get_queryset(self):
         return GererProdType.liste
+
+
+class GererProducteurNom(generic.ListView):
+    model = ProducteurNom
+    template_name = 'gerer_producteurNom.html'
+    context_object_name = 'all_producteurNom'
+    liste = ProducteurNom.objects.order_by('nom')
+
+    def get_queryset(self):
+        return GererProducteurNom.liste
 
 
 class GererSupportDiffusion(generic.ListView):
@@ -266,6 +299,16 @@ class GererRoleEvolution(generic.ListView):
 
     def get_queryset(self):
         return GererRoleEvolution.liste
+
+
+class GererOrganologie(generic.ListView):
+    model = Organologie
+    template_name = 'gerer_organologie.html'
+    context_object_name = 'all_organologie'
+    liste = Organologie.objects.order_by('nom')
+
+    def get_queryset(self):
+        return GererOrganologie.liste
 
 
 class GererSollicitationMusicale(generic.ListView):
@@ -453,7 +496,7 @@ def export_xls(request):
     if request.user.is_authenticated():
         response = HttpResponse(content_type='application/ms-excel')
         aujourdui = datetime.datetime.now().strftime('%d/%m/%Y')
-        nom = "[" + aujourdui + "] Catalogue raisonné dispositifs numérique.xls"
+        nom = "[" + aujourdui + "] Catalogue raisonné de dispositifs numérique.xls"
         response['Content-Disposition'] = 'attachment; filename=%s' % nom
 
         wb = xlwt.Workbook(encoding="utf-8")
@@ -468,15 +511,15 @@ def export_xls(request):
         colones = ["R.1 Titre", "R.2 Url", "R.3 Site d'hébergement", "R.3.1 Fait-il partie d'un ensemble thématique?",
                    "R.3.2 Nom de l'ensemble thématique", "R.4 Producteur", "R.5 Nom du producteur",
                    "R.6 Support de diffusion","R.7 Format", "R.8 Forme narrative", "R.9 Durée", "R.10 Nombre de pages",
-                   "R.11 Date de mise en ligne", "R.12 Date du dépouillement", "R.13 Que permet l'interface",
+                   "R.11 Date de mise en ligne", "R.12 Date du dépouillement", "R.13 Interactivite", "R.13.1 doccuments à imprimer",
                    "R.14 Personnification du service","R.15 Possibilité de laisser des commentaires", "R.16 Nombre de commentaires",
                    "S.17 Premier Onglet","S.17.1 Autre - Premier Onglet","S.18 Deuxième Onglet","S.18.1 Autre - Deuxième Onglet",
-                   "S.19 Troisième Onglet","S19.1 Autre Troisième Onglet","S.20 Mode d'hébergement","S.21 Mode de consultation",
+                   "S.19 Troisième Onglet","S19.1 Autre Troisième Onglet","S.19. 1 PLUS DE TROIS ONGLETS à ouvrir pour trouver ce dispositif ?","S.20 Mode d'hébergement","S.21 Mode de consultation",
                    "S.22 langue de la narration","S.23 Sous-titrages", "S.24.1 Accessible aux malentendants","S.24.2 Accessible aux malvoyants",
                    "M.25 Matériau musical (parle-t-on)","M.25.1 Orchestration (parle-t-on)",
-                   "M.25.2 Structure (parle-t-on)", "M.25.3 language musical (parle-t-on)","M.25.4 genre musica (parle-t-on)l", "M.25.5 style musical (parle-t-on)",
+                   "M.25.2 Structure (parle-t-on)", "M.25.3 language musical (parle-t-on)","M.25.4 genre musical (parle-t-on)l", "M.25.5 style musical (parle-t-on)",
                    "M.26 Expérience musicale (parle-t-on)", "M.27 Éléments sociocultutrels et historique (parle-t-on)", "M.27.1 Époque",
-                   "M.28 Contexte de composition, création, interprétation", "U.28 Rôle de l'évolution",
+                   "M.27.2 Contexte de composition, création, interprétation", "U.27.3 Rôle de l'évolution", "M.27.4 Organologie (parle-t-on)",
                    "U.28 Sollicitation musicale", "U.29 Sollicifation générale", "PM.30 temps de musique", "PM.31 temps de parole", "PM.32 temps musique et parole",
                    "PM.33 mise en valeur du sonore", "EM.34 évocation graphique", "EM.35 évocation plastique", "EM.36 évocation litteraire",
                    "EM.37 autre discipline évoquée", "I.38 notions communes", "I.38 expérience", "I.38 pratique", 
@@ -497,13 +540,15 @@ def export_xls(request):
 
         loftUn = list(Outil.objects.all().order_by('titre').values_list('titre','url','site','ensemble_thematique','ensemble_thematique_nom', 'producteur_type__nom'))
         loflUn = [list(elem) for elem in loftUn]
-        loftDeux = list(Outil.objects.all().order_by('titre').values_list('titre','producteur_nom','support_diffusion__nom'))
+        loftUnUn = list(Outil.objects.all().order_by('titre').values_list('titre','producteur_nom__nom'))
+        loflUnUn = [list(elem) for elem in loftUnUn]
+        loftDeux = list(Outil.objects.all().order_by('titre').values_list('titre','support_diffusion__nom'))
         loflDeux = [list(elem) for elem in loftDeux]
         loftTrois = list(Outil.objects.all().order_by('titre').values_list('titre','format__nom'))
         loflTrois = [list(elem) for elem in loftTrois]
-        loftQuatre = list(Outil.objects.all().order_by('titre').values_list('titre','forme_narrative__nom','duree','nb_pages','mise_en_ligne_date','depouillement_date','interface',
+        loftQuatre = list(Outil.objects.all().order_by('titre').values_list('titre','forme_narrative__nom','duree','nb_pages','mise_en_ligne_date','depouillement_date','interactivite','materiel_imprimer',
                                                           'personnification_service','commentaire_possible','commentaire_nombre','premier_onglet', 'prem_onglet_autre',
-                                                          'deuxieme_onglet', 'deux_onglet_autre', 'troisieme_onglet', 'trois_onglet_autre'))
+                                                          'deuxieme_onglet', 'deux_onglet_autre', 'troisieme_onglet', 'trois_onglet_autre','plus_de_tois_onglet'))
         loflQuatre = [list(elem) for elem in loftQuatre]
         loftCinq = list(Outil.objects.all().order_by('titre').values_list('titre','mode_hebergement__nom'))
         loflCinq = [list(elem) for elem in loftCinq]
@@ -529,6 +574,8 @@ def export_xls(request):
         loflQuinze = [list(elem) for elem in loftQuinze]
         loftSeize = list(Outil.objects.all().order_by('titre').values_list('titre','role_evolution__nom'))
         loflSeize = [list(elem) for elem in loftSeize]
+        loftSeizeDeux = list(Outil.objects.order_by('titre').values_list('titre','organologie__nom')) #organologie
+        loflSeizeDeux = [list(elem) for elem in loftSeizeDeux]
         loftDixSept = list(Outil.objects.all().order_by('titre').values_list('titre','sollicitation_musicale__nom'))
         loflDixSept = [list(elem) for elem in loftDixSept]
         loftDixHuit = list(Outil.objects.all().order_by('titre').values_list('titre','sollicitation_generale__nom', 'temps_mus', 'temps_par', 'temps_mus_par', 'sonore_valeur'))
@@ -587,6 +634,19 @@ def export_xls(request):
                             loflUn[loflUn.index(item)] = prem
                             del loflUn[loflUn.index(item) + 1]
 
+        # UnUn
+        for i in range(4):
+            for item in loflUnUn:
+                if loflUnUn.index(item) != len(loflUnUn) - 1:
+                    prem = loflUnUn[loflUnUn.index(item)]
+                    deux = loflUnUn[loflUnUn.index(item) + 1]
+                    if prem[0] == deux[0]:
+                        if prem[1] not in deux[1]:
+                            prem[1] += ", "
+                            prem[1] += deux[1]
+                            loflUnUn[loflUnUn.index(item)] = prem
+                            del loflUnUn[loflUnUn.index(item) + 1]
+
         # deux
         for i in range(4):
             for item in loflDeux:
@@ -594,9 +654,9 @@ def export_xls(request):
                     prem = loflDeux[loflDeux.index(item)]
                     deux = loflDeux[loflDeux.index(item) + 1]
                     if prem[0] == deux[0]:
-                        if prem[2] not in deux[2]:
-                            prem[2] += ", "
-                            prem[2] += deux[2]
+                        if prem[1] not in deux[1]:
+                            prem[1] += ", "
+                            prem[1] += deux[1]
                             loflDeux[loflDeux.index(item)] = prem
                             del loflDeux[loflDeux.index(item) + 1]
 
@@ -781,6 +841,19 @@ def export_xls(request):
                             prem[1] += Seize[1]
                             loflSeize[loflSeize.index(item)] = prem
                             del loflSeize[loflSeize.index(item) + 1]
+        
+        # seize-deux
+        for i in range(4):
+            for item in loflSeizeDeux:
+                if loflSeizeDeux.index(item) != len(loflSeizeDeux) - 1:
+                    prem = loflSeizeDeux[loflSeizeDeux.index(item)]
+                    SeizeDeux = loflSeizeDeux[loflSeizeDeux.index(item) + 1]
+                    if prem[0] == SeizeDeux[0]:
+                        if prem[1] not in SeizeDeux[1]:
+                            prem[1] += ", "
+                            prem[1] += SeizeDeux[1]
+                            loflSeizeDeux[loflSeizeDeux.index(item)] = prem
+                            del loflSeizeDeux[loflSeizeDeux.index(item) + 1]
         
         # dix-sept
         for i in range(4):
@@ -1017,6 +1090,7 @@ def export_xls(request):
                             del loflTrenteQuatre[loflTrenteQuatre.index(item) + 1]
 
         for part in range(total):
+            del loflUnUn[part][0]
             del loflDeux[part][0]
             del loflTrois[part][0]
             del loflQuatre[part][0]
@@ -1032,6 +1106,7 @@ def export_xls(request):
             del loflQuatorze[part][0]
             del loflQuinze[part][0]
             del loflSeize[part][0]
+            del loflSeizeDeux[part][0]
             del loflDixSept[part][0]
             del loflDixHuit[part][0]
             del loflDixNeuf[part][0]
@@ -1050,9 +1125,9 @@ def export_xls(request):
             del loflTrenteDeux[part][0]
             del loflTrenteTrois[part][0]
             del loflTrenteQuatre[part][0]
-            loflFin[part] = loflUn[part] + loflDeux[part] + loflTrois[part] + loflQuatre[part] + loflCinq[part] + loflSix[part] + loflSept[part] + loflHuit[part]\
+            loflFin[part] = loflUn[part] + loflUnUn[part] + loflDeux[part] + loflTrois[part] + loflQuatre[part] + loflCinq[part] + loflSix[part] + loflSept[part] + loflHuit[part]\
                             + loflNeuf[part] + loflDix[part] + loflOnze[part] + loflDouze[part] + loflTreize[part] + loflQuatorze[part] + loflQuinze[part] + \
-                            loflSeize[part] + loflDixSept[part] + loflDixHuit[part] + loflDixNeuf[part] + loflVingt[part] + loflVingtEtUn[part] + \
+                            loflSeize[part] + loflSeizeDeux[part] + loflDixSept[part] + loflDixHuit[part] + loflDixNeuf[part] + loflVingt[part] + loflVingtEtUn[part] + \
                             loflVingtDeux[part] + loflVingtTrois[part] + loflVingtQuatre[part] + loflVingtCinq[part] + loflVingtSix[part] + loflVingtSept[part] + \
                             loflVingtHuit[part] + loflVingtNeuf[part] + loflTrente[part] + loflTrenteEtUn[part] + loflTrenteDeux[part] + loflTrenteTrois[part] + \
                             loflTrenteQuatre[part]

@@ -33,29 +33,38 @@
                     <ul class="nav navbar-nav navbar-right">
                         <li class="">
                             <a href='/login/'>
-                            <span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp; S'identifier
-                        </a>
+                                <span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp; S'identifier
+                            </a>
                         </li>
                     </ul>
                     {% else %}
                     <ul class="nav navbar-nav navbar-right">
                         <li class="">
                             <a href='{% url "logout" %}?next={% url "home" %}'>
-                            <span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp; Déconnection
-                        </a>
+                                <span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp; Déconnection
+                            </a>
                         </li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <li class="">
                             <a href="JavaScript:newPopup('/admin/bdmultimedia/outil/add/?_to_field=id&amp;_popup=1');">
-                            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>&nbsp; Nouvel Outil
-                        </a>
+                                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>&nbsp; Nouvel Outil
+                            </a>
                         </li>
                     </ul>
+                    {% comment %}
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="">
+                            <a href="JavaScript:newPopup('/admin/bdmultimedia/contreexemple/add/?_to_field=id&amp;_popup=1');">
+                                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>&nbsp; Contre Exemple
+                            </a>
+                        </li>
+                    </ul>
+                    {% endcomment %}
                     {% endif %}
                     <ul class="nav navbar-nav navbar-right">
                         <li class="">
-                            <a href='/search/'><span class="glyphicon glyphicon-search" aria-hidden="true"></span>&nbsp; Recherche</a>
+                            <a href='/recherche_motcle/'><span class="glyphicon glyphicon-search" aria-hidden="true"></span>&nbsp; Recherche</a>
                         </li>
                     </ul>
                     {% if user.is_authenticated %}

@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block title %} Recherche par mots-clés {% endblock %}
+{% block body %}
+    <div class='container-fluid'>
+            <div class="col-md-8">
+                <form method='GET' class='' action='/recherche_motcle/'>
+                    <div class="input-group form-group-no-border mx-auto" style="margin-bottom: 0px; font-size: 32px;">
+                        <span class="input-group-addon cfe-nav" style='color:#000'>
+                            <i class="fa fa-search" aria-hidden="true"></i>
+                        </span>
+                        <input type="text" name="q" data-toggle="popover" data-placement="bottom" data-content='Appuyez sur la touche "enter" pour lancer la recherche' class="form-control cfe-nav mt-0 py-3" placeholder="Recherche par mots-clés" value="" style="" data-original-title="" title="" autofocus="autofocus">
+
+                    </div>
+                </form>
+                <small><a href="../recherche">Recherche avancée</a></small>
+            </div>
+    </div>
+<br>
+<div class="container-fluid">
+    <div class="col-md-10">
+        {% if query is not None %}
+        <div class="page-header">
+            <h4> Résultat de la recherche pour "{{ query }}": </h4>
+        </div>
+        {% endif %}
+        <ul>
+            {% for object in object_list %}
+            <li><a href='../result{{object.id}}/'>{{ object.titre }}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+</div>
+
+{% endblock %}
+{% block footer %}
+    {% if query is not None %}
+    <div class="col-md-10" align="center">
+        <small>{{ object_list.count }} dispositifs trouvés</small>
+    </div>
+    {% endif %}
+{% endblock %}
