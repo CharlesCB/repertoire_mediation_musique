@@ -22,7 +22,7 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^$', views.HomeView.as_view(), name = 'home'),
+    url(r'^liste/$', views.HomeView.as_view(), name = 'home'),
     url(r'^(?P<pk>[0-9]+)/$', views.DetailView.as_view(), name='detail'),
     url(r'^(?P<pk>[0-9]+)/update/$', views.UpdateForm.as_view(), name='update'),
     url(r'^(?P<pk>[0-9]+)/delete/$', views.DeleteForm.as_view()),
@@ -35,9 +35,9 @@ urlpatterns = [
     url(r'^list/$', views.OutilList.as_view(), name='list'),
     url(r'^result(?P<pk>[0-9]+)/$', views.ListDetailView.as_view(), name='list_detail'),
     url(r'^recherche/$', views.SearchForm.as_view(), name = 'recherche'),
-
     url(r'^recherche_motcle', views.SearchView.as_view(), name= 'recherche_motcle'),
-
+    url(r'^alaune', views.AlaUneView.as_view(), name='aLaUne'),
+    url(r'^$', views.AlaUneView.as_view(), name='aLaUne'),
     url(r'^export/xls/$', views.export_xls, name='exporter_xls'),
     url(r'^gerer/', views.GererView.as_view(), name = 'gerer'),
     url(r'^gerer_prodtype/$', views.GererProdType.as_view(), name='gerer_prodType'),

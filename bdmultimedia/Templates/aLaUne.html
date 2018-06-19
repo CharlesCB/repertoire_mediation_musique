@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% block body %}
+    <div class="col-md-11">
+        <div class="page-header">
+            <h3  id="titre">&nbsp; Catalogue Raisonné de Dispositifs de Médiation de la Musique</h3>
+           <!-- <a href="/liste">Liste des dispositifs disponibles</a> -->
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+            <center>
+                <!--<iframe src="https://www.youtube.com/embed/0HxpQgc7vm4?rel=0&amp;showinfo=0" height="400" width="1000"></iframe>-->
+                {% if outil.page_outil == True and outil.integration == "" %}
+                    <iframe src="{{ outil.url }}" height="400" width="1000"></iframe>
+                {% elif outil.page_outil == False and outil.integration == "" %}
+                    <img src="../static/media/backup_alaune.png">
+                {% else %}
+                    {% autoescape off %}
+                        <div class="col-md-10">
+                            {{ outil.integration }}
+                        </div>
+                    {% endautoescape %}
+                {% endif %}
+                <a href="../{{ outil.id }}" style="position:absolute; top:0; left:2em; display:inline-block; width:1000px; height:400px; z-index:5;"></a>
+                <a href="../{{ outil.id }}"><h2 style="position:absolute; top:1px; left:50px; z-index:5; color:#4eabb4; background-color:#404040; padding:5px; text-decoration: underline;">À la une</h2></a>
+                <a href="../{{ outil.id }}"><h4 style="position:absolute; top:285px; left:50px; z-index:5; color:#4eabb4; background-color:#404040; padding:5px;">{{ outil.titre }}</h4></a>
+                <a href="../{{ outil.id }}"><h5 style="position:absolute; top:314px; left:50px; z-index:5; color:#4eabb4; background-color:#404040; padding:5px;">
+                    {% for i in outil.producteur_nom.all %}
+                        {{ i.nom  }}{% if not forloop.last %},{% else %}{% endif %}
+                    {% endfor %}
+                </h5></a>
+                {% if outil.mise_en_ligne_date is not None %}
+                    <a href="../{{ outil.id }}">
+                        <h6 style="position:absolute; top:337px; left:50px; z-index:5; color:#4eabb4; background-color:#404040;padding:5px;">
+                        {{ outil.mise_en_ligne_date|date:" j F Y"  }}
+                        </h6>
+                    </a>
+                {% endif %}
+            </center>
+        </div>
+    </div>
+    <div class='container-fluid'>
+            <div class="col-md-8 col-md-offset-1">
+                <br>
+                <form method='GET' class='' action='/recherche_motcle/'>
+                    <div class="input-group form-group-no-border mx-auto" style="margin-bottom: 0px; font-size: 32px;">
+                        <span class="input-group-addon cfe-nav" style='color:#000'>
+                            <i class="fa fa-search" aria-hidden="true"></i>
+                        </span>
+                        <input type="text" name="q" data-toggle="popover" data-placement="bottom" data-content='Appuyez sur la touche "enter" pour lancer la recherche' class="form-control cfe-nav mt-0 py-3" placeholder="Recherche par mots-clés" value="" style="" data-original-title="" title="">
+
+                    </div>
+                </form>
+            </div>
+    </div>
+{% endblock %}

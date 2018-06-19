@@ -24,7 +24,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-                    <a class="navbar-brand" href="{% url 'home' %}">C R D M M</a>
+                    <a class="navbar-brand" href="{% url 'aLaUne' %}">C R D M M</a>
                 </div>
 
                 <div class="collapse navbar-collapse" id="barreNav">
@@ -64,7 +64,7 @@
                     {% endif %}
                     <ul class="nav navbar-nav navbar-right">
                         <li class="">
-                            <a href='/recherche_motcle/'><span class="glyphicon glyphicon-search" aria-hidden="true"></span>&nbsp; Recherche</a>
+                            <a href='/recherche/'><span class="glyphicon glyphicon-search" aria-hidden="true"></span>&nbsp; Recherche</a>
                         </li>
                     </ul>
                     {% if user.is_authenticated %}
@@ -77,8 +77,13 @@
                         <li class="">
                             <a href='/gerer'><span class="glyphicon glyphicon-edit" aria-hidden="true"></span>&nbsp; Gérer</a>
                         </li>
-
+                    </ul>
                     {% endif %}
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a href="/liste"><span class="glyphicon glyphicon-list" aria-hidden="true"></span> Liste</a>
+                        </li>
+                    </ul>
                 </div>
 
             </div>

@@ -47,6 +47,21 @@ small{
     color: darkgray;
 }
 
-iframe{
+section iframe{
     border : none;
 }
+
+center iframe, img{
+    border : solid medium #4eabb4;
+    width : 1000px;
+    height: 400px;
+}
+
+#over{
+    font-size:5em
+    position:absolute
+    top:0px
+    left:0px
+    z-index:2
+}
+

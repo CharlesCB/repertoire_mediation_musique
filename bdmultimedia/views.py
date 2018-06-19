@@ -12,8 +12,7 @@ from .filters import OutilFilter
 from forms import Search
 import csv, tempfile, os
 import datetime
-
-# Create your views here.
+import random
 
 
 class DetailView(generic.DetailView):
@@ -26,6 +25,19 @@ class DetailView(generic.DetailView):
         context['liste'] = Outil.objects.all().values_list()
 
         return context
+
+
+class AlaUneView(generic.ListView):
+    model = Outil
+    template_name = 'aLaUne.html'
+    context_object_name = 'outil'
+
+    def get_queryset(self):
+        liste = []
+        for i in Outil.objects.all():
+            liste.append(i.pk)
+        id = random.choice(liste)
+        return Outil.objects.get(pk=156)
 
 
 class OutilDelete(generic.DeleteView):
