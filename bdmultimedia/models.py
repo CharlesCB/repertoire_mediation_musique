@@ -570,6 +570,7 @@ class NotionsInter(models.Model):
         verbose_name_plural = "Exemples de notions évoquées de façon interdisciplinaires"
 
 
+# Pour le recherche par mots-clés
 class OutilManager(models.Manager):
     def search(self, query=None):
         qs = self.get_queryset()
@@ -628,11 +629,13 @@ class OutilManager(models.Manager):
                          Q(role_instr_anime_homme__nom__icontains=query) |
                          Q(role_instr_anime_neutre__nom__icontains=query)
                         )
-            qs = qs.filter(or_lookup).distinct() # distinct() is often necessary with Q lookups
+            qs = qs.filter(or_lookup).distinct()
         return qs
+
 
 @python_2_unicode_compatible
 class Outil(models.Model):
+    # RÉFÉRENCEMENT
     titre = models.CharField(max_length=200, verbose_name="R.1 Titre du dispositif", db_index=True)
     page_outil = models.BooleanField(default = False, verbose_name = "Afficher directement une page qui fait office de dispositif")
     integration = models.TextField(blank = True, verbose_name = "code pour l'integration du dispositif (si applicable)")
@@ -672,6 +675,8 @@ class Outil(models.Model):
     commentaire_possible = models.BooleanField(verbose_name="R.15 Possibilité de laisser des commentaires",
                                                help_text="Compter les commentaires qui apparaissent sur la page de consultation du dispositif (ex. Si il n’y a pas de possibilité de commentaire sur les capsules de l’OSM mais que les commentaires sont possibles sur l’hébergement youtube ne pas cocher)")
     commentaire_nombre = models.CharField(max_length = 50,null=True, blank=True, verbose_name="R.16 Nombre de commentaires")
+
+    # DÉCOUVRABILITÉ / ACCESSIBILITÉ
     premier_onglet = models.CharField(db_index=True, choices=PREM_ONGLET_LIST,
                                       max_length=200,
                                       default="Ne s'applique pas",
@@ -697,8 +702,6 @@ class Outil(models.Model):
     narration_langue = models.ManyToManyField(LangueNarration, db_index=True,  verbose_name="S.22 Langue du dispositif")
     sous_titre = models.ManyToManyField(SousTitre, db_index=True,  verbose_name="S.23 Sous-titrage",
                                         help_text="Les sous-titrages automatiques proposés par YouTube n’entrent pas en considération.")
-
-    ##Accessibilité
     malentendants = models.CharField(choices=OUINON,
                                      max_length=200,
                                      null=False,
@@ -709,7 +712,9 @@ class Outil(models.Model):
                                   null=False,
                                   default="Non",
                                   verbose_name="S.24.2 Ce dispositif est-il intégralement accessible aux malvoyants (audiodescription)")
-    ## Quid du materiau musical
+
+    # DISCOURS SUR LA MUSIQUE
+    ####analyses musicales
     materiau_musical = models.CharField(choices=OUINON,
                                         max_length=200,
                                         default="Non",
@@ -722,7 +727,7 @@ class Outil(models.Model):
                                               verbose_name="M.25.3 Parle-t-on du language musical, si oui précisez.")
     genre_musical = models.ManyToManyField(GenreMusical, db_index=True, verbose_name="M.25.4 Parle-t-on du genre musical, si oui précisez.")
     style_musical = models.ManyToManyField(StyleMusical, db_index=True, verbose_name="M.25.5 Parle-t-on du style musical, si oui précisez.")
-    ## Quid de
+    #### Éléments contextuels
     experience_musicale = models.ManyToManyField(ExperienceMusicale, db_index=True,
                                                  verbose_name="M.26 Parle-t-on de l'experience musicale, si oui précisez.")
     elements_socioculturels = models.CharField(choices=OUINON,
@@ -738,12 +743,14 @@ class Outil(models.Model):
                                       help_text='Si il est juste fait mention d’une date sans donner plus d’information sur ce qui se passait à l’époque cocher “Non”.')
     role_evolution = models.ManyToManyField(RoleEvolution, db_index=True, verbose_name="M.27.3 Parle-t-on du rôle et de l'évolution du [métier liés à la musique précisez]")
     organologie = models.ManyToManyField(Organologie, db_index=True, verbose_name = "M.27.4 Parle-t-on d’organologie?")
+
+    # SOLLICITATIONS DE L'USAGER
     sollicitation_musicale = models.ManyToManyField(SollicitationMusicale, db_index=True,
                                                     verbose_name="U.28 Pour comprendre le discours sur la musique")
     sollicitation_generale = models.ManyToManyField(SollicitationGenerale, db_index=True,
                                                     verbose_name="U.29 Pour comprendre le discours général")
 
-    # Usages du sonore
+    # PLACE DE LA MUSIQUE
     temps_mus = models.CharField(max_length=8, null=False, verbose_name="PM.30 Temps de musique seule (hh:mm:ss)",
                                  default="00:00:00",
                                  help_text="ddv = durée d’écoute variable. Concerne les dispositifs qui allient texte et vidéo. La durée d’écoute est variable puisque les utilisateurs peuvent décider, ou non, de regarder les vidéos.<br> 00.00.00 =  signifie qu’il y a bien du son dans le dispositif.<br> nsp signifie qu’il n’y a pas de son dans le dispositif.")
@@ -757,7 +764,8 @@ class Outil(models.Model):
                                      null=False,
                                      default="Nsp",
                                      verbose_name="PM.33 Mise en valeur du sonore")
-    # Outre les sons, comment évoque-t-on le matériau musical?
+
+    # ÉVOCATION DE LA MUSIQUE EXTRA-SONORE
     evocation_graphique = models.ManyToManyField(EvocationGraphique, db_index=True,
                                            verbose_name="EM.34 Évocation graphique")
     evocation_plastique = models.ManyToManyField(EvocationPlastique, db_index=True,
@@ -765,11 +773,13 @@ class Outil(models.Model):
     evocation_litteraire = MultiSelectField(choices=EVOCATION_LITTERAIRE_LIST, db_index=True,
                                             max_length=200,
                                             null=False,
-                                            verbose_name="EM.36 Évocation littéraire")
+                                            verbose_name="EM.36 Évocation littéraire",
+                                            help_text= 'Le matériau musical est-il décrit “en mots” dans le dispositif ?')
+
+    # INTERDISCIPLINARITÉ
     evocation_autre = models.ManyToManyField(EvocationAutre, db_index=True,
                                        verbose_name="I.37 Interdisciplinarité")
-
-    # à partir de quelle notion?
+    ####à partir de quelle notion?
     notion_concepts = models.CharField(choices = OUINONNSP,
                                        max_length = 50,
                                        null = False,
@@ -789,12 +799,7 @@ class Outil(models.Model):
                                                                   blank = True,
                                                                   verbose_name="I.39 Donner des exemples de notions évoquées de façon interdisciplinaires")
 
-    # stéréotypes et clichés
-    # humain = models.CharField(choices = OUINON,
-    #                           max_length = 50,
-    #                           null = False,
-    #                           default = "Non",
-    #                           verbose_name = "Sté.39 Y-a-t-il des humains? (compter les personnes qui ont un rôle dans la narration, qui sont maximum 3 dans le champ ou plein cadre)")
+    # STÉRÉOTYPES DE GENRE
     nb_humains_total = models.CharField(verbose_name="Sté.39.1 Nombre d'humains total",
                                         max_length = 50,
                                         default = "0",
@@ -809,11 +814,6 @@ class Outil(models.Model):
                                                 verbose_name="Sté.39.3 Rôle des hommes")
     role_humain_neutre = models.ManyToManyField(RoleHumainNeutre, db_index=True,
                                                 verbose_name="Sté.39.4 Rôle des indeterminés")
-    # pers_anime = models.CharField(choices=OUINON,
-    #                           max_length=50,
-    #                           null=False,
-    #                           default="Non",
-    #                           verbose_name="Sté.40 Y-a-t-il des personnages animés?")
     nb_pers_anime_total = models.CharField(null = True, verbose_name="Sté.40.1 Nombre de personnages animés total",
                                            max_length=50,
                                            default="0",
@@ -831,11 +831,6 @@ class Outil(models.Model):
                                                    verbose_name="Sté.40.2 Rôle des personnages animés masculins")
     role_pers_anime_neutre = models.ManyToManyField(RolePersAnimNeutre, db_index=True,
                                                     verbose_name="Sté.40.4 Rôle des personnages animés indéterminés")
-    # animaux = models.CharField(choices=OUINON,
-    #                           max_length=50,
-    #                           null=False,
-    #                           default="Non",
-    #                           verbose_name="Sté.41 Y-a-t-il des animaux?")
     nb_animaux_total = models.CharField(null = True, verbose_name="Sté.41.1 Nombre d'animaux total",
                                         max_length=50,
                                         default="0",
@@ -851,11 +846,6 @@ class Outil(models.Model):
                                                 verbose_name="Sté.41.2 Rôle des animaux mâles")
     role_animaux_neutre = models.ManyToManyField(RoleAnimauxNeutre, db_index=True,
                                                  verbose_name="Sté.41.4 Rôle des animaux indéterminés")
-    # instr_anime = models.CharField(choices=OUINON,
-    #                           max_length=50,
-    #                           null=False,
-    #                           default="Non",
-    #                           verbose_name="Sté.42 Y-a-t-il des instruments animés")
     nb_instr_anime_total = models.CharField(null=True, verbose_name="Sté.42.1 Nombre d'instruments animés total",
                                             max_length=50,
                                             default="0",

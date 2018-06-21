@@ -30,8 +30,6 @@ class Search(forms.ModelForm):
     EPOQUE_CHOICES = list(EPOQUE_LIST)
     del EPOQUE_CHOICES[11]
 
-    # titre = forms.CharField(label="Titre", required=False)
-
     format__nom = forms.ChoiceField(widget = forms.Select, choices=BLANK_CHOICE_DASH + list(FORMAT_CHOICES),
                                           label="Format", required = False)
     forme_narrative__nom = forms.ChoiceField(widget=forms.Select, choices=BLANK_CHOICE_DASH + list(FORME_NARRATIVE_CHOICES),

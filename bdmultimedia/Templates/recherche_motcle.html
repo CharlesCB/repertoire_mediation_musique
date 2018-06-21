@@ -33,9 +33,11 @@
 
 {% endblock %}
 {% block footer %}
-    {% if query is not None %}
-        <div class="col-md-10" align="center">
-            <small>{{ object_list.count }} dispositifs trouvés</small>
-        </div>
-    {% endif %}
+    <footer>
+        {% if query is not None %}
+            <div class="col-md-10" align="center">
+                <small>{{ object_list.count }} dispositifs trouvés</small>
+            </div>
+        {% endif %}
+    </footer>
 {% endblock %}

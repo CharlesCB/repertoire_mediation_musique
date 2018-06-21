@@ -4,41 +4,45 @@
     <div class="col-md-11">
         <div class="page-header">
             <h3  id="titre">&nbsp; Catalogue Raisonné de Dispositifs de Médiation de la Musique</h3>
-           <!-- <a href="/liste">Liste des dispositifs disponibles</a> -->
         </div>
     </div>
 
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
-            <center>
-                <!--<iframe src="https://www.youtube.com/embed/0HxpQgc7vm4?rel=0&amp;showinfo=0" height="400" width="1000"></iframe>-->
-                {% if outil.page_outil == True and outil.integration == "" %}
-                    <iframe src="{{ outil.url }}" height="400" width="1000"></iframe>
-                {% elif outil.page_outil == False and outil.integration == "" %}
-                    <img src="../static/media/backup_alaune.png">
-                {% else %}
-                    {% autoescape off %}
-                        <div class="col-md-10">
-                            {{ outil.integration }}
-                        </div>
-                    {% endautoescape %}
+            <br>
+
+            <!--(21-06-2018) liste non-utilisés : [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 58, 59, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143, 144, 145, 146, 147, 148, 149, 150, 151, 152, 153, 154, 155, 157, 158, 159, 160, 161, 162, 163] -->
+            <!--liste déjà utilisés : [156,] -->
+            {% for outil in outils %}
+                {% if outil.pk == 156 %}
+                    <center>
+                        {% if outil.page_outil == True and outil.integration == "" %}
+                            <iframe src="{{ outil.url }}" height="400" width="1000"></iframe>
+                        {% elif outil.page_outil == False and outil.integration == "" %}
+                            <img src="../static/media/backup_alaune.png">
+                        {% else %}
+                            {% autoescape off %}
+                                <div class="col-md-10">
+                                    {{ outil.integration }}
+                                </div>
+                            {% endautoescape %}
+                        {% endif %}
+                        <a href="../{{ outil.id }}" style="position:absolute; top:20; left:30px; display:inline-block; width:1000px; height:400px; z-index:5;" id="lien"></a>
+                        <h2 style="position:absolute; top:21px; left:50px; z-index:4; color:#4eabb4; background-color:#404040; padding:5px; text-decoration: underline;">À la une</h2>
+                        <<h4 style="position:absolute; top:305px; left:50px; z-index:4; color:#4eabb4; background-color:#404040; padding:5px;">{{ outil.titre }}</h4>
+                        <h5 style="position:absolute; top:334px; left:50px; z-index:4; color:#4eabb4; background-color:#404040; padding:5px;">
+                            {% for i in outil.producteur_nom.all %}
+                                {{ i.nom  }}{% if not forloop.last %},{% else %}{% endif %}
+                            {% endfor %}
+                        </h5>
+                        {% if outil.mise_en_ligne_date is not None %}
+                            <h6 style="position:absolute; top:357px; left:50px; z-index:4; color:#4eabb4; background-color:#404040;padding:5px;">
+                                {{ outil.mise_en_ligne_date|date:" j F Y"  }}
+                            </h6>
+                        {% endif %}
+                    </center>
                 {% endif %}
-                <a href="../{{ outil.id }}" style="position:absolute; top:0; left:2em; display:inline-block; width:1000px; height:400px; z-index:5;"></a>
-                <a href="../{{ outil.id }}"><h2 style="position:absolute; top:1px; left:50px; z-index:5; color:#4eabb4; background-color:#404040; padding:5px; text-decoration: underline;">À la une</h2></a>
-                <a href="../{{ outil.id }}"><h4 style="position:absolute; top:285px; left:50px; z-index:5; color:#4eabb4; background-color:#404040; padding:5px;">{{ outil.titre }}</h4></a>
-                <a href="../{{ outil.id }}"><h5 style="position:absolute; top:314px; left:50px; z-index:5; color:#4eabb4; background-color:#404040; padding:5px;">
-                    {% for i in outil.producteur_nom.all %}
-                        {{ i.nom  }}{% if not forloop.last %},{% else %}{% endif %}
-                    {% endfor %}
-                </h5></a>
-                {% if outil.mise_en_ligne_date is not None %}
-                    <a href="../{{ outil.id }}">
-                        <h6 style="position:absolute; top:337px; left:50px; z-index:5; color:#4eabb4; background-color:#404040;padding:5px;">
-                        {{ outil.mise_en_ligne_date|date:" j F Y"  }}
-                        </h6>
-                    </a>
-                {% endif %}
-            </center>
+            {% endfor %}
         </div>
     </div>
     <div class='container-fluid'>
@@ -53,6 +57,38 @@
 
                     </div>
                 </form>
+                <small><a href="{% url 'recherche' %}">Recherche avancée</a></small>
             </div>
     </div>
+    <div class="container-fluid">
+        <div class="col-md-10 col-md-offset-1">
+            <br>
+            <div class="page-header">
+                <h4> Liste des dispositifs disponibles:</h4>
+            </div>
+
+            {% if outils %}
+            <ul>
+                {% for outil in outils %}
+                <li><a href="{% url 'detail' outil.id %}"> {{ outil.titre }} </a></li>
+                {% endfor %}
+            </ul>
+
+            {% else %}
+
+            <div class="text-danger">
+                <h6> Aucun outil n'est disponible </h6>
+            </div>
+
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}
+
+{% block footer %}
+    <footer>
+        <div class="col-md-10 col-md-offset-1" align="center">
+            <small>{{ outils.count }} dispositifs répertoriés</small>
+        </div>
+    </footer>
 {% endblock %}

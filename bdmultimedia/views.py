@@ -10,7 +10,6 @@ from django.http import HttpResponse
 import xlwt
 from .filters import OutilFilter
 from forms import Search
-import csv, tempfile, os
 import datetime
 import random
 
@@ -23,21 +22,20 @@ class DetailView(generic.DetailView):
         context = super(DetailView, self).get_context_data(**kwargs)
         context['tout'] = Outil.objects.order_by('titre')
         context['liste'] = Outil.objects.all().values_list()
-
         return context
 
 
 class AlaUneView(generic.ListView):
     model = Outil
     template_name = 'aLaUne.html'
-    context_object_name = 'outil'
+    context_object_name = 'outils'
 
     def get_queryset(self):
-        liste = []
-        for i in Outil.objects.all():
-            liste.append(i.pk)
-        id = random.choice(liste)
-        return Outil.objects.get(pk=156)
+        # liste = []
+        # for i in Outil.objects.all():
+        #     liste.append(i.pk)
+        # id = random.choice(liste)
+        return Outil.objects.order_by('titre')
 
 
 class OutilDelete(generic.DeleteView):
@@ -81,8 +79,6 @@ class ListDetailView(generic.DetailView):
 
     def get_context_data(self, **kwargs):
         context = super(ListDetailView, self).get_context_data(**kwargs)
-        #context['tout'] = OutilFilter(self.request.GET, queryset=Outil.objects.all()).qs
-
         return context
 
 
@@ -501,8 +497,7 @@ class GererRoleInstrNeutre(generic.ListView):
 
     def get_queryset(self):
         return GererRoleInstrNeutre.liste
-    
-    
+
 
 def export_xls(request):
     if request.user.is_authenticated():
@@ -633,6 +628,8 @@ def export_xls(request):
 
         loflFin = [None] * total
 
+
+        # BOUCLES POUR JOINDRE LES "MANYTOMANYFILEDS" DANS UN STRING
         # un
         for i in range(4):
             for item in loflUn:

@@ -57,11 +57,7 @@ center iframe, img{
     height: 400px;
 }
 
-#over{
-    font-size:5em
-    position:absolute
-    top:0px
-    left:0px
-    z-index:2
+#lien:hover{
+    background-color : #505050;
+    opacity: 0.3;
 }
-

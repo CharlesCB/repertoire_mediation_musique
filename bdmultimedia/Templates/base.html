@@ -14,95 +14,100 @@
 </head>
 
 <body>
-    <header>
-        <nav class="navbar navbar-inverse">
-            <div class="container-fluid">
+    {% block header %}
+        <header>
+            <nav class="navbar navbar-inverse">
+                <div class="container-fluid">
 
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#barreNav">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-                    <a class="navbar-brand" href="{% url 'aLaUne' %}">C R D M M</a>
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#barreNav">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="{% url 'aLaUne' %}">C R D M M</a>
+                    </div>
+
+                    <div class="collapse navbar-collapse" id="barreNav">
+
+                        {% if not user.is_authenticated %}
+                            <ul class="nav navbar-nav navbar-right">
+                                <li class="">
+                                    <a href='/login/'>
+                                        <span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp; S'identifier
+                                    </a>
+                                </li>
+                            </ul>
+                        {% else %}
+                            <ul class="nav navbar-nav navbar-right">
+                                <li class="">
+                                    <a href='{% url "logout" %}?next={% url "aLaUne" %}'>
+                                        <span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp; Déconnection
+                                    </a>
+                                </li>
+                            </ul>
+                            <ul class="nav navbar-nav navbar-right">
+                                <li class="">
+                                    <a href="JavaScript:newPopup('/admin/bdmultimedia/outil/add/?_to_field=id&amp;_popup=1');">
+                                        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>&nbsp; Nouvel Outil
+                                    </a>
+                                </li>
+                            </ul>
+                            {% comment %}
+                            <ul class="nav navbar-nav navbar-right">
+                                <li class="">
+                                    <a href="JavaScript:newPopup('/admin/bdmultimedia/contreexemple/add/?_to_field=id&amp;_popup=1');">
+                                        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>&nbsp; Contre Exemple
+                                    </a>
+                                </li>
+                            </ul>
+
+                        {% endif %}
+                        <ul class="nav navbar-nav navbar-right">
+                            <li class="">
+                                <a href='/recherche/'><span class="glyphicon glyphicon-search" aria-hidden="true"></span>&nbsp; Recherche</a>
+                            </li>
+                        </ul>
+                        {% if user.is_authenticated %}
+                        {% endcomment %}
+                            <ul class="nav navbar-nav navbar-right">
+                                <li class="">
+                                    <a href='/export/xls'><span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span>&nbsp; Exporter</a>
+                                </li>
+                            </ul>
+                            <ul class="nav navbar-nav navbar-right">
+                                <li class="">
+                                    <a href='/gerer'><span class="glyphicon glyphicon-edit" aria-hidden="true"></span>&nbsp; Gérer</a>
+                                </li>
+                            </ul>
+                        {% endif %}
+                        {% comment %}
+                        <ul class="nav navbar-nav navbar-right">
+                            <li>
+                                <a href="/liste"><span class="glyphicon glyphicon-list" aria-hidden="true"></span> Liste</a>
+                            </li>
+                        </ul>
+                        {% endcomment %}
+                    </div>
+
                 </div>
-
-                <div class="collapse navbar-collapse" id="barreNav">
-
-                    {% if not user.is_authenticated %}
-                    <ul class="nav navbar-nav navbar-right">
-                        <li class="">
-                            <a href='/login/'>
-                                <span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp; S'identifier
-                            </a>
-                        </li>
-                    </ul>
-                    {% else %}
-                    <ul class="nav navbar-nav navbar-right">
-                        <li class="">
-                            <a href='{% url "logout" %}?next={% url "home" %}'>
-                                <span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp; Déconnection
-                            </a>
-                        </li>
-                    </ul>
-                    <ul class="nav navbar-nav navbar-right">
-                        <li class="">
-                            <a href="JavaScript:newPopup('/admin/bdmultimedia/outil/add/?_to_field=id&amp;_popup=1');">
-                                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>&nbsp; Nouvel Outil
-                            </a>
-                        </li>
-                    </ul>
-                    {% comment %}
-                    <ul class="nav navbar-nav navbar-right">
-                        <li class="">
-                            <a href="JavaScript:newPopup('/admin/bdmultimedia/contreexemple/add/?_to_field=id&amp;_popup=1');">
-                                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>&nbsp; Contre Exemple
-                            </a>
-                        </li>
-                    </ul>
-                    {% endcomment %}
-                    {% endif %}
-                    <ul class="nav navbar-nav navbar-right">
-                        <li class="">
-                            <a href='/recherche/'><span class="glyphicon glyphicon-search" aria-hidden="true"></span>&nbsp; Recherche</a>
-                        </li>
-                    </ul>
-                    {% if user.is_authenticated %}
-                    <ul class="nav navbar-nav navbar-right">
-                        <li class="">
-                            <a href='/export/xls'><span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span>&nbsp; Exporter</a>
-                        </li>
-                    </ul>
-                    <ul class="nav navbar-nav navbar-right">
-                        <li class="">
-                            <a href='/gerer'><span class="glyphicon glyphicon-edit" aria-hidden="true"></span>&nbsp; Gérer</a>
-                        </li>
-                    </ul>
-                    {% endif %}
-                    <ul class="nav navbar-nav navbar-right">
-                        <li>
-                            <a href="/liste"><span class="glyphicon glyphicon-list" aria-hidden="true"></span> Liste</a>
-                        </li>
-                    </ul>
-                </div>
-
+            </nav>
+        </header>
+        <script type="text/javascript">
+            // Popup window code
+            function newPopup(url) {
+                popupWindow = window.open(
+                    url, 'popUpWindow', 'height=800,width=1000,left=500,top=10,resizable=yes,scrollbars=yes,toolbar=yes,menubar=no,location=no,directories=no,status=yes')
+            }
+        </script>
+    {% endblock %}
+    {% block body%} {% endblock%}
+    {% block footer %}
+        <footer>
+            <div class="col-md-10 col-md-offset-1" align="center" style="color:#808080;font-size:10px;">
+                <br><br><br>
             </div>
-        </nav>
-    </header>
-    <script type="text/javascript">
-        // Popup window code
-        function newPopup(url) {
-            popupWindow = window.open(
-                url, 'popUpWindow', 'height=800,width=1000,left=500,top=10,resizable=yes,scrollbars=yes,toolbar=yes,menubar=no,location=no,directories=no,status=yes')
-        }
-
-    </script>
-    {% block body%} {% endblock%} {% block footer %}
-    <footer>
-        <div class="col-md-10 col-md-offset-1" align="center" style="color:#808080;font-size:10px;">
-            <br><br><br>
-        </div>
-    </footer>
+        </footer>
     {% endblock %}
 
 </body>
