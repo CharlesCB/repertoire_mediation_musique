@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html lang="fr">
-{% extends 'base.html' %} {% block body %}
+{% extends 'base.html' %}
+{% load bootstrap_pagination %}
+{% load bootstrap3 %}
+{% load bootstrap_tags %}
+{% block body %}
 
 <div class="container-fluid">
     <div class="col-md-10">
@@ -24,9 +28,12 @@
         {% endif %}
     </div>
 </div>
-{% endblock %} {% block footer %}
 
-<div class="col-md-10" align="center">
-    <small>{{ all_outils.count }} dispositifs répertoriés</small>
-</div>
- {% endblock %}
+{% endblock %}
+
+{% block footer %}
+    <div class="col-md-10" align="center">
+        <small>{{ all_outils.count }} dispositifs répertoriés</small>
+        <br><br>
+    </div>
+{% endblock %}

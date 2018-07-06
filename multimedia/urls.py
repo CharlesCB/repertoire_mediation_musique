@@ -24,7 +24,7 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^alaune', views.AlaUneView.as_view(), name='aLaUne'),
     url(r'^$', views.AlaUneView.as_view(), name='aLaUne'),
-    url(r'^liste/$', views.HomeView.as_view(), name = 'home'),
+    url(r'^liste/$', views.ListeView.as_view(), name = 'liste'),
     url(r'^(?P<pk>[0-9]+)/$', views.DetailView.as_view(), name='detail'),
     url(r'^(?P<pk>[0-9]+)/update/$', views.UpdateForm.as_view(), name='update'),
     url(r'^(?P<pk>[0-9]+)/delete/$', views.DeleteForm.as_view()),

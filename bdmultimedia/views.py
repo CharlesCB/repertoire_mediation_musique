@@ -45,8 +45,8 @@ class OutilDelete(generic.DeleteView):
     template_name = 'delete_outil.html'
 
 
-class HomeView(generic.ListView):
-    template_name = 'home.html'
+class ListeView(generic.ListView):
+    template_name = 'liste.html'
     context_object_name = 'all_outils'
 
     def get_queryset(self):
@@ -125,11 +125,10 @@ class SearchView(generic.ListView):
 
         if query is not None:
             results = Outil.objects.search(query=query).order_by('titre')
-
             qs = list(results)
             self.count = len(qs)
             return results
-        return Outil.objects.none() # just an empty queryset as default
+        return Outil.objects.none()
 
 
 class GererView(generic.ListView):

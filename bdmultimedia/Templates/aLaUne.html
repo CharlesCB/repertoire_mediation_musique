@@ -1,20 +1,20 @@
 {% extends 'base.html' %}
 
 {% block body %}
-    <div class="col-md-11">
-        <div class="page-header">
-            <h3  id="titre">&nbsp; Catalogue Raisonné de Dispositifs de Médiation de la Musique</h3>
+    <div class="container-fluid">
+        <div class="col-md-11">
+            <div class="page-header">
+                <h3  id="titre">&nbsp; Catalogue Raisonné de Dispositifs de Médiation de la Musique</h3>
+            </div>
         </div>
     </div>
-
-    <div class="row">
+    <div>
         <div class="col-md-10 col-md-offset-1">
             <br>
-
-            <!--(21-06-2018) liste non-utilisés : [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 58, 59, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143, 144, 145, 146, 147, 148, 149, 150, 151, 152, 153, 154, 155, 157, 158, 159, 160, 161, 162, 163] -->
-            <!--liste déjà utilisés : [156,] -->
+            <!--(21-06-2018) liste non-utilisés : [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 58, 59, 61, 62, 63, 64, 65, 66, 67, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143, 144, 145, 146, 147, 148, 149, 150, 151, 152, 153, 154, 155, 157, 158, 159, 160, 161, 162, 163] -->
+            <!--liste déjà utilisés : [156, 68, 69, 33] -->
             {% for outil in outils %}
-                {% if outil.pk == 156 %}
+                {% if outil.pk == 33 %}
                     <center>
                         {% if outil.page_outil == True and outil.integration == "" %}
                             <iframe src="{{ outil.url }}" height="400" width="1000"></iframe>
@@ -27,12 +27,14 @@
                                 </div>
                             {% endautoescape %}
                         {% endif %}
-                        <a href="../{{ outil.id }}" style="position:absolute; top:20; left:30px; display:inline-block; width:1000px; height:400px; z-index:5;" id="lien"></a>
+                        <div class="com-md-10">
+                            <a href="../{{ outil.id }}" style="position:absolute; top:20; left:30px; display:inline-block; width:1000px; height:400px; z-index:5;" id="lien"></a>
+                        </div>
                         <h2 style="position:absolute; top:21px; left:50px; z-index:4; color:#4eabb4; background-color:#404040; padding:5px; text-decoration: underline;">À la une</h2>
-                        <<h4 style="position:absolute; top:305px; left:50px; z-index:4; color:#4eabb4; background-color:#404040; padding:5px;">{{ outil.titre }}</h4>
+                        <h4 style="position:absolute; top:305px; left:50px; z-index:4; color:#4eabb4; background-color:#404040; padding:5px;">{{ outil.titre }}</h4>
                         <h5 style="position:absolute; top:334px; left:50px; z-index:4; color:#4eabb4; background-color:#404040; padding:5px;">
                             {% for i in outil.producteur_nom.all %}
-                                {{ i.nom  }}{% if not forloop.last %},{% else %}{% endif %}
+                                {{ i.nom  }}{% if not forloop.last %},&nbsp;{% else %}{% endif %}
                             {% endfor %}
                         </h5>
                         {% if outil.mise_en_ligne_date is not None %}
@@ -46,23 +48,22 @@
         </div>
     </div>
     <div class='container-fluid'>
-            <div class="col-md-8 col-md-offset-1">
+            <div class="col-md-10 col-md-offset-1" style=" top: 400px;">
                 <br>
                 <form method='GET' class='' action='/recherche_motcle/'>
                     <div class="input-group form-group-no-border mx-auto" style="margin-bottom: 0px; font-size: 32px;">
-                        <span class="input-group-addon cfe-nav" style='color:#000'>
+                       <span class="input-group-addon cfe-nav" style='color:#000'>
+                            <span class="glyphicon glyphicon-search" aria-hidden="true" style="color: #404040;"></span>
                             <i class="fa fa-search" aria-hidden="true"></i>
                         </span>
                         <input type="text" name="q" data-toggle="popover" data-placement="bottom" data-content='Appuyez sur la touche "enter" pour lancer la recherche' class="form-control cfe-nav mt-0 py-3" placeholder="Recherche par mots-clés" value="" style="" data-original-title="" title="">
-
                     </div>
                 </form>
                 <small><a href="{% url 'recherche' %}">Recherche avancée</a></small>
             </div>
     </div>
     <div class="container-fluid">
-        <div class="col-md-10 col-md-offset-1">
-            <br>
+        <div class="col-md-10 col-md-offset-1" style="top: 400px;">
             <div class="page-header">
                 <h4> Liste des dispositifs disponibles:</h4>
             </div>
@@ -83,12 +84,28 @@
             {% endif %}
         </div>
     </div>
+<aside>
+    <div class="col-md-10 col-md-offset-1" style="top: 400px;">
+            <br>
+            <div class="page-header">
+                <h4>Ce catalogue raisonné n’a pas pour vocation de recenser:</h4>
+            </div>
+            <ul>
+                <li>les dispositifs numériques qui pourraient être imprimés dans rien perdre de leur contenu</li>
+                <li>les  documents initialement conçu pour la télévision</li>
+                <li>les dispositifs à but promotionnel et directement liés à la programmation d’un organisme </li>
+                <li>les  reportages et autres documents archivant des activités de médiation ayant eu lieu</li>
+                <li>des dispositifs qui consistent simplement au croisement des arts</li>
+            </ul>
+        </div>
+</aside>
 {% endblock %}
 
 {% block footer %}
     <footer>
-        <div class="col-md-10 col-md-offset-1" align="center">
+        <div class="col-md-9 col-md-offset-1" align="center" style=" top: 400px;">
             <small>{{ outils.count }} dispositifs répertoriés</small>
+            <br><br>
         </div>
     </footer>
 {% endblock %}

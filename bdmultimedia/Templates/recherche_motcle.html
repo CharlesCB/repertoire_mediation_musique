@@ -23,14 +23,28 @@
                 <h4> Résultat de la recherche pour "{{ query }}": </h4>
             </div>
             {% endif %}
-            <ul>
-                {% for object in object_list %}
-                <li><a href='../result{{object.id}}/'>{{ object.titre }}</a></li>
-                {% endfor %}
-            </ul>
+            <div class="col-md-10" id="result">
+                <ul>
+                    {% for outil in object_list %}
+                        <li><a href="../result{{outil.pk}}">{{outil.titre}}</a></li>
+                    {% endfor %}
+                </ul>
+                {% comment %}
+                <!--<li><a href='../result{{object.id}}/'>{{ object.titre }}</a></li>-->
+                    {% if outil.page_outil == True and outil.integration == "" %}
+                        <iframe src="{{ outil.url }}" height="400" width="1000"></iframe>
+                    {% elif outil.page_outil == False and outil.integration == "" %}
+                        <img src="../static/media/backup_alaune.png">
+                    {% else %}
+                        {% autoescape off %}
+                                {{ outil.integration }}
+                        {% endautoescape %}
+                    {% endif %}
+                {% endcomment %}
+                <!--<a href="../result{{ outil.id }}" style="position:absolute; top:20; left:0; display:inline-block; width:200px; height:200px; z-index:5;" id="lien"></a>-->
+            </div>
         </div>
     </div>
-
 {% endblock %}
 {% block footer %}
     <footer>
@@ -39,5 +53,6 @@
                 <small>{{ object_list.count }} dispositifs trouvés</small>
             </div>
         {% endif %}
+        <br><br>
     </footer>
 {% endblock %}

@@ -9,6 +9,11 @@ from django.core.urlresolvers import reverse
 from django_currentuser.db.models import CurrentUserField
 
 
+## idée: ajouter "date non dsiponible" dans les réponses acceptés (voir code source de models.DateField)
+class CustomDateField(models.DateField):
+    pass
+
+
 OUINON = (
     ("Oui", "Oui"),
     ("Non", "Non"),
@@ -570,7 +575,7 @@ class NotionsInter(models.Model):
         verbose_name_plural = "Exemples de notions évoquées de façon interdisciplinaires"
 
 
-# Pour le recherche par mots-clés
+# Pour la recherche par mots-clés
 class OutilManager(models.Manager):
     def search(self, query=None):
         qs = self.get_queryset()
@@ -589,7 +594,7 @@ class OutilManager(models.Manager):
                          Q(troisieme_onglet__icontains=query) |
                          Q(trois_onglet_autre__icontains=query) |
                          Q(elements_socioculturels__icontains=query) |
-                         Q(epoque__icontains=query) |
+                         Q(epoque__icontains=query) | # pertinent?
                          Q(sonore_valeur__icontains=query) |
                          Q(evocation_litteraire__icontains=query) |
                          Q(producteur_type__nom__icontains=query) |
