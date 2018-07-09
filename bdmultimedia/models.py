@@ -7,11 +7,51 @@ from multiselectfield import MultiSelectField
 from django.utils.encoding import python_2_unicode_compatible
 from django.core.urlresolvers import reverse
 from django_currentuser.db.models import CurrentUserField
+# import datetime
+# from django.conf import settings
+# from django.utils import timezone
+# from django.utils.dateparse import parse_date
+# from django.core import exceptions
 
 
 ## idée: ajouter "date non dsiponible" dans les réponses acceptés (voir code source de models.DateField)
 class CustomDateField(models.DateField):
     pass
+#
+#     def to_python(self, value):
+#         if value is None or value == 'nsp':
+#             return value
+#         if isinstance(value, datetime.datetime):
+#             if settings.USE_TZ and timezone.is_aware(value):
+#                 # Convert aware datetimes to the default time zone
+#                 # before casting them to dates (#17742).
+#                 default_timezone = timezone.get_default_timezone()
+#                 value = timezone.make_naive(value, default_timezone)
+#             return value.date()
+#         if isinstance(value, datetime.date):
+#             return value
+#
+#         if value != 'nsp':
+#             try:
+#                 parsed = parse_date(value)
+#                 if parsed is not None:
+#                     return parsed
+#             except ValueError:
+#                 raise exceptions.ValidationError(
+#                     self.error_messages['invalid_date'],
+#                     code='invalid_date',
+#                     params={'value': value},
+#                 )
+#
+#             raise exceptions.ValidationError(
+#                 self.error_messages['invalid'],
+#                 code='invalid',
+#                 params={'value': value},
+#             )
+#
+#
+# class CustomTest(models.Model):
+#     date = CustomDateField(verbose_name = 'TEST DATE')
 
 
 OUINON = (
@@ -620,19 +660,19 @@ class OutilManager(models.Manager):
                          Q(evocation_graphique__nom__icontains=query) |
                          Q(evocation_plastique__nom__icontains=query) |
                          Q(evocation_autre__nom__icontains=query) |
-                         Q(exemples_notions_interdisciplinaires__nom__icontains=query) |
-                         Q(role_humain_femme__nom__icontains=query) |
-                         Q(role_humain_homme__nom__icontains=query) |
-                         Q(role_humain_neutre__nom__icontains=query) |
-                         Q(role_pers_anime_femme__nom__icontains=query) |
-                         Q(role_pers_anime_homme__nom__icontains=query) |
-                         Q(role_pers_anime_neutre__nom__icontains=query) |
-                         Q(role_animaux_femme__nom__icontains=query) |
-                         Q(role_animaux_homme__nom__icontains=query) |
-                         Q(role_animaux_neutre__nom__icontains=query) |
-                         Q(role_instr_anime_femme__nom__icontains=query) |
-                         Q(role_instr_anime_homme__nom__icontains=query) |
-                         Q(role_instr_anime_neutre__nom__icontains=query)
+                         Q(exemples_notions_interdisciplinaires__nom__icontains=query) #|
+                         # Q(role_humain_femme__nom__icontains=query) |
+                         # Q(role_humain_homme__nom__icontains=query) |
+                         # Q(role_humain_neutre__nom__icontains=query) |
+                         # Q(role_pers_anime_femme__nom__icontains=query) |
+                         # Q(role_pers_anime_homme__nom__icontains=query) |
+                         # Q(role_pers_anime_neutre__nom__icontains=query) |
+                         # Q(role_animaux_femme__nom__icontains=query) |
+                         # Q(role_animaux_homme__nom__icontains=query) |
+                         # Q(role_animaux_neutre__nom__icontains=query) |
+                         # Q(role_instr_anime_femme__nom__icontains=query) |
+                         # Q(role_instr_anime_homme__nom__icontains=query) |
+                         # Q(role_instr_anime_neutre__nom__icontains=query)
                         )
             qs = qs.filter(or_lookup).distinct()
         return qs

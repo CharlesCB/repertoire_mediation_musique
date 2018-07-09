@@ -1,11 +1,14 @@
 {% extends "base.html" %}
 {% block title %} Recherche par mots-clés {% endblock %}
 {% block body %}
+<body>
+<div id="loader" style="display : none;"></div>
     <div class='container-fluid'>
             <div class="col-md-8">
-                <form method='GET' class='' action='/recherche_motcle/'>
+                <form method='GET' class='' action='/recherche_motcle/' onsubmit="showLoader()">
                     <div class="input-group form-group-no-border mx-auto" style="margin-bottom: 0px; font-size: 32px;">
                         <span class="input-group-addon cfe-nav" style='color:#000'>
+                            <button style="border: none; background-color: #eeeeee;;"><span class="glyphicon glyphicon-search" aria-hidden="true" style="color: #404040;"></span></button>
                             <i class="fa fa-search" aria-hidden="true"></i>
                         </span>
                         <input type="text" name="q" data-toggle="popover" data-placement="bottom" data-content='Appuyez sur la touche "enter" pour lancer la recherche' class="form-control cfe-nav mt-0 py-3" placeholder="Recherche par mots-clés" value="" style="" data-original-title="" title="" autofocus="autofocus">
@@ -17,34 +20,51 @@
     </div>
     <br>
     <div class="container-fluid">
-        <div class="col-md-10">
+        <div class="col-md-11">
             {% if query is not None %}
             <div class="page-header">
                 <h4> Résultat de la recherche pour "{{ query }}": </h4>
             </div>
             {% endif %}
-            <div class="col-md-10" id="result">
+            <div class="col-md-12" id="result">
+                {% comment %}
                 <ul>
                     {% for outil in object_list %}
                         <li><a href="../result{{outil.pk}}">{{outil.titre}}</a></li>
                     {% endfor %}
                 </ul>
-                {% comment %}
+                {% endcomment %}
+                {% for outil in object_list %}
                 <!--<li><a href='../result{{object.id}}/'>{{ object.titre }}</a></li>-->
                     {% if outil.page_outil == True and outil.integration == "" %}
-                        <iframe src="{{ outil.url }}" height="400" width="1000"></iframe>
+                        <div style="display : inline; position: relative;">
+                            <iframe src="{{ outil.url }}" height="200" width="200"></iframe>
+                            <a href="../result{{ outil.pk }}" style="position:absolute; top:-100; left:0; display:inline-block; width:200px; height:200px; z-index:5;" id="lien"></a>
+                            <h5 style="position:absolute; top:-193px; left:3px; z-index:4; color:#4eabb4; background-color:#404040; padding:5px; width:194px;">{{ outil.titre }}</h5>
+                        </div>
                     {% elif outil.page_outil == False and outil.integration == "" %}
-                        <img src="../static/media/backup_alaune.png">
+                        <div style="display : inline; position: relative;">
+                            <img src="../static/media/backup_resultat.png" style="position:relative; display:inline-block; top : -186px; margin-bottom: -180px;">
+                            <a href="../result{{ outil.pk }}" style="position:absolute; top:-200; left:0; display:inline-block; width:200px; height:200px; z-index:5;" id="lien"></a>
+                            <h5 style="position:absolute; top:-193px; left:3px; z-index:4; color:#4eabb4; background-color:#404040; padding:5px; width:194px;">{{ outil.titre }}</h5>
+                        </div>
+                        <!--<img src="../static/media/backup_alaune.png" height="200" width="200">-->
                     {% else %}
                         {% autoescape off %}
+                            <div style="display : inline; position: relative;">
                                 {{ outil.integration }}
+                                <a href="../result{{ outil.pk }}" style="position:absolute; top:-100; left:0; display:inline-block; width:200px; height:200px; z-index:5;" id="lien"></a>
+                                <h5 style="position:absolute; top:-193px; left:3px; z-index:4; color:#4eabb4; background-color:#404040; padding:5px; width:194px;">{{ outil.titre }}</h5>
+                            </div>
                         {% endautoescape %}
                     {% endif %}
-                {% endcomment %}
+                {% endfor %}
                 <!--<a href="../result{{ outil.id }}" style="position:absolute; top:20; left:0; display:inline-block; width:200px; height:200px; z-index:5;" id="lien"></a>-->
             </div>
         </div>
     </div>
+<script type="text/javascript" src="../static/scripts/loader.js"></script>
+</body>
 {% endblock %}
 {% block footer %}
     <footer>

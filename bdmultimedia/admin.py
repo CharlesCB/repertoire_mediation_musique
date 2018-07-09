@@ -21,9 +21,14 @@ class OutilAdmin(admin.ModelAdmin):
                          'mode_hebergement', 'mode_consultation', 'narration_langue', 'sous_titre')
 
 
-#class ContreExempleAdmin(admin.ModelAdmin):
-#    list_display = ('titre',)
-#    searche_fields = ['titre',]
+# class ContreExempleAdmin(admin.ModelAdmin):
+#     list_display = ('titre',)
+#     search_fields = ['titre',]
+
+
+# class CustomTestAdmin(admin.ModelAdmin):
+#     list_display = ('date',)
+#     search_fields = ['date',]
 
 
 class ProdTypeAdmin(admin.ModelAdmin):
@@ -207,6 +212,8 @@ class NotionsInterAdmin(admin.ModelAdmin):
     search_fields = ['nom',]
 
 
+
+#admin.site.register(CustomTest, CustomTestAdmin)
 
 admin.site.register(Outil, OutilAdmin)
 #admin.site.register(ContreExemple, ContreExempleAdmin)
