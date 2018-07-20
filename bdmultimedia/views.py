@@ -5,13 +5,13 @@ from django.views import generic
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from bdmultimedia.models import *
 from django.core.urlresolvers import reverse_lazy
-from multimedia.forms import Create
 from django.http import HttpResponse
 import xlwt
 from .filters import OutilFilter
 from forms import Search
 import datetime
 import random
+import unidecode
 
 
 class DetailView(generic.DetailView):
@@ -31,10 +31,6 @@ class AlaUneView(generic.ListView):
     context_object_name = 'outils'
 
     def get_queryset(self):
-        # liste = []
-        # for i in Outil.objects.all():
-        #     liste.append(i.pk)
-        # id = random.choice(liste)
         return Outil.objects.order_by('titre')
 
 
@@ -52,20 +48,20 @@ class ListeView(generic.ListView):
     def get_queryset(self):
         return Outil.objects.order_by('titre')
 
+#
+# class CreateForm(generic.View):
+#     model = Outil
+#     template_name = 'create.html'
+#     form_class = Create
+#     success_url = '/'
+#     def get_success_url(self):
+#         return '/'
 
-class CreateForm(generic.CreateView):
-    model = Outil
-    template_name = 'create.html'
-    form_class = Create
-    success_url = '/'
-    def get_success_url(self):
-        return '/'
 
-
-class UpdateForm(generic.UpdateView):
-    model = Outil
-    template_name = 'create.html'
-    form_class = Create
+# class UpdateForm(generic.UpdateView):
+#     model = Outil
+#     template_name = 'create.html'
+#     form_class = Create
 
 
 class DeleteForm(generic.CreateView):
@@ -111,8 +107,7 @@ class SearchForm(generic.View):
 
 class SearchView(generic.ListView):
     template_name = 'recherche_motcle.html'
-    count = 0
-
+    paginate_by = 15
     def get_context_data(self, *args, **kwargs):
         context = super(SearchView,self).get_context_data(*args, **kwargs)
         context['count'] = self.count or 0
@@ -123,8 +118,87 @@ class SearchView(generic.ListView):
         request = self.request
         query = request.GET.get('q', None)
 
+        remplacements = [
+                             ("contemporaine","contemporain"),
+                             ("lyrique","opera"),
+                             ("post-romantisme", "postromantique"),
+                             ("romantisme","romantique"),
+                             ("post-romantique","postromantique"),
+                             ("neo-classicisme","neoclassique"),
+                             ("classicisme","classique"),
+                             ("neo-classique","neoclassique"),
+                             ("minimaliste","minimalisme"),
+                             ("postmodernisme", "post-moderne"),
+                             ("modernisme","moderne"),
+                             ("postmoderne","post-moderne"),
+                             ("orientalisme", "orientaliste"),
+                             ("veriste","verisme"),
+                             ("ieme siecle",""),
+                             ("e siecle",""),
+                             ("d'",""),("c'",""),("j'",""),("l'",""),("m'",""),("jusqu'",""),("n'",""),("puisqu'",""),
+                             ("quelqu'", ""),("qu'", ""),("s'",""),("t'",""),
+                        ]
+        mots_vides =[
+                         "musique","elle","il","10eme","1er","1ere","2eme","3eme","4eme","5eme","6eme",
+                         "7eme","8eme","9eme"," a","afin","ai","ainsi","ais","ait","alors","apres","as",
+                         "assez","au","aucun","aucune","aupres","auquel","auquelles","auquels","auraient","aurais",
+                         "aurait","aurez","auriez","aurions","aurons","auront","aussi","aussitot","autre","autres","aux",
+                         "avaient","avais","avait","avant","avec","avez","aviez","avoir","avons","ayant","beaucoup",
+                         "car","ce","ceci","cela","celle","celles","celui","cependant","certes","ces","cet","cette",
+                         "ceux","chacun","chacune","chaque","chez","cinq","comme","d'abord","dans","de","dehors",
+                         "dela","depuis","des","dessous","dessus","deux","deca","dix","doit","donc","dont","du","durant",
+                         "des","deja","elle","elles","en","encore","enfin","entre","er","est","est-ce","et","etc",
+                         "eu","eurent","eut","faut","fur","hormis","hors","huit","il","ils","je",
+                         "la","laquelle","le","lequel","les","lesquels","leur","leurs","lors","lorsque","lui","la",
+                         "mais","malgre","me","melle","mes","mm","mme","moi","moins","mon","mr","meme","memes"
+                         "neuf","ni","non-","nos","notamment","notre","nous","neanmoins","notres","on","ont","ou","ou",
+                         "par","parce","parfois","parmi","partout","pas","pendant","peu","peut","peut-etre","plus","plutot",
+                         "pour","pourquoi","pres","puisque","quand","quant","quatre","quel","quelle",
+                         "quelles","quelque","quelquefois","quelques","quels","qui","quoi","quot","sa","sans",
+                         "se","sept","sera","serai","seraient","serais","serait","seras","serez","seriez","serions","serons",
+                         "seront","ses","si","sien","siennes","siens","sitot","six","soi","sommes","son","sont","sous",
+                         "souvent","suis","sur","toi","ton","toujours","tous","tout","toutefois","toutes","trois",
+                         "tu","un","une","unes","uns","voici","voila","vos","votre","vous","votres","y",
+                         "eme","etaient","etais","etait","etant","etiez","etions","etes","etre","afin","ainsi","alors",
+                         "apres","aucun","aucune","aupres","auquel","aussi","autant","aux","avec","car","ceci","cela",
+                         "celle","celles","celui","cependant","ces","cet","cette","ceux","chacun","chacune","chaque",
+                         "chez","comme","comment","dans","des","donc","donne","dont","duquel","des","deja","elle",
+                         "elles","encore","entre","etant","etc","eux","furent","grace","hors","ici","ils",
+                         "jusqu","les","leur","leurs","lors","lui","mais","malgre","mes","mien","mienne","miennes",
+                         "miens","moins","moment"," mon"," meme","memes"," non","nos","notre","notres","nous","notre",
+                         "oui","par","parce","parmi","plus","pour","pres","puis","puisque","quand","quant","quel",
+                         "quelle","quelque","quelquun","quelques","quels","qui","quoi","sans","sauf","selon","ses",
+                         "sien","sienne","siennes","siens","soi","soit","sont","sous","suis","sur","tandis","tant","tes",
+                         "tienne","tiennes","tiens","toi","ton","tous","tout","toute","toutes","trop","tres","une",
+                         "vos","votre","vous","etaient","etait","etant","etre",
+                    ]
+
         if query is not None:
-            results = Outil.objects.search(query=query).order_by('titre')
+            query = unidecode.unidecode(query)
+            query = query.decode("utf-8").lower().encode("utf8")
+            for i in remplacements:
+                if i[0] in query:
+                    query = query.replace(i[0], i[1])
+
+            mots = dum = query.split(" ")
+            for i in dum:
+                if i in mots_vides:
+                    mots.remove(i)
+
+            if len(mots) >= 1 and query != "":
+                results = Outil.objects.search(query=mots[0]).order_by('titre')
+                tempo = []
+                for i in mots:
+                    if i != mots[0]:
+                        for j in Outil.objects.search(query=i).order_by('titre'):
+                            if j in results:
+                                tempo.append(j)
+                        results = tempo
+                        tempo = []
+
+            else:
+                results = Outil.objects.order_by('titre')
+
             qs = list(results)
             self.count = len(qs)
             return results

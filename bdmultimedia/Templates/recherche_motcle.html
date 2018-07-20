@@ -1,8 +1,11 @@
 {% extends "base.html" %}
+{% load bootstrap_pagination %}
+{% load bootstrap3 %}
+{% load bootstrap_tags %}
 {% block title %} Recherche par mots-clés {% endblock %}
 {% block body %}
 <body>
-<div id="loader" style="display : none;"></div>
+<div id="loader"></div>
     <div class='container-fluid'>
             <div class="col-md-8">
                 <form method='GET' class='' action='/recherche_motcle/' onsubmit="showLoader()">
@@ -22,18 +25,18 @@
     <div class="container-fluid">
         <div class="col-md-11">
             {% if query is not None %}
-            <div class="page-header">
-                <h4> Résultat de la recherche pour "{{ query }}": </h4>
-            </div>
+                <div class="page-header">
+                    <h4>{% if count == 0 %}
+                        Aucun dispositif trouvé pour
+                    {% elif count == 1 %}
+                        {{ count }} dispositif trouvé pour
+                    {% else %}
+                        {{ count }} dispositifs trouvés pour
+                    {% endif %}
+                        "{{ query }}": </h4>
+                </div>
             {% endif %}
             <div class="col-md-12" id="result">
-                {% comment %}
-                <ul>
-                    {% for outil in object_list %}
-                        <li><a href="../result{{outil.pk}}">{{outil.titre}}</a></li>
-                    {% endfor %}
-                </ul>
-                {% endcomment %}
                 {% for outil in object_list %}
                 <!--<li><a href='../result{{object.id}}/'>{{ object.titre }}</a></li>-->
                     {% if outil.page_outil == True and outil.integration == "" %}
@@ -44,11 +47,10 @@
                         </div>
                     {% elif outil.page_outil == False and outil.integration == "" %}
                         <div style="display : inline; position: relative;">
-                            <img src="../static/media/backup_resultat.png" style="position:relative; display:inline-block; top : -186px; margin-bottom: -180px;">
-                            <a href="../result{{ outil.pk }}" style="position:absolute; top:-200; left:0; display:inline-block; width:200px; height:200px; z-index:5;" id="lien"></a>
-                            <h5 style="position:absolute; top:-193px; left:3px; z-index:4; color:#4eabb4; background-color:#404040; padding:5px; width:194px;">{{ outil.titre }}</h5>
+                                <img src="../static/media/backup_resultat.png" style="position:relative; display:inline-block; top : -186px; margin-bottom: -180px;">
+                                <a href="../result{{ outil.pk }}" style="position:absolute; top:-200; left:0; display:inline-block; width:200px; height:200px; z-index:5;" id="lien"></a>
+                                <h5 style="position:absolute; top:-193px; left:3px; z-index:4; color:#4eabb4; background-color:#404040; padding:5px; width:194px;">{{ outil.titre }}</h5>
                         </div>
-                        <!--<img src="../static/media/backup_alaune.png" height="200" width="200">-->
                     {% else %}
                         {% autoescape off %}
                             <div style="display : inline; position: relative;">
@@ -59,20 +61,34 @@
                         {% endautoescape %}
                     {% endif %}
                 {% endfor %}
-                <!--<a href="../result{{ outil.id }}" style="position:absolute; top:20; left:0; display:inline-block; width:200px; height:200px; z-index:5;" id="lien"></a>-->
             </div>
         </div>
     </div>
-<script type="text/javascript" src="../static/scripts/loader.js"></script>
+    <div class="col-md-10" align="center">
+        {% if is_paginated %}
+          <ul class="pagination">
+            {% if page_obj.has_previous %}
+              <li><a href="/recherche_motcle/?q={{query}}&page={{ page_obj.previous_page_number }}" onclick="showLoader()">&laquo;</a></li>
+            {% else %}
+              <li class="disabled"><span>&laquo;</span></li>
+            {% endif %}
+            {% for i in paginator.page_range %}
+              {% if page_obj.number == i %}
+                <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+              {% else %}
+                <li><a href="/recherche_motcle/?q={{query}}&page={{ i }}" onclick="showLoader()">{{ i }}</a></li>
+              {% endif %}
+            {% endfor %}
+            {% if page_obj.has_next %}
+              <li><a href="/recherche_motcle/?q={{query}}&page={{ page_obj.next_page_number }}" onclick="showLoader()">&raquo;</a></li>
+            {% else %}
+              <li class="disabled"><span>&raquo;</span></li>
+            {% endif %}
+          </ul>
+        {% endif %}
+    </div>
+    <script type="text/javascript" src="../static/scripts/loader.js"></script>
 </body>
 {% endblock %}
 {% block footer %}
-    <footer>
-        {% if query is not None %}
-            <div class="col-md-10" align="center">
-                <small>{{ object_list.count }} dispositifs trouvés</small>
-            </div>
-        {% endif %}
-        <br><br>
-    </footer>
 {% endblock %}

@@ -104,3 +104,6 @@ class Search(forms.ModelForm):
             'role_evolution__nom',
             'epoque',
         ]
+
+class Create(forms.ModelForm):
+    titre = forms.CharField(label = "R.1 Titre du dispositif", required = True)

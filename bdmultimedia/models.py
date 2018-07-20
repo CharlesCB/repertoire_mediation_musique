@@ -626,24 +626,24 @@ class OutilManager(models.Manager):
                          Q(site__icontains=query) |
                          Q(ensemble_thematique_nom__icontains=query) |
                          Q(interactivite__icontains=query) |
-                         Q(personnification_service__icontains=query) |
-                         Q(premier_onglet__icontains=query) |
-                         Q(prem_onglet_autre__icontains=query) |
-                         Q(deuxieme_onglet__icontains=query) |
-                         Q(deux_onglet_autre__icontains=query) |
-                         Q(troisieme_onglet__icontains=query) |
-                         Q(trois_onglet_autre__icontains=query) |
+                         # Q(personnification_service__icontains=query) |
+                         # Q(premier_onglet__icontains=query) |
+                         # Q(prem_onglet_autre__icontains=query) |
+                         # Q(deuxieme_onglet__icontains=query) |
+                         # Q(deux_onglet_autre__icontains=query) |
+                         # Q(troisieme_onglet__icontains=query) |
+                         # Q(trois_onglet_autre__icontains=query) |
                          Q(elements_socioculturels__icontains=query) |
-                         Q(epoque__icontains=query) | # pertinent?
-                         Q(sonore_valeur__icontains=query) |
-                         Q(evocation_litteraire__icontains=query) |
+                         Q(epoque__icontains=query) |
+                         # Q(sonore_valeur__icontains=query) |
+                         # Q(evocation_litteraire__icontains=query) |
                          Q(producteur_type__nom__icontains=query) |
                          Q(producteur_nom__nom__icontains=query) |
                          Q(support_diffusion__nom__icontains=query) |
                          Q(format__nom__icontains=query) |
                          Q(forme_narrative__nom__icontains=query) |
                          Q(mode_hebergement__nom__icontains=query) |
-                         Q(mode_consultation__nom__icontains=query) |
+                         # Q(mode_consultation__nom__icontains=query) |
                          Q(narration_langue__nom__icontains=query) |
                          Q(sous_titre__nom__icontains=query) |
                          Q(orchestration__nom__icontains=query) |
@@ -660,19 +660,19 @@ class OutilManager(models.Manager):
                          Q(evocation_graphique__nom__icontains=query) |
                          Q(evocation_plastique__nom__icontains=query) |
                          Q(evocation_autre__nom__icontains=query) |
-                         Q(exemples_notions_interdisciplinaires__nom__icontains=query) #|
-                         # Q(role_humain_femme__nom__icontains=query) |
-                         # Q(role_humain_homme__nom__icontains=query) |
-                         # Q(role_humain_neutre__nom__icontains=query) |
-                         # Q(role_pers_anime_femme__nom__icontains=query) |
-                         # Q(role_pers_anime_homme__nom__icontains=query) |
-                         # Q(role_pers_anime_neutre__nom__icontains=query) |
-                         # Q(role_animaux_femme__nom__icontains=query) |
-                         # Q(role_animaux_homme__nom__icontains=query) |
-                         # Q(role_animaux_neutre__nom__icontains=query) |
-                         # Q(role_instr_anime_femme__nom__icontains=query) |
-                         # Q(role_instr_anime_homme__nom__icontains=query) |
-                         # Q(role_instr_anime_neutre__nom__icontains=query)
+                         Q(exemples_notions_interdisciplinaires__nom__icontains=query) |
+                         Q(role_humain_femme__nom__icontains=query) |
+                         Q(role_humain_homme__nom__icontains=query) |
+                         Q(role_humain_neutre__nom__icontains=query) |
+                         Q(role_pers_anime_femme__nom__icontains=query) |
+                         Q(role_pers_anime_homme__nom__icontains=query) |
+                         Q(role_pers_anime_neutre__nom__icontains=query) |
+                         Q(role_animaux_femme__nom__icontains=query) |
+                         Q(role_animaux_homme__nom__icontains=query) #|
+                        # Q(role_animaux_neutre__nom__icontains=query) |
+                        # Q(role_instr_anime_femme__nom__icontains=query) |
+                        # Q(role_instr_anime_homme__nom__icontains=query) |
+                        # Q(role_instr_anime_neutre__nom__icontains=query)
                         )
             qs = qs.filter(or_lookup).distinct()
         return qs
@@ -687,7 +687,7 @@ class Outil(models.Model):
     url = models.CharField(db_index=True, unique=True, max_length=200, verbose_name="R.2 URL d'accès direct",
                            help_text="Attention, enlever la barre oblique « / » à la fin de l’URL Ex. www.osm.ca/fr/matinees/#1488205065259-011decba-7105")
     site = models.CharField(db_index=True, max_length=200, verbose_name="R.3 URL d'accès au site d'hébergement",
-                           help_text="Attention, enlever la barre oblique « / » à la fin de l’URL www.osm.ca. <br> Si le dispositif est une vidéo d’un-e YouTubeur-e, indiquer le lien vers sa chaîne YouTube.")
+                           help_text="Attention, enlever la barre oblique « / » à la fin de l’URL www.osm.ca. Si le dispositif est une vidéo d’un-e YouTubeur-e, indiquer le lien vers sa chaîne YouTube.")
     ensemble_thematique = models.CharField(blank=False, choices=OUINON, max_length=4, default="Non",
                                            verbose_name="R.3.1 Ce dispositif fait-il partie d'un ensemble thématique du même type? (regroupé par l'organisme producteur)",
                                            help_text = "On parle bien ici d’un ensemble thématique et non pas d’un regroupement par format (ex. vidéo) ou par objectif (ex . ressource pédagogique). ")
@@ -702,7 +702,7 @@ class Outil(models.Model):
     duree = models.CharField(max_length=8, null=False, verbose_name="R.9 Durée", default="00:00:00",
                              help_text="nsp = ne s'applique pas, ddv = durée d’écoute variable. La durée d’écoute est variable puisque les utilisateurs peuvent décider, ou non, de regarder les vidéos. Concerne les dispositifs qui allient texte et vidéo.")
     nb_pages = models.CharField(null=True, verbose_name="R.10 Nombre de pages",
-                                            max_length = 50,
+                                            max_length = 16,
                                            help_text="Correspond au nombre de page web sur lesquelles se décline le  dispositif. Nsp = ne s'applique pas. Si plus que 20 pages, inscrire : plus de 20 pages")
     mise_en_ligne_date = models.DateField(null=True, blank=True, auto_now=False, auto_now_add=False,
                                           verbose_name="R.11 Date de la mise en ligne",
@@ -826,17 +826,17 @@ class Outil(models.Model):
                                        verbose_name="I.37 Interdisciplinarité")
     ####à partir de quelle notion?
     notion_concepts = models.CharField(choices = OUINONNSP,
-                                       max_length = 50,
+                                       max_length = 20,
                                        null = False,
                                        default = "Nsp",
                                        verbose_name="I.38 À partir de quelle notion? - Notions communes (luminosité, transparence, vitesse, mouvement)")
     notion_experiences = models.CharField(choices = OUINONNSP,
-                                       max_length = 50,
+                                       max_length = 20,
                                        null = False,
                                        default = "Nsp",
                                        verbose_name="I.38 À partir de quelle notion? - Expérience (émotions)")
     notion_pratiques = models.CharField(choices = OUINONNSP,
-                                       max_length = 50,
+                                       max_length = 20,
                                        null = False,
                                        default = "Nsp",
                                        verbose_name="I.38 À partir de quelle notion? - Pratique (processus de création)")
@@ -846,7 +846,7 @@ class Outil(models.Model):
 
     # STÉRÉOTYPES DE GENRE
     nb_humains_total = models.CharField(verbose_name="Sté.39.1 Nombre d'humains total",
-                                        max_length = 50,
+                                        max_length = 10,
                                         default = "0",
                                         help_text = 'On compte tous les humains qui sont 3 ou moins dans le cadre. Si le nombre excède 11, écrire "11 et plus"')
     nb_hommes = models.PositiveIntegerField(verbose_name="Sté.39.1 Nombre d'hommes", default=0)
@@ -860,7 +860,7 @@ class Outil(models.Model):
     role_humain_neutre = models.ManyToManyField(RoleHumainNeutre, db_index=True,
                                                 verbose_name="Sté.39.4 Rôle des indeterminés")
     nb_pers_anime_total = models.CharField(null = True, verbose_name="Sté.40.1 Nombre de personnages animés total",
-                                           max_length=50,
+                                           max_length=10,
                                            default="0",
                                            help_text='Si le nombre excède 11, écrire "11 et plus"')
     nb_pers_anime_hommes = models.PositiveIntegerField(null=True, verbose_name="Sté.40.1 Nombre de personnages animés hommes",
@@ -877,7 +877,7 @@ class Outil(models.Model):
     role_pers_anime_neutre = models.ManyToManyField(RolePersAnimNeutre, db_index=True,
                                                     verbose_name="Sté.40.4 Rôle des personnages animés indéterminés")
     nb_animaux_total = models.CharField(null = True, verbose_name="Sté.41.1 Nombre d'animaux total",
-                                        max_length=50,
+                                        max_length=10,
                                         default="0",
                                         help_text='Si le nombre excède 11, écrire "11 et plus"')
     nb_males = models.PositiveIntegerField(null=True, verbose_name="Sté.41.1 Nombre de mâles", default=0)
@@ -892,7 +892,7 @@ class Outil(models.Model):
     role_animaux_neutre = models.ManyToManyField(RoleAnimauxNeutre, db_index=True,
                                                  verbose_name="Sté.41.4 Rôle des animaux indéterminés")
     nb_instr_anime_total = models.CharField(null=True, verbose_name="Sté.42.1 Nombre d'instruments animés total",
-                                            max_length=50,
+                                            max_length=10,
                                             default="0",
                                             help_text='cf. anthropomorphe. Si le nombre excède 11, écrire "11 et plus"')
     nb_instr_anime_hommes = models.PositiveIntegerField(null=True, verbose_name="Sté.42.1 Nombre d'instruments animés masculins",
