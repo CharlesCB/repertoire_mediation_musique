@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.postgres',
     'bootstrap_pagination',
     'django_forms_bootstrap',
     'django_tables2',
@@ -90,8 +91,8 @@ DATABASES = {
          'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
      }
     # 'default': {
-    #     'ENGINE': 'django.db.backends.postgresql_psycopg2',
-    #     'NAME': 'mediati_catalogue',
+    #     'ENGINE': 'django_postgres_extensions.backends.postgresql',
+    #     'NAME': 'mediati_repertoire',
     #     'USER': 'mediati_mediationdelamusique',
     #     'PASSWORD': 'Charles12!',
     #     'HOST': '127.0.0.1',

@@ -10,7 +10,6 @@ import xlwt
 from .filters import OutilFilter
 from forms import Search
 import datetime
-import random
 import unidecode
 
 
@@ -107,7 +106,7 @@ class SearchForm(generic.View):
 
 class SearchView(generic.ListView):
     template_name = 'recherche_motcle.html'
-    paginate_by = 15
+    paginate_by = 20
     def get_context_data(self, *args, **kwargs):
         context = super(SearchView,self).get_context_data(*args, **kwargs)
         context['count'] = self.count or 0
@@ -120,18 +119,19 @@ class SearchView(generic.ListView):
 
         remplacements = [
                              ("contemporaine","contemporain"),
-                             ("lyrique","opera"),
+                             ("lyrique","opéra"),
                              ("post-romantisme", "postromantique"),
                              ("romantisme","romantique"),
                              ("post-romantique","postromantique"),
-                             ("neo-classicisme","neoclassique"),
+                             ("néo-classicisme","néoclassique"),
                              ("classicisme","classique"),
-                             ("neo-classique","neoclassique"),
+                             ("néo-classique","néoclassique"),
                              ("minimaliste","minimalisme"),
                              ("postmodernisme", "post-moderne"),
                              ("modernisme","moderne"),
                              ("postmoderne","post-moderne"),
                              ("orientalisme", "orientaliste"),
+                             ("orientale", "orientaliste"),
                              ("veriste","verisme"),
                              ("ieme siecle",""),
                              ("e siecle",""),
@@ -174,8 +174,8 @@ class SearchView(generic.ListView):
                     ]
 
         if query is not None:
-            query = unidecode.unidecode(query)
-            query = query.decode("utf-8").lower().encode("utf8")
+            #query = unidecode.unidecode(query)
+            query = query.lower() # query.decode("utf-8").lower().encode("utf8")
             for i in remplacements:
                 if i[0] in query:
                     query = query.replace(i[0], i[1])
@@ -576,7 +576,7 @@ def export_xls(request):
     if request.user.is_authenticated():
         response = HttpResponse(content_type='application/ms-excel')
         aujourdui = datetime.datetime.now().strftime('%d/%m/%Y')
-        nom = "[" + aujourdui + "] Catalogue raisonné de dispositifs numérique.xls"
+        nom = "[" + aujourdui + "]_Catalogue_raisonné_de_dispositifs_numérique.xls"
         response['Content-Disposition'] = 'attachment; filename=%s' % nom
 
         wb = xlwt.Workbook(encoding="utf-8")
@@ -591,20 +591,20 @@ def export_xls(request):
         colones = ["R.1 Titre", "R.2 Url", "R.3 Site d'hébergement", "R.3.1 Fait-il partie d'un ensemble thématique?",
                    "R.3.2 Nom de l'ensemble thématique", "R.4 Producteur", "R.5 Nom du producteur",
                    "R.6 Support de diffusion","R.7 Format", "R.8 Forme narrative", "R.9 Durée", "R.10 Nombre de pages",
-                   "R.11 Date de mise en ligne", "R.12 Date du dépouillement", "R.13 Interactivite", "R.13.1 doccuments à imprimer",
+                   "R.11 Date de mise en ligne", "R.12 Date du dépouillement", "R.13 Interactivite", "R.13.1 Doccuments à imprimer",
                    "R.14 Personnification du service","R.15 Possibilité de laisser des commentaires", "R.16 Nombre de commentaires",
                    "S.17 Premier Onglet","S.17.1 Autre - Premier Onglet","S.18 Deuxième Onglet","S.18.1 Autre - Deuxième Onglet",
                    "S.19 Troisième Onglet","S19.1 Autre Troisième Onglet","S.19. 1 PLUS DE TROIS ONGLETS à ouvrir pour trouver ce dispositif ?","S.20 Mode d'hébergement","S.21 Mode de consultation",
                    "S.22 langue de la narration","S.23 Sous-titrages", "S.24.1 Accessible aux malentendants","S.24.2 Accessible aux malvoyants",
                    "M.25 Matériau musical (parle-t-on)","M.25.1 Orchestration (parle-t-on)",
-                   "M.25.2 Structure (parle-t-on)", "M.25.3 language musical (parle-t-on)","M.25.4 genre musical (parle-t-on)l", "M.25.5 style musical (parle-t-on)",
+                   "M.25.2 Structure (parle-t-on)", "M.25.3 language musical (parle-t-on)","M.25.4 Genre musical (parle-t-on)l", "M.25.5 Style musical (parle-t-on)",
                    "M.26 Expérience musicale (parle-t-on)", "M.27 Éléments sociocultutrels et historique (parle-t-on)", "M.27.1 Époque",
                    "M.27.2 Contexte de composition, création, interprétation", "U.27.3 Rôle de l'évolution", "M.27.4 Organologie (parle-t-on)",
-                   "U.28 Sollicitation musicale", "U.29 Sollicifation générale", "PM.30 temps de musique", "PM.31 temps de parole", "PM.32 temps musique et parole",
-                   "PM.33 mise en valeur du sonore", "EM.34 évocation graphique", "EM.35 évocation plastique", "EM.36 évocation litteraire",
-                   "EM.37 autre discipline évoquée", "I.38 notions communes", "I.38 expérience", "I.38 pratique", 
-                   "I.39 exemples de notions évoquées de façon interdisciplinaires", "STÉ.39.1 nombre total d'humains", "STÉ.39.1 nombre d'hommes",
-                   "STÉ.39.1 nombre de femmes","STÉ.39.1 Nombre d'humains au genre indéterminé", "Sté.39.2 Rôle des femmes", "Sté.39.3 Rôle des hommes",
+                   "U.28 Sollicitation musicale", "U.29 Sollicifation générale", "PM.30 Temps de musique", "PM.31 Temps de parole", "PM.32 Temps musique et parole",
+                   "PM.33 Mise en valeur du sonore", "EM.34 Évocation graphique", "EM.35 Évocation plastique", "EM.36 Évocation litteraire",
+                   "EM.37 Autre discipline évoquée", "I.38 Notions communes", "I.38 Expérience", "I.38 Pratique",
+                   "I.39 Exemples de notions évoquées de façon interdisciplinaires", "STÉ.39.1 Nombre total d'humains", "STÉ.39.1 Nombre d'hommes",
+                   "STÉ.39.1 Nombre de femmes","STÉ.39.1 Nombre d'humains au genre indéterminé", "Sté.39.2 Rôle des femmes", "Sté.39.3 Rôle des hommes",
                    "Sté.39.4 Rôle des indeterminés","Sté.40.1 Nombre de personnages animés total","Sté.40.1 Nombre de personnages animés hommes",
                    "Sté.40.1 Nombre de personnages animés femmes", "Sté.40.1 Nombre de personnages animés au genre indéterminé",
                    "Sté.40.3 Rôle des personnages animés féminins", "Sté.40.2 Rôle des personnages animés masculins", "Sté.40.4 Rôle des personnages animés indéterminés",
@@ -618,83 +618,83 @@ def export_xls(request):
         for col_num in range(len(colones)):
             ws.write(row_num, col_num, colones[col_num], font_style)
 
-        loftUn = list(Outil.objects.all().order_by('titre').values_list('titre','url','site','ensemble_thematique','ensemble_thematique_nom', 'producteur_type__nom'))
+        loftUn = list(Outil.objects.order_by('titre').values_list('titre','url','site','ensemble_thematique','ensemble_thematique_nom', 'producteur_type__nom'))
         loflUn = [list(elem) for elem in loftUn]
-        loftUnUn = list(Outil.objects.all().order_by('titre').values_list('titre','producteur_nom__nom'))
+        loftUnUn = list(Outil.objects.order_by('titre').values_list('titre','producteur_nom__nom'))
         loflUnUn = [list(elem) for elem in loftUnUn]
-        loftDeux = list(Outil.objects.all().order_by('titre').values_list('titre','support_diffusion__nom'))
+        loftDeux = list(Outil.objects.order_by('titre').values_list('titre','support_diffusion__nom'))
         loflDeux = [list(elem) for elem in loftDeux]
-        loftTrois = list(Outil.objects.all().order_by('titre').values_list('titre','format__nom'))
+        loftTrois = list(Outil.objects.order_by('titre').values_list('titre','format__nom'))
         loflTrois = [list(elem) for elem in loftTrois]
-        loftQuatre = list(Outil.objects.all().order_by('titre').values_list('titre','forme_narrative__nom','duree','nb_pages','mise_en_ligne_date','depouillement_date','interactivite','materiel_imprimer',
+        loftQuatre = list(Outil.objects.order_by('titre').values_list('titre','forme_narrative__nom','duree','nb_pages','mise_en_ligne_date','depouillement_date','interactivite','materiel_imprimer',
                                                           'personnification_service','commentaire_possible','commentaire_nombre','premier_onglet', 'prem_onglet_autre',
                                                           'deuxieme_onglet', 'deux_onglet_autre', 'troisieme_onglet', 'trois_onglet_autre','plus_de_tois_onglet'))
         loflQuatre = [list(elem) for elem in loftQuatre]
-        loftCinq = list(Outil.objects.all().order_by('titre').values_list('titre','mode_hebergement__nom'))
+        loftCinq = list(Outil.objects.order_by('titre').values_list('titre','mode_hebergement__nom'))
         loflCinq = [list(elem) for elem in loftCinq]
-        loftSix = list(Outil.objects.all().order_by('titre').values_list('titre','mode_consultation__nom'))
+        loftSix = list(Outil.objects.order_by('titre').values_list('titre','mode_consultation__nom'))
         loflSix = [list(elem) for elem in loftSix]
-        loftSept = list(Outil.objects.all().order_by('titre').values_list('titre','narration_langue__nom'))
+        loftSept = list(Outil.objects.order_by('titre').values_list('titre','narration_langue__nom'))
         loflSept = [list(elem) for elem in loftSept]
-        loftHuit = list(Outil.objects.all().order_by('titre').values_list('titre','sous_titre__nom', 'malentendants', 'malvoyants', 'materiau_musical'))
+        loftHuit = list(Outil.objects.order_by('titre').values_list('titre','sous_titre__nom', 'malentendants', 'malvoyants', 'materiau_musical'))
         loflHuit = [list(elem) for elem in loftHuit]
-        loftNeuf = list(Outil.objects.all().order_by('titre').values_list('titre','orchestration__nom'))
+        loftNeuf = list(Outil.objects.order_by('titre').values_list('titre','orchestration__nom'))
         loflNeuf = [list(elem) for elem in loftNeuf]
-        loftDix = list(Outil.objects.all().order_by('titre').values_list('titre','structure__nom'))
+        loftDix = list(Outil.objects.order_by('titre').values_list('titre','structure__nom'))
         loflDix = [list(elem) for elem in loftDix]
-        loftOnze = list(Outil.objects.all().order_by('titre').values_list('titre','language_musical__nom'))
+        loftOnze = list(Outil.objects.order_by('titre').values_list('titre','language_musical__nom'))
         loflOnze = [list(elem) for elem in loftOnze]
-        loftDouze = list(Outil.objects.all().order_by('titre').values_list('titre','genre_musical__nom'))
+        loftDouze = list(Outil.objects.order_by('titre').values_list('titre','genre_musical__nom'))
         loflDouze = [list(elem) for elem in loftDouze]
-        loftTreize = list(Outil.objects.all().order_by('titre').values_list('titre','style_musical__nom'))
+        loftTreize = list(Outil.objects.order_by('titre').values_list('titre','style_musical__nom'))
         loflTreize = [list(elem) for elem in loftTreize]
-        loftQuatorze = list(Outil.objects.all().order_by('titre').values_list('titre','experience_musicale__nom', 'elements_socioculturels', 'epoque'))
+        loftQuatorze = list(Outil.objects.order_by('titre').values_list('titre','experience_musicale__nom', 'elements_socioculturels', 'epoque'))
         loflQuatorze = [list(elem) for elem in loftQuatorze]
-        loftQuinze = list(Outil.objects.all().order_by('titre').values_list('titre','contexte__nom'))
+        loftQuinze = list(Outil.objects.order_by('titre').values_list('titre','contexte__nom'))
         loflQuinze = [list(elem) for elem in loftQuinze]
-        loftSeize = list(Outil.objects.all().order_by('titre').values_list('titre','role_evolution__nom'))
+        loftSeize = list(Outil.objects.order_by('titre').values_list('titre','role_evolution__nom'))
         loflSeize = [list(elem) for elem in loftSeize]
         loftSeizeDeux = list(Outil.objects.order_by('titre').values_list('titre','organologie__nom')) #organologie
         loflSeizeDeux = [list(elem) for elem in loftSeizeDeux]
-        loftDixSept = list(Outil.objects.all().order_by('titre').values_list('titre','sollicitation_musicale__nom'))
+        loftDixSept = list(Outil.objects.order_by('titre').values_list('titre','sollicitation_musicale__nom'))
         loflDixSept = [list(elem) for elem in loftDixSept]
-        loftDixHuit = list(Outil.objects.all().order_by('titre').values_list('titre','sollicitation_generale__nom', 'temps_mus', 'temps_par', 'temps_mus_par', 'sonore_valeur'))
+        loftDixHuit = list(Outil.objects.order_by('titre').values_list('titre','sollicitation_generale__nom', 'temps_mus', 'temps_par', 'temps_mus_par', 'sonore_valeur'))
         loflDixHuit = [list(elem) for elem in loftDixHuit]
-        loftDixNeuf = list(Outil.objects.all().order_by('titre').values_list('titre', 'evocation_graphique__nom'))
+        loftDixNeuf = list(Outil.objects.order_by('titre').values_list('titre', 'evocation_graphique__nom'))
         loflDixNeuf = [list(elem) for elem in loftDixNeuf]
-        loftVingt = list(Outil.objects.all().order_by('titre').values_list('titre', 'evocation_plastique__nom', 'evocation_litteraire'))
+        loftVingt = list(Outil.objects.order_by('titre').values_list('titre', 'evocation_plastique__nom', 'evocation_litteraire'))
         loflVingt = [list(elem) for elem in loftVingt]
-        loftVingtEtUn = list(Outil.objects.all().order_by('titre').values_list('titre', 'evocation_autre__nom', 'notion_concepts', 'notion_experiences', 'notion_pratiques'))
+        loftVingtEtUn = list(Outil.objects.order_by('titre').values_list('titre', 'evocation_autre__nom', 'notion_concepts', 'notion_experiences', 'notion_pratiques'))
         loflVingtEtUn = [list(elem) for elem in loftVingtEtUn]
-        loftVingtDeux = list(Outil.objects.all().order_by('titre').values_list('titre', 'exemples_notions_interdisciplinaires__nom', 'nb_humains_total', 'nb_hommes', 'nb_femmes',
+        loftVingtDeux = list(Outil.objects.order_by('titre').values_list('titre', 'exemples_notions_interdisciplinaires__nom', 'nb_humains_total', 'nb_hommes', 'nb_femmes',
                                                              'nb_humains_indetermines'))
         loflVingtDeux = [list(elem) for elem in loftVingtDeux]
-        loftVingtTrois = list(Outil.objects.all().order_by('titre').values_list('titre', 'role_humain_femme__nom'))
+        loftVingtTrois = list(Outil.objects.order_by('titre').values_list('titre', 'role_humain_femme__nom'))
         loflVingtTrois = [list(elem) for elem in loftVingtTrois]
-        loftVingtQuatre = list(Outil.objects.all().order_by('titre').values_list('titre', 'role_humain_homme__nom'))
+        loftVingtQuatre = list(Outil.objects.order_by('titre').values_list('titre', 'role_humain_homme__nom'))
         loflVingtQuatre = [list(elem) for elem in loftVingtQuatre]
-        loftVingtCinq = list(Outil.objects.all().order_by('titre').values_list('titre', 'role_humain_neutre__nom', 'nb_pers_anime_total', 'nb_pers_anime_hommes',
+        loftVingtCinq = list(Outil.objects.order_by('titre').values_list('titre', 'role_humain_neutre__nom', 'nb_pers_anime_total', 'nb_pers_anime_hommes',
                                                              'nb_pers_anime_femmes', 'nb_pers_anime_indetermines'))
         loflVingtCinq = [list(elem) for elem in loftVingtCinq]
-        loftVingtSix = list(Outil.objects.all().order_by('titre').values_list('titre', 'role_pers_anime_femme__nom'))
+        loftVingtSix = list(Outil.objects.order_by('titre').values_list('titre', 'role_pers_anime_femme__nom'))
         loflVingtSix = [list(elem) for elem in loftVingtSix]
-        loftVingtSept = list(Outil.objects.all().order_by('titre').values_list('titre', 'role_pers_anime_homme__nom'))
+        loftVingtSept = list(Outil.objects.order_by('titre').values_list('titre', 'role_pers_anime_homme__nom'))
         loflVingtSept = [list(elem) for elem in loftVingtSept]
-        loftVingtHuit = list(Outil.objects.all().order_by('titre').values_list('titre', 'role_pers_anime_neutre__nom', 'nb_animaux_total', 'nb_males', 'nb_femelles',
+        loftVingtHuit = list(Outil.objects.order_by('titre').values_list('titre', 'role_pers_anime_neutre__nom', 'nb_animaux_total', 'nb_males', 'nb_femelles',
                                                              'nb_animaux_indetermines'))
         loflVingtHuit = [list(elem) for elem in loftVingtHuit]
-        loftVingtNeuf = list(Outil.objects.all().order_by('titre').values_list('titre', 'role_animaux_femme__nom'))
+        loftVingtNeuf = list(Outil.objects.order_by('titre').values_list('titre', 'role_animaux_femme__nom'))
         loflVingtNeuf = [list(elem) for elem in loftVingtNeuf]
-        loftTrente = list(Outil.objects.all().order_by('titre').values_list('titre', 'role_animaux_homme__nom'))
+        loftTrente = list(Outil.objects.order_by('titre').values_list('titre', 'role_animaux_homme__nom'))
         loflTrente = [list(elem) for elem in loftTrente]
-        loftTrenteEtUn = list(Outil.objects.all().order_by('titre').values_list('titre','role_animaux_neutre__nom', 'nb_instr_anime_total', 'nb_instr_anime_hommes',
+        loftTrenteEtUn = list(Outil.objects.order_by('titre').values_list('titre','role_animaux_neutre__nom', 'nb_instr_anime_total', 'nb_instr_anime_hommes',
                                                               'nb_instr_anime_femmes', 'nb_instr_anime_indetermines'))
         loflTrenteEtUn = [list(elem) for elem in loftTrenteEtUn]
-        loftTrenteDeux = list(Outil.objects.all().order_by('titre').values_list('titre', 'role_instr_anime_femme__nom'))
+        loftTrenteDeux = list(Outil.objects.order_by('titre').values_list('titre', 'role_instr_anime_femme__nom'))
         loflTrenteDeux = [list(elem) for elem in loftTrenteDeux]
-        loftTrenteTrois = list(Outil.objects.all().order_by('titre').values_list('titre', 'role_instr_anime_homme__nom'))
+        loftTrenteTrois = list(Outil.objects.order_by('titre').values_list('titre', 'role_instr_anime_homme__nom'))
         loflTrenteTrois = [list(elem) for elem in loftTrenteTrois]
-        loftTrenteQuatre = list(Outil.objects.all().order_by('titre').values_list('titre', 'role_instr_anime_neutre__nom'))
+        loftTrenteQuatre = list(Outil.objects.order_by('titre').values_list('titre', 'role_instr_anime_neutre__nom'))
         loflTrenteQuatre = [list(elem) for elem in loftTrenteQuatre]
         
         total = Outil.objects.all().count()

@@ -1,20 +1,21 @@
 {% extends 'base.html' %}
 
 {% block body %}
+<div class="loader-section" id="loader-section"></div>
     <div class="container-fluid">
         <div class="col-md-11">
             <div class="page-header">
-                <h3  id="titre">&nbsp; Catalogue Raisonné de Dispositifs de Médiation de la Musique</h3>
+                <h3>&nbsp; Catalogue Raisonné de Dispositifs de Médiation de la Musique</h3>
             </div>
         </div>
     </div>
     <div>
         <div class="col-md-10 col-md-offset-1">
             <br>
-            <!--(21-06-2018) liste non-utilisés : [11, 46, 108, 30, 154, 80, 41, 118, 59, 18, 79, 92, 93, 162, 125, 100, 45, 70, 102, 62, 98, 73, 19, 29, 67, 163, 17, 91, 142, 48, 149, 84, 40, 83, 90, 7, 127, 159, 122, 131, 138, 64, 31, 135, 75, 140, 25, 63, 14, 53, 126, 155, 28, 139, 115, 22, 37, 23, 44, 136, 10, 128, 117, 85, 76, 103, 151, 119, 107, 116, 4, 96, 130, 88, 1, 106, 66, 24, 143, 3, 153, 123, 134, 38, 13, 49, 146, 157, 27, 55, 20, 5, 56, 152, 54, 9, 112, 94, 113, 133, 121, 78, 43, 71, 51, 105, 36, 124, 87, 109, 21, 95, 58, 35, 158, 148, 26, 61, 8, 6, 89, 82, 32, 160, 50, 144, 65, 147, 52, 120, 97, 86, 141, 145, 137, 110, 99, 77, 16, 12, 47, 150, 72, 104, 81, 114, 132, 161, 111, 129, 42, 101, 34, 74] -->
-            <!--liste déjà utilisés : [156, 68, 69, 33, 39, 2] -->
+            <!--(21-06-2018) liste non-utilisés : [30, 154, 80, 41, 118, 59, 18, 79, 92, 93, 162, 125, 100, 45, 70, 102, 62, 98, 73, 19, 29, 67, 163, 17, 91, 142, 48, 149, 84, 40, 83, 90, 7, 127, 159, 122, 131, 138, 64, 31, 135, 75, 140, 25, 63, 14, 53, 126, 155, 28, 139, 115, 22, 37, 23, 44, 136, 10, 128, 117, 85, 76, 103, 151, 119, 107, 116, 4, 96, 130, 88, 1, 106, 66, 24, 143, 3, 153, 123, 134, 38, 13, 49, 146, 157, 27, 55, 20, 5, 56, 152, 54, 9, 112, 94, 113, 133, 121, 78, 43, 71, 51, 105, 36, 124, 87, 109, 21, 95, 58, 35, 158, 148, 26, 61, 8, 6, 89, 82, 32, 160, 50, 144, 65, 147, 52, 120, 97, 86, 141, 145, 137, 110, 99, 77, 16, 12, 47, 150, 72, 104, 81, 114, 132, 161, 111, 129, 42, 101, 34, 74] -->
+            <!--liste déjà utilisés : [156, 68, 69, 33, 39, 2, 11, 46, 108] -->
             {% for outil in outils %}
-                {% if outil.pk == 2 %}
+                {% if outil.pk == 108 %}
                     <center>
                         {% if outil.page_outil == True and outil.integration == "" %}
                            <iframe src="{{ outil.url }}" height="400" width="1000"></iframe>
@@ -28,7 +29,7 @@
                             {% endautoescape %}
                         {% endif %}
                         <div class="com-md-10">
-                            <a href="../{{ outil.id }}" style="position:absolute; top:20; left:30px; display:inline-block; width:1000px; height:400px; z-index:5;" id="lien"></a>
+                            <a href="../{{ outil.id }}" style="position:absolute; top:20; left:30px; display:inline-block; width:1000px; height:400px; z-index:5;" class="lien"></a>
                         </div>
                         <h2 style="position:absolute; top:21px; left:50px; z-index:4; color:#4eabb4; background-color:#404040; padding:5px; text-decoration: underline;">À la une</h2>
                         <h4 style="position:absolute; top:305px; left:50px; z-index:4; color:#4eabb4; background-color:#404040; padding:5px;">{{ outil.titre }}</h4>
@@ -53,15 +54,16 @@
             <div class="col-md-10 col-md-offset-1" style=" top: 400px;">
                 <br>
                 <form method='GET' class='' action='/recherche_motcle/' onsubmit="showLoader()">
+                    {% csrf_token %}
                     <div class="input-group form-group-no-border mx-auto" style="margin-bottom: 0px; font-size: 32px;">
                        <span class="input-group-addon cfe-nav">
-                            <button style="border: none; background-color: #eeeeee;;"><span class="glyphicon glyphicon-search" aria-hidden="true" style="color: #404040;"></span></button>
+                            <button style="border: none; background-color: #eeeeee;"><span class="glyphicon glyphicon-search" aria-hidden="true" style="color: #404040;"></span></button>
                             <i class="fa fa-search" aria-hidden="true"></i>
                         </span>
                         <input type="text" name="q" data-toggle="popover" data-placement="bottom" data-content='Appuyez sur la touche "enter" pour lancer la recherche' class="form-control cfe-nav mt-0 py-3" placeholder="Recherche par mots-clés" value="" style="" data-original-title="" title="">
                     </div>
                 </form>
-                <small><a href="{% url 'recherche' %}">Recherche avancée</a></small>
+                <small><a href="{% url 'recherche' %}">Recherche avancée</a><br><br></small>
             </div>
     </div>
     {% comment %}
@@ -103,17 +105,4 @@
 </aside>
 {% endcomment %}
 <script type="text/javascript" src="../static/scripts/loader.js"></script>
-{% endblock %}
-
-{% block footer %}
-    <footer>
-        <br><br>
-        {% comment %}
-        <div class="col-md-9 col-md-offset-1" align="center" style=" top: 400px;">
-            <small>{{ outils.count }} dispositifs répertoriés</small>
-            <br><br>
-        </div>
-        {% endcomment %}
-    </footer>
-
 {% endblock %}

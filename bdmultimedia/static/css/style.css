@@ -23,6 +23,7 @@ h6 {
     font-family: 'UniversLTPro-55Roman';
     src: url('webfonts/281358_0_unhinted_0.woff') format('woff'), url('webfonts/281358_0_unhinted_0.ttf') format('truetype');
     text-transform: uppercase;
+    color:#505050;
 }
 
 h4 {
@@ -37,6 +38,7 @@ h3 {
 aside{
     position: fixed;
     left: 83%;
+    z-index : 2;
 }
 
 section{
@@ -63,18 +65,29 @@ center iframe, center img{
 
 #result iframe, #result img{
     border : solid medium #4eabb4;
-    width : 200px;
-    height : 200px;
+    width : 200px ! important;
+    height : 200px !important;
 }
 
-#lien:hover{
-    opacity:0.4;
+.lien:hover{
+    opacity:0.3;
 }
-#lien{
-    background-color : #505050;
+.lien{
+    background-color : #fff;
     opacity : 0;
-    transition: 0.5s;
+    transition: 0.3s;
 
+}
+
+.titre{
+    position:absolute;
+    top:-193px;
+    left:3px;
+    z-index:4;
+    color:#4eabb4;
+    background-color:#404040;
+    padding:5px;
+    width:194px;
 }
 .navbar-header img{
     opacity : 0.6;
@@ -116,4 +129,125 @@ center iframe, center img{
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
+}
+
+.loader-section{
+    display : none;
+    position : fixed;
+    top : 0;
+    width : 100%;
+    height : 100%;
+    background-color : black;
+    z-index : 9;
+    opacity : 0.6;
+}
+
+@keyframes blink {
+    /**
+     * At the start of the animation the dot
+     * has an opacity of .2
+     */
+    0% {
+      opacity: .2;
+    }
+    /**
+     * At 20% the dot is fully visible and
+     * then fades out slowly
+     */
+    20% {
+      opacity: 1;
+    }
+    /**
+     * Until it reaches an opacity of .2 and
+     * the animation can start again
+     */
+    100% {
+      opacity: .2;
+    }
+}
+
+.chargement span {
+    font-size:30px;
+    animation-name: blink;
+    animation-duration: 1.4s;
+    animation-iteration-count: infinite;
+    /**
+     * This makes sure that the starting style (opacity: .2)
+     * of the animation is applied before the animation starts.
+     * Otherwise we would see a short flash or would have
+     * to set the default styling of the dots to the same
+     * as the animation. Same applies for the ending styles.
+     */
+    animation-fill-mode: both;
+}
+
+.chargement span:first-child{
+    animation-delay: .6s
+}
+
+.chargement span:nth-child(2) {
+    animation-delay: .4s;
+}
+
+.chargement span:nth-child(3) {
+    animation-delay: .8s;
+}
+
+.infinite-container{
+    margin : auto;
+    width : 100%;
+}
+
+#pageoutil, #noiframe, #integration{
+    display : inline;
+    position: relative;
+}
+
+#pageoutil a, #integration a{
+    position:absolute;
+    top:-100;
+    left:0;
+    display:inline-block;
+    width:200px;
+    height:200px;
+    z-index:5;
+}
+
+#noiframe img{
+    position:relative;
+    display:inline-block;
+    top : -186px;
+    margin-bottom: -180px;
+}
+#noiframe a{
+    position:absolute;
+    top:-200;
+    left:0;
+    display:inline-block;
+    width:200px;
+    height:200px;
+    z-index:5;
+}
+
+@-moz-document url-prefix() {
+    .titre{
+        top:-195px;
+    }
+    .infinite-container div:nth-of-type(5n + 6) .titre{
+        top : 12px;
+        left : -1013px;
+    }
+    .infinite-container div:nth-of-type(5n + 6) a{
+        top : 19px !important;
+        left : -1016px !important;
+    }
+    #pageoutil, #noiframe, #integration{
+        width : 200px;
+        heigth : 200px;
+        display : inline;
+        position : relative;
+    }
+    #pageoutil a, #integration a, #noiframe a{
+        top : -188px;
+    }
 }

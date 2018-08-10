@@ -50,7 +50,8 @@
                         <h3 class="panel-title"><center>Base de données du C R D M M</center></h3>
                     </div>
                     <div class="panel-body">
-                        <form role="form" method="post" action='{% url "login" %}'>{% csrf_token%}
+                        <form role="form" method="post" action='{% url "login" %}'>
+                            {% csrf_token%}
                             <fieldset>
                                 <div class="form-group">
                                     <input class="form-control" id="id_username" maxlength="254" name="username" placeholder="Utilisateur" required="required" title="" type="text" >

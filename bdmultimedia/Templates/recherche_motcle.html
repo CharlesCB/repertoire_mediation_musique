@@ -2,13 +2,14 @@
 {% load bootstrap_pagination %}
 {% load bootstrap3 %}
 {% load bootstrap_tags %}
-{% block title %} Recherche par mots-clés {% endblock %}
+{% block title %} Recherche par mots-clés : "{{ query }}" {% endblock %}
 {% block body %}
 <body>
 <div id="loader"></div>
     <div class='container-fluid'>
             <div class="col-md-8">
                 <form method='GET' class='' action='/recherche_motcle/' onsubmit="showLoader()">
+                    {% csrf_token %}
                     <div class="input-group form-group-no-border mx-auto" style="margin-bottom: 0px; font-size: 32px;">
                         <span class="input-group-addon cfe-nav" style='color:#000'>
                             <button style="border: none; background-color: #eeeeee;;"><span class="glyphicon glyphicon-search" aria-hidden="true" style="color: #404040;"></span></button>
@@ -36,27 +37,27 @@
                         "{{ query }}": </h4>
                 </div>
             {% endif %}
-            <div class="col-md-12" id="result">
+           <!--<p class="text-center">Classer par : <a href="{{new_sort_url}}&sort=titre">titre (a)</a> | <a href="{{new_sort_url}}&sort=-titre">titre (d)</a> | <a href="{{new_sort_url}}&sort=mise_en_ligne_date">date (a)</a> | <a href="{{new_sort_url}}&sort=-mise_en_ligne_date">date (d)</a></p>-->
+            <div class="infinite-container" id="result">
                 {% for outil in object_list %}
-                <!--<li><a href='../result{{object.id}}/'>{{ object.titre }}</a></li>-->
                     {% if outil.page_outil == True and outil.integration == "" %}
-                        <div style="display : inline; position: relative;">
-                            <iframe src="{{ outil.url }}" height="200" width="200"></iframe>
-                            <a href="../result{{ outil.pk }}" style="position:absolute; top:-100; left:0; display:inline-block; width:200px; height:200px; z-index:5;" id="lien"></a>
-                            <h5 style="position:absolute; top:-193px; left:3px; z-index:4; color:#4eabb4; background-color:#404040; padding:5px; width:194px;">{{ outil.titre }}</h5>
+                        <div class="infinite-item" id="pageoutil">
+                            <iframe src="{{ outil.url }}" height="200" width="200" sandbox></iframe>
+                            <a href="../result{{ outil.pk }}" class="lien"></a>
+                            <h5 class="titre">{{ outil.titre }}</h5>
                         </div>
                     {% elif outil.page_outil == False and outil.integration == "" %}
-                        <div style="display : inline; position: relative;">
-                                <img src="../static/media/backup_resultat.png" style="position:relative; display:inline-block; top : -186px; margin-bottom: -180px;">
-                                <a href="../result{{ outil.pk }}" style="position:absolute; top:-200; left:0; display:inline-block; width:200px; height:200px; z-index:5;" id="lien"></a>
-                                <h5 style="position:absolute; top:-193px; left:3px; z-index:4; color:#4eabb4; background-color:#404040; padding:5px; width:194px;">{{ outil.titre }}</h5>
+                        <div class="infinite-item" id="noiframe">
+                                <img src="../static/media/backup_resultat.png">
+                                <a href="../result{{ outil.pk }}" class="lien"></a>
+                                <h5 class="titre">{{ outil.titre }}</h5>
                         </div>
                     {% else %}
                         {% autoescape off %}
-                            <div style="display : inline; position: relative;">
+                            <div class="infinite-item" id="integration">
                                 {{ outil.integration }}
-                                <a href="../result{{ outil.pk }}" style="position:absolute; top:-100; left:0; display:inline-block; width:200px; height:200px; z-index:5;" id="lien"></a>
-                                <h5 style="position:absolute; top:-193px; left:3px; z-index:4; color:#4eabb4; background-color:#404040; padding:5px; width:194px;">{{ outil.titre }}</h5>
+                                <a href="../result{{ outil.pk }}" class="lien"></a>
+                                <h5 class="titre">{{ outil.titre }}</h5>
                             </div>
                         {% endautoescape %}
                     {% endif %}
@@ -65,30 +66,28 @@
         </div>
     </div>
     <div class="col-md-10" align="center">
-        {% if is_paginated %}
-          <ul class="pagination">
-            {% if page_obj.has_previous %}
-              <li><a href="/recherche_motcle/?q={{query}}&page={{ page_obj.previous_page_number }}" onclick="showLoader()">&laquo;</a></li>
-            {% else %}
-              <li class="disabled"><span>&laquo;</span></li>
-            {% endif %}
-            {% for i in paginator.page_range %}
-              {% if page_obj.number == i %}
-                <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
-              {% else %}
-                <li><a href="/recherche_motcle/?q={{query}}&page={{ i }}" onclick="showLoader()">{{ i }}</a></li>
-              {% endif %}
-            {% endfor %}
-            {% if page_obj.has_next %}
-              <li><a href="/recherche_motcle/?q={{query}}&page={{ page_obj.next_page_number }}" onclick="showLoader()">&raquo;</a></li>
-            {% else %}
-              <li class="disabled"><span>&raquo;</span></li>
-            {% endif %}
-          </ul>
+        {% if page_obj.has_next %}
+            <a class="infinite-more-link" href="/recherche_motcle/?q={{query}}&page={{ page_obj.next_page_number }}"></a>
         {% endif %}
+          <div class="loading" style="display: none;">
+              <p style="color: #337ab7;" class="chargement"><br>Chargement de plus de résultats<span>.</span><span>.</span><span>.</span></p>
+              <br>
+          </div>
     </div>
+    <script>
+        var infinite = new Waypoint.Infinite({
+          element: $('.infinite-container')[0],
+          onBeforePageLoad: function () {
+            $('.loading').show();
+          },
+          onAfterPageLoad: function ($items) {
+            $('.loading').hide();
+          }
+        });
+    </script>
     <script type="text/javascript" src="../static/scripts/loader.js"></script>
 </body>
 {% endblock %}
 {% block footer %}
+<br><br>
 {% endblock %}

@@ -7,6 +7,7 @@ from multiselectfield import MultiSelectField
 from django.utils.encoding import python_2_unicode_compatible
 from django.core.urlresolvers import reverse
 from django_currentuser.db.models import CurrentUserField
+
 # import datetime
 # from django.conf import settings
 # from django.utils import timezone
@@ -715,35 +716,35 @@ class Outil(models.Model):
                                  verbose_name="R.13 Interactivité")
     materiel_imprimer = models.CharField(choices=OUINON, max_length = 200, default = "Non",
                                          verbose_name = "R.13.1 Le dispositif comprend-il du matériel à imprimer (ex. livret en pdf) ?")
-    personnification_service = models.CharField(db_index=True, null=True, max_length=200, choices=PERSONNIFICATION_LIST,
+    personnification_service = models.CharField(null=True, max_length=200, choices=PERSONNIFICATION_LIST,
                                                 verbose_name="R.14 Degrés de personnification du service")
     commentaire_possible = models.BooleanField(verbose_name="R.15 Possibilité de laisser des commentaires",
                                                help_text="Compter les commentaires qui apparaissent sur la page de consultation du dispositif (ex. Si il n’y a pas de possibilité de commentaire sur les capsules de l’OSM mais que les commentaires sont possibles sur l’hébergement youtube ne pas cocher)")
     commentaire_nombre = models.CharField(max_length = 50,null=True, blank=True, verbose_name="R.16 Nombre de commentaires")
 
     # DÉCOUVRABILITÉ / ACCESSIBILITÉ
-    premier_onglet = models.CharField(db_index=True, choices=PREM_ONGLET_LIST,
+    premier_onglet = models.CharField(choices=PREM_ONGLET_LIST,
                                       max_length=200,
                                       default="Ne s'applique pas",
                                       null=True,
                                       verbose_name="S.17 Quel est le PREMIER onglet à ouvrir pour trouver ce dispositif?")
-    prem_onglet_autre = models.CharField(db_index=True, blank=True, null=True, max_length=200, verbose_name="Si autre, précisez")
-    deuxieme_onglet = models.CharField(db_index=True, choices=DEUX_ONGLET_LIST,
+    prem_onglet_autre = models.CharField(blank=True, null=True, max_length=200, verbose_name="Si autre, précisez")
+    deuxieme_onglet = models.CharField(choices=DEUX_ONGLET_LIST,
                                        max_length=200,
                                        default="Ne s'applique pas",
                                        null=True,
                                        verbose_name="S.18 Quel est le DEUXIEME onglet à ouvrir pour trouver ce dispositif?")
-    deux_onglet_autre = models.CharField(db_index=True, blank=True, null=True, max_length=200, verbose_name="Si autre, précisez")
-    troisieme_onglet = models.CharField(db_index=True, choices=TROIS_ONGLET_LIST,
+    deux_onglet_autre = models.CharField(blank=True, null=True, max_length=200, verbose_name="Si autre, précisez")
+    troisieme_onglet = models.CharField(choices=TROIS_ONGLET_LIST,
                                         max_length=200,
                                         default="Ne s'applique pas",
                                         null=True,
                                         verbose_name="S.19 Quel est le TROISIEME onglet à ouvrir pour trouver ce dispositif?")
-    trois_onglet_autre = models.CharField(db_index=True, blank=True, null=True, max_length=200, verbose_name="Si autre, précisez")
+    trois_onglet_autre = models.CharField(blank=True, null=True, max_length=200, verbose_name="Si autre, précisez")
     plus_de_tois_onglet = models.BooleanField(verbose_name = "S.19. 1 PLUS DE TROIS ONGLETS à ouvrir pour trouver ce dispositif ?", default = False)
 
     mode_hebergement = models.ManyToManyField(ModeHebergement, db_index=True,  verbose_name="S.20 Mode d'hébergement sur la toile")
-    mode_consultation = models.ManyToManyField(ModeConsultation, db_index=True,  verbose_name="S.21 Mode de consultation offert au public")
+    mode_consultation = models.ManyToManyField(ModeConsultation, verbose_name="S.21 Mode de consultation offert au public")
     narration_langue = models.ManyToManyField(LangueNarration, db_index=True,  verbose_name="S.22 Langue du dispositif")
     sous_titre = models.ManyToManyField(SousTitre, db_index=True,  verbose_name="S.23 Sous-titrage",
                                         help_text="Les sous-titrages automatiques proposés par YouTube n’entrent pas en considération.")
@@ -804,7 +805,7 @@ class Outil(models.Model):
     temps_mus_par = models.CharField(max_length=8, null=False,
                                      verbose_name="PM.32 Temps de parole et musique superposées (hh:mm:ss)",
                                      default="00:00:00", help_text="ddv = durée d’écoute variable. Concerne les dispositifs qui allient texte et vidéo. La durée d’écoute est variable puisque les utilisateurs peuvent décider, ou non, de regarder les vidéos.<br> nsp = ne s'applique pas")
-    sonore_valeur = models.CharField(choices=SONORE_VALEUR_LIST, db_index=True,
+    sonore_valeur = models.CharField(choices=SONORE_VALEUR_LIST,
                                      max_length=200,
                                      null=False,
                                      default="Nsp",
@@ -815,7 +816,7 @@ class Outil(models.Model):
                                            verbose_name="EM.34 Évocation graphique")
     evocation_plastique = models.ManyToManyField(EvocationPlastique, db_index=True,
                                            verbose_name="EM.35 Évocation plastique")
-    evocation_litteraire = MultiSelectField(choices=EVOCATION_LITTERAIRE_LIST, db_index=True,
+    evocation_litteraire = MultiSelectField(choices=EVOCATION_LITTERAIRE_LIST,
                                             max_length=200,
                                             null=False,
                                             verbose_name="EM.36 Évocation littéraire",
@@ -912,10 +913,6 @@ class Outil(models.Model):
     utilisateur = CurrentUserField()
 
     objects = OutilManager()
-
-   # @property
-   # def rank(self):
-   #     return 123
 
     def get_absolute_url(self):
         return reverse('home')
