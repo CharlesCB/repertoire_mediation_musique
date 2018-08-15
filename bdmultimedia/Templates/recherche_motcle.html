@@ -5,7 +5,11 @@
 {% block title %} Recherche par mots-clés : "{{ query }}" {% endblock %}
 {% block body %}
 <body>
+<div class="loader-section" id="loader-section"></div>
 <div id="loader"></div>
+<div id="loader-text">
+    <p>Veuillez patienter,<br>la recherche peut prendre quelques instants</p>
+</div>
     <div class='container-fluid'>
             <div class="col-md-8">
                 <form method='GET' class='' action='/recherche_motcle/' onsubmit="showLoader()">
@@ -15,7 +19,7 @@
                             <button style="border: none; background-color: #eeeeee;;"><span class="glyphicon glyphicon-search" aria-hidden="true" style="color: #404040;"></span></button>
                             <i class="fa fa-search" aria-hidden="true"></i>
                         </span>
-                        <input type="text" name="q" data-toggle="popover" data-placement="bottom" data-content='Appuyez sur la touche "enter" pour lancer la recherche' class="form-control cfe-nav mt-0 py-3" placeholder="Recherche par mots-clés" value="" style="" data-original-title="" title="" autofocus="autofocus">
+                        <input id="input" type="text" name="q" data-toggle="popover" data-placement="bottom" data-content='Appuyez sur la touche "enter" pour lancer la recherche' class="form-control cfe-nav mt-0 py-3" placeholder="Recherche par mots-clés" value="{{query}}"  data-original-title="" title="">
 
                     </div>
                 </form>
@@ -48,9 +52,14 @@
                         </div>
                     {% elif outil.page_outil == False and outil.integration == "" %}
                         <div class="infinite-item" id="noiframe">
+                            {% if forloop.last and count|add:"-1"|divisibleby:5 %}
+                                <img src="../static/media/backup_resultat.png" style="top : 0px">
+                                <h5 class="titre" style="top : -7px;">{{ outil.titre }}</h5>
+                            {% else %}
                                 <img src="../static/media/backup_resultat.png">
-                                <a href="../result{{ outil.pk }}" class="lien"></a>
                                 <h5 class="titre">{{ outil.titre }}</h5>
+                            {% endif %}
+                                <a href="../result{{ outil.pk }}" class="lien"></a>
                         </div>
                     {% else %}
                         {% autoescape off %}

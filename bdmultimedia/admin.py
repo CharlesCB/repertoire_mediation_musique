@@ -10,15 +10,15 @@ from bdmultimedia.models import *
 class OutilAdmin(admin.ModelAdmin):
     list_display = ('titre',)
     search_fields = ['titre']
-    filter_horizontal = ('producteur_type','producteur_nom','support_diffusion','format','forme_narrative','orchestration',
-                         'structure','language_musical','genre_musical','style_musical', 'experience_musicale',
-                         'contexte', 'role_evolution', 'sollicitation_musicale', 'sollicitation_generale',
-                         'evocation_graphique', 'evocation_plastique', 'evocation_autre',
-                          'exemples_notions_interdisciplinaires', 'role_humain_homme', 'role_humain_femme', 'role_humain_neutre',
-                         'role_pers_anime_homme', 'role_pers_anime_femme', 'role_pers_anime_neutre',
-                         'role_animaux_homme', 'role_animaux_femme', 'role_animaux_neutre',
-                         'role_instr_anime_homme', 'role_instr_anime_femme', 'role_instr_anime_neutre',
-                         'mode_hebergement', 'mode_consultation', 'narration_langue', 'sous_titre')
+    # filter_horizontal = ('producteur_type','producteur_nom','support_diffusion','format','forme_narrative','orchestration',
+    #                      'structure','language_musical','genre_musical','style_musical', 'experience_musicale',
+    #                      'contexte', 'role_evolution', 'sollicitation_musicale', 'sollicitation_generale',
+    #                      'evocation_graphique', 'evocation_plastique', 'evocation_autre',
+    #                       'exemples_notions_interdisciplinaires', 'role_humain_homme', 'role_humain_femme', 'role_humain_neutre',
+    #                      'role_pers_anime_homme', 'role_pers_anime_femme', 'role_pers_anime_neutre',
+    #                      'role_animaux_homme', 'role_animaux_femme', 'role_animaux_neutre',
+    #                      'role_instr_anime_homme', 'role_instr_anime_femme', 'role_instr_anime_neutre',
+    #                      'mode_hebergement', 'mode_consultation', 'narration_langue', 'sous_titre')
 
 
 # class ContreExempleAdmin(admin.ModelAdmin):

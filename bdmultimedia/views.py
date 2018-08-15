@@ -10,7 +10,6 @@ import xlwt
 from .filters import OutilFilter
 from forms import Search
 import datetime
-import unidecode
 
 
 class DetailView(generic.DetailView):
@@ -46,21 +45,6 @@ class ListeView(generic.ListView):
 
     def get_queryset(self):
         return Outil.objects.order_by('titre')
-
-#
-# class CreateForm(generic.View):
-#     model = Outil
-#     template_name = 'create.html'
-#     form_class = Create
-#     success_url = '/'
-#     def get_success_url(self):
-#         return '/'
-
-
-# class UpdateForm(generic.UpdateView):
-#     model = Outil
-#     template_name = 'create.html'
-#     form_class = Create
 
 
 class DeleteForm(generic.CreateView):
@@ -133,8 +117,8 @@ class SearchView(generic.ListView):
                              ("orientalisme", "orientaliste"),
                              ("orientale", "orientaliste"),
                              ("veriste","verisme"),
-                             ("ieme siecle",""),
-                             ("e siecle",""),
+                             ("ieme siecle","è"),("ieme siècle", "è"),("ième siecle", "è"),("ième siècle", "è"),
+                             ("e siecle","è"),("e siècle","è"),("è siècle",""),("è",""),
                              ("d'",""),("c'",""),("j'",""),("l'",""),("m'",""),("jusqu'",""),("n'",""),("puisqu'",""),
                              ("quelqu'", ""),("qu'", ""),("s'",""),("t'",""),
                         ]

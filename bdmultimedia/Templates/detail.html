@@ -50,7 +50,7 @@
     </aside>
 <section>
     {% if outil.page_outil == True and outil.integration == "" %}
-    <iframe src="{{ outil.url }}" height="400" width="1000"></iframe>
+    <iframe src="{{ outil.url }}" height="400px" width="80%"></iframe>
     {% else %}
     {% autoescape off %}
         <div class="col-md-10">
@@ -76,12 +76,7 @@
     </div>
     {% if outil.ensemble_thematique == "Oui" %}
         <div class="col-md-10"><b><br>Ce dispositif fait partie d'un ensemble thématique du même type (regroupé par l'organisme producteur)</b></div>
-        <div class="col-md-10"><b>Nom de l'ensemble : </b>{{ outil.ensemble_thematique_nom }}</div>
-        <div class="col-md-10"><br></div>
-    {% comment %}
-    {% else %}
-        <div class="col-md-10">Ce dispositif ne fait pas partie d'un ensemble thématique du même type (regroupé par l'organisme producteur)</div>
-    {% endcomment %}
+        <div class="col-md-10"><b>Nom de l'ensemble : </b>{{ outil.ensemble_thematique_nom }}<br></div>
     {% endif %}
     <div class="col-md-10"><b> Producteurs : </b>
         {% for i in outil.producteur_type.all %}
@@ -121,8 +116,14 @@
             {% endif %}
         {% endfor %}
     </div>
+    {% if outil.duree == "ddv" or outil.duree == "Ddv" %}
+    <div class="col-md-10"><b> Durée (hh:mm:ss) : </b> Durée d'écoute variable.</div>
+    {% elif outil.duree == "nsp" or outil.duree == "Nsp" %}
+    <div class="col-md-10"><b> Durée (hh:mm:ss) : </b> Ne s'applique pas.</div>
+    {% else %}
     <div class="col-md-10"><b> Durée (hh:mm:ss) : </b> {{ outil.duree }} </div>
-    {% if outil.nb_pages == 'nsp' %}
+    {% endif %}
+    {% if outil.nb_pages == 'Nsp' or outil.nb_pages == 'nsp'%}
         <div class="col-md-10"><b> Nombre de pages : </b> Ne s'applique pas </div>
     {% else %}
         <div class="col-md-10"><b> Nombre de pages : </b> {{ outil.nb_pages }} </div>
@@ -311,11 +312,15 @@
 
     <div class="col-md-10" id="place"><div class="page-header"><h4>Place de la musique</h4></div></div>
 
-    <div class="col-md-10"><b> Temps de musique seule (hh:mm:ss) :</b> {% if outil.temps_mus == 'nsp' %} Ne s'aplique pas
-         {% else %}{{ outil.temps_mus }}{% endif %}</div>
-    <div class="col-md-10"><b> Temps de parole seule (hh:mm:ss) :</b>{% if outil.temps_par == 'nsp' %} Ne s'aplique pas
-         {% else %}{{ outil.temps_par }}{% endif %}</div>
-    <div class="col-md-10"><b> Temps de parole et musique superposées (hh:mm:ss) : </b> {{ outil.temps_mus_par }} </div>
+    <div class="col-md-10"><b> Temps de musique seule (hh:mm:ss) :</b> {% if outil.temps_mus == 'nsp' or outil.temps_mus == 'Nsp' %} Ne s'aplique pas.
+        {% elif outil.temps_mus == 'ddv' or outil.temps_mus == 'Ddv' %} Durée d'écoute variable.
+        {% else %}{{ outil.temps_mus }}{% endif %}</div>
+    <div class="col-md-10"><b> Temps de parole seule (hh:mm:ss) :</b>{% if outil.temps_par == 'nsp' or outil.temps_par == 'Nsp' %} Ne s'aplique pas.
+        {% elif outil.temps_par == 'ddv' or outil.temps_par == 'Ddv' %} Durée d'écoute variable.
+        {% else %}{{ outil.temps_par }}{% endif %}</div>
+    <div class="col-md-10"><b> Temps de parole et musique superposées (hh:mm:ss) : </b> {% if outil.temps_mus_par == 'nsp' or outil.temps_mus_par == 'Nsp' %} Ne s'applique pas.
+        {% elif outil.temps_mus_par == 'ddv' or outil.temps_mus_par == 'Ddv' %} Durée d'écoute variable.
+        {% else %}{{ outil.temps_mus_par }}{%endif%} </div>
     <div class="col-md-10"><b> Mise en valeur du sonore : </b> {{ outil.sonore_valeur }} </div>
 
     <div class="col-md-10" id="commentMateriau"><div class="page-header"><h4>Évocation de la musique extra-sonore</h4></div></div>
@@ -350,7 +355,7 @@
         {% endfor %}
     </div>
 
-    <div class="col-md-5"><div class="page-header"><h6>À partir de quelle notion?</h6></div></div>
+    <div class="col-md-5"><div class="page-header"><h6>Notions abordées</h6></div></div>
     <div class="col-md-10"><b>Notions communes (luminosité, transparence, vitesse, mouvement) : </b>
         {% if outil.notion_concepts == "Nsp" %}
         Ne s'applique pas
