@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>{% block title %}Catalogue raisonné de dispositifs de médiation de la musique{% endblock %}</title>
+    <title>{% block title %}Catalogue raisonné de dispositifs numériques de médiation de la musique{% endblock %}</title>
     {% load staticfiles %}
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="../static/css/style.css">
@@ -18,7 +18,7 @@
 <body>
     {% block header %}
         <header>
-            <nav class="navbar navbar-inverse">
+            <nav class="navbar navbar-inverse" >
                 <div class="container-fluid">
 
                     <div class="navbar-header">
@@ -34,71 +34,65 @@
 
                         {% if not user.is_authenticated %}
                             <ul class="nav navbar-nav navbar-right">
-                                <li class="">
-                                    <a href='/login/'>
+                                <li>
+                                    <a href='/login/?next={{request.path}}' id="rouge">
                                         <span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp; S'identifier
                                     </a>
                                 </li>
                             </ul>
                         {% else %}
                             <ul class="nav navbar-nav navbar-right">
-                                <li class="">
-                                    <a href='{% url "logout" %}?next={% url "aLaUne" %}'>
+                                <li>
+                                    <a href='/logout/?next=/' id="rouge">
                                         <span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp; Déconnection
                                     </a>
                                 </li>
                             </ul>
                             <ul class="nav navbar-nav navbar-right">
-                                <li class="">
-                                    <a href="JavaScript:newPopup('/admin/bdmultimedia/outil/add/?_to_field=id&amp;_popup=1');">
+                                <li>
+                                    <a href="JavaScript:newPopup('/admin/bdmultimedia/outil/add/?_to_field=id&amp;_popup=1');" id="bleu">
                                         <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>&nbsp; Nouvel Outil
                                     </a>
                                 </li>
                             </ul>
                             {% comment %}
                             <ul class="nav navbar-nav navbar-right">
-                                <li class="">
+                                <li>
                                     <a href="JavaScript:newPopup('/admin/bdmultimedia/contreexemple/add/?_to_field=id&amp;_popup=1');">
                                         <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>&nbsp; Contre Exemple
                                     </a>
                                 </li>
                             </ul>
-
+                            {% endcomment %}
                         {% endif %}
                         <ul class="nav navbar-nav navbar-right">
-                            <li class="">
-                                <a href='/recherche/'><span class="glyphicon glyphicon-search" aria-hidden="true"></span>&nbsp; Recherche</a>
+                            <li>
+                                <a href='/recherche_motcle/'><span class="glyphicon glyphicon-search" aria-hidden="true"></span>&nbsp; Recherche</a>
                             </li>
                         </ul>
                         {% if user.is_authenticated %}
-                        {% endcomment %}
+
                             <ul class="nav navbar-nav navbar-right">
-                                <li class="">
-                                    <a href='/export/xls'><span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span>&nbsp; Exporter</a>
+                                <li>
+                                    <a href='/export/xls' id="jaune"><span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span>&nbsp; Exporter</a>
                                 </li>
                             </ul>
                             <ul class="nav navbar-nav navbar-right">
-                                <li class="">
-                                    <a href='/gerer'><span class="glyphicon glyphicon-edit" aria-hidden="true"></span>&nbsp; Gérer</a>
+                                <li>
+                                    <a href='/gerer' id="vert"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span>&nbsp; Gérer</a>
                                 </li>
                             </ul>
                         {% endif %}
                         <ul class="nav navbar-nav navbar-right">
                             <li>
-                                <a href="/liste"><span class="glyphicon glyphicon-list" aria-hidden="true"></span>&nbsp; Liste</a>
+                                <a href="/liste" id="rouge"><span class="glyphicon glyphicon-list" aria-hidden="true"></span>&nbsp; Liste</a>
                             </li>
                         </ul>
                     </div>
                 </div>
             </nav>
         </header>
-        <script type="text/javascript">
-            // Popup window code
-            function newPopup(url) {
-                popupWindow = window.open(
-                    url, 'popUpWindow', 'height=800,width=1000,left=500,top=10,resizable=yes,scrollbars=yes,toolbar=yes,menubar=no,location=no,directories=no,status=yes')
-            }
-        </script>
+    <script type="text/javascript" src="../static/scripts/popup.js"></script>
     {% endblock %}
     {% block body%} {% endblock%}
     {% block footer %}

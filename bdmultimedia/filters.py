@@ -48,47 +48,57 @@ class OutilFilter(django_filters.FilterSet):
     EPOQUE_CHOICES = list(EPOQUE_LIST)
     del EPOQUE_CHOICES[11]
 
-    format__nom = django_filters.ChoiceFilter(choices=FORMAT_CHOICES, lookup_expr='iexact')
-    forme_narrative__nom = django_filters.ChoiceFilter(choices=FORME_NARRATIVE_CHOICES,
+    DISCIPLINE_CHOICES = BLANK_CHOICE_DASH + list(EvocationAutre.objects.exclude(nom="Aucune").values_list('nom','nom'))
+
+    NOTIONS_CONCEPT_CHOICES = BLANK_CHOICE_DASH + list(OUINONNSP)
+
+
+    format__nom = django_filters.MultipleChoiceFilter(choices=FORMAT_CHOICES, lookup_expr='iexact')
+    forme_narrative__nom = django_filters.MultipleChoiceFilter(choices=FORME_NARRATIVE_CHOICES,
                                                        lookup_expr="iexact")
     interactivite = django_filters.ChoiceFilter(choices=BLANK_CHOICE_DASH + list(INTERACTIVITE_LIST),
                                                 lookup_expr='iexact')
     personnification_service = django_filters.ChoiceFilter(choices=BLANK_CHOICE_DASH + list(PERSONNIFICATION_LIST),
                                                            lookup_expr="iexact")
-    producteur_type__nom = django_filters.ChoiceFilter(choices=PRODUCTEUR_TYPE_CHOICES,
+    producteur_type__nom = django_filters.MultipleChoiceFilter(choices=PRODUCTEUR_TYPE_CHOICES,
                                                        lookup_expr='iexact')
-    support_diffusion__nom = django_filters.ChoiceFilter(choices=SUPPORT_DIFFUSION_CHOICES,
+    support_diffusion__nom = django_filters.MultipleChoiceFilter(choices=SUPPORT_DIFFUSION_CHOICES,
                                                          lookup_expr='iexact')
     ensemble_thematique = django_filters.ChoiceFilter(choices=BLANK_CHOICE_DASH + list(OUINON),
                                                       lookup_expr="exact")
-    narration_langue__nom = django_filters.ChoiceFilter(choices=LANGUE_CHOICES, lookup_expr='iexact')
-    mode_consultation__nom = django_filters.ChoiceFilter(choices=MODE_CONSULTATION_CHOICES,
+    narration_langue__nom = django_filters.MultipleChoiceFilter(choices=LANGUE_CHOICES, lookup_expr='iexact')
+    mode_consultation__nom = django_filters.MultipleChoiceFilter(choices=MODE_CONSULTATION_CHOICES,
                                                          lookup_expr='iexact')
     sonore_valeur = django_filters.ChoiceFilter(choices=BLANK_CHOICE_DASH + SONORE_VALEUR_CHOICES,
                                                 lookup_expr="exact")
     evocation_litteraire = django_filters.ChoiceFilter(choices=BLANK_CHOICE_DASH + EVOCATION_LITTERAIRE_CHOICES,
                                                        lookup_expr="iexact")
-    evocation_graphique__nom = django_filters.ChoiceFilter(choices=EVOCATION_GRAPHIQUE_CHOICES,
+    evocation_graphique__nom = django_filters.MultipleChoiceFilter(choices=EVOCATION_GRAPHIQUE_CHOICES,
                                                            lookup_expr="iexact")
-    evocation_plastique__nom = django_filters.ChoiceFilter(choices=EVOCATION_PLASTIQUE_CHOICES,
+    evocation_plastique__nom = django_filters.MultipleChoiceFilter(choices=EVOCATION_PLASTIQUE_CHOICES,
                                                            lookup_expr="iexact")
     #ANALYSE MUSICALE
-    orchestration__nom = django_filters.ChoiceFilter(choices=ORCHESTRATION_CHOICES, lookup_expr = "iexact")
-    structure__nom = django_filters.ChoiceFilter(choices=STRUCTURE_CHOICES, lookup_expr="iexact")
-    language_musical__nom = django_filters.ChoiceFilter(choices=LANGUAGE_MUSICAL_CHOICES, lookup_expr="iexact")
-    genre_musical__nom = django_filters.ChoiceFilter(choices=GENRE_MUSICAL_CHOICES, lookup_expr="iexact")
-    style_musical__nom = django_filters.ChoiceFilter(choices=STYLE_MUSICAL_CHOICES, lookup_expr="iexact")
+    orchestration__nom = django_filters.MultipleChoiceFilter(choices=ORCHESTRATION_CHOICES, lookup_expr = "iexact")
+    structure__nom = django_filters.MultipleChoiceFilter(choices=STRUCTURE_CHOICES, lookup_expr="iexact")
+    language_musical__nom = django_filters.MultipleChoiceFilter(choices=LANGUAGE_MUSICAL_CHOICES, lookup_expr="iexact")
+    genre_musical__nom = django_filters.MultipleChoiceFilter(choices=GENRE_MUSICAL_CHOICES, lookup_expr="iexact")
+    style_musical__nom = django_filters.MultipleChoiceFilter(choices=STYLE_MUSICAL_CHOICES, lookup_expr="iexact")
 
     #ÉLÉMENTS CONTEXTUELS
-    experience_musicale__nom = django_filters.ChoiceFilter(choices=EXPERIENCE_MUSICALE_CHOICES, lookup_expr="iexact")
-    contexte__nom = django_filters.ChoiceFilter(choices=CONTEXTE_CHOICES, lookup_expr="iexact")
-    role_evolution__nom = django_filters.ChoiceFilter(choices=ROLE_EVOLUTION_CHOICES, lookup_expr="iexact")
-    epoque = django_filters.ChoiceFilter(choices=BLANK_CHOICE_DASH + EPOQUE_CHOICES, lookup_expr="icontains")
+    experience_musicale__nom = django_filters.MultipleChoiceFilter(choices=EXPERIENCE_MUSICALE_CHOICES, lookup_expr="iexact")
+    contexte__nom = django_filters.MultipleChoiceFilter(choices=CONTEXTE_CHOICES, lookup_expr="iexact")
+    role_evolution__nom = django_filters.MultipleChoiceFilter(choices=ROLE_EVOLUTION_CHOICES, lookup_expr="iexact")
+    epoque = django_filters.ChoiceFilter(choices=EPOQUE_CHOICES, lookup_expr="icontains")
+
+
+    evocation_autre__nom = django_filters.MultipleChoiceFilter(choices=DISCIPLINE_CHOICES, lookup_expr="iexact")
+    notion_concept = django_filters.ChoiceFilter(choices=NOTIONS_CONCEPT_CHOICES, lookup_expr='iexact')
+    notion_experiences = django_filters.ChoiceFilter(choices = BLANK_CHOICE_DASH + list(OUINONNSP), lookup_expr="iexact")
+    notion_pratiques = django_filters.ChoiceFilter(choices = BLANK_CHOICE_DASH + list(OUINONNSP), lookup_expr="iexact")
 
     class Meta:
         model = Outil
         fields = [
-            #'titre',
             'format__nom',
             'forme_narrative__nom',
             'interactivite',

@@ -8,14 +8,15 @@
 {% block title %} Recherche avancée - Catalogue raisonné de dispositifs de médiation de la musique{% endblock %}
 
 {% block body %}
+<div class="bggris"></div>
     <div class="row">
-        <div class="col-md-6 col-md-offset-3">
+        <div class="col-md-8 col-md-offset-2"  id="nobg">
 	<p>&nbsp;</p>
 	<p>&nbsp;</p>
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h3 class="panel-title"><center>Recherche avancée</center></h3>
-                    <small><center><a href="/">Recherche par mots-clés</a></center></small>
+                    <small><center><a href="/recherche_motcle/">Recherche par mots-clés</a></center></small>
                 </div>
                 <div class="panel-body">
 
@@ -30,4 +31,101 @@
             </div>
         </div>
     </div>
+<script>
+    function affInterdisc(){
+        if(document.getElementById("id_interdisciplinarite").checked == true){
+            document.getElementById("div_id_evocation_autre__nom").style.display = "inline-block";
+            document.getElementById("div_id_notion_concept").style.display = "inline-block";
+            document.getElementById("div_id_notion_experiences").style.display = "inline-block";
+            document.getElementById("div_id_notion_pratiques").style.display = "inline-block";
+        }
+        else{
+            document.getElementById("div_id_evocation_autre__nom").style.display = "none";
+            document.getElementById("div_id_notion_concept").style.display = "none";
+            document.getElementById("div_id_notion_experiences").style.display = "none";
+            document.getElementById("div_id_notion_pratiques").style.display = "none";
+        }
+    }
+    function affAnalyse(){
+        if(document.getElementById("id_analyse_musicale").checked == true){
+            document.getElementById("div_id_orchestration__nom").style.display = "inline-block";
+            document.getElementById("div_id_structure__nom").style.display = "inline-block";
+            document.getElementById("div_id_language_musical__nom").style.display = "inline-block";
+            document.getElementById("div_id_genre_musical__nom").style.display = "inline-block";
+            document.getElementById("div_id_style_musical__nom").style.display = "inline-block";
+        }
+        else{
+            document.getElementById("div_id_orchestration__nom").style.display = "none";
+            document.getElementById("div_id_structure__nom").style.display = "none";
+            document.getElementById("div_id_language_musical__nom").style.display = "none";
+            document.getElementById("div_id_genre_musical__nom").style.display = "none";
+            document.getElementById("div_id_style_musical__nom").style.display = "none";
+        }
+    }
+    function affContexte(){
+        if(document.getElementById("id_elements_contextuels").checked == true){
+            document.getElementById("div_id_experience_musicale__nom").style.display = "inline-block";
+            document.getElementById("div_id_contexte__nom").style.display = "inline-block";
+            document.getElementById("div_id_role_evolution__nom").style.display = "inline-block";
+            document.getElementById("div_id_epoque").style.display = "inline-block";
+        }
+        else{
+            document.getElementById("div_id_experience_musicale__nom").style.display = "none";
+            document.getElementById("div_id_contexte__nom").style.display = "none";
+            document.getElementById("div_id_role_evolution__nom").style.display = "none";
+            document.getElementById("div_id_epoque").style.display = "none";
+        }
+    }
+    function affReferencement(){
+        if(document.getElementById("id_referencement").checked == true){
+           // $('#div_id_format__nom').toggle('slow');
+            document.getElementById("div_id_format__nom").style.display = "block";
+            document.getElementById("div_id_forme_narrative__nom").style.display = "inline-block";
+            document.getElementById("div_id_interactivite").style.display = "inline-block";
+            document.getElementById("div_id_personnification_service").style.display = "inline-block";
+            document.getElementById("div_id_producteur_type__nom").style.display = "inline-block";
+            document.getElementById("div_id_support_diffusion__nom").style.display = "inline-block";
+            document.getElementById("div_id_ensemble_thematique").style.display = "inline-block";
+        }
+        else{
+            document.getElementById("div_id_format__nom").style.display = "none";
+            document.getElementById("div_id_forme_narrative__nom").style.display = "none";
+            document.getElementById("div_id_interactivite").style.display = "none";
+            document.getElementById("div_id_personnification_service").style.display = "none";
+            document.getElementById("div_id_producteur_type__nom").style.display = "none";
+            document.getElementById("div_id_support_diffusion__nom").style.display = "none";
+            document.getElementById("div_id_ensemble_thematique").style.display = "none";
+        }
+    }
+    function affDecouvrabilite(){
+        if(document.getElementById("id_decouvrabilite").checked == true){
+            document.getElementById("div_id_narration_langue__nom").style.display = "inline-block";
+            document.getElementById("div_id_mode_consultation__nom").style.display = "inline-block";
+        }
+        else{
+            document.getElementById("div_id_narration_langue__nom").style.display = "none";
+            document.getElementById("div_id_mode_consultation__nom").style.display = "none";
+        }
+    }
+    function affEvocations(){
+        if(document.getElementById("id_evocations").checked == true){
+            document.getElementById("div_id_evocation_litteraire").style.display = "inline-block";
+            document.getElementById("div_id_evocation_graphique__nom").style.display = "inline-block";
+            document.getElementById("div_id_evocation_plastique__nom").style.display = "inline-block";
+        }
+        else{
+            document.getElementById("div_id_evocation_litteraire").style.display = "none";
+            document.getElementById("div_id_evocation_graphique__nom").style.display = "none";
+            document.getElementById("div_id_evocation_plastique__nom").style.display = "none";
+        }
+    }
+    window.setInterval(function(){
+        affInterdisc()
+        affAnalyse()
+        affContexte()
+        affReferencement()
+        affDecouvrabilite()
+        affEvocations()
+    }, 100);
+</script>
 {% endblock %}

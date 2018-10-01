@@ -9,7 +9,7 @@
     <div class="container-fluid">
         <div class="col-md-11">
             <div class="page-header">
-                <h3>&nbsp; Catalogue Raisonné de Dispositifs de Médiation de la Musique
+                <h4><b>&nbsp; Catalogue Raisonné de Dispositifs numériques de Médiation de la Musique</b>
                     <a data-html="true" class='my-tool-tip' data-toggle="tooltip" data-placement="bottom" data-title="
                     <p style='text-decoration:underline; font-size:13pt;'>Ce catalogue raisonné n’a pas pour vocation de recenser:</p>
                         <ul>
@@ -21,17 +21,17 @@
                         </ul>">
                         <sup><span class='glyphicon glyphicon-info-sign'></span></sup>
                     </a>
-                </h3>
+                </h4>
             </div>
         </div>
     </div>
     <div>
         <div class="col-md-10 col-md-offset-1">
             <br>
-            <!--(21-06-2018) liste non-utilisés : [154, 80, 41, 118, 59, 18, 79, 92, 93, 162, 125, 100, 45, 70, 102, 62, 98, 73, 19, 29, 67, 163, 17, 91, 142, 48, 149, 84, 40, 83, 90, 7, 127, 159, 122, 131, 138, 64, 31, 135, 75, 140, 25, 63, 14, 53, 126, 155, 28, 139, 115, 22, 37, 23, 44, 136, 10, 128, 117, 85, 76, 103, 151, 119, 107, 116, 4, 96, 130, 88, 1, 106, 66, 24, 143, 3, 153, 123, 134, 38, 13, 49, 146, 157, 27, 55, 20, 5, 56, 152, 54, 9, 112, 94, 113, 133, 121, 78, 43, 71, 51, 105, 36, 124, 87, 109, 21, 95, 58, 35, 158, 148, 26, 61, 8, 6, 89, 82, 32, 160, 50, 144, 65, 147, 52, 120, 97, 86, 141, 145, 137, 110, 99, 77, 16, 12, 47, 150, 72, 104, 81, 114, 132, 161, 111, 129, 42, 101, 34, 74] -->
-            <!--liste déjà utilisés : [156, 68, 69, 33, 39, 2, 11, 46, 108, 30] -->
+            <!--(21-06-2018) liste non-utilisés : [93, 162, 125, 100, 45, 70, 102, 62, 98, 73, 19, 29, 67, 163, 17, 91, 142, 48, 149, 84, 40, 83, 90, 7, 127, 159, 122, 131, 138, 64, 31, 135, 75, 140, 25, 63, 14, 53, 126, 155, 28, 139, 115, 22, 37, 23, 44, 136, 10, 128, 117, 85, 76, 103, 151, 119, 107, 116, 4, 96, 130, 88, 1, 106, 66, 24, 143, 3, 153, 123, 134, 38, 13, 49, 146, 157, 27, 55, 20, 5, 56, 152, 54, 9, 112, 94, 113, 133, 121, 78, 43, 71, 51, 105, 36, 124, 87, 109, 21, 95, 58, 35, 158, 148, 26, 61, 8, 6, 89, 82, 32, 160, 50, 144, 65, 147, 52, 120, 97, 86, 141, 145, 137, 110, 99, 77, 16, 12, 47, 150, 72, 104, 81, 114, 132, 161, 111, 129, 42, 101, 34, 74] -->
+            <!--liste utilisés : [156, 68, 69, 33, 39, 2, 11, 46, 108, 30, 154, 80, 41, 118, 59, 18, 79, 92] -->
             {% for outil in outils %}
-                {% if outil.pk == 30 %}
+                {% if outil.pk == 92 %}
                     <center>
                         {% if outil.page_outil == True and outil.integration == "" %}
                            <iframe src="{{ outil.url }}" height="400" width="1000"></iframe>
@@ -48,7 +48,7 @@
                             <a id="alaune" href="../{{ outil.id }}" style="" class="lien"></a>
                         </div>
                         <h2 style="position:absolute; top:21px; left:50px; z-index:4; color:#4eabb4; background-color:#404040; padding:5px; text-decoration: underline;">À la une</h2>
-                        <h4 style="position:absolute; top:305px; left:50px; z-index:4; color:#4eabb4; background-color:#404040; padding:5px;">{{ outil.titre }}</h4>
+                        <h4 style="position:absolute; top:305px; left:50px; z-index:4; color:#4eabb4; background-color:#404040; padding:5px; max-width: 80%;">{{ outil.titre }}</h4>
                         <h5 style="position:absolute; top:334px; left:50px; z-index:4; color:#4eabb4; background-color:#404040; padding:5px;">
                             {% for i in outil.producteur_nom.all %}
                                 {{ i.nom  }}{% if not forloop.last %},&nbsp;{% else %}{% endif %}
@@ -65,7 +65,6 @@
         </div>
     </div>
     <div class='container-fluid'>
-        <!--<img src="../static/media/p2m_icone.png" id="loader">-->
             <div class="col-md-10 col-md-offset-1" style=" top: 400px;">
                 <br>
                 <form method='GET' class='' action='/recherche_motcle/' onsubmit="showLoader()">
@@ -81,46 +80,17 @@
                 <small><a href="{% url 'recherche' %}">Recherche avancée</a><br><br></small>
             </div>
     </div>
-    {% comment %}
-    <div class="container-fluid">
-        <div class="col-md-10 col-md-offset-1" style="top: 400px;">
-            <div class="page-header">
-                <h4> Liste des dispositifs disponibles:</h4>
-            </div>
-
-            {% if outils %}
-            <ul>
-                {% for outil in outils %}
-                <li><a href="{% url 'detail' outil.id %}"> {{ outil.titre }} </a></li>
-                {% endfor %}
-            </ul>
-            {% else %}
-            <div class="text-danger">
-                <h6> Aucun outil n'est disponible </h6>
-            </div>
-            {% endif %}
-        </div>
-    </div>
-    {% endcomment %}
-{% comment %}
-<aside>
-    <div class="col-md-10 col-md-offset-1" style="top: 400px;">
-            <br>
-            <div class="page-header">
-                <h4>Ce catalogue raisonné n’a pas pour vocation de recenser:</h4>
-            </div>
-            <ul>
-                <li>les dispositifs numériques qui pourraient être imprimés dans rien perdre de leur contenu</li>
-                <li>les  documents initialement conçu pour la télévision</li>
-                <li>les dispositifs à but promotionnel et directement liés à la programmation d’un organisme </li>
-                <li>les  reportages et autres documents archivant des activités de médiation ayant eu lieu</li>
-                <li>des dispositifs qui consistent simplement au croisement des arts</li>
-            </ul>
-        </div>
-</aside>
-{% endcomment %}
 <script type="text/javascript" src="../static/scripts/loader.js"></script>
 <script>
     $('[data-toggle="tooltip"]').tooltip();
 </script>
+{% endblock %}
+{% block footer %}
+    <div class="col-md-10 col-md-offset-1" style="top:400px; opacity:0.5; background-color:#fff;" align="center">
+        <br>
+        <a href="http://p2m.oicrm.org" target="_blank">
+            <img src="../static/media/logoP2Mmini.png" width="8%" alt="logoP2M">
+        </a>
+        <br><br>
+    </div>
 {% endblock %}

@@ -8,51 +8,54 @@ from django.utils.encoding import python_2_unicode_compatible
 from django.core.urlresolvers import reverse
 from django_currentuser.db.models import CurrentUserField
 
-# import datetime
-# from django.conf import settings
-# from django.utils import timezone
-# from django.utils.dateparse import parse_date
-# from django.core import exceptions
+import datetime
+from django.core.exceptions import ValidationError
+from django.conf import settings
+from django.utils import timezone
+from django.utils.dateparse import parse_date
+from django.core import exceptions
 
 
 ## idée: ajouter "date non dsiponible" dans les réponses acceptés (voir code source de models.DateField)
 class CustomDateField(models.DateField):
     pass
-#
-#     def to_python(self, value):
-#         if value is None or value == 'nsp':
-#             return value
-#         if isinstance(value, datetime.datetime):
-#             if settings.USE_TZ and timezone.is_aware(value):
-#                 # Convert aware datetimes to the default time zone
-#                 # before casting them to dates (#17742).
-#                 default_timezone = timezone.get_default_timezone()
-#                 value = timezone.make_naive(value, default_timezone)
-#             return value.date()
-#         if isinstance(value, datetime.date):
-#             return value
-#
-#         if value != 'nsp':
-#             try:
-#                 parsed = parse_date(value)
-#                 if parsed is not None:
-#                     return parsed
-#             except ValueError:
-#                 raise exceptions.ValidationError(
-#                     self.error_messages['invalid_date'],
-#                     code='invalid_date',
-#                     params={'value': value},
-#                 )
-#
-#             raise exceptions.ValidationError(
-#                 self.error_messages['invalid'],
-#                 code='invalid',
-#                 params={'value': value},
-#             )
-#
-#
-# class CustomTest(models.Model):
-#     date = CustomDateField(verbose_name = 'TEST DATE')
+    # def to_python(self, value):
+    #     if value is None:
+    #         return value
+    #     if isinstance(value, datetime.datetime):
+    #         if settings.USE_TZ and timezone.is_aware(value):
+    #             # Convert aware datetimes to the default time zone
+    #             # before casting them to dates (#17742).
+    #             default_timezone = timezone.get_default_timezone()
+    #             value = timezone.make_naive(value, default_timezone)
+    #         return value.date()
+    #     if isinstance(value, datetime.date) or value == "Date non disponible":
+    #         return value
+    #
+    #     try:
+    #         if value == "Date non disponible":
+    #             parsed = value
+    #         else:
+    #             parsed = parse_date(value)
+    #         if parsed is not None:
+    #             return parsed
+    #     except ValueError:
+    #         raise exceptions.ValidationError(
+    #             self.error_messages['invalid_date'],
+    #             code='invalid_date',
+    #             params={'value': value},
+    #         )
+    #
+    #     raise exceptions.ValidationError(
+    #         self.error_messages['invalid'],
+    #         code='invalid',
+    #         params={'value': value},
+    #     )
+
+
+
+#class CustomTest(models.Model):
+#    date = CustomDateField(verbose_name = 'TEST DATE')
 
 
 OUINON = (
@@ -619,7 +622,15 @@ class NotionsInter(models.Model):
 # Pour la recherche par mots-clés
 class OutilManager(models.Manager):
     def search(self, query=None):
-        qs = self.get_queryset()
+        qs = self.get_queryset().prefetch_related('producteur_type','producteur_nom','support_diffusion','format','forme_narrative',
+                                                  'mode_hebergement','narration_langue','sous_titre','orchestration','structure',
+                                                  'language_musical', 'genre_musical', 'style_musical', 'experience_musicale',
+                                                  'contexte', 'role_evolution','organologie','sollicitation_musicale',
+                                                  'sollicitation_generale','evocation_graphique','evocation_plastique',
+                                                  'evocation_autre', 'exemples_notions_interdisciplinaires',
+                                                  'role_humain_femme', 'role_humain_homme', 'role_humain_neutre',
+                                                  'role_pers_anime_femme', 'role_pers_anime_homme',
+                                                  'role_pers_anime_neutre', 'role_animaux_femme', 'role_animaux_homme')
         if query is not None:
             # maximum 64 table en sqlite
             or_lookup = (Q(titre__icontains=query) |
@@ -627,24 +638,14 @@ class OutilManager(models.Manager):
                          Q(site__icontains=query) |
                          Q(ensemble_thematique_nom__icontains=query) |
                          Q(interactivite__icontains=query) |
-                         # Q(personnification_service__icontains=query) |
-                         # Q(premier_onglet__icontains=query) |
-                         # Q(prem_onglet_autre__icontains=query) |
-                         # Q(deuxieme_onglet__icontains=query) |
-                         # Q(deux_onglet_autre__icontains=query) |
-                         # Q(troisieme_onglet__icontains=query) |
-                         # Q(trois_onglet_autre__icontains=query) |
                          Q(elements_socioculturels__icontains=query) |
                          Q(epoque__icontains=query) |
-                         # Q(sonore_valeur__icontains=query) |
-                         # Q(evocation_litteraire__icontains=query) |
                          Q(producteur_type__nom__icontains=query) |
                          Q(producteur_nom__nom__icontains=query) |
                          Q(support_diffusion__nom__icontains=query) |
                          Q(format__nom__icontains=query) |
                          Q(forme_narrative__nom__icontains=query) |
                          Q(mode_hebergement__nom__icontains=query) |
-                         # Q(mode_consultation__nom__icontains=query) |
                          Q(narration_langue__nom__icontains=query) |
                          Q(sous_titre__nom__icontains=query) |
                          Q(orchestration__nom__icontains=query) |
@@ -682,7 +683,8 @@ class OutilManager(models.Manager):
 @python_2_unicode_compatible
 class Outil(models.Model):
     # RÉFÉRENCEMENT
-    titre = models.CharField(max_length=200, verbose_name="R.1 Titre du dispositif", db_index=True)
+    titre = models.CharField(max_length=200, verbose_name="R.1 Titre du dispositif", db_index=True,
+                             help_text = "Tout support disponible en ligne ne perdant rien à être imprimé n’entre pas dans le corpus analysé ici.")
     page_outil = models.BooleanField(default = False, verbose_name = "Afficher directement une page qui fait office de dispositif")
     integration = models.TextField(blank = True, verbose_name = "code pour l'integration du dispositif (si applicable)")
     url = models.CharField(db_index=True, unique=True, max_length=200, verbose_name="R.2 URL d'accès direct",
@@ -707,7 +709,7 @@ class Outil(models.Model):
                                            help_text="Correspond au nombre de page web sur lesquelles se décline le  dispositif. Nsp = ne s'applique pas. Si plus que 20 pages, inscrire : plus de 20 pages")
     mise_en_ligne_date = models.DateField(null=True, blank=True, auto_now=False, auto_now_add=False,
                                           verbose_name="R.11 Date de la mise en ligne",
-                                          help_text="Si seule l’année de mise en ligne est disponible entrer la date de mise en ligne au 1er janvier de l’année concernée")
+                                          help_text="Si seule l’année de mise en ligne est disponible entrer la date de mise en ligne au 1er janvier de l’année concernée. Si la date n'est pas disponible, laisser vide.")
     depouillement_date = models.DateField(null=True, blank=False, auto_now=False, auto_now_add=False,
                                           verbose_name="R.12 Date du dépouillement")
     interactivite = models.CharField(db_index=True, choices=INTERACTIVITE_LIST,
@@ -855,11 +857,11 @@ class Outil(models.Model):
     nb_humains_indetermines = models.PositiveIntegerField(verbose_name="Sté.39.1 Nombre d'humains au genre indéterminé",
                                                           default=0)
     role_humain_femme = models.ManyToManyField(RoleFemmes, db_index=True,
-                                               verbose_name="Sté.39.2 Rôle des femmes")
+                                               verbose_name="Sté.39.2 Rôle des femmes", default = 1)
     role_humain_homme = models.ManyToManyField(RoleHomme, db_index=True,
-                                                verbose_name="Sté.39.3 Rôle des hommes")
+                                                verbose_name="Sté.39.3 Rôle des hommes", default = 1)
     role_humain_neutre = models.ManyToManyField(RoleHumainNeutre, db_index=True,
-                                                verbose_name="Sté.39.4 Rôle des indeterminés")
+                                                verbose_name="Sté.39.4 Rôle des indéterminés", default = 1)
     nb_pers_anime_total = models.CharField(null = True, verbose_name="Sté.40.1 Nombre de personnages animés total",
                                            max_length=10,
                                            default="0",
@@ -872,11 +874,11 @@ class Outil(models.Model):
                                                              verbose_name="Sté.40.1 Nombre de personnages animés au genre indéterminé",
                                                              default=0)
     role_pers_anime_femme = models.ManyToManyField(RolePersAnimFemmes, db_index=True,
-                                                   verbose_name="Sté.40.3 Rôle des personnages animés féminins")
+                                                   verbose_name="Sté.40.3 Rôle des personnages animés féminins", default = 1)
     role_pers_anime_homme = models.ManyToManyField(RolePersAnimHomme, db_index=True,
-                                                   verbose_name="Sté.40.2 Rôle des personnages animés masculins")
+                                                   verbose_name="Sté.40.2 Rôle des personnages animés masculins", default = 1)
     role_pers_anime_neutre = models.ManyToManyField(RolePersAnimNeutre, db_index=True,
-                                                    verbose_name="Sté.40.4 Rôle des personnages animés indéterminés")
+                                                    verbose_name="Sté.40.4 Rôle des personnages animés indéterminés", default = 1)
     nb_animaux_total = models.CharField(null = True, verbose_name="Sté.41.1 Nombre d'animaux total",
                                         max_length=10,
                                         default="0",
@@ -887,11 +889,11 @@ class Outil(models.Model):
                                                           verbose_name="Sté.41.1 Nombre d'animaux au genre indéterminé",
                                                           default=0)
     role_animaux_femme = models.ManyToManyField(RoleAnimauxFemmes, db_index=True,
-                                                verbose_name="Sté.41.3 Rôle des animaux femelles")
+                                                verbose_name="Sté.41.3 Rôle des animaux femelles", default = 1)
     role_animaux_homme = models.ManyToManyField(RoleAnimauxHomme, db_index=True,
-                                                verbose_name="Sté.41.2 Rôle des animaux mâles")
+                                                verbose_name="Sté.41.2 Rôle des animaux mâles", default = 1)
     role_animaux_neutre = models.ManyToManyField(RoleAnimauxNeutre, db_index=True,
-                                                 verbose_name="Sté.41.4 Rôle des animaux indéterminés")
+                                                 verbose_name="Sté.41.4 Rôle des animaux indéterminés", default = 1)
     nb_instr_anime_total = models.CharField(null=True, verbose_name="Sté.42.1 Nombre d'instruments animés total",
                                             max_length=10,
                                             default="0",
@@ -904,11 +906,11 @@ class Outil(models.Model):
                                                               verbose_name="Sté.42.1 Nombre d'instruments animés au genre indéterminé",
                                                               default=0)
     role_instr_anime_femme = models.ManyToManyField(RoleInstrFemmes, db_index=True,
-                                                    verbose_name="Sté.42.3 Rôle des instruments anthropomorphes féminins")
+                                                    verbose_name="Sté.42.3 Rôle des instruments anthropomorphes féminins", default = 1)
     role_instr_anime_homme = models.ManyToManyField(RoleInstrHomme, db_index=True,
-                                                    verbose_name="Sté.42.2 Rôle des instruments anthropomorphes masculins")
+                                                    verbose_name="Sté.42.2 Rôle des instruments anthropomorphes masculins", default = 1)
     role_instr_anime_neutre = models.ManyToManyField(RoleInstrNeutre, db_index=True,
-                                                     verbose_name="Sté.42.4 Rôle des instruments anthropomorphes neutres")
+                                                     verbose_name="Sté.42.4 Rôle des instruments anthropomorphes neutres", default = 1)
 
     utilisateur = CurrentUserField()
 

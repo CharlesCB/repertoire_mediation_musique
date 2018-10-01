@@ -12,10 +12,6 @@ div {
     font-size: 12pt;
 }
 
-.navbar-brand {
-    text-transform: uppercase;
-}
-
 h1,
 h2,
 h3,
@@ -25,8 +21,51 @@ h6 {
     font-family: 'UniversLTPro-55Roman';
     src: url('webfonts/281358_0_unhinted_0.woff') format('woff'), url('webfonts/281358_0_unhinted_0.ttf') format('truetype');
     text-transform: uppercase;
-    color: #505050;
 }
+
+.bggris{
+    position: fixed;
+    top: 0;
+    width: 150%;
+    height: 150%;
+    background-color: #e6e6e9;
+    z-index:-1;
+}
+#nobg{
+    background-color : #e6e6e9;
+}
+
+.col-md-10{
+    background-color : white;
+    color : black;
+}
+
+.page-header{
+    border-bottom : thin solid #ccc;
+}
+
+
+/*
+.navbar .navbar-nav li #rouge{
+    color : #b96540;
+}
+.navbar .navbar-nav li #bleu{
+    color : #4eabb4;
+}
+.navbar .navbar-nav li #jaune{
+    color : #ebc400;
+}
+.navbar .navbar-nav li #vert{
+    color : #8db650;
+}
+
+.navbar .navbar-nav li a{
+    opacity : 0.6;
+}
+.navbar .navbar-nav li a{
+    opacity : 0.6;
+}
+*/
 
 h4 {
     font-size: 13pt;
@@ -36,6 +75,60 @@ h3 {
     font-size: 16pt;
     font-weight: bold;
 }
+
+#referencement, #stereotypes{
+    border : medium solid #4eabb4;
+    border-radius : 8px;
+    box-shadow : 5px 5px 5px lightgray;
+    padding-bottom : 1em;
+    margin : 1em;
+    width : 80%
+}
+
+
+#decouvrabilite, #sollicitation{
+    border: medium solid #b96540;
+    border-radius : 8px;
+    box-shadow : 5px 5px 5px lightgray;
+    padding-bottom : 1em;
+    margin : 1em;
+    width : 80%
+}
+
+#discours, #interdisciplinarite{
+    border: medium solid #ebc400;
+    border-radius : 8px;
+    box-shadow : 5px 5px 5px lightgray;
+    padding-bottom : 1em;
+    margin : 1em;
+    width : 80%
+}
+
+#place, #extra-sonore {
+    border: medium solid #8db650;
+    border-radius : 8px;
+    box-shadow : 5px 5px 5px lightgray;
+    padding-bottom : 1em;
+    margin : 1em;
+    width : 80%
+}
+#referencement .page-header, #stereotypes .page-header{
+    border-bottom : thin solid #4eabb4;
+}
+
+#decouvrabilite .page-header, #sollicitation .page-header{
+    border-bottom : thin solid #b96540;
+}
+
+#discours .page-header, #interdisciplinarite .page-header{
+    border-bottom: thin solid #ebc400;
+
+}
+
+#place .page-header, #extra-sonore .page-header {
+    border-bottom: thin solid #8db650;
+}
+
 
 aside {
     position: fixed;
@@ -51,8 +144,49 @@ small {
     color: darkgray;
 }
 
+.form-group{
+    margin: -2.5px;
+    display : none;
+    padding : 2em;
+    width : 100%;
+
+    vertical-align:top;
+}
+
+/*
+.form-group:nth-child(even){
+    border-right: thin #ccc solid;
+}
+
+.form-group:nth-child(odd){
+    border-left: thin #ccc solid;
+}
+*/
+
+.btn{
+    float: right;
+}
+
+#div_id_analyse_musicale,
+#div_id_interdisciplinarite,
+#div_id_elements_contextuels,
+#div_id_referencement,
+#div_id_decouvrabilite,
+#div_id_evocations,
+#div_id_sonore_valeur{
+    width : 100%;
+    border : medium solid black;
+    display : inline-block;
+}
+
 section iframe {
-    border: none;
+/*  border-left : 2px solid #4eabb4;
+    border-top: 2px solid #8db650;
+    border-right : 2px solid #ebc400;
+    border-bottom : 2px solid #b96540;*/
+    border : 2px solid #999;
+    margin-left : 1em;
+    max-width : 97%;
 }
 
 center iframe,
@@ -64,7 +198,10 @@ center img {
     width: 116%;
     height: 400px;
     border: solid medium #4eabb4;
+    border-radius: 3px;
 }
+
+
 
 #alaune {
     position: absolute;
@@ -108,11 +245,11 @@ center img {
 
 .my-tool-tip{
     font-size : 12pt;
-    color: #505050;
+    color : #505050;
 }
 
 .my-tool-tip:hover{
-    color : black;
+    color: #ebc400;
 }
 
 .my-tool-tip + .tooltip > .tooltip-inner{
@@ -262,12 +399,13 @@ center img {
     display: none;
     position: fixed;
     top: 0;
-    width: 100%;
-    height: 100%;
+    width: 120%;
+    height: 150%;
     background-color: black;
     z-index: 9;
     opacity: 0.6;
 }
+
 
 @keyframes blink {
     /**
@@ -358,6 +496,15 @@ center img {
     width: 200px;
     height: 200px;
     z-index: 5;
+}
+
+.form-row field-ensemble_thematique_nom,
+.form-row field-commentaire_nombre,
+.form-row field-prem_onglet_autre,
+.form-row field-deux_onglet_autre,
+.form-row field-trois_onglet_autre
+{
+    display : none;
 }
 
 @-moz-document url-prefix() {

@@ -10,6 +10,7 @@ import xlwt
 from .filters import OutilFilter
 from forms import Search
 import datetime
+import time
 
 
 class DetailView(generic.DetailView):
@@ -24,12 +25,24 @@ class DetailView(generic.DetailView):
 
 
 class AlaUneView(generic.ListView):
+    #3 jours = 259200 secondes
     model = Outil
     template_name = 'aLaUne.html'
     context_object_name = 'outils'
 
     def get_queryset(self):
+        request = self.request
+        request.session['listeresultat'] = []
+        # courrant = 18
+        # liste = [79, 92, 93, 162, 125, 100, 45, 70, 102, 62, 98, 73, 19, 29, 67, 163, 17, 91, 142, 48, 149, 84, 40, 83, 90, 7, 127, 159, 122, 131, 138, 64, 31, 135, 75, 140, 25, 63, 14, 53, 126, 155, 28, 139, 115, 22, 37, 23, 44, 136, 10, 128, 117, 85, 76, 103, 151, 119, 107, 116, 4, 96, 130, 88, 1, 106, 66, 24, 143, 3, 153, 123, 134, 38, 13, 49, 146, 157, 27, 55, 20, 5, 56, 152, 54, 9, 112, 94, 113, 133, 121, 78, 43, 71, 51, 105, 36, 124, 87, 109, 21, 95, 58, 35, 158, 148, 26, 61, 8, 6, 89, 82, 32, 160, 50, 144, 65, 147, 52, 120, 97, 86, 141, 145, 137, 110, 99, 77, 16, 12, 47, 150, 72, 104, 81, 114, 132, 161, 111, 129, 42, 101, 34, 74]
+        # for i in range(len(liste)):
+        #     courrant = liste[i]
+        #     time.sleep(30)
+
+
         return Outil.objects.order_by('titre')
+        # return Outil.objects.get(pk=courrant)
+
 
 
 class OutilDelete(generic.DeleteView):
@@ -57,16 +70,24 @@ class ListDetailView(generic.DetailView):
     template_name = 'list_detail.html'
 
     def get_context_data(self, **kwargs):
+        request = self.request
         context = super(ListDetailView, self).get_context_data(**kwargs)
+        context['tout'] = request.session.get('listeresultat')
+        context['toutrev'] = list(reversed(request.session.get('listeresultat')))
         return context
 
 
 class OutilList(generic.View):
     def get(self, request):
+        request = self.request
 
         data = OutilFilter(self.request.GET, queryset = Outil.objects.all().order_by('titre'))
+        liste = []
         data_total = data.qs.count()
         all_main_registers = OutilFilter(self.request.GET, queryset=Outil.objects.all().order_by('titre'))
+        for i in data.qs:
+            liste.append(i.id)
+        request.session['listeresultat'] = liste
 
         paginator = Paginator(data.qs, 40)
         page = request.GET.get('page')
@@ -93,7 +114,8 @@ class SearchView(generic.ListView):
     paginate_by = 20
     def get_context_data(self, *args, **kwargs):
         context = super(SearchView,self).get_context_data(*args, **kwargs)
-        context['count'] = self.count or 0
+        if self.request.GET.get('q') is not None:
+            context['count'] = self.count
         context['query'] = self.request.GET.get('q')
         return context
 
@@ -123,8 +145,8 @@ class SearchView(generic.ListView):
                              ("quelqu'", ""),("qu'", ""),("s'",""),("t'",""),
                         ]
         mots_vides =[
-                         "musique","elle","il","10eme","1er","1ere","2eme","3eme","4eme","5eme","6eme",
-                         "7eme","8eme","9eme"," a","afin","ai","ainsi","ais","ait","alors","apres","as",
+                         "musique","elle","il","10ème","1er","1ère","2ème","3ème","4ème","5ème","6ème",
+                         "7ème","8ème","9ème"," a","afin","ai","ainsi","ais","ait","alors","apres","as",
                          "assez","au","aucun","aucune","aupres","auquel","auquelles","auquels","auraient","aurais",
                          "aurait","aurez","auriez","aurions","aurons","auront","aussi","aussitot","autre","autres","aux",
                          "avaient","avais","avait","avant","avec","avez","aviez","avoir","avons","ayant","beaucoup",
@@ -146,20 +168,19 @@ class SearchView(generic.ListView):
                          "eme","etaient","etais","etait","etant","etiez","etions","etes","etre","afin","ainsi","alors",
                          "apres","aucun","aucune","aupres","auquel","aussi","autant","aux","avec","car","ceci","cela",
                          "celle","celles","celui","cependant","ces","cet","cette","ceux","chacun","chacune","chaque",
-                         "chez","comme","comment","dans","des","donc","donne","dont","duquel","des","deja","elle",
+                         "chez","comme","comment","dans","des","donc","donne","dont","duquel","des","déjà","elle",
                          "elles","encore","entre","etant","etc","eux","furent","grace","hors","ici","ils",
                          "jusqu","les","leur","leurs","lors","lui","mais","malgre","mes","mien","mienne","miennes",
                          "miens","moins","moment"," mon"," meme","memes"," non","nos","notre","notres","nous","notre",
                          "oui","par","parce","parmi","plus","pour","pres","puis","puisque","quand","quant","quel",
                          "quelle","quelque","quelquun","quelques","quels","qui","quoi","sans","sauf","selon","ses",
                          "sien","sienne","siennes","siens","soi","soit","sont","sous","suis","sur","tandis","tant","tes",
-                         "tienne","tiennes","tiens","toi","ton","tous","tout","toute","toutes","trop","tres","une",
-                         "vos","votre","vous","etaient","etait","etant","etre",
+                         "tienne","tiennes","tiens","toi","ton","tous","tout","toute","toutes","trop","très","une",
+                         "vos","votre","vous","étaient","était","étant","être",
                     ]
 
         if query is not None:
-            #query = unidecode.unidecode(query)
-            query = query.lower() # query.decode("utf-8").lower().encode("utf8")
+            query = query.lower()
             for i in remplacements:
                 if i[0] in query:
                     query = query.replace(i[0], i[1])
@@ -184,7 +205,12 @@ class SearchView(generic.ListView):
                 results = Outil.objects.order_by('titre')
 
             qs = list(results)
+            liste = []
+            for i in results:
+                liste.append(i.id)
             self.count = len(qs)
+            # pour pouvoir naviguer entre les fiches (précédent + suivant)
+            request.session['listeresultat'] = liste
             return results
         return Outil.objects.none()
 
@@ -634,6 +660,10 @@ def export_xls(request):
         loflTreize = [list(elem) for elem in loftTreize]
         loftQuatorze = list(Outil.objects.order_by('titre').values_list('titre','experience_musicale__nom', 'elements_socioculturels', 'epoque'))
         loflQuatorze = [list(elem) for elem in loftQuatorze]
+
+        #loftepoque = list(Outil.objects.order_by('titre').values_list('epoque'))
+        #loflepoque = [list(elem) for elem in loftepoque]
+
         loftQuinze = list(Outil.objects.order_by('titre').values_list('titre','contexte__nom'))
         loflQuinze = [list(elem) for elem in loftQuinze]
         loftSeize = list(Outil.objects.order_by('titre').values_list('titre','role_evolution__nom'))

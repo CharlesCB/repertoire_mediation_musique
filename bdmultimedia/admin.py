@@ -3,22 +3,29 @@ from __future__ import unicode_literals
 
 from django.contrib import admin
 from bdmultimedia.models import *
+from easy_select2 import select2_modelform
+
+#from bdmultimedia.forms import OutilForm
 
 # Register your models here.
+
+
+OutilForm = select2_modelform(Outil, attrs={'width': '480px'})
 
 
 class OutilAdmin(admin.ModelAdmin):
     list_display = ('titre',)
     search_fields = ['titre']
-    # filter_horizontal = ('producteur_type','producteur_nom','support_diffusion','format','forme_narrative','orchestration',
-    #                      'structure','language_musical','genre_musical','style_musical', 'experience_musicale',
-    #                      'contexte', 'role_evolution', 'sollicitation_musicale', 'sollicitation_generale',
-    #                      'evocation_graphique', 'evocation_plastique', 'evocation_autre',
-    #                       'exemples_notions_interdisciplinaires', 'role_humain_homme', 'role_humain_femme', 'role_humain_neutre',
-    #                      'role_pers_anime_homme', 'role_pers_anime_femme', 'role_pers_anime_neutre',
-    #                      'role_animaux_homme', 'role_animaux_femme', 'role_animaux_neutre',
-    #                      'role_instr_anime_homme', 'role_instr_anime_femme', 'role_instr_anime_neutre',
-    #                      'mode_hebergement', 'mode_consultation', 'narration_langue', 'sous_titre')
+    # form = OutilForm
+    filter_horizontal = ('producteur_type','producteur_nom','support_diffusion','format','forme_narrative','orchestration',
+                         'structure','language_musical','genre_musical','style_musical', 'experience_musicale',
+                         'contexte', 'role_evolution', 'sollicitation_musicale', 'sollicitation_generale',
+                         'evocation_graphique', 'evocation_plastique', 'evocation_autre',
+                         'exemples_notions_interdisciplinaires', 'role_humain_homme', 'role_humain_femme', 'role_humain_neutre',
+                         'role_pers_anime_homme', 'role_pers_anime_femme', 'role_pers_anime_neutre',
+                         'role_animaux_homme', 'role_animaux_femme', 'role_animaux_neutre',
+                         'role_instr_anime_homme', 'role_instr_anime_femme', 'role_instr_anime_neutre',
+                         'mode_hebergement', 'mode_consultation', 'narration_langue', 'sous_titre')
 
 
 # class ContreExempleAdmin(admin.ModelAdmin):
@@ -26,9 +33,9 @@ class OutilAdmin(admin.ModelAdmin):
 #     search_fields = ['titre',]
 
 
-# class CustomTestAdmin(admin.ModelAdmin):
-#     list_display = ('date',)
-#     search_fields = ['date',]
+#class CustomTestAdmin(admin.ModelAdmin):
+#    list_display = ('date',)
+#    search_fields = ['date',]
 
 
 class ProdTypeAdmin(admin.ModelAdmin):
@@ -39,7 +46,6 @@ class ProdTypeAdmin(admin.ModelAdmin):
 class ProducteurNomAdmin(admin.ModelAdmin):
     list_display = ('nom',)
     search_fields = ['nom',]
-    ordering = ['nom', ]
 
 
 class SupportDiffusionAdmin(admin.ModelAdmin):

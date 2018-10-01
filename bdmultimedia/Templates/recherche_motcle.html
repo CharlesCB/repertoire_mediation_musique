@@ -2,7 +2,14 @@
 {% load bootstrap_pagination %}
 {% load bootstrap3 %}
 {% load bootstrap_tags %}
-{% block title %} Recherche par mots-clés : "{{ query }}" {% endblock %}
+{% load user_agents %}
+{% block title %}
+    {% if query is not None %}
+        Recherche par mots-clés : "{{ query }}"
+    {% else %}
+        Recherche par mots-clés
+    {% endif %}
+{% endblock %}
 {% block body %}
 <body>
 <div class="loader-section" id="loader-section"></div>
@@ -19,7 +26,11 @@
                             <button style="border: none; background-color: #eeeeee;;"><span class="glyphicon glyphicon-search" aria-hidden="true" style="color: #404040;"></span></button>
                             <i class="fa fa-search" aria-hidden="true"></i>
                         </span>
-                        <input id="input" type="text" name="q" data-toggle="popover" data-placement="bottom" data-content='Appuyez sur la touche "enter" pour lancer la recherche' class="form-control cfe-nav mt-0 py-3" placeholder="Recherche par mots-clés" value="{{query}}"  data-original-title="" title="">
+                        {% if query is not None %}
+                            <input id="input" type="text" name="q" data-toggle="popover" data-placement="bottom" data-content='Appuyez sur la touche "enter" pour lancer la recherche' class="form-control cfe-nav mt-0 py-3" placeholder="Recherche par mots-clés" value="{{query}}" autofocus>
+                        {% else %}
+                            <input id="input" type="text" name="q" data-toggle="popover" data-placement="bottom" data-content='Appuyez sur la touche "enter" pour lancer la recherche' class="form-control cfe-nav mt-0 py-3" placeholder="Recherche par mots-clés" autofocus>
+                        {% endif %}
 
                     </div>
                 </form>
@@ -42,6 +53,27 @@
                 </div>
             {% endif %}
            <!--<p class="text-center">Classer par : <a href="{{new_sort_url}}&sort=titre">titre (a)</a> | <a href="{{new_sort_url}}&sort=-titre">titre (d)</a> | <a href="{{new_sort_url}}&sort=mise_en_ligne_date">date (a)</a> | <a href="{{new_sort_url}}&sort=-mise_en_ligne_date">date (d)</a></p>-->
+            {% if request|is_mobile %}
+            <div class="container-fluid">
+                <div class="col-md-10">
+                    <ul>
+                        {% for outil in object_list %}
+                        <li><a href="/result{{outil.id}}/"> {{ outil.titre }} </a></li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+            {% elif request|is_tablet %}
+            <div class="container-fluid">
+                <div class="col-md-10">
+                    <ul>
+                        {% for outil in object_list %}
+                        <li><a href="/result{{outil.id}}/"> {{ outil.titre }} </a></li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+            {% else %}
             <div class="infinite-container" id="result">
                 {% for outil in object_list %}
                     {% if outil.page_outil == True and outil.integration == "" %}
@@ -83,6 +115,7 @@
               <br>
           </div>
     </div>
+{% endif %}
     <script>
         var infinite = new Waypoint.Infinite({
           element: $('.infinite-container')[0],

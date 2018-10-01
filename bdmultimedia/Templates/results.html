@@ -10,8 +10,9 @@
 {% block title %} résultat de la recherche {% endblock %}
 
 {% block body %}
+   <div class="page-header">
     <center>
-        <h3 class="page-header">Résultats de la recherche<br>
+        <h3>Résultats de la recherche<br>
             <small style="text-transform : lowercase;">
                 {% if data_total == 0 %}
                     Aucun dispositif trouvé
@@ -23,6 +24,15 @@
             </small>
         </h3>
     </center>
+       <!--
+          <small style="padding-left:25px;">
+              <a href="/recherche">
+                  Nouvelle recherche
+              </a>
+          </small>
+      -->
+</div>
+
 <div class="container-fluid">
     <div class="col-md-10">
         <ul>
