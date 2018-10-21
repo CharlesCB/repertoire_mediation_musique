@@ -1,6 +1,6 @@
 autocomplete==0.0.104
 bottle==0.12.13
-Django==1.11.2
+Django==1.11.15
 django-appconf==1.0.2
 django-autocomplete-light==3.2.10
 django-bootstrap==0.2.4
