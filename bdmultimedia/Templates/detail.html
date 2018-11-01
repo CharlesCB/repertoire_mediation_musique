@@ -7,14 +7,15 @@
 {% load user_agents %}
 {% block body %}
 <div class="bggris"></div>
-<!--
-    <div class="col-md-10"><a href="#referencement">Référencement </a> <a href="#servuction"> Servuction</a>
-    <a href="#materiau"> Quid du matériau musical</a><a href="#quid"> Quid de ...</a><a href="#sollicitation"> Sollicitations de l'usager</a></div>
--->
+
 <section>
     <div class="col-md-10"id="nobg">
         <div class="page-header" id="nobg"><h3>{{ outil.titre }}</h3></div>
     </div>
+
+    <!--<div class="col-md-10" id="nobg"><ul class="list-horizontal"><li><a href="#referencement">Référencement</a></li><li><a href="#decouvrabilite">Découvrabilité/Accessibilité</a></li><li>
+    <a href="#discours">Discours sur la musique</a></li><li><a href="#sollicitation">Sollicitation de l'usager</a></li><li><a href="#place">Place de la musique</a></li>
+    <li><a href="#extra-sonore">Évocation de la musique extra-sonore</a></li><li><a href="#interdisciplinarite">Interdisciplinarité</a></li></ul></div>-->
 </section>
     <aside>
         {% for i in tout.reverse %}
@@ -87,7 +88,7 @@
         {% endif %}
     </div>
     {% if outil.ensemble_thematique == "Oui" %}
-        <div class="col-md-10"><b><br>Ce dispositif fait partie d'un ensemble thématique du même type (regroupé par l'organisme producteur)</b></div>
+        <div class="col-md-10"><b>Ce dispositif fait partie d'un ensemble thématique du même type (regroupé par l'organisme producteur)</b></div>
         <div class="col-md-10"><b>Nom de l'ensemble : </b>{{ outil.ensemble_thematique_nom }}<br></div>
     {% endif %}
     <div class="col-md-10"><b> Producteurs : </b>
@@ -141,7 +142,7 @@
         <div class="col-md-10"><b> Nombre de pages : </b> {{ outil.nb_pages }} </div>
     {% endif %}
     <div class="col-md-10"><b> Date de la mise en ligne : </b>
-        {% if outil.mise_en_ligne_date is not None%}
+        {% if outil.mise_en_ligne_date is not None %}
             {{ outil.mise_en_ligne_date|date:" j F Y"  }}
         {% else %}
             Date non disponible.

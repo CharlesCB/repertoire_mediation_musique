@@ -79,7 +79,7 @@ h3 {
 #referencement, #stereotypes{
     border : medium solid #4eabb4;
     border-radius : 8px;
-    box-shadow : 5px 5px 5px lightgray;
+    box-shadow : 10px 10px 10px lightgray;
     padding-bottom : 1em;
     margin : 1em;
     width : 80%
@@ -89,7 +89,7 @@ h3 {
 #decouvrabilite, #sollicitation{
     border: medium solid #b96540;
     border-radius : 8px;
-    box-shadow : 5px 5px 5px lightgray;
+    box-shadow : 10px 10px 10px lightgray;
     padding-bottom : 1em;
     margin : 1em;
     width : 80%
@@ -98,7 +98,7 @@ h3 {
 #discours, #interdisciplinarite{
     border: medium solid #ebc400;
     border-radius : 8px;
-    box-shadow : 5px 5px 5px lightgray;
+    box-shadow : 10px 10px 10px lightgray;
     padding-bottom : 1em;
     margin : 1em;
     width : 80%
@@ -107,11 +107,12 @@ h3 {
 #place, #extra-sonore {
     border: medium solid #8db650;
     border-radius : 8px;
-    box-shadow : 5px 5px 5px lightgray;
+    box-shadow : 10px 10px 10px lightgray;
     padding-bottom : 1em;
     margin : 1em;
     width : 80%
 }
+
 #referencement .page-header, #stereotypes .page-header{
     border-bottom : thin solid #4eabb4;
 }
@@ -144,6 +145,28 @@ small {
     color: darkgray;
 }
 
+.list-horizontal {
+    width: 120%;
+    margin-left: -2em;
+    position : fixed;
+    z-index : 10;
+    background-color : #e6e6e9;
+
+}
+
+.list-horizontal li {
+	display:inline-block;
+}
+.list-horizontal li:before {
+	content: '\00a0\2022\00a0\00a0';
+	color : #aaa;
+
+}
+.list-horizontal li:first-child:before {
+	content: '\00a0\2022\00a0\00a0';
+	color : #aaa;
+}
+/*
 .form-group{
     margin: -2.5px;
     display : none;
@@ -151,9 +174,18 @@ small {
     width : 100%;
 
     vertical-align:top;
+}*/
+
+.form-group{
+    margin: -2.5px;
+    display : inline-block;
+    padding : 2em;
+    width : 50%;
+    border-top : thin #ccc solid;
+    vertical-align:top;
 }
 
-/*
+
 .form-group:nth-child(even){
     border-right: thin #ccc solid;
 }
@@ -161,30 +193,28 @@ small {
 .form-group:nth-child(odd){
     border-left: thin #ccc solid;
 }
-*/
+
 
 .btn{
     float: right;
 }
-
+/*
 #div_id_analyse_musicale,
 #div_id_interdisciplinarite,
 #div_id_elements_contextuels,
 #div_id_referencement,
 #div_id_decouvrabilite,
-#div_id_evocations,
-#div_id_sonore_valeur{
-    width : 100%;
+#div_id_evocations
+{
+    width : 50%;
     border : medium solid black;
     display : inline-block;
-}
+}*/
+
+#div_id_sonore_valeur{display : inline-block;}
 
 section iframe {
-/*  border-left : 2px solid #4eabb4;
-    border-top: 2px solid #8db650;
-    border-right : 2px solid #ebc400;
-    border-bottom : 2px solid #b96540;*/
-    border : 2px solid #999;
+    border : 2px solid #4eabb4;
     margin-left : 1em;
     max-width : 97%;
 }
@@ -196,21 +226,57 @@ center img {
     left: 15px;
     display: inline-block;
     width: 116%;
-    height: 400px;
+   /* width : 1000px; */
+    height: 25em;
     border: solid medium #4eabb4;
     border-radius: 3px;
 }
 
 
-
 #alaune {
     position: absolute;
     top: 20;
+   /* left: 15px;*/
     left: 30px;
     display: inline-block;
     width: 94%;
-    height: 400px;
+  /*  width: 1000px;*/
+    height: 25em;
     z-index: 5;
+}
+
+.alaune-titre{
+    position:absolute;
+    left:50px;
+    z-index:4;
+    color:#4eabb4;
+    background-color:#404040;
+    padding:5px;
+}
+
+h2.alaune-titre{
+    top:21px;
+    text-decoration:
+    underline;
+}
+h4.alaune-titre{
+    top:305px;
+    max-width: 80%;
+}
+h5.alaune-titre{
+    top:334px;
+}
+h6.alaune-titre{
+    top:357px;
+}
+#form-motcle{
+    top : 25em;
+}
+
+#footer{
+    top:25em;
+    opacity:0.5;
+    background-color:#fff;
 }
 
 @media only screen and (max-width: 991px) {
@@ -221,8 +287,34 @@ center img {
         left: 15px;
         display: inline-block;
         width: 90%;
-        height: 400px;
+        height: 20em;
         border: solid medium #4eabb4;
+    }
+    h2.alaune-titre{
+        top:21px;
+        text-decoration:
+        underline;
+    }
+    h4.alaune-titre{
+        top:220px;
+        max-width: 70%;
+    }
+    h5.alaune-titre{
+        top:249px;
+        z-index : 3;
+    }
+    h6.alaune-titre{
+        top:272px;
+        z-index : 3;
+    }
+    section iframe{
+        max-width : 80%;
+    }
+    #form-motcle{
+    top : 20em;
+    }
+    #footer{
+        top: 20em;
     }
     #alaune {
         position: absolute;
@@ -230,7 +322,7 @@ center img {
         left: 30px;
         display: inline-block;
         width: 87%;
-        height: 400px;
+        height: 20em;
         z-index: 5;
     }
 }
@@ -358,7 +450,7 @@ center img {
 }
 
 @-webkit-keyframes spin {
-    from {
+    0% {
         -webkit-transform: rotate(0deg);
         /* Chrome, Opera 15+, Safari 3.1+ */
         -ms-transform: rotate(0deg);
@@ -366,7 +458,7 @@ center img {
         transform: rotate(0deg);
         /* Firefox 16+, IE 10+, Opera */
     }
-    to {
+    100% {
         -webkit-transform: rotate(360deg);
         /* Chrome, Opera 15+, Safari 3.1+ */
         -ms-transform: rotate(360deg);
@@ -377,7 +469,7 @@ center img {
 }
 
 @keyframes spin {
-    from {
+    0% {
         -webkit-transform: rotate(0deg);
         /* Chrome, Opera 15+, Safari 3.1+ */
         -ms-transform: rotate(0deg);
@@ -385,7 +477,7 @@ center img {
         transform: rotate(0deg);
         /* Firefox 16+, IE 10+, Opera */
     }
-    to {
+    100% {
         -webkit-transform: rotate(360deg);
         /* Chrome, Opera 15+, Safari 3.1+ */
         -ms-transform: rotate(360deg);
@@ -496,15 +588,6 @@ center img {
     width: 200px;
     height: 200px;
     z-index: 5;
-}
-
-.form-row field-ensemble_thematique_nom,
-.form-row field-commentaire_nombre,
-.form-row field-prem_onglet_autre,
-.form-row field-deux_onglet_autre,
-.form-row field-trois_onglet_autre
-{
-    display : none;
 }
 
 @-moz-document url-prefix() {

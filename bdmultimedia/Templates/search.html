@@ -31,92 +31,91 @@
             </div>
         </div>
     </div>
-<script>
+<!--<script>
     function affInterdisc(){
         if(document.getElementById("id_interdisciplinarite").checked == true){
-            document.getElementById("div_id_evocation_autre__nom").style.display = "inline-block";
-            document.getElementById("div_id_notion_concept").style.display = "inline-block";
-            document.getElementById("div_id_notion_experiences").style.display = "inline-block";
-            document.getElementById("div_id_notion_pratiques").style.display = "inline-block";
+            $("#div_id_evocation_autre__nom").show(800).css("display", "inline-block");
+            $("#div_id_notion_concept").show(800).css("display", "inline-block");
+            $("#div_id_notion_experiences").show(800).css("display", "inline-block");
+            $("#div_id_notion_pratiques").show(800).css("display", "inline-block");
         }
         else{
-            document.getElementById("div_id_evocation_autre__nom").style.display = "none";
-            document.getElementById("div_id_notion_concept").style.display = "none";
-            document.getElementById("div_id_notion_experiences").style.display = "none";
-            document.getElementById("div_id_notion_pratiques").style.display = "none";
+            $("#div_id_evocation_autre__nom").hide(800);
+            $("#div_id_notion_concept").hide(800);
+            $("#div_id_notion_experiences").hide(800);
+            $("#div_id_notion_pratiques").hide(800);
         }
     }
     function affAnalyse(){
         if(document.getElementById("id_analyse_musicale").checked == true){
-            document.getElementById("div_id_orchestration__nom").style.display = "inline-block";
-            document.getElementById("div_id_structure__nom").style.display = "inline-block";
-            document.getElementById("div_id_language_musical__nom").style.display = "inline-block";
-            document.getElementById("div_id_genre_musical__nom").style.display = "inline-block";
-            document.getElementById("div_id_style_musical__nom").style.display = "inline-block";
+            $("#div_id_orchestration__nom").show(800).css("display", "inline-block");
+            $("#div_id_structure__nom").show(800).css("display", "inline-block");
+            $("#div_id_language_musical__nom").show(800).css("display", "inline-block");
+            $("#div_id_genre_musical__nom").show(800).css("display", "inline-block");
+            $("#div_id_style_musical__nom").show(800).css("display", "inline-block");
         }
         else{
-            document.getElementById("div_id_orchestration__nom").style.display = "none";
-            document.getElementById("div_id_structure__nom").style.display = "none";
-            document.getElementById("div_id_language_musical__nom").style.display = "none";
-            document.getElementById("div_id_genre_musical__nom").style.display = "none";
-            document.getElementById("div_id_style_musical__nom").style.display = "none";
+            $("#div_id_orchestration__nom").hide(800);
+            $("#div_id_structure__nom").hide(800);
+            $("#div_id_language_musical__nom").hide(800);
+            $("#div_id_genre_musical__nom").hide(800);
+            $("#div_id_style_musical__nom").hide(800);
         }
     }
     function affContexte(){
         if(document.getElementById("id_elements_contextuels").checked == true){
-            document.getElementById("div_id_experience_musicale__nom").style.display = "inline-block";
-            document.getElementById("div_id_contexte__nom").style.display = "inline-block";
-            document.getElementById("div_id_role_evolution__nom").style.display = "inline-block";
-            document.getElementById("div_id_epoque").style.display = "inline-block";
+            $("#div_id_experience_musicale__nom").show(800).css("display", "inline-block");
+            $("#div_id_contexte__nom").show(800).css("display", "inline-block");
+            $("#div_id_role_evolution__nom").show(800).css("display", "inline-block");
+            $("#div_id_epoque").show(800).css("display", "inline-block");
         }
         else{
-            document.getElementById("div_id_experience_musicale__nom").style.display = "none";
-            document.getElementById("div_id_contexte__nom").style.display = "none";
-            document.getElementById("div_id_role_evolution__nom").style.display = "none";
-            document.getElementById("div_id_epoque").style.display = "none";
+            $("#div_id_experience_musicale__nom").hide(800);
+            $("#div_id_contexte__nom").hide(800);
+            $("#div_id_role_evolution__nom").hide(800);
+            $("#div_id_epoque").hide(800);
         }
     }
     function affReferencement(){
         if(document.getElementById("id_referencement").checked == true){
-           // $('#div_id_format__nom').toggle('slow');
-            document.getElementById("div_id_format__nom").style.display = "block";
-            document.getElementById("div_id_forme_narrative__nom").style.display = "inline-block";
-            document.getElementById("div_id_interactivite").style.display = "inline-block";
-            document.getElementById("div_id_personnification_service").style.display = "inline-block";
-            document.getElementById("div_id_producteur_type__nom").style.display = "inline-block";
-            document.getElementById("div_id_support_diffusion__nom").style.display = "inline-block";
-            document.getElementById("div_id_ensemble_thematique").style.display = "inline-block";
+            $("#div_id_format__nom").show(800).css("display", "inline-block");
+            $("#div_id_forme_narrative__nom").show(800).css("display", "inline-block");
+            $("#div_id_interactivite").show(800).css("display", "inline-block");
+            $("#div_id_personnification_service").show(800).css("display", "inline-block");
+            $("#div_id_producteur_type__nom").show(800).css("display", "inline-block");
+            $("#div_id_support_diffusion__nom").show(800).css("display", "inline-block");
+            $("#div_id_ensemble_thematique").show(800).css("display", "inline-block");
         }
         else{
-            document.getElementById("div_id_format__nom").style.display = "none";
-            document.getElementById("div_id_forme_narrative__nom").style.display = "none";
-            document.getElementById("div_id_interactivite").style.display = "none";
-            document.getElementById("div_id_personnification_service").style.display = "none";
-            document.getElementById("div_id_producteur_type__nom").style.display = "none";
-            document.getElementById("div_id_support_diffusion__nom").style.display = "none";
-            document.getElementById("div_id_ensemble_thematique").style.display = "none";
+            $("#div_id_format__nom").hide(800);
+            $("#div_id_forme_narrative__nom").hide(800);
+            $("#div_id_interactivite").hide(800);
+            $("#div_id_personnification_service").hide(800);
+            $("#div_id_producteur_type__nom").hide(800);
+            $("#div_id_support_diffusion__nom").hide(800);
+            $("#div_id_ensemble_thematique").hide(800);
         }
     }
     function affDecouvrabilite(){
         if(document.getElementById("id_decouvrabilite").checked == true){
-            document.getElementById("div_id_narration_langue__nom").style.display = "inline-block";
-            document.getElementById("div_id_mode_consultation__nom").style.display = "inline-block";
+            $("#div_id_narration_langue__nom").show(800).css("display", "inline-block");
+            $("#div_id_mode_consultation__nom").show(800).css("display", "inline-block");
         }
         else{
-            document.getElementById("div_id_narration_langue__nom").style.display = "none";
-            document.getElementById("div_id_mode_consultation__nom").style.display = "none";
+            $("#div_id_narration_langue__nom").hide(800);
+            $("#div_id_mode_consultation__nom").hide(800);
         }
     }
     function affEvocations(){
         if(document.getElementById("id_evocations").checked == true){
-            document.getElementById("div_id_evocation_litteraire").style.display = "inline-block";
-            document.getElementById("div_id_evocation_graphique__nom").style.display = "inline-block";
-            document.getElementById("div_id_evocation_plastique__nom").style.display = "inline-block";
+            $("#div_id_evocation_litteraire").show(800).css("display", "inline-block");
+            $("#div_id_evocation_graphique__nom").show(800).css("display", "inline-block");
+            $("#div_id_evocation_plastique__nom").show(800).css("display", "inline-block");
         }
         else{
-            document.getElementById("div_id_evocation_litteraire").style.display = "none";
-            document.getElementById("div_id_evocation_graphique__nom").style.display = "none";
-            document.getElementById("div_id_evocation_plastique__nom").style.display = "none";
+            $("#div_id_evocation_litteraire").hide(800);
+            $("#div_id_evocation_graphique__nom").hide(800);
+            $("#div_id_evocation_plastique__nom").hide(800);
         }
     }
     window.setInterval(function(){
@@ -127,5 +126,5 @@
         affDecouvrabilite()
         affEvocations()
     }, 100);
-</script>
+</script>-->
 {% endblock %}

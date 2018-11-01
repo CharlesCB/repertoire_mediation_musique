@@ -4,8 +4,51 @@
 
 {% block admin_change_form_document_ready %}
 {{ block.super }}
+<style>
+.field-ensemble_thematique_nom,
+.field-commentaire_nombre,
+.field-prem_onglet_autre,
+.field-deux_onglet_autre,
+.field-trois_onglet_autre,
+.field-orchestration,
+.field-structure,
+.field-language_musical,
+.field-genre_musical,
+.field-style_musical,
+.field-epoque,
+.field-contexte,
+.field-role_evolution,
+.field-organologie,
+.field-nb_hommes,
+.field-nb_femmes,
+.field-nb_humains_indetermines,
+.field-role_humain_femme,
+.field-role_humain_homme,
+.field-role_humain_neutre,
+.field-nb_pers_anime_hommes,
+.field-nb_pers_anime_femmes,
+.field-nb_pers_anime_indetermines,
+.field-role_pers_anime_femme,
+.field-role_pers_anime_homme,
+.field-role_pers_anime_neutre,
+.field-nb_males,
+.field-nb_femelles,
+.field-nb_animaux_indetermines,
+.field-role_animaux_femme,
+.field-role_animaux_homme,
+.field-role_animaux_neutre,
+.field-nb_instr_anime_hommes,
+.field-nb_instr_anime_femmes,
+.field-nb_instr_anime_indetermines,
+.field-role_instr_anime_femme,
+.field-role_instr_anime_homme,
+.field-role_instr_anime_neutre
+{
+    display : none;
+}
+</style>
 <script>
-    function hide(){
+    function dynamicForm(){
         if(document.getElementById("id_ensemble_thematique").value == "Non"){
                 $("#id_ensemble_thematique_nom").parent().parent().hide(400)
         }
@@ -36,6 +79,35 @@
         else{
             $("#id_trois_onglet_autre").parent().parent().hide(400);
         }
+
+        if(document.getElementById("id_materiau_musical").value == "Oui"){
+            $("#add_id_orchestration").parent().parent().parent().show(400)
+            $("#add_id_structure").parent().parent().parent().show(400)
+            $("#add_id_language_musical").parent().parent().parent().show(400)
+            $("#add_id_genre_musical").parent().parent().parent().show(400)
+            $("#add_id_style_musical").parent().parent().parent().show(400)
+        }
+        else{
+            $("#add_id_orchestration").parent().parent().parent().hide(400)
+            $("#add_id_structure").parent().parent().parent().hide(400)
+            $("#add_id_language_musical").parent().parent().parent().hide(400)
+            $("#add_id_genre_musical").parent().parent().parent().hide(400)
+            $("#add_id_style_musical").parent().parent().parent().hide(400)
+        }
+        
+        if(document.getElementById("id_elements_socioculturels").value == "Oui"){
+            $("#id_epoque").parent().parent().show(400)
+            $("#add_id_contexte").parent().parent().parent().show(400)
+            $("#add_id_role_evolution").parent().parent().parent().show(400)
+            $("#add_id_organologie").parent().parent().parent().show(400)
+        }
+        else{
+            $("#id_epoque").parent().parent().hide(400)
+            $("#add_id_contexte").parent().parent().parent().hide(400)
+            $("#add_id_role_evolution").parent().parent().parent().hide(400)
+            $("#add_id_organologie").parent().parent().parent().hide(400)
+        }
+
         if(document.getElementById("id_nb_humains_total").value != "0"){
             $("#id_nb_hommes").parent().parent().show(400);
             $("#id_nb_femmes").parent().parent().show(400);
@@ -46,19 +118,19 @@
             $("#id_nb_femmes").parent().parent().hide(400);
             $("#id_nb_humains_indetermines").parent().parent().hide(400);
         }
-        if(document.getElementById("id_nb_hommes").value != "0"){
+        if(document.getElementById("id_nb_hommes").value > 0){
             $("#add_id_role_humain_homme").parent().parent().parent().show(400);
         }
         else{
             $("#add_id_role_humain_homme").parent().parent().parent().hide(400);
         }
-        if(document.getElementById("id_nb_femmes").value != "0"){
+        if(document.getElementById("id_nb_femmes").value > 0){
             $("#add_id_role_humain_femme").parent().parent().parent().show(400);
         }
         else{
             $("#add_id_role_humain_femme").parent().parent().parent().hide(400);
         }
-        if(document.getElementById("id_nb_humains_indetermines").value != "0"){
+        if(document.getElementById("id_nb_humains_indetermines").value > 0){
             $("#add_id_role_humain_neutre").parent().parent().parent().show(400);
         }
         else{
@@ -74,19 +146,19 @@
             $("#id_nb_pers_anime_femmes").parent().parent().hide(400);
             $("#id_nb_pers_anime_indetermines").parent().parent().hide(400);
         }
-        if(document.getElementById("id_nb_pers_anime_hommes").value != "0"){
+        if(document.getElementById("id_nb_pers_anime_hommes").value > 0){
             $("#add_id_role_pers_anime_homme").parent().parent().parent().show(400);
         }
         else{
             $("#add_id_role_pers_anime_homme").parent().parent().parent().hide(400);
         }
-        if(document.getElementById("id_nb_pers_anime_femmes").value != "0"){
+        if(document.getElementById("id_nb_pers_anime_femmes").value > 0){
             $("#add_id_role_pers_anime_femme").parent().parent().parent().show(400);
         }
         else{
             $("#add_id_role_pers_anime_femme").parent().parent().parent().hide(400);
         }
-        if(document.getElementById("id_nb_pers_anime_indetermines").value != "0"){
+        if(document.getElementById("id_nb_pers_anime_indetermines").value > 0){
             $("#add_id_role_pers_anime_neutre").parent().parent().parent().show(400);
         }
         else{
@@ -102,19 +174,19 @@
             $("#id_nb_femelles").parent().parent().hide(400);
             $("#id_nb_animaux_indetermines").parent().parent().hide(400);
         }
-        if(document.getElementById("id_nb_males").value != "0"){
+        if(document.getElementById("id_nb_males").value > 0){
             $("#add_id_role_animaux_homme").parent().parent().parent().show(400);
         }
         else{
             $("#add_id_role_animaux_homme").parent().parent().parent().hide(400);
         }
-        if(document.getElementById("id_nb_femelles").value != "0"){
+        if(document.getElementById("id_nb_femelles").value > 0){
             $("#add_id_role_animaux_femme").parent().parent().parent().show(400);
         }
         else{
             $("#add_id_role_animaux_femme").parent().parent().parent().hide(400);
         }
-        if(document.getElementById("id_nb_animaux_indetermines").value != "0"){
+        if(document.getElementById("id_nb_animaux_indetermines").value > 0){
             $("#add_id_role_animaux_neutre").parent().parent().parent().show(400);
         }
         else{
@@ -132,19 +204,19 @@
             $("#id_nb_instr_anime_femmes").parent().parent().hide(400);
             $("#id_nb_instr_anime_indetermines").parent().parent().hide(400);
         }
-        if(document.getElementById("id_nb_instr_anime_hommes").value != "0"){
+        if(document.getElementById("id_nb_instr_anime_hommes").value > 0){
             $("#add_id_role_instr_anime_homme").parent().parent().parent().show(400);
         }
         else{
             $("#add_id_role_instr_anime_homme").parent().parent().parent().hide(400);
         }
-        if(document.getElementById("id_nb_instr_anime_femmes").value != "0"){
+        if(document.getElementById("id_nb_instr_anime_femmes").value > 0){
             $("#add_id_role_instr_anime_femme").parent().parent().parent().show(400);
         }
         else{
             $("#add_id_role_instr_anime_femme").parent().parent().parent().hide(400);
         }
-        if(document.getElementById("id_nb_instr_anime_indetermines").value != "0"){
+        if(document.getElementById("id_nb_instr_anime_indetermines").value > 0){
             $("#add_id_role_instr_anime_neutre").parent().parent().parent().show(400);
         }
         else{
@@ -152,8 +224,7 @@
         }
     }
     window.setInterval(function(){
-        hide()
+        dynamicForm()
     }, 100);
 </script>
-
 {% endblock %}

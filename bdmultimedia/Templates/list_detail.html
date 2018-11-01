@@ -13,7 +13,14 @@
 -->
 <section>
     <div class="col-md-10" id="nobg">
-        <div class="page-header" id="nobg"><h3>{{ outil.titre }}</h3></div>
+        <div class="page-header" id="nobg">
+        {% for i in tout %}
+            {% if outil.id == i %}
+                <small style="color:#4eabb4; opacity:0.7;">Résultat {{ forloop.counter }}
+            {% endif %}
+        {% endfor %}
+        de {{ tout|length }}</small>
+        <br><h3>{{ outil.titre }}</h3></div>
     </div>
 </section>
     <aside>
@@ -87,7 +94,7 @@
         {% endif %}
     </div>
     {% if outil.ensemble_thematique == "Oui" %}
-        <div class="col-md-10"><b><br>Ce dispositif fait partie d'un ensemble thématique du même type (regroupé par l'organisme producteur)</b></div>
+        <div class="col-md-10"><b>Ce dispositif fait partie d'un ensemble thématique du même type (regroupé par l'organisme producteur)</b></div>
         <div class="col-md-10"><b>Nom de l'ensemble : </b>{{ outil.ensemble_thematique_nom }}<br></div>
     {% endif %}
     <div class="col-md-10"><b> Producteurs : </b>

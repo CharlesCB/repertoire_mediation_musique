@@ -25,7 +25,7 @@ class DetailView(generic.DetailView):
 
 
 class AlaUneView(generic.ListView):
-    #3 jours = 259200 secondes
+    # 3 jours = 259200 secondes
     model = Outil
     template_name = 'aLaUne.html'
     context_object_name = 'outils'
@@ -139,8 +139,20 @@ class SearchView(generic.ListView):
                              ("orientalisme", "orientaliste"),
                              ("orientale", "orientaliste"),
                              ("veriste","verisme"),
+                             ("jeux","jouer"),
+                             ("unisson","homophonie"),
+                             ("motivique","motif"),
+                             #("sérialisme","dodécaphonisme"),
+                             #("sérielle", "dodécaphonisme"),
+                             ("religion","religieu"),
+                             ("histoire","histo"),
+                             ("historique","histo"),
+                             ("bricolage","bricoler"),
+                             ("conférence","conférenc"),
+                             ("conférencier","conférenc"),
+                             ("conférencière","conférenc"),
                              ("ieme siecle","è"),("ieme siècle", "è"),("ième siecle", "è"),("ième siècle", "è"),
-                             ("e siecle","è"),("e siècle","è"),("è siècle",""),("è",""),
+                             ("e siecle","è"),("e siècle","è"),("è siècle",""),
                              ("d'",""),("c'",""),("j'",""),("l'",""),("m'",""),("jusqu'",""),("n'",""),("puisqu'",""),
                              ("quelqu'", ""),("qu'", ""),("s'",""),("t'",""),
                         ]
@@ -212,7 +224,7 @@ class SearchView(generic.ListView):
             # pour pouvoir naviguer entre les fiches (précédent + suivant)
             request.session['listeresultat'] = liste
             return results
-        return Outil.objects.none()
+        return Outil.objects.none().order_by('titre')
 
 
 class GererView(generic.ListView):
@@ -718,7 +730,7 @@ def export_xls(request):
 
         # BOUCLES POUR JOINDRE LES "MANYTOMANYFILEDS" DANS UN STRING
         # un
-        for i in range(4):
+        for i in range(3):
             for item in loflUn:
                 if loflUn.index(item) != len(loflUn) - 1:
                     prem = loflUn[loflUn.index(item)]
@@ -731,7 +743,7 @@ def export_xls(request):
                             del loflUn[loflUn.index(item) + 1]
 
         # UnUn
-        for i in range(4):
+        for i in range(3):
             for item in loflUnUn:
                 if loflUnUn.index(item) != len(loflUnUn) - 1:
                     prem = loflUnUn[loflUnUn.index(item)]
@@ -744,7 +756,7 @@ def export_xls(request):
                             del loflUnUn[loflUnUn.index(item) + 1]
 
         # deux
-        for i in range(4):
+        for i in range(3):
             for item in loflDeux:
                 if loflDeux.index(item) != len(loflDeux) - 1:
                     prem = loflDeux[loflDeux.index(item)]
@@ -757,7 +769,7 @@ def export_xls(request):
                             del loflDeux[loflDeux.index(item) + 1]
 
         # trois
-        for i in range(4):
+        for i in range(3):
             for item in loflTrois:
                 if loflTrois.index(item) != len(loflTrois) - 1:
                     prem = loflTrois[loflTrois.index(item)]
@@ -770,7 +782,7 @@ def export_xls(request):
                             del loflTrois[loflTrois.index(item) + 1]
 
         # quatre
-        for i in range(4):
+        for i in range(3):
             for item in loflQuatre:
                 if loflQuatre.index(item) != len(loflQuatre) - 1:
                     prem = loflQuatre[loflQuatre.index(item)]
@@ -783,7 +795,7 @@ def export_xls(request):
                             del loflQuatre[loflQuatre.index(item) + 1]
 
         # cinq
-        for i in range(4):
+        for i in range(3):
             for item in loflCinq:
                 if loflCinq.index(item) != len(loflCinq) - 1:
                     prem = loflCinq[loflCinq.index(item)]
@@ -796,7 +808,7 @@ def export_xls(request):
                             del loflCinq[loflCinq.index(item) + 1]
 
         # six
-        for i in range(4):
+        for i in range(3):
             for item in loflSix:
                 if loflSix.index(item) != len(loflSix) - 1:
                     prem = loflSix[loflSix.index(item)]
@@ -809,7 +821,7 @@ def export_xls(request):
                             del loflSix[loflSix.index(item) + 1]
 
         # sept
-        for i in range(4):
+        for i in range(3):
             for item in loflSept:
                 if loflSept.index(item) != len(loflSept) - 1:
                     prem = loflSept[loflSept.index(item)]
@@ -822,7 +834,7 @@ def export_xls(request):
                             del loflSept[loflSept.index(item) + 1]
 
         # huit
-        for i in range(4):
+        for i in range(3):
             for item in loflHuit:
                 if loflHuit.index(item) != len(loflHuit) - 1:
                     prem = loflHuit[loflHuit.index(item)]
@@ -835,7 +847,7 @@ def export_xls(request):
                             del loflHuit[loflHuit.index(item) + 1]
 
         # neuf
-        for i in range(4):
+        for i in range(3):
             for item in loflNeuf:
                 if loflNeuf.index(item) != len(loflNeuf) - 1:
                     prem = loflNeuf[loflNeuf.index(item)]
@@ -848,7 +860,7 @@ def export_xls(request):
                             del loflNeuf[loflNeuf.index(item) + 1]
 
         # dix
-        for i in range(4):
+        for i in range(3):
             for item in loflDix:
                 if loflDix.index(item) != len(loflDix) - 1:
                     prem = loflDix[loflDix.index(item)]
@@ -861,7 +873,7 @@ def export_xls(request):
                             del loflDix[loflDix.index(item) + 1]
 
         # onze
-        for i in range(4):
+        for i in range(3):
             for item in loflOnze:
                 if loflOnze.index(item) != len(loflOnze) - 1:
                     prem = loflOnze[loflOnze.index(item)]
@@ -872,9 +884,9 @@ def export_xls(request):
                             prem[1] += Onze[1]
                             loflOnze[loflOnze.index(item)] = prem
                             del loflOnze[loflOnze.index(item) + 1]
-                            
+
         # douze
-        for i in range(4):
+        for i in range(3):
             for item in loflDouze:
                 if loflDouze.index(item) != len(loflDouze) - 1:
                     prem = loflDouze[loflDouze.index(item)]
@@ -885,9 +897,9 @@ def export_xls(request):
                             prem[1] += Douze[1]
                             loflDouze[loflDouze.index(item)] = prem
                             del loflDouze[loflDouze.index(item) + 1]
-                            
+
         # treize
-        for i in range(4):
+        for i in range(3):
             for item in loflTreize:
                 if loflTreize.index(item) != len(loflTreize) - 1:
                     prem = loflTreize[loflTreize.index(item)]
@@ -898,9 +910,9 @@ def export_xls(request):
                             prem[1] += Treize[1]
                             loflTreize[loflTreize.index(item)] = prem
                             del loflTreize[loflTreize.index(item) + 1]
-        
+
         # quatorze
-        for i in range(4):
+        for i in range(3):
             for item in loflQuatorze:
                 if loflQuatorze.index(item) != len(loflQuatorze) - 1:
                     prem = loflQuatorze[loflQuatorze.index(item)]
@@ -913,7 +925,7 @@ def export_xls(request):
                             del loflQuatorze[loflQuatorze.index(item) + 1]
 
         # quinze
-        for i in range(4):
+        for i in range(3):
             for item in loflQuinze:
                 if loflQuinze.index(item) != len(loflQuinze) - 1:
                     prem = loflQuinze[loflQuinze.index(item)]
@@ -924,9 +936,9 @@ def export_xls(request):
                             prem[1] += Quinze[1]
                             loflQuinze[loflQuinze.index(item)] = prem
                             del loflQuinze[loflQuinze.index(item) + 1]
-        
+
         # seize
-        for i in range(4):
+        for i in range(3):
             for item in loflSeize:
                 if loflSeize.index(item) != len(loflSeize) - 1:
                     prem = loflSeize[loflSeize.index(item)]
@@ -937,9 +949,9 @@ def export_xls(request):
                             prem[1] += Seize[1]
                             loflSeize[loflSeize.index(item)] = prem
                             del loflSeize[loflSeize.index(item) + 1]
-        
+
         # seize-deux
-        for i in range(4):
+        for i in range(3):
             for item in loflSeizeDeux:
                 if loflSeizeDeux.index(item) != len(loflSeizeDeux) - 1:
                     prem = loflSeizeDeux[loflSeizeDeux.index(item)]
@@ -950,9 +962,9 @@ def export_xls(request):
                             prem[1] += SeizeDeux[1]
                             loflSeizeDeux[loflSeizeDeux.index(item)] = prem
                             del loflSeizeDeux[loflSeizeDeux.index(item) + 1]
-        
+
         # dix-sept
-        for i in range(4):
+        for i in range(3):
             for item in loflDixSept:
                 if loflDixSept.index(item) != len(loflDixSept) - 1:
                     prem = loflDixSept[loflDixSept.index(item)]
@@ -963,9 +975,9 @@ def export_xls(request):
                             prem[1] += DixSept[1]
                             loflDixSept[loflDixSept.index(item)] = prem
                             del loflDixSept[loflDixSept.index(item) + 1]
-                            
+
         # dix-huit
-        for i in range(4):
+        for i in range(3):
             for item in loflDixHuit:
                 if loflDixHuit.index(item) != len(loflDixHuit) - 1:
                     prem = loflDixHuit[loflDixHuit.index(item)]
@@ -976,9 +988,9 @@ def export_xls(request):
                             prem[1] += DixHuit[1]
                             loflDixHuit[loflDixHuit.index(item)] = prem
                             del loflDixHuit[loflDixHuit.index(item) + 1]
-        
+
         # dix-Neuf
-        for i in range(4):
+        for i in range(3):
             for item in loflDixNeuf:
                 if loflDixNeuf.index(item) != len(loflDixNeuf) - 1:
                     prem = loflDixNeuf[loflDixNeuf.index(item)]
@@ -991,7 +1003,7 @@ def export_xls(request):
                             del loflDixNeuf[loflDixNeuf.index(item) + 1]
 
         # vingt
-        for i in range(4):
+        for i in range(3):
             for item in loflVingt:
                 if loflVingt.index(item) != len(loflVingt) - 1:
                     prem = loflVingt[loflVingt.index(item)]
@@ -1002,9 +1014,9 @@ def export_xls(request):
                             prem[1] += Vingt[1]
                             loflVingt[loflVingt.index(item)] = prem
                             del loflVingt[loflVingt.index(item) + 1]
-                            
+
         # vingt-et-un
-        for i in range(4):
+        for i in range(3):
             for item in loflVingtEtUn:
                 if loflVingtEtUn.index(item) != len(loflVingtEtUn) - 1:
                     prem = loflVingtEtUn[loflVingtEtUn.index(item)]
@@ -1015,9 +1027,9 @@ def export_xls(request):
                             prem[1] += VingtEtUn[1]
                             loflVingtEtUn[loflVingtEtUn.index(item)] = prem
                             del loflVingtEtUn[loflVingtEtUn.index(item) + 1]
-                            
+
         # vingt-deux
-        for i in range(4):
+        for i in range(3):
             for item in loflVingtDeux:
                 if loflVingtDeux.index(item) != len(loflVingtDeux) - 1:
                     prem = loflVingtDeux[loflVingtDeux.index(item)]
@@ -1028,9 +1040,9 @@ def export_xls(request):
                             prem[1] += VingtDeux[1]
                             loflVingtDeux[loflVingtDeux.index(item)] = prem
                             del loflVingtDeux[loflVingtDeux.index(item) + 1]
-                            
+
         # vingt-trois
-        for i in range(4):
+        for i in range(3):
             for item in loflVingtTrois:
                 if loflVingtTrois.index(item) != len(loflVingtTrois) - 1:
                     prem = loflVingtTrois[loflVingtTrois.index(item)]
@@ -1041,9 +1053,9 @@ def export_xls(request):
                             prem[1] += VingtTrois[1]
                             loflVingtTrois[loflVingtTrois.index(item)] = prem
                             del loflVingtTrois[loflVingtTrois.index(item) + 1]
-                            
+
         # vingt-quatre
-        for i in range(4):
+        for i in range(3):
             for item in loflVingtQuatre:
                 if loflVingtQuatre.index(item) != len(loflVingtQuatre) - 1:
                     prem = loflVingtQuatre[loflVingtQuatre.index(item)]
@@ -1054,9 +1066,9 @@ def export_xls(request):
                             prem[1] += VingtQuatre[1]
                             loflVingtQuatre[loflVingtQuatre.index(item)] = prem
                             del loflVingtQuatre[loflVingtQuatre.index(item) + 1]
-                            
+
         # vingt-cinq
-        for i in range(4):
+        for i in range(3):
             for item in loflVingtCinq:
                 if loflVingtCinq.index(item) != len(loflVingtCinq) - 1:
                     prem = loflVingtCinq[loflVingtCinq.index(item)]
@@ -1069,7 +1081,7 @@ def export_xls(request):
                             del loflVingtCinq[loflVingtCinq.index(item) + 1]
 
         # vingt-six
-        for i in range(4):
+        for i in range(3):
             for item in loflVingtSix:
                 if loflVingtSix.index(item) != len(loflVingtSix) - 1:
                     prem = loflVingtSix[loflVingtSix.index(item)]
@@ -1080,9 +1092,9 @@ def export_xls(request):
                             prem[1] += VingtSix[1]
                             loflVingtSix[loflVingtSix.index(item)] = prem
                             del loflVingtSix[loflVingtSix.index(item) + 1]
-                            
+
         # vingt-sept
-        for i in range(4):
+        for i in range(3):
             for item in loflVingtSept:
                 if loflVingtSept.index(item) != len(loflVingtSept) - 1:
                     prem = loflVingtSept[loflVingtSept.index(item)]
@@ -1093,9 +1105,9 @@ def export_xls(request):
                             prem[1] += VingtSept[1]
                             loflVingtSept[loflVingtSept.index(item)] = prem
                             del loflVingtSept[loflVingtSept.index(item) + 1]
-                            
+
         # vingt-huit
-        for i in range(4):
+        for i in range(3):
             for item in loflVingtHuit:
                 if loflVingtHuit.index(item) != len(loflVingtHuit) - 1:
                     prem = loflVingtHuit[loflVingtHuit.index(item)]
@@ -1106,9 +1118,9 @@ def export_xls(request):
                             prem[1] += VingtHuit[1]
                             loflVingtHuit[loflVingtHuit.index(item)] = prem
                             del loflVingtHuit[loflVingtHuit.index(item) + 1]
-                            
+
         # vingt-neuf
-        for i in range(4):
+        for i in range(3):
             for item in loflVingtNeuf:
                 if loflVingtNeuf.index(item) != len(loflVingtNeuf) - 1:
                     prem = loflVingtNeuf[loflVingtNeuf.index(item)]
@@ -1119,9 +1131,9 @@ def export_xls(request):
                             prem[1] += VingtNeuf[1]
                             loflVingtNeuf[loflVingtNeuf.index(item)] = prem
                             del loflVingtNeuf[loflVingtNeuf.index(item) + 1]
-                            
+
         # trente
-        for i in range(4):
+        for i in range(3):
             for item in loflTrente:
                 if loflTrente.index(item) != len(loflTrente) - 1:
                     prem = loflTrente[loflTrente.index(item)]
@@ -1132,9 +1144,9 @@ def export_xls(request):
                             prem[1] += Trente[1]
                             loflTrente[loflTrente.index(item)] = prem
                             del loflTrente[loflTrente.index(item) + 1]
-                            
+
         # trente-et-un
-        for i in range(4):
+        for i in range(3):
             for item in loflTrenteEtUn:
                 if loflTrenteEtUn.index(item) != len(loflTrenteEtUn) - 1:
                     prem = loflTrenteEtUn[loflTrenteEtUn.index(item)]
@@ -1145,9 +1157,9 @@ def export_xls(request):
                             prem[1] += TrenteEtUn[1]
                             loflTrenteEtUn[loflTrenteEtUn.index(item)] = prem
                             del loflTrenteEtUn[loflTrenteEtUn.index(item) + 1]
-                            
+
         # trente-deux
-        for i in range(4):
+        for i in range(3):
             for item in loflTrenteDeux:
                 if loflTrenteDeux.index(item) != len(loflTrenteDeux) - 1:
                     prem = loflTrenteDeux[loflTrenteDeux.index(item)]
@@ -1158,9 +1170,9 @@ def export_xls(request):
                             prem[1] += TrenteDeux[1]
                             loflTrenteDeux[loflTrenteDeux.index(item)] = prem
                             del loflTrenteDeux[loflTrenteDeux.index(item) + 1]
-                            
+
         # trente-trois
-        for i in range(4):
+        for i in range(3):
             for item in loflTrenteTrois:
                 if loflTrenteTrois.index(item) != len(loflTrenteTrois) - 1:
                     prem = loflTrenteTrois[loflTrenteTrois.index(item)]
@@ -1171,9 +1183,9 @@ def export_xls(request):
                             prem[1] += TrenteTrois[1]
                             loflTrenteTrois[loflTrenteTrois.index(item)] = prem
                             del loflTrenteTrois[loflTrenteTrois.index(item) + 1]
-                            
+
         # trente-quatre
-        for i in range(4):
+        for i in range(3):
             for item in loflTrenteQuatre:
                 if loflTrenteQuatre.index(item) != len(loflTrenteQuatre) - 1:
                     prem = loflTrenteQuatre[loflTrenteQuatre.index(item)]

@@ -53,17 +53,7 @@
                 </div>
             {% endif %}
            <!--<p class="text-center">Classer par : <a href="{{new_sort_url}}&sort=titre">titre (a)</a> | <a href="{{new_sort_url}}&sort=-titre">titre (d)</a> | <a href="{{new_sort_url}}&sort=mise_en_ligne_date">date (a)</a> | <a href="{{new_sort_url}}&sort=-mise_en_ligne_date">date (d)</a></p>-->
-            {% if request|is_mobile %}
-            <div class="container-fluid">
-                <div class="col-md-10">
-                    <ul>
-                        {% for outil in object_list %}
-                        <li><a href="/result{{outil.id}}/"> {{ outil.titre }} </a></li>
-                        {% endfor %}
-                    </ul>
-                </div>
-            </div>
-            {% elif request|is_tablet %}
+            {% if request|is_mobile or request|is_tablet %}
             <div class="container-fluid">
                 <div class="col-md-10">
                     <ul>
@@ -103,9 +93,20 @@
                         {% endautoescape %}
                     {% endif %}
                 {% endfor %}
+            {% endif %}
             </div>
         </div>
     </div>
+
+    {% if request|is_mobile or request|is_tablet %}
+    {% if count > 20 %}
+        <center>
+            {% bootstrap_paginate page_obj range=10 show_prev_next="false" show_first_last="true" %}
+        </center>
+    {% endif %}
+    {% else %}
+
+    <br><br>
     <div class="col-md-10" align="center">
         {% if page_obj.has_next %}
             <a class="infinite-more-link" href="/recherche_motcle/?q={{query}}&page={{ page_obj.next_page_number }}"></a>
@@ -115,7 +116,8 @@
               <br>
           </div>
     </div>
-{% endif %}
+    {% endif %}
+
     <script>
         var infinite = new Waypoint.Infinite({
           element: $('.infinite-container')[0],
@@ -131,5 +133,21 @@
 </body>
 {% endblock %}
 {% block footer %}
-<br><br>
+{% if request|is_mobile or request|is_tablet %}
+    <div class="col-md-10 col-md-offset-1" style="opacity:0.5; background-color:#fff;" align="center">
+        <br>
+        <a href="http://p2m.oicrm.org" target="_blank">
+            <img src="../static/media/logoP2Mmini.png" width="8%" alt="logoP2M">
+        </a>
+        <br><br>
+    </div>
+{% else %}
+    <div class="col-md-10 col-md-offset-1" style="left: -100px; opacity:0.5; background-color:#fff;" align="center">
+        <br>
+        <a href="http://p2m.oicrm.org" target="_blank">
+            <img src="../static/media/logoP2Mmini.png" width="8%" alt="logoP2M">
+        </a>
+        <br><br>
+    </div>
+{% endif %}
 {% endblock %}

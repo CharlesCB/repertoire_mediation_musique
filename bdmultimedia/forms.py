@@ -33,7 +33,7 @@ class Search(forms.ModelForm):
     NOTION_CONCEPT_CHOICES = list(OUINONNSP)
 
     # RÉFÉRENCEMENT
-    referencement = forms.BooleanField(label="Référencement", required = False)
+    #referencement = forms.BooleanField(label="Référencement", required = False)
     format__nom = forms.ChoiceField(widget = forms.CheckboxSelectMultiple, choices=list(FORMAT_CHOICES),
                                           label="Format", required = False)
     forme_narrative__nom = forms.ChoiceField(widget=forms.CheckboxSelectMultiple, choices=list(FORME_NARRATIVE_CHOICES),
@@ -50,7 +50,7 @@ class Search(forms.ModelForm):
                                             choices=BLANK_CHOICE_DASH + list(OUINON), required=False)
 
     # DÉCOUVRABILITÉ/ACCESSIBILITÉ
-    decouvrabilite = forms.BooleanField(label="Découvrabilité/Accessibilité", required = False)
+    #decouvrabilite = forms.BooleanField(label="Découvrabilité/Accessibilité", required = False)
     narration_langue__nom = forms.ChoiceField(widget = forms.CheckboxSelectMultiple, choices=list(LANGUE_CHOICES),
                                               label = "Langue", required = False)
     mode_consultation__nom = forms.ChoiceField(widget = forms.CheckboxSelectMultiple, choices=list(MODE_CONSULTATION_CHOICES),
@@ -60,7 +60,7 @@ class Search(forms.ModelForm):
                                       label="Mise en valeur du sonore", required=False)
 
     # EVOCATION DE LA MUSIQUE EXTTRA_SONORE
-    evocations = forms.BooleanField(label = "Évocation de la musique extra-sonore", required = False)
+    #evocations = forms.BooleanField(label = "Évocation de la musique extra-sonore", required = False)
     evocation_litteraire = forms.ChoiceField(widget=forms.Select, choices=BLANK_CHOICE_DASH + EVOCATION_LITTERAIRE_CHOICES,
                                              label = "Évocation littéraire", required=False)
     evocation_graphique__nom = forms.ChoiceField(widget=forms.CheckboxSelectMultiple, choices=list(EVOCATION_GRAPHIQUE_CHOICES),
@@ -68,7 +68,7 @@ class Search(forms.ModelForm):
     evocation_plastique__nom = forms.ChoiceField(widget=forms.CheckboxSelectMultiple, choices=list(EVOCATION_PLASTIQUE_CHOICES),
                                                  label="Évocation plastique", required=False)
     # ANALYSE MUSICALE
-    analyse_musicale = forms.BooleanField(label="Analyse Musicale", required=False)
+    #analyse_musicale = forms.BooleanField(label="Analyse Musicale", required=False)
 
     orchestration__nom = forms.ChoiceField(widget=forms.CheckboxSelectMultiple,choices=list(ORCHESTRATION_CHOICES),
                                            label="Orchestration", required=False)
@@ -81,7 +81,7 @@ class Search(forms.ModelForm):
     style_musical__nom = forms.ChoiceField(widget=forms.CheckboxSelectMultiple, choices=list(STYLE_MUSICAL_CHOICES),
                                            label="Style musical", required=False)
     # ÉLÉMENTS CONTEXTUELS
-    elements_contextuels = forms.BooleanField(label="Éléments contextuels", required = False)
+    #elements_contextuels = forms.BooleanField(label="Éléments contextuels", required = False)
     experience_musicale__nom = forms.ChoiceField(widget=forms.CheckboxSelectMultiple, choices=list(EXPERIENCE_MUSICALE_CHOICES),
                                                  label="Expérience musicale", required=False)
     contexte__nom = forms.ChoiceField(widget=forms.CheckboxSelectMultiple, choices=list(CONTEXTE_CHOICES),
@@ -92,7 +92,7 @@ class Search(forms.ModelForm):
                                label="Époque (siècle)", required=False)
 
     # INTERDISCIPLINARITE
-    interdisciplinarite = forms.BooleanField(label='Interdisciplinarité', required=False)
+    #interdisciplinarite = forms.BooleanField(label='Interdisciplinarité', required=False)
     evocation_autre__nom = forms.ChoiceField(widget=forms.CheckboxSelectMultiple, choices=DISCIPLINE_CHOICES,
                                               label='Discipline(s) évoquée(s)', required=False)
     notion_concept = forms.ChoiceField(widget=forms.Select, choices =  BLANK_CHOICE_DASH + NOTION_CONCEPT_CHOICES, required=False)
@@ -104,7 +104,7 @@ class Search(forms.ModelForm):
     class Meta:
         model = Outil
         fields = [
-            'referencement',
+            #'referencement',
             'format__nom',
             'forme_narrative__nom',
             'interactivite',
@@ -112,21 +112,21 @@ class Search(forms.ModelForm):
             'producteur_type__nom',
             'support_diffusion__nom',
             'ensemble_thematique',
-            'decouvrabilite',
+            #'decouvrabilite',
             'narration_langue__nom',
             'mode_consultation__nom',
             'sonore_valeur',
-            'evocations',
+            #'evocations',
             'evocation_litteraire',
             'evocation_graphique__nom',
             'evocation_plastique__nom',
-            'analyse_musicale',
+            #'analyse_musicale',
             'orchestration__nom',
             'structure__nom',
             'language_musical__nom',
             'genre_musical__nom',
             'style_musical__nom',
-            'elements_contextuels',
+            #'elements_contextuels',
             'experience_musicale__nom',
             'contexte__nom',
             'role_evolution__nom',

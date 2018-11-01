@@ -8,55 +8,6 @@ from django.utils.encoding import python_2_unicode_compatible
 from django.core.urlresolvers import reverse
 from django_currentuser.db.models import CurrentUserField
 
-import datetime
-from django.core.exceptions import ValidationError
-from django.conf import settings
-from django.utils import timezone
-from django.utils.dateparse import parse_date
-from django.core import exceptions
-
-
-## idée: ajouter "date non dsiponible" dans les réponses acceptés (voir code source de models.DateField)
-class CustomDateField(models.DateField):
-    pass
-    # def to_python(self, value):
-    #     if value is None:
-    #         return value
-    #     if isinstance(value, datetime.datetime):
-    #         if settings.USE_TZ and timezone.is_aware(value):
-    #             # Convert aware datetimes to the default time zone
-    #             # before casting them to dates (#17742).
-    #             default_timezone = timezone.get_default_timezone()
-    #             value = timezone.make_naive(value, default_timezone)
-    #         return value.date()
-    #     if isinstance(value, datetime.date) or value == "Date non disponible":
-    #         return value
-    #
-    #     try:
-    #         if value == "Date non disponible":
-    #             parsed = value
-    #         else:
-    #             parsed = parse_date(value)
-    #         if parsed is not None:
-    #             return parsed
-    #     except ValueError:
-    #         raise exceptions.ValidationError(
-    #             self.error_messages['invalid_date'],
-    #             code='invalid_date',
-    #             params={'value': value},
-    #         )
-    #
-    #     raise exceptions.ValidationError(
-    #         self.error_messages['invalid'],
-    #         code='invalid',
-    #         params={'value': value},
-    #     )
-
-
-
-#class CustomTest(models.Model):
-#    date = CustomDateField(verbose_name = 'TEST DATE')
-
 
 OUINON = (
     ("Oui", "Oui"),
@@ -632,22 +583,22 @@ class OutilManager(models.Manager):
                                                   'role_pers_anime_femme', 'role_pers_anime_homme',
                                                   'role_pers_anime_neutre', 'role_animaux_femme', 'role_animaux_homme')
         if query is not None:
-            # maximum 64 table en sqlite
+            # maximum 64 tables en sqlite
             or_lookup = (Q(titre__icontains=query) |
                          Q(url__icontains=query) |
                          Q(site__icontains=query) |
                          Q(ensemble_thematique_nom__icontains=query) |
-                         Q(interactivite__icontains=query) |
-                         Q(elements_socioculturels__icontains=query) |
+                         # Q(interactivite__icontains=query) |
+                         # Q(elements_socioculturels__icontains=query) |
                          Q(epoque__icontains=query) |
                          Q(producteur_type__nom__icontains=query) |
                          Q(producteur_nom__nom__icontains=query) |
-                         Q(support_diffusion__nom__icontains=query) |
-                         Q(format__nom__icontains=query) |
+                         #? Q(support_diffusion__nom__icontains=query) |
+                         #? Q(format__nom__icontains=query) |
                          Q(forme_narrative__nom__icontains=query) |
                          Q(mode_hebergement__nom__icontains=query) |
-                         Q(narration_langue__nom__icontains=query) |
-                         Q(sous_titre__nom__icontains=query) |
+                         # Q(narration_langue__nom__icontains=query) |
+                         # Q(sous_titre__nom__icontains=query) |
                          Q(orchestration__nom__icontains=query) |
                          Q(structure__nom__icontains=query) |
                          Q(language_musical__nom__icontains=query) |
@@ -669,13 +620,13 @@ class OutilManager(models.Manager):
                          Q(role_pers_anime_femme__nom__icontains=query) |
                          Q(role_pers_anime_homme__nom__icontains=query) |
                          Q(role_pers_anime_neutre__nom__icontains=query) |
-                         Q(role_animaux_femme__nom__icontains=query) |
-                         Q(role_animaux_homme__nom__icontains=query) #|
+                        # Q(role_animaux_femme__nom__icontains=query) |
+                         Q(role_animaux_homme__nom__icontains=query) |
                         # Q(role_animaux_neutre__nom__icontains=query) |
-                        # Q(role_instr_anime_femme__nom__icontains=query) |
-                        # Q(role_instr_anime_homme__nom__icontains=query) |
+                         Q(role_instr_anime_femme__nom__icontains=query) |
+                         Q(role_instr_anime_homme__nom__icontains=query)# |
                         # Q(role_instr_anime_neutre__nom__icontains=query)
-                        )
+                         )
             qs = qs.filter(or_lookup).distinct()
         return qs
 
@@ -767,14 +718,17 @@ class Outil(models.Model):
                                         max_length=200,
                                         default="Non",
                                         verbose_name="M.25 Parle-t-on du matériau musical?")
-    orchestration = models.ManyToManyField(Orchestration, db_index=True,
+    orchestration = models.ManyToManyField(Orchestration, db_index=True, default = 1,
                                            verbose_name="M.25.1 Parle-t-on du son et de l'orchestration, si oui précisez.",
                                            help_text='Registres (au sens de groupe de hauteur si cela concerne les registres de l’orgue cocher « timbres »)')
-    structure = models.ManyToManyField(Structure, db_index=True, verbose_name="M.25.2 Parle-t-on de la structure, si oui précisez.")
-    language_musical = models.ManyToManyField(LanguageMusical, db_index=True,
+    structure = models.ManyToManyField(Structure, db_index=True, default = 1,
+                                       verbose_name="M.25.2 Parle-t-on de la structure, si oui précisez.")
+    language_musical = models.ManyToManyField(LanguageMusical, db_index=True, default = 1,
                                               verbose_name="M.25.3 Parle-t-on du language musical, si oui précisez.")
-    genre_musical = models.ManyToManyField(GenreMusical, db_index=True, verbose_name="M.25.4 Parle-t-on du genre musical, si oui précisez.")
-    style_musical = models.ManyToManyField(StyleMusical, db_index=True, verbose_name="M.25.5 Parle-t-on du style musical, si oui précisez.")
+    genre_musical = models.ManyToManyField(GenreMusical, db_index=True, default = 1,
+                                           verbose_name="M.25.4 Parle-t-on du genre musical, si oui précisez.")
+    style_musical = models.ManyToManyField(StyleMusical, db_index=True, default = 1,
+                                           verbose_name="M.25.5 Parle-t-on du style musical, si oui précisez.")
     #### Éléments contextuels
     experience_musicale = models.ManyToManyField(ExperienceMusicale, db_index=True,
                                                  verbose_name="M.26 Parle-t-on de l'experience musicale, si oui précisez.")
@@ -782,15 +736,17 @@ class Outil(models.Model):
                                                max_length=200,
                                                default="Non",
                                                verbose_name="M.27 Parle-t-on des éléments socioculturels et historiques?")
-    epoque = MultiSelectField(choices=EPOQUE_LIST, db_index=True,
+    epoque = MultiSelectField(choices=EPOQUE_LIST, db_index=True, default = 'nsp',
                               null=True,
                               max_length=100,
                               verbose_name="M.27.1 Époque")
-    contexte = models.ManyToManyField(Contexte, db_index=True,
+    contexte = models.ManyToManyField(Contexte, db_index=True, default = 1,
                                       verbose_name="M.27.2 Parle-t-on du contexte de composition, création, interprétation de l'oeuvre, de l'instrument...",
                                       help_text='Si il est juste fait mention d’une date sans donner plus d’information sur ce qui se passait à l’époque cocher “Non”.')
-    role_evolution = models.ManyToManyField(RoleEvolution, db_index=True, verbose_name="M.27.3 Parle-t-on du rôle et de l'évolution du [métier liés à la musique précisez]")
-    organologie = models.ManyToManyField(Organologie, db_index=True, verbose_name = "M.27.4 Parle-t-on d’organologie?")
+    role_evolution = models.ManyToManyField(RoleEvolution, db_index=True, default = 1,
+                                            verbose_name="M.27.3 Parle-t-on du rôle et de l'évolution du [métier liés à la musique précisez]")
+    organologie = models.ManyToManyField(Organologie, db_index=True, default = 6,
+                                         verbose_name = "M.27.4 Parle-t-on d’organologie?")
 
     # SOLLICITATIONS DE L'USAGER
     sollicitation_musicale = models.ManyToManyField(SollicitationMusicale, db_index=True,
@@ -912,7 +868,7 @@ class Outil(models.Model):
     role_instr_anime_neutre = models.ManyToManyField(RoleInstrNeutre, db_index=True,
                                                      verbose_name="Sté.42.4 Rôle des instruments anthropomorphes neutres", default = 1)
 
-    utilisateur = CurrentUserField()
+    utilisateur = CurrentUserField(editable = False)
 
     objects = OutilManager()
 
