@@ -1,11 +1,11 @@
 {% extends 'base.html' %}
 
 {% block body %}
-<div class="loader-section" id="loader-section"></div>
-<div id="loader"></div>
-<div id="loader-text">
-    <p>Veuillez patienter,<br>la recherche peut prendre quelques instants</p>
-</div>
+    <div class="loader-section" id="loader-section"></div>
+    <div id="loader"></div>
+    <div id="loader-text">
+        <p>Veuillez patienter,<br>la recherche peut prendre quelques instants</p>
+    </div>
     <div class="container-fluid">
         <div class="col-md-11">
             <div class="page-header">
@@ -23,18 +23,46 @@
                     </a>
                 </h4>
             </div>
+            <!--
+            <p align="center">
+                <a href="/list/?epoque__nom=avant%20le%20XIIè">Avant le XII</a>&nbsp;&nbsp;
+                <a href="/list/?epoque__nom=XIIè">XII</a>&nbsp;&nbsp;
+                <a href="/list/?epoque__nom=XIIIè">XIII</a>&nbsp;&nbsp;
+                <a href="/list/?epoque__nom=XIVè">XIV</a>&nbsp;&nbsp;
+                <a href="/list/?epoque__nom=XVè">XV</a>&nbsp;&nbsp;
+                <a href="/list/?epoque__nom=XVIè">XVI</a>&nbsp;&nbsp;
+                <a href="/list/?epoque__nom=XVIIè">XVII</a>&nbsp;&nbsp;
+                <a href="/list/?epoque__nom=XVIIIè">XVIII</a>&nbsp;&nbsp;
+                <a href="/list/?epoque__nom=XIXè">XIX</a>&nbsp;&nbsp;
+                <a href="/list/?epoque__nom=XXè">XX</a>&nbsp;&nbsp;
+                <a href="/list/?epoque__nom=XXIè">XXI</a>&nbsp;&nbsp;
+            </p>
+            <p align="center">
+                <a href="/recherche_motcle/?q=avant%20le%20XIIè">Avant le XIIè siècle</a>&nbsp;&nbsp;
+                <a href="/recherche_motcle/?q=XIIè">XIIè siècle</a>&nbsp;&nbsp;
+                <a href="/recherche_motcle/?q=XIIIè">XIIIè siècle</a>&nbsp;&nbsp;
+                <a href="/recherche_motcle/?q=XIVè">XIVè siècle</a>&nbsp;&nbsp;
+                <a href="/recherche_motcle/?q=XVè">XVè siècle</a>&nbsp;&nbsp;
+                <a href="/recherche_motcle/?q=XVIè">XVIè siècle</a>&nbsp;&nbsp;
+                <a href="/recherche_motcle/?q=XVIIè">XVIIè siècle</a>&nbsp;&nbsp;
+                <a href="/recherche_motcle/?q=XVIIIè">XVIIIè siècle</a>&nbsp;&nbsp;
+                <a href="/recherche_motcle/?q=XIXè">XIXè siècle</a>&nbsp;&nbsp;
+                <a href="/recherche_motcle/?q=XXè">XXè siècle</a>&nbsp;&nbsp;
+                <a href="/recherche_motcle/?q=XXIè">XXIè siècle</a>&nbsp;&nbsp;
+            </p>-->
         </div>
     </div>
     <div>
         <div class="col-md-10 col-md-offset-1">
             <br>
-            <!--(21-06-2018) liste non-utilisés : [115, 171, 47, 12, 119, 128,175, 81, 95, 24, 139, 111, 140,173, 164, 27, 22, 21, 121, 120, 127,174, 87, 147, 6, 131, 143, 157, 63, 26, 13, 177, 126, 35, 129, 66, 48, 124, 165, 8, 16, 110,176, 52, 50, 103, 158, 75, 137, 144, 105, 10, 20, 166, 167, 65, 64, 132, 130, 90, 117, 43, 31, 7, 73, 133, 112, 96, 62, 89, 149, 84, 159, 54, 168, 34, 4, 141, 146, 104, 142, 116, 38, 169, 93, 53, 40, 72, 152, 153, 138, 107, 51, 106, 36, 91, 49, 17, 123, 151, 113, 55, 56, 86, 9, 5, 67, 1, 76, 160, 161, 135, 85, 94, 25, 109, 74, 28, 150, 23, 77, 97, 136, 44, 148, 29, 61, 3, 98, 58, 83, 172, 14, 122, 42, 82, 45, 101, 163, 114, 155, 99, 134, 71, 170, 78, 145] -->
-            <!--liste utilisés : [88, 19, 102, 70, 156, 68, 69, 33, 39, 2, 11, 46, 108, 30, 154, 80, 41, 118, 59, 18, 79, 92, 162, 125, 100] -->
+            <!--(29-11-2018) liste non-utilisés : [221, 40, 94, 103, 198, 214, 121, 16, 199, 6, 133, 74, 168, 203, 47, 65, 77, 189, 104, 219, 81, 4, 140, 82, 171, 186, 144, 112, 35, 64, 127, 114, 43, 55, 139, 101, 194, 9, 153, 157, 24, 8, 209, 21, 98, 160, 5, 174, 71, 200, 66, 90, 10, 138, 158, 193, 170, 3, 132, 7, 137, 135, 166, 118, 105, 12, 56, 29, 107, 38, 188, 109, 50, 152, 61, 76, 161, 192, 26, 147, 116, 216, 205, 31, 178, 146, 89, 113, 36, 175, 220, 91, 28, 54, 44, 185, 53, 143, 201, 78, 20, 86, 212, 131, 120, 1, 111, 49, 22, 51, 196, 110, 130, 165, 30, 34, 164, 176, 180, 136, 83, 182, 72, 134, 123, 149, 122, 87, 27, 48, 155, 208, 142, 52, 99, 211, 141, 191, 190, 17, 42, 148, 195, 84, 204, 169, 85, 117, 95, 215, 100, 124, 11, 14, 172, 197, 93, 184, 159, 62, 210, 183, 167, 163, 181, 207, 96, 75, 151, 23, 179, 129, 206, 150, 119, 126, 58, 213, 67, 173, 97, 202, 145, 187, 45, 25]
+                liste utilisés : [128, 13, 217, 176, 106, 177, 73, 63, 122, 115, 88, 19, 102, 70, 156, 68, 69, 33, 39, 2, 11, 46, 108, 30, 154, 80, 41, 118, 59, 18, 79, 92, 162, 125, 100] -->
             {% for outil in outils %}
-                {% if outil.pk == 88 %}
+                {% if outil.pk == 128 %}
                     <center>
                         {% if outil.page_outil == True and outil.integration == "" %}
                            <iframe src="{{ outil.url }}" height="400" width="1000"></iframe>
+
                         {% elif outil.page_outil == False and outil.integration == "" %}
                             <img src="../static/media/backup_alaune.png">
                         {% else %}
@@ -78,10 +106,10 @@
                 <small><a href="{% url 'recherche' %}">Recherche avancée</a><br><br></small>
             </div>
     </div>
-<script type="text/javascript" src="../static/scripts/loader.js"></script>
-<script>
-    $('[data-toggle="tooltip"]').tooltip();
-</script>
+    <script type="text/javascript" src="../static/scripts/loader.js"></script>
+    <script>
+        $('[data-toggle="tooltip"]').tooltip();
+    </script>
 {% endblock %}
 {% block footer %}
     <div class="col-md-10 col-md-offset-1" style="" id="footer" align="center">

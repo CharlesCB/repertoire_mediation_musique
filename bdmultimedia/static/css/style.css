@@ -76,10 +76,48 @@ h3 {
     font-weight: bold;
 }
 
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 10; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 40%; /* Could be more or less, depending on screen size */
+    height : 20%;
+}
+
+/* The Close Button */
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
 #referencement, #stereotypes{
     border : medium solid #4eabb4;
     border-radius : 8px;
-    box-shadow : 10px 10px 10px lightgray;
+    box-shadow : 5px 5px 5px lightgray;
     padding-bottom : 1em;
     margin : 1em;
     width : 80%
@@ -89,7 +127,7 @@ h3 {
 #decouvrabilite, #sollicitation{
     border: medium solid #b96540;
     border-radius : 8px;
-    box-shadow : 10px 10px 10px lightgray;
+    box-shadow : 5px 5px 5px lightgray;
     padding-bottom : 1em;
     margin : 1em;
     width : 80%
@@ -98,7 +136,7 @@ h3 {
 #discours, #interdisciplinarite{
     border: medium solid #ebc400;
     border-radius : 8px;
-    box-shadow : 10px 10px 10px lightgray;
+    box-shadow : 5px 5px 5px lightgray;
     padding-bottom : 1em;
     margin : 1em;
     width : 80%
@@ -176,6 +214,7 @@ small {
     vertical-align:top;
 }*/
 
+
 .form-group{
     margin: -2.5px;
     display : inline-block;
@@ -217,6 +256,7 @@ section iframe {
     border : 2px solid #4eabb4;
     margin-left : 1em;
     max-width : 97%;
+    background-color : black;
 }
 
 center iframe,
@@ -230,6 +270,7 @@ center img {
     height: 25em;
     border: solid medium #4eabb4;
     border-radius: 3px;
+    background-color : black;
 }
 
 
@@ -252,6 +293,7 @@ center img {
     color:#4eabb4;
     background-color:#404040;
     padding:5px;
+    text-align : left;
 }
 
 h2.alaune-titre{
@@ -265,6 +307,7 @@ h4.alaune-titre{
 }
 h5.alaune-titre{
     top:334px;
+    z-index : 3;
 }
 h6.alaune-titre{
     top:357px;
@@ -280,6 +323,11 @@ h6.alaune-titre{
 }
 
 @media only screen and (max-width: 991px) {
+
+    .modal-content{
+        height:50%;
+    }
+
     center iframe,
     center img {
         position: absolute;
@@ -302,10 +350,12 @@ h6.alaune-titre{
     h5.alaune-titre{
         top:249px;
         z-index : 3;
+        max-width: 70%;
     }
     h6.alaune-titre{
         top:272px;
         z-index : 3;
+        max-width: 70%;
     }
     section iframe{
         max-width : 80%;
@@ -327,12 +377,23 @@ h6.alaune-titre{
     }
 }
 
+@media only screen and (max-width: 500px) {
+    h4.alaune-titre{
+        top : 260px;
+    }
+    h5.alaune-titre, h6.alaune-titre{
+        display : none;
+    }
+
+}
+
 .infinite-item iframe, .infinite-item img {
     border: solid medium #4eabb4;
     width: 200px;
     height: 200px;
     max-width: 200px;
     max-height: 200px;
+    background-color : black;
 }
 
 .my-tool-tip{

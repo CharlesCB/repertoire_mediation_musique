@@ -11,6 +11,7 @@ from .filters import OutilFilter
 from forms import Search
 import datetime
 import time
+from django.db.models import Q
 
 
 class DetailView(generic.DetailView):
@@ -33,23 +34,18 @@ class AlaUneView(generic.ListView):
     def get_queryset(self):
         request = self.request
         request.session['listeresultat'] = []
-        # courrant = 18
-        # liste = [79, 92, 93, 162, 125, 100, 45, 70, 102, 62, 98, 73, 19, 29, 67, 163, 17, 91, 142, 48, 149, 84, 40, 83, 90, 7, 127, 159, 122, 131, 138, 64, 31, 135, 75, 140, 25, 63, 14, 53, 126, 155, 28, 139, 115, 22, 37, 23, 44, 136, 10, 128, 117, 85, 76, 103, 151, 119, 107, 116, 4, 96, 130, 88, 1, 106, 66, 24, 143, 3, 153, 123, 134, 38, 13, 49, 146, 157, 27, 55, 20, 5, 56, 152, 54, 9, 112, 94, 113, 133, 121, 78, 43, 71, 51, 105, 36, 124, 87, 109, 21, 95, 58, 35, 158, 148, 26, 61, 8, 6, 89, 82, 32, 160, 50, 144, 65, 147, 52, 120, 97, 86, 141, 145, 137, 110, 99, 77, 16, 12, 47, 150, 72, 104, 81, 114, 132, 161, 111, 129, 42, 101, 34, 74]
-        # for i in range(len(liste)):
-        #     courrant = liste[i]
-        #     time.sleep(30)
-
 
         return Outil.objects.order_by('titre')
-        # return Outil.objects.get(pk=courrant)
 
 
+def outil_delete(request, pk):
+    outil = get_object_or_404(Outil, pk=pk)  # Get your current outil
 
-class OutilDelete(generic.DeleteView):
-    model = Outil
-    success_url = reverse_lazy('home') # This is where this view will
-                                            # redirect the user
-    template_name = 'delete_outil.html'
+    if request.method == 'POST':         # If method is POST,
+        outil.delete()                     # delete the cat.
+        return redirect('/')             # Finally, redirect to the homepage.
+
+    return render(request, 'detail.html', {'outil': outil})
 
 
 class ListeView(generic.ListView):
@@ -57,7 +53,20 @@ class ListeView(generic.ListView):
     context_object_name = 'all_outils'
 
     def get_queryset(self):
-        return Outil.objects.order_by('titre')
+        lettre = self.request.GET.get('q')
+        if lettre == "digit":
+            return Outil.objects.filter((Q(titre__istartswith='0') |
+                                         Q(titre__istartswith='1') |
+                                         Q(titre__istartswith='2') |
+                                         Q(titre__istartswith='3') |
+                                         Q(titre__istartswith='4') |
+                                         Q(titre__istartswith='5') |
+                                         Q(titre__istartswith='6') |
+                                         Q(titre__istartswith='7') |
+                                         Q(titre__istartswith='8') |
+                                         Q(titre__istartswith='9'))).distinct().order_by('titre')
+        else:
+            return Outil.objects.filter(titre__istartswith=lettre).order_by('titre')
 
 
 class DeleteForm(generic.CreateView):
@@ -80,8 +89,10 @@ class ListDetailView(generic.DetailView):
 class OutilList(generic.View):
     def get(self, request):
         request = self.request
+        sort = request.GET.get('sort', 'titre')
+        orders = [sort,'depouillement_date']
 
-        data = OutilFilter(self.request.GET, queryset = Outil.objects.all().order_by('titre'))
+        data = OutilFilter(self.request.GET, queryset = Outil.objects.all().order_by(*orders))
         liste = []
         data_total = data.qs.count()
         all_main_registers = OutilFilter(self.request.GET, queryset=Outil.objects.all().order_by('titre'))
@@ -117,10 +128,12 @@ class SearchView(generic.ListView):
         if self.request.GET.get('q') is not None:
             context['count'] = self.count
         context['query'] = self.request.GET.get('q')
+        context['temps'] = self.request.session.get('tempsRequete')
         return context
 
     def get_queryset(self):
         request = self.request
+        temps_initial = time.time()
         query = request.GET.get('q', None)
 
         remplacements = [
@@ -161,7 +174,7 @@ class SearchView(generic.ListView):
                          "7ème","8ème","9ème"," a","afin","ai","ainsi","ais","ait","alors","apres","as",
                          "assez","au","aucun","aucune","aupres","auquel","auquelles","auquels","auraient","aurais",
                          "aurait","aurez","auriez","aurions","aurons","auront","aussi","aussitot","autre","autres","aux",
-                         "avaient","avais","avait","avant","avec","avez","aviez","avoir","avons","ayant","beaucoup",
+                         "avaient","avais","avait","avec","avez","aviez","avoir","avons","ayant","beaucoup",
                          "car","ce","ceci","cela","celle","celles","celui","cependant","certes","ces","cet","cette",
                          "ceux","chacun","chacune","chaque","chez","cinq","comme","d'abord","dans","de","dehors",
                          "dela","depuis","des","dessous","dessus","deux","deca","dix","doit","donc","dont","du","durant",
@@ -203,11 +216,11 @@ class SearchView(generic.ListView):
                     mots.remove(i)
 
             if len(mots) >= 1 and query != "":
-                results = Outil.objects.search(query=mots[0]).order_by('titre')
+                results = Outil.objects.search(query=mots[0])
                 tempo = []
                 for i in mots:
                     if i != mots[0]:
-                        for j in Outil.objects.search(query=i).order_by('titre'):
+                        for j in Outil.objects.search(query=i):
                             if j in results:
                                 tempo.append(j)
                         results = tempo
@@ -223,375 +236,442 @@ class SearchView(generic.ListView):
             self.count = len(qs)
             # pour pouvoir naviguer entre les fiches (précédent + suivant)
             request.session['listeresultat'] = liste
+            temps = time.time() - temps_initial
+            request.session['tempsRequete'] = temps
             return results
         return Outil.objects.none().order_by('titre')
 
 
-class GererView(generic.ListView):
-    template_name = 'gerer.html'
-
-    def get_queryset(self):
-        return Outil.objects.all()
-
-
 class GererProdType(generic.ListView):
     model = ProdType
-    template_name = 'gerer_prodType.html'
-    context_object_name = 'all_prodType'
-    liste = ProdType.objects.order_by('nom')
+    template_name = 'gererX.html'
 
-    def get_queryset(self):
-        return GererProdType.liste
+    def get_context_data(self, **kwargs):
+        context = super(GererProdType, self).get_context_data(**kwargs)
+        context['liste'] = ProdType.objects.order_by('nom')
+        context['nom'] = 'prodtype'
+        context['verbose'] = 'types de producteurs'
+        return context
 
 
 class GererProducteurNom(generic.ListView):
     model = ProducteurNom
-    template_name = 'gerer_producteurNom.html'
-    context_object_name = 'all_producteurNom'
-    liste = ProducteurNom.objects.order_by('nom')
+    template_name = 'gererX.html'
 
-    def get_queryset(self):
-        return GererProducteurNom.liste
+    def get_context_data(self, **kwargs):
+        context = super(GererProducteurNom, self).get_context_data(**kwargs)
+        context['liste'] = ProducteurNom.objects.order_by('nom')
+        context['nom'] = 'producteurnom'
+        context['verbose'] = 'noms de producteurs'
+        return context
 
 
 class GererSupportDiffusion(generic.ListView):
     model = SupportDiffusion
-    template_name = 'gerer_supportDiffusion.html'
-    context_object_name = 'all_supportDiffusion'
-    liste = SupportDiffusion.objects.order_by('nom')
+    template_name = 'gererX.html'
 
-    def get_queryset(self):
-        return GererSupportDiffusion.liste
+    def get_context_data(self, **kwargs):
+        context = super(GererSupportDiffusion, self).get_context_data(**kwargs)
+        context['liste'] = SupportDiffusion.objects.order_by('nom')
+        context['nom'] = 'supportdiffusion'
+        context['verbose'] = 'supports de diffusion'
+        return context
 
 
 class GererFormatOutil(generic.ListView):
     model = FormatOutil
-    template_name = 'gerer_formatOutil.html'
-    context_object_name = 'all_formatOutil'
-    liste = FormatOutil.objects.order_by('nom')
+    template_name = 'gererX.html'
 
-    def get_quertset(self):
-        return GererFormatOutil.liste
+    def get_context_data(self, **kwargs):
+        context = super(GererFormatOutil, self).get_context_data(**kwargs)
+        context['liste'] = FormatOutil.objects.order_by('nom')
+        context['nom'] = 'formatoutil'
+        context['verbose'] = 'formats de dispositif'
+        return context
 
 
 class GererFormeNarrative(generic.ListView):
     model = FormeNarrative
-    template_name = 'gerer_formeNarrative.html'
-    context_object_name = 'all_formeNarrative'
-    liste = FormeNarrative.objects.order_by('nom')
+    template_name = 'gererX.html'
 
-    def get_queryset(self):
-        return GererFormeNarrative.liste
+    def get_context_data(self, **kwargs):
+        context = super(GererFormeNarrative, self).get_context_data(**kwargs)
+        context['liste'] = FormeNarrative.objects.order_by('nom')
+        context['nom'] = 'formenarrative'
+        context['verbose'] = 'formes narratives'
+        return context
 
 
 class GererModeHebergement(generic.ListView):
     model = ModeHebergement
-    template_name = 'gerer_modeHebergement.html'
-    context_object_name = 'all_modeHebergement'
-    liste = ModeHebergement.objects.order_by('nom')
+    template_name = 'gererX.html'
 
-    def get_queryset(self):
-        return GererModeHebergement.liste
+    def get_context_data(self, **kwargs):
+        context = super(GererModeHebergement, self).get_context_data(**kwargs)
+        context['liste'] = ModeHebergement.objects.order_by('nom')
+        context['nom'] = 'modehebergement'
+        context['verbose'] = "modes d'hébergement"
+        return context
 
 
 class GererModeConsultation(generic.ListView):
     model = ModeConsultation
-    template_name = 'gerer_modeConsultation.html'
-    context_object_name = 'all_modeConsultation'
-    liste = ModeConsultation.objects.order_by('nom')
+    template_name = 'gererX.html'
 
-    def get_queryset(self):
-        return GererModeConsultation.liste
+    def get_context_data(self, **kwargs):
+        context = super(GererModeConsultation, self).get_context_data(**kwargs)
+        context['liste'] = ModeConsultation.objects.order_by('nom')
+        context['nom'] = 'modeconsultation'
+        context['verbose'] = 'modes de consultation'
+        return context
 
 
 class GererLangueNarration(generic.ListView):
     model = LangueNarration
-    template_name = 'gerer_langueNarration.html'
-    context_object_name = 'all_langueNarration'
-    liste = LangueNarration.objects.order_by('nom')
+    template_name = 'gererX.html'
 
-    def get_queryset(self):
-        return GererLangueNarration.liste
+    def get_context_data(self, **kwargs):
+        context = super(GererLangueNarration, self).get_context_data(**kwargs)
+        context['liste'] = LangueNarration.objects.order_by('nom')
+        context['nom'] = 'languenarration'
+        context['verbose'] = 'langues de dispositif'
+        return context
 
 
 class GererSousTitre(generic.ListView):
     model = SousTitre
-    template_name = 'gerer_sousTitre.html'
-    context_object_name = 'all_sousTitre'
-    liste = SousTitre.objects.order_by('nom')
+    template_name = 'gererX.html'
 
-    def get_queryset(self):
-        return GererSousTitre.liste
+    def get_context_data(self, **kwargs):
+        context = super(GererSousTitre, self).get_context_data(**kwargs)
+        context['liste'] = SousTitre.objects.order_by('nom')
+        context['nom'] = 'soustitre'
+        context['verbose'] = 'sous-titres'
+        return context
 
 
 class GererOrchestration(generic.ListView):
     model = Orchestration
-    template_name = 'gerer_orchestration.html'
-    context_object_name = 'all_orchestration'
-    liste = Orchestration.objects.order_by('nom')
+    template_name = 'gererX.html'
 
-    def get_queryset(self):
-        return GererOrchestration.liste
+    def get_context_data(self, **kwargs):
+        context = super(GererOrchestration, self).get_context_data(**kwargs)
+        context['liste'] = Orchestration.objects.order_by('nom')
+        context['nom'] = 'orchestration'
+        context['verbose'] = "notions d'orchestration"
+        return context
 
 
 class GererStructure(generic.ListView):
     model = Structure
-    template_name = 'gerer_structure.html'
-    context_object_name = 'all_structure'
-    liste = Structure.objects.order_by('nom')
+    template_name = 'gererX.html'
 
-    def get_queryset(self):
-        return GererStructure.liste
+    def get_context_data(self, **kwargs):
+        context = super(GererStructure, self).get_context_data(**kwargs)
+        context['liste'] = Structure.objects.order_by('nom')
+        context['nom'] = 'structure'
+        context['verbose'] = "structures"
+        return context
 
 
 class GererLanguageMusical(generic.ListView):
     model = LanguageMusical
-    template_name = 'gerer_languageMusical.html'
-    context_object_name = 'all_languageMusical'
-    liste = LanguageMusical.objects.order_by('nom')
+    template_name = 'gererX.html'
 
-    def get_queryset(self):
-        return GererLanguageMusical.liste
+    def get_context_data(self, **kwargs):
+        context = super(GererLanguageMusical, self).get_context_data(**kwargs)
+        context['liste'] = LanguageMusical.objects.order_by('nom')
+        context['nom'] = 'languagemusical'
+        context['verbose'] = "notions de language musical"
+        return context
 
 
 class GererGenreMusical(generic.ListView):
     model = GenreMusical
-    template_name = 'gerer_genreMusical.html'
-    context_object_name = 'all_genreMusical'
-    liste = GenreMusical.objects.order_by('nom')
+    template_name = 'gererX.html'
 
-    def get_queryset(self):
-        return GererGenreMusical.liste
+    def get_context_data(self, **kwargs):
+        context = super(GererGenreMusical, self).get_context_data(**kwargs)
+        context['liste'] = GenreMusical.objects.order_by('nom')
+        context['nom'] = 'genremusical'
+        context['verbose'] = "genres musicaux"
+        return context
 
 
 class GererStyleMusical(generic.ListView):
     model = StyleMusical
-    template_name = 'gerer_styleMusical.html'
-    context_object_name = 'all_styleMusical'
-    liste = StyleMusical.objects.order_by('nom')
+    template_name = 'gererX.html'
 
-    def get_queryset(self):
-        return GererStyleMusical.liste
+    def get_context_data(self, **kwargs):
+        context = super(GererStyleMusical, self).get_context_data(**kwargs)
+        context['liste'] = StyleMusical.objects.order_by('nom')
+        context['nom'] = 'stylemusical'
+        context['verbose'] = "style musicaux"
+        return context
 
 
 class GererExperienceMusicale(generic.ListView):
     model = ExperienceMusicale
-    template_name = 'gerer_experienceMusicale.html'
-    context_object_name = 'all_experienceMusicale'
-    liste = ExperienceMusicale.objects.order_by('nom')
+    template_name = 'gererX.html'
 
-    def get_queryset(self):
-        return GererExperienceMusicale.liste
+    def get_context_data(self, **kwargs):
+        context = super(GererExperienceMusicale, self).get_context_data(**kwargs)
+        context['liste'] = ExperienceMusicale.objects.order_by('nom')
+        context['nom'] = 'experiencemusicale'
+        context['verbose'] = "notions d'expérience musicale"
+        return context
 
 
 class GererContexte(generic.ListView):
     model = Contexte
-    template_name = "gerer_contexte.html"
-    context_object_name = 'all_contexte'
-    liste = Contexte.objects.order_by('nom')
+    template_name = 'gererX.html'
 
-    def get_queryset(self):
-        return GererContexte.liste
+    def get_context_data(self, **kwargs):
+        context = super(GererContexte, self).get_context_data(**kwargs)
+        context['liste'] = Contexte.objects.order_by('nom')
+        context['nom'] = 'contexte'
+        context['verbose'] = "contextes"
+        return context
 
 
 class GererRoleEvolution(generic.ListView):
     model = RoleEvolution
-    template_name = 'gerer_roleEvolution.html'
-    context_object_name = 'all_roleEvolution'
-    liste = RoleEvolution.objects.order_by('nom')
+    template_name = 'gererX.html'
 
-    def get_queryset(self):
-        return GererRoleEvolution.liste
+    def get_context_data(self, **kwargs):
+        context = super(GererRoleEvolution, self).get_context_data(**kwargs)
+        context['liste'] = RoleEvolution.objects.order_by('nom')
+        context['nom'] = 'roleevolution'
+        context['verbose'] = "rôle de l'évolution de ..."
+        return context
 
 
 class GererOrganologie(generic.ListView):
     model = Organologie
-    template_name = 'gerer_organologie.html'
-    context_object_name = 'all_organologie'
-    liste = Organologie.objects.order_by('nom')
+    template_name = 'gererX.html'
 
-    def get_queryset(self):
-        return GererOrganologie.liste
+    def get_context_data(self, **kwargs):
+        context = super(GererOrganologie, self).get_context_data(**kwargs)
+        context['liste'] = Organologie.objects.order_by('nom')
+        context['nom'] = 'organologie'
+        context['verbose'] = "notions d'organologie"
+        return context
 
 
 class GererSollicitationMusicale(generic.ListView):
     model = SollicitationMusicale
-    template_name = 'gerer_sollicitationMusicale.html'
-    context_object_name = 'all_sollicitationMusicale'
-    liste = SollicitationMusicale.objects.order_by('nom')
+    template_name = 'gererX.html'
 
-    def get_queryset(self):
-        return GererSollicitationMusicale.liste
+    def get_context_data(self, **kwargs):
+        context = super(GererSollicitationMusicale, self).get_context_data(**kwargs)
+        context['liste'] = SollicitationMusicale.objects.order_by('nom')
+        context['nom'] = 'sollicitationmusicale'
+        context['verbose'] = "sollicitations musicales"
+        return context
 
 
 class GererSollicitationGenerale(generic.ListView):
     model = SollicitationGenerale
-    template_name = 'gerer_sollicitationGenerale.html'
-    context_object_name = 'all_sollicitationGenerale'
-    liste = SollicitationGenerale.objects.order_by('nom')
+    template_name = 'gererX.html'
 
-    def get_queryset(self):
-        return GererSollicitationGenerale.liste
+    def get_context_data(self, **kwargs):
+        context = super(GererSollicitationGenerale, self).get_context_data(**kwargs)
+        context['liste'] = SollicitationGenerale.objects.order_by('nom')
+        context['nom'] = 'sollicitationgenerale'
+        context['verbose'] = "sollicitations generales"
+        return context
 
 
 class GererEvocationGraphique(generic.ListView):
     model = EvocationGraphique
-    template_name = 'gerer_evocationGraphique.html'
-    context_object_name = 'all_evocationGraphique'
-    liste = EvocationGraphique.objects.order_by('nom')
+    template_name = 'gererX.html'
 
-    def get_queryset(self):
-        return GererEvocationGraphique.liste
+    def get_context_data(self, **kwargs):
+        context = super(GererEvocationGraphique, self).get_context_data(**kwargs)
+        context['liste'] = EvocationGraphique.objects.order_by('nom')
+        context['nom'] = 'evocationgraphique'
+        context['verbose'] = "évocations graphiques"
+        return context
 
 
 class GererEvocationPlastique(generic.ListView):
     model = EvocationPlastique
-    template_name = 'gerer_evocationPlastique.html'
-    context_object_name = 'all_evocationPlastique'
-    liste = EvocationPlastique.objects.order_by('nom')
+    template_name = 'gererX.html'
 
-    def get_queryset(self):
-        return GererEvocationPlastique.liste
+    def get_context_data(self, **kwargs):
+        context = super(GererEvocationPlastique, self).get_context_data(**kwargs)
+        context['liste'] = EvocationPlastique.objects.order_by('nom')
+        context['nom'] = 'evocationplastique'
+        context['verbose'] = "évocations plastiques"
+        return context
     
 
 class GererEvocationAutre(generic.ListView):
     model = EvocationAutre
-    template_name = 'gerer_evocationAutre.html'
-    context_object_name = 'all_evocationAutre'
-    liste = EvocationAutre.objects.order_by('nom')
+    template_name = 'gererX.html'
 
-    def get_queryset(self):
-        return GererEvocationAutre.liste
+    def get_context_data(self, **kwargs):
+        context = super(GererEvocationAutre, self).get_context_data(**kwargs)
+        context['liste'] = EvocationAutre.objects.order_by('nom')
+        context['nom'] = 'evocationautre'
+        context['verbose'] = "évocations d'autres disciplines"
+        return context
 
 
 class GererNotionsInter(generic.ListView):
     model = NotionsInter
-    template_name = 'gerer_notionsInter.html'
-    context_object_name = 'all_notionsInter'
-    liste = NotionsInter.objects.order_by('nom')
+    template_name = 'gererX.html'
 
-    def get_queryset(self):
-        return GererNotionsInter.liste
+    def get_context_data(self, **kwargs):
+        context = super(GererNotionsInter, self).get_context_data(**kwargs)
+        context['liste'] = NotionsInter.objects.order_by('nom')
+        context['nom'] = 'notionsinter'
+        context['verbose'] = "notions évoqués de manière interdisciplinaire"
+        return context
 
 
 class GererRoleFemmes(generic.ListView):
     model = RoleFemmes
-    template_name = 'gerer_roleFemmes.html'
-    context_object_name = 'all_roleFemmes'
-    liste = RoleFemmes.objects.order_by('nom')
+    template_name = 'gererX.html'
 
-    def get_queryset(self):
-        return GererRoleFemmes.liste
+    def get_context_data(self, **kwargs):
+        context = super(GererRoleFemmes, self).get_context_data(**kwargs)
+        context['liste'] = RoleFemmes.objects.order_by('nom')
+        context['nom'] = 'rolefemmes'
+        context['verbose'] = "rôles de femmes"
+        return context
 
 
 class GererRoleHommes(generic.ListView):
     model = RoleHomme
-    template_name = 'gerer_roleHommes.html'
-    context_object_name = 'all_roleHommes'
-    liste = RoleHomme.objects.order_by('nom')
+    template_name = 'gererX.html'
 
-    def get_queryset(self):
-        return GererRoleHommes.liste
+    def get_context_data(self, **kwargs):
+        context = super(GererRoleHommes, self).get_context_data(**kwargs)
+        context['liste'] = RoleHomme.objects.order_by('nom')
+        context['nom'] = 'rolehomme'
+        context['verbose'] = "rôles d'hommes"
+        return context
 
 
 class GererRoleHumainNeutre(generic.ListView):
     model = RoleHumainNeutre
-    template_name = 'gerer_roleHumainNeutre.html'
-    context_object_name = 'all_roleHumainNeutre'
-    liste = RoleHumainNeutre.objects.order_by('nom')
+    template_name = 'gererX.html'
 
-    def get_queryset(self):
-        return GererRoleHumainNeutre.liste
+    def get_context_data(self, **kwargs):
+        context = super(GererRoleHumainNeutre, self).get_context_data(**kwargs)
+        context['liste'] = RoleHumainNeutre.objects.order_by('nom')
+        context['nom'] = 'rolehumainneutre'
+        context['verbose'] = "rôles d'humains au genre indéterminé"
+        return context
 
 
 class GererRolePersAnimFemmes(generic.ListView):
     model = RolePersAnimFemmes
-    template_name = 'gerer_rolePersAnimFemmes.html'
-    context_object_name = 'all_rolePersAnimFemmes'
-    liste = RolePersAnimFemmes.objects.order_by('nom')
-    
-    def get_queryset(self):
-        return GererRolePersAnimFemmes.liste
+    template_name = 'gererX.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(GererRolePersAnimFemmes, self).get_context_data(**kwargs)
+        context['liste'] = RolePersAnimFemmes.objects.order_by('nom')
+        context['nom'] = 'rolepersanimfemmes'
+        context['verbose'] = "rôles des personnage animés au genre féminin"
+        return context
     
     
 class GererRolePersAnimHommes(generic.ListView):
     model = RolePersAnimHomme
-    template_name = 'gerer_rolePersAnimHommes.html'
-    context_object_name = 'all_rolePersAnimHommes'
-    liste = RolePersAnimHomme.objects.order_by('nom')
-    
-    def get_queryset(self):
-        return GererRolePersAnimHommes.liste
+    template_name = 'gererX.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(GererRolePersAnimHommes, self).get_context_data(**kwargs)
+        context['liste'] = RolePersAnimHomme.objects.order_by('nom')
+        context['nom'] = 'rolepersanimhomme'
+        context['verbose'] = "rôles personnage animés au genre masculin"
+        return context
 
 
 class GererRolePersAnimNeutre(generic.ListView):
     model = RolePersAnimNeutre
-    template_name = 'gerer_rolePersAnimNeutre.html'
-    context_object_name = 'all_rolePersAnimNeutre'
-    liste = RolePersAnimNeutre.objects.order_by('nom')
+    template_name = 'gererX.html'
 
-    def get_queryset(self):
-        return GererRolePersAnimNeutre.liste
+    def get_context_data(self, **kwargs):
+        context = super(GererRolePersAnimNeutre, self).get_context_data(**kwargs)
+        context['liste'] = RolePersAnimNeutre.objects.order_by('nom')
+        context['nom'] = 'rolepersanimneutre'
+        context['verbose'] = "rôles personnage animés au genre indéterminé"
+        return context
 
 
 class GererRoleAnimauxFemmes(generic.ListView):
     model = RoleAnimauxFemmes
-    template_name = 'gerer_roleAnimauxFemmes.html'
-    context_object_name = 'all_roleAnimauxFemmes'
-    liste = RoleAnimauxFemmes.objects.order_by('nom')
+    template_name = 'gererX.html'
 
-    def get_queryset(self):
-        return GererRoleAnimauxFemmes.liste
+    def get_context_data(self, **kwargs):
+        context = super(GererRoleAnimauxFemmes, self).get_context_data(**kwargs)
+        context['liste'] = RoleAnimauxFemmes.objects.order_by('nom')
+        context['nom'] = 'roleanimauxfemmes'
+        context['verbose'] = "rôles animaux au genre féminin"
+        return context
 
 
 class GererRoleAnimauxHommes(generic.ListView):
     model = RoleAnimauxHomme
-    template_name = 'gerer_roleAnimauxHommes.html'
-    context_object_name = 'all_roleAnimauxHommes'
-    liste = RoleAnimauxHomme.objects.order_by('nom')
+    template_name = 'gererX.html'
 
-    def get_queryset(self):
-        return GererRoleAnimauxHommes.liste
+    def get_context_data(self, **kwargs):
+        context = super(GererRoleAnimauxHommes, self).get_context_data(**kwargs)
+        context['liste'] = RoleAnimauxHomme.objects.order_by('nom')
+        context['nom'] = 'roleanimauxhomme'
+        context['verbose'] = "rôles animaux au genre masculin"
+        return context
 
 
 class GererRoleAnimauxNeutre(generic.ListView):
     model = RoleAnimauxNeutre
-    template_name = 'gerer_roleAnimauxNeutre.html'
-    context_object_name = 'all_roleAnimauxNeutre'
-    liste = RoleAnimauxNeutre.objects.order_by('nom')
+    template_name = 'gererX.html'
 
-    def get_queryset(self):
-        return GererRoleAnimauxNeutre.liste
+    def get_context_data(self, **kwargs):
+        context = super(GererRoleAnimauxNeutre, self).get_context_data(**kwargs)
+        context['liste'] = RoleAnimauxNeutre.objects.order_by('nom')
+        context['nom'] = 'roleanimauxneutre'
+        context['verbose'] = "rôles animaux au genre indéterminé"
+        return context
 
 
 class GererRoleInstrFemmes(generic.ListView):
     model = RoleInstrFemmes
-    template_name = 'gerer_roleInstrFemmes.html'
-    context_object_name = 'all_roleInstrFemmes'
-    liste = RoleInstrFemmes.objects.order_by('nom')
+    template_name = 'gererX.html'
 
-    def get_queryset(self):
-        return GererRoleInstrFemmes.liste
+    def get_context_data(self, **kwargs):
+        context = super(GererRoleInstrFemmes, self).get_context_data(**kwargs)
+        context['liste'] = RoleInstrFemmes.objects.order_by('nom')
+        context['nom'] = 'roleinstrfemmes'
+        context['verbose'] = "rôles des instruments animés au genre féminin"
+        return context
 
 
 class GererRoleInstrHommes(generic.ListView):
     model = RoleInstrHomme
-    template_name = 'gerer_roleInstrHommes.html'
-    context_object_name = 'all_roleInstrHommes'
-    liste = RoleInstrHomme.objects.order_by('nom')
+    template_name = 'gererX.html'
 
-    def get_queryset(self):
-        return GererRoleInstrHommes.liste
+    def get_context_data(self, **kwargs):
+        context = super(GererRoleInstrHommes, self).get_context_data(**kwargs)
+        context['liste'] = RoleInstrHomme.objects.order_by('nom')
+        context['nom'] = 'rolepersanimhomme'
+        context['verbose'] = "rôles des instruments animés au genre masculin"
+        return context
 
 
 class GererRoleInstrNeutre(generic.ListView):
     model = RoleInstrNeutre
-    template_name = 'gerer_roleInstrNeutre.html'
-    context_object_name = 'all_roleInstrNeutre'
-    liste = RoleInstrNeutre.objects.order_by('nom')
+    template_name = 'gererX.html'
 
-    def get_queryset(self):
-        return GererRoleInstrNeutre.liste
+    def get_context_data(self, **kwargs):
+        context = super(GererRoleInstrNeutre, self).get_context_data(**kwargs)
+        context['liste'] = RoleInstrNeutre.objects.order_by('nom')
+        context['nom'] = 'roleinstrneutre'
+        context['verbose'] = "rôles des personnage animés au genre indéterminé"
+        return context
 
 
 def export_xls(request):
@@ -625,14 +705,14 @@ def export_xls(request):
                    "U.28 Sollicitation musicale", "U.29 Sollicifation générale", "PM.30 Temps de musique", "PM.31 Temps de parole", "PM.32 Temps musique et parole",
                    "PM.33 Mise en valeur du sonore", "EM.34 Évocation graphique", "EM.35 Évocation plastique", "EM.36 Évocation litteraire",
                    "EM.37 Autre discipline évoquée", "I.38 Notions communes", "I.38 Expérience", "I.38 Pratique",
-                   "I.39 Exemples de notions évoquées de façon interdisciplinaires", "STÉ.39.1 Nombre total d'humains", "STÉ.39.1 Nombre d'hommes",
-                   "STÉ.39.1 Nombre de femmes","STÉ.39.1 Nombre d'humains au genre indéterminé", "Sté.39.2 Rôle des femmes", "Sté.39.3 Rôle des hommes",
-                   "Sté.39.4 Rôle des indeterminés","Sté.40.1 Nombre de personnages animés total","Sté.40.1 Nombre de personnages animés hommes",
-                   "Sté.40.1 Nombre de personnages animés femmes", "Sté.40.1 Nombre de personnages animés au genre indéterminé",
+                   "I.39 Exemples de notions évoquées de façon interdisciplinaires", "STÉ.39.1 Nombre total d'humains","STÉ.39.1 Nombre de femmes", "STÉ.39.1 Nombre d'hommes",
+                   "STÉ.39.1 Nombre d'humains au genre indéterminé", "Sté.39.2 Rôle des femmes", "Sté.39.3 Rôle des hommes",
+                   "Sté.39.4 Rôle des indeterminés","Sté.40.1 Nombre de personnages animés total","Sté.40.1 Nombre de personnages animés femmes",
+                   "Sté.40.1 Nombre de personnages animés hommes", "Sté.40.1 Nombre de personnages animés au genre indéterminé",
                    "Sté.40.3 Rôle des personnages animés féminins", "Sté.40.2 Rôle des personnages animés masculins", "Sté.40.4 Rôle des personnages animés indéterminés",
-                   "Sté.41.1 Nombre d'animaux total", "Sté.41.1 Nombre de mâles", "Sté.41.1 Nombre de femelles", "Sté.41.1 Nombre d'animaux au genre indéterminé",
+                   "Sté.41.1 Nombre d'animaux total", "Sté.41.1 Nombre de femelles", "Sté.41.1 Nombre de mâles", "Sté.41.1 Nombre d'animaux au genre indéterminé",
                    "Sté.41.3 Rôle des animaux femelles", "Sté.41.2 Rôle des animaux mâles", "Sté.41.4 Rôle des animaux indéterminés",
-                   "Sté.42.1 Nombre d'instruments animés total", "Sté.42.1 Nombre d'instruments animés masculins", "Sté.42.1 Nombre d'instruments animés féminins",
+                   "Sté.42.1 Nombre d'instruments animés total","Sté.42.1 Nombre d'instruments animés féminins", "Sté.42.1 Nombre d'instruments animés masculins",
                    "Sté.42.1 Nombre d'instruments animés au genre indéterminé", "Sté.42.3 Rôle des instruments anthropomorphes féminins",
                    "Sté.42.2 Rôle des instruments anthropomorphes masculins", "Sté.42.4 Rôle des instruments anthropomorphes neutres",
                    ]
@@ -640,605 +720,790 @@ def export_xls(request):
         for col_num in range(len(colones)):
             ws.write(row_num, col_num, colones[col_num], font_style)
 
-        loftUn = list(Outil.objects.order_by('titre').values_list('titre','url','site','ensemble_thematique','ensemble_thematique_nom', 'producteur_type__nom'))
-        loflUn = [list(elem) for elem in loftUn]
-        loftUnUn = list(Outil.objects.order_by('titre').values_list('titre','producteur_nom__nom'))
-        loflUnUn = [list(elem) for elem in loftUnUn]
-        loftDeux = list(Outil.objects.order_by('titre').values_list('titre','support_diffusion__nom'))
-        loflDeux = [list(elem) for elem in loftDeux]
-        loftTrois = list(Outil.objects.order_by('titre').values_list('titre','format__nom'))
-        loflTrois = [list(elem) for elem in loftTrois]
-        loftQuatre = list(Outil.objects.order_by('titre').values_list('titre','forme_narrative__nom','duree','nb_pages','mise_en_ligne_date','depouillement_date','interactivite','materiel_imprimer',
+        #Construction de listes de liste pour pouvoir manipuler les ManyToMany fields
+
+        loflProdType = [list(elem) for elem in list(Outil.objects.order_by('titre').values_list('titre','url','site','ensemble_thematique',
+                                                                                                'ensemble_thematique_nom', 'producteur_type__nom'))]
+        loflProdNom = [list(elem) for elem in list(Outil.objects.order_by('titre').values_list('titre','producteur_nom__nom'))]
+        loflSupportDiffusion = [list(elem) for elem in list(Outil.objects.order_by('titre').values_list('titre','support_diffusion__nom'))]
+        loflFormat = [list(elem) for elem in list(Outil.objects.order_by('titre').values_list('titre','format__nom'))]
+        loflFormeNarrative = [list(elem) for elem in list(Outil.objects.order_by('titre').values_list('titre','forme_narrative__nom','duree','nb_pages','mise_en_ligne_date','depouillement_date','interactivite','materiel_imprimer',
                                                           'personnification_service','commentaire_possible','commentaire_nombre','premier_onglet', 'prem_onglet_autre',
-                                                          'deuxieme_onglet', 'deux_onglet_autre', 'troisieme_onglet', 'trois_onglet_autre','plus_de_tois_onglet'))
-        loflQuatre = [list(elem) for elem in loftQuatre]
-        loftCinq = list(Outil.objects.order_by('titre').values_list('titre','mode_hebergement__nom'))
-        loflCinq = [list(elem) for elem in loftCinq]
-        loftSix = list(Outil.objects.order_by('titre').values_list('titre','mode_consultation__nom'))
-        loflSix = [list(elem) for elem in loftSix]
-        loftSept = list(Outil.objects.order_by('titre').values_list('titre','narration_langue__nom'))
-        loflSept = [list(elem) for elem in loftSept]
-        loftHuit = list(Outil.objects.order_by('titre').values_list('titre','sous_titre__nom', 'malentendants', 'malvoyants', 'materiau_musical'))
-        loflHuit = [list(elem) for elem in loftHuit]
-        loftNeuf = list(Outil.objects.order_by('titre').values_list('titre','orchestration__nom'))
-        loflNeuf = [list(elem) for elem in loftNeuf]
-        loftDix = list(Outil.objects.order_by('titre').values_list('titre','structure__nom'))
-        loflDix = [list(elem) for elem in loftDix]
-        loftOnze = list(Outil.objects.order_by('titre').values_list('titre','language_musical__nom'))
-        loflOnze = [list(elem) for elem in loftOnze]
-        loftDouze = list(Outil.objects.order_by('titre').values_list('titre','genre_musical__nom'))
-        loflDouze = [list(elem) for elem in loftDouze]
-        loftTreize = list(Outil.objects.order_by('titre').values_list('titre','style_musical__nom'))
-        loflTreize = [list(elem) for elem in loftTreize]
-        loftQuatorze = list(Outil.objects.order_by('titre').values_list('titre','experience_musicale__nom', 'elements_socioculturels', 'epoque'))
-        loflQuatorze = [list(elem) for elem in loftQuatorze]
-
-        #loftepoque = list(Outil.objects.order_by('titre').values_list('epoque'))
-        #loflepoque = [list(elem) for elem in loftepoque]
-
-        loftQuinze = list(Outil.objects.order_by('titre').values_list('titre','contexte__nom'))
-        loflQuinze = [list(elem) for elem in loftQuinze]
-        loftSeize = list(Outil.objects.order_by('titre').values_list('titre','role_evolution__nom'))
-        loflSeize = [list(elem) for elem in loftSeize]
-        loftSeizeDeux = list(Outil.objects.order_by('titre').values_list('titre','organologie__nom')) #organologie
-        loflSeizeDeux = [list(elem) for elem in loftSeizeDeux]
-        loftDixSept = list(Outil.objects.order_by('titre').values_list('titre','sollicitation_musicale__nom'))
-        loflDixSept = [list(elem) for elem in loftDixSept]
-        loftDixHuit = list(Outil.objects.order_by('titre').values_list('titre','sollicitation_generale__nom', 'temps_mus', 'temps_par', 'temps_mus_par', 'sonore_valeur'))
-        loflDixHuit = [list(elem) for elem in loftDixHuit]
-        loftDixNeuf = list(Outil.objects.order_by('titre').values_list('titre', 'evocation_graphique__nom'))
-        loflDixNeuf = [list(elem) for elem in loftDixNeuf]
-        loftVingt = list(Outil.objects.order_by('titre').values_list('titre', 'evocation_plastique__nom', 'evocation_litteraire'))
-        loflVingt = [list(elem) for elem in loftVingt]
-        loftVingtEtUn = list(Outil.objects.order_by('titre').values_list('titre', 'evocation_autre__nom', 'notion_concepts', 'notion_experiences', 'notion_pratiques'))
-        loflVingtEtUn = [list(elem) for elem in loftVingtEtUn]
-        loftVingtDeux = list(Outil.objects.order_by('titre').values_list('titre', 'exemples_notions_interdisciplinaires__nom', 'nb_humains_total', 'nb_hommes', 'nb_femmes',
-                                                             'nb_humains_indetermines'))
-        loflVingtDeux = [list(elem) for elem in loftVingtDeux]
-        loftVingtTrois = list(Outil.objects.order_by('titre').values_list('titre', 'role_humain_femme__nom'))
-        loflVingtTrois = [list(elem) for elem in loftVingtTrois]
-        loftVingtQuatre = list(Outil.objects.order_by('titre').values_list('titre', 'role_humain_homme__nom'))
-        loflVingtQuatre = [list(elem) for elem in loftVingtQuatre]
-        loftVingtCinq = list(Outil.objects.order_by('titre').values_list('titre', 'role_humain_neutre__nom', 'nb_pers_anime_total', 'nb_pers_anime_hommes',
-                                                             'nb_pers_anime_femmes', 'nb_pers_anime_indetermines'))
-        loflVingtCinq = [list(elem) for elem in loftVingtCinq]
-        loftVingtSix = list(Outil.objects.order_by('titre').values_list('titre', 'role_pers_anime_femme__nom'))
-        loflVingtSix = [list(elem) for elem in loftVingtSix]
-        loftVingtSept = list(Outil.objects.order_by('titre').values_list('titre', 'role_pers_anime_homme__nom'))
-        loflVingtSept = [list(elem) for elem in loftVingtSept]
-        loftVingtHuit = list(Outil.objects.order_by('titre').values_list('titre', 'role_pers_anime_neutre__nom', 'nb_animaux_total', 'nb_males', 'nb_femelles',
-                                                             'nb_animaux_indetermines'))
-        loflVingtHuit = [list(elem) for elem in loftVingtHuit]
-        loftVingtNeuf = list(Outil.objects.order_by('titre').values_list('titre', 'role_animaux_femme__nom'))
-        loflVingtNeuf = [list(elem) for elem in loftVingtNeuf]
-        loftTrente = list(Outil.objects.order_by('titre').values_list('titre', 'role_animaux_homme__nom'))
-        loflTrente = [list(elem) for elem in loftTrente]
-        loftTrenteEtUn = list(Outil.objects.order_by('titre').values_list('titre','role_animaux_neutre__nom', 'nb_instr_anime_total', 'nb_instr_anime_hommes',
-                                                              'nb_instr_anime_femmes', 'nb_instr_anime_indetermines'))
-        loflTrenteEtUn = [list(elem) for elem in loftTrenteEtUn]
-        loftTrenteDeux = list(Outil.objects.order_by('titre').values_list('titre', 'role_instr_anime_femme__nom'))
-        loflTrenteDeux = [list(elem) for elem in loftTrenteDeux]
-        loftTrenteTrois = list(Outil.objects.order_by('titre').values_list('titre', 'role_instr_anime_homme__nom'))
-        loflTrenteTrois = [list(elem) for elem in loftTrenteTrois]
-        loftTrenteQuatre = list(Outil.objects.order_by('titre').values_list('titre', 'role_instr_anime_neutre__nom'))
-        loflTrenteQuatre = [list(elem) for elem in loftTrenteQuatre]
+                                                          'deuxieme_onglet', 'deux_onglet_autre', 'troisieme_onglet', 'trois_onglet_autre','plus_de_tois_onglet'))]
+        loflModeHebergement = [list(elem) for elem in list(Outil.objects.order_by('titre').values_list('titre','mode_hebergement__nom'))]
+        loflModeConsultation = [list(elem) for elem in list(Outil.objects.order_by('titre').values_list('titre','mode_consultation__nom'))]
+        loflLangue = [list(elem) for elem in list(Outil.objects.order_by('titre').values_list('titre','narration_langue__nom'))]
+        loflSousTitre = [list(elem) for elem in list(Outil.objects.order_by('titre').values_list('titre','sous_titre__nom', 'malentendants',
+                                                                                                 'malvoyants', 'materiau_musical'))]
+        loflOrchestration = [list(elem) for elem in list(Outil.objects.order_by('titre').values_list('titre','orchestration__nom'))]
+        loflStructure = [list(elem) for elem in list(Outil.objects.order_by('titre').values_list('titre','structure__nom'))]
+        loflLanguageMusical = [list(elem) for elem in list(Outil.objects.order_by('titre').values_list('titre','language_musical__nom'))]
+        loflGenreMusical = [list(elem) for elem in list(Outil.objects.order_by('titre').values_list('titre','genre_musical__nom'))]
+        loflStyleMusical = [list(elem) for elem in list(Outil.objects.order_by('titre').values_list('titre','style_musical__nom'))]
+        loflExperienceMusical = [list(elem) for elem in list(Outil.objects.order_by('titre').values_list('titre','experience_musicale__nom', 
+                                                                                                         'elements_socioculturels'))]
+        loflEpoque = [list(elem) for elem in list(Outil.objects.order_by('titre').values_list('titre','epoque__nom'))]
+        loflContexte = [list(elem) for elem in list(Outil.objects.order_by('titre').values_list('titre','contexte__nom'))]
+        loflRoleEvolution = [list(elem) for elem in list(Outil.objects.order_by('titre').values_list('titre','role_evolution__nom'))]
+        loflOrganologie = [list(elem) for elem in list(Outil.objects.order_by('titre').values_list('titre','organologie__nom'))]
+        loflSollicitationMusicale = [list(elem) for elem in list(Outil.objects.order_by('titre').values_list('titre','sollicitation_musicale__nom'))]
+        loflSollicitationGenerale = [list(elem) for elem in list(Outil.objects.order_by('titre').values_list('titre','sollicitation_generale__nom',
+                                                                                                             'temps_mus', 'temps_par', 'temps_mus_par',
+                                                                                                             'sonore_valeur'))]
+        loflEvocationGraphique = [list(elem) for elem in list(Outil.objects.order_by('titre').values_list('titre', 'evocation_graphique__nom'))]
+        loflEvocationPlastique = [list(elem) for elem in list(Outil.objects.order_by('titre').values_list('titre', 'evocation_plastique__nom',
+                                                                                                          'evocation_litteraire'))]
+        loflEvocationAutre = [list(elem) for elem in list(Outil.objects.order_by('titre').values_list('titre', 'evocation_autre__nom', 'notion_concepts',
+                                                                                                      'notion_experiences', 'notion_pratiques'))]
+        loflExempleNotionInter = [list(elem) for elem in list(Outil.objects.order_by('titre').values_list('titre', 'exemples_notions_interdisciplinaires__nom', 'nb_humains_total',
+                                                                                                  'nb_femmes', 'nb_hommes', 'nb_humains_indetermines'))]
+        loflRoleFemme = [list(elem) for elem in list(Outil.objects.order_by('titre').values_list('titre', 'role_humain_femme__nom'))]
+        loflRoleHomme = [list(elem) for elem in list(Outil.objects.order_by('titre').values_list('titre', 'role_humain_homme__nom'))]
+        loflRoleHumainNeutre = [list(elem) for elem in list(Outil.objects.order_by('titre').values_list('titre', 'role_humain_neutre__nom',
+                                                                                                 'nb_pers_anime_total','nb_pers_anime_femmes',
+                                                                                                 'nb_pers_anime_hommes', 'nb_pers_anime_indetermines'))]
+        loflRolePersAnimFemme = [list(elem) for elem in list(Outil.objects.order_by('titre').values_list('titre', 'role_pers_anime_femme__nom'))]
+        loflRolePersAnimHomme = [list(elem) for elem in list(Outil.objects.order_by('titre').values_list('titre', 'role_pers_anime_homme__nom'))]
+        loflRolePersAnimNeutre = [list(elem) for elem in list(Outil.objects.order_by('titre').values_list('titre', 'role_pers_anime_neutre__nom', 'nb_animaux_total',
+                                                                                                'nb_femelles', 'nb_males', 'nb_animaux_indetermines'))]
+        loflRoleFemelle = [list(elem) for elem in list(Outil.objects.order_by('titre').values_list('titre', 'role_animaux_femme__nom'))]
+        loflRoleMale = [list(elem) for elem in list(Outil.objects.order_by('titre').values_list('titre', 'role_animaux_homme__nom'))]
+        loflAnimauxNeutre = [list(elem) for elem in  list(Outil.objects.order_by('titre').values_list('titre','role_animaux_neutre__nom', 'nb_instr_anime_total',
+                                                                                                    'nb_instr_anime_femmes','nb_instr_anime_hommes',
+                                                                                                    'nb_instr_anime_indetermines'))]
+        loflInstrAnimFemme = [list(elem) for elem in list(Outil.objects.order_by('titre').values_list('titre', 'role_instr_anime_femme__nom'))]
+        loflInstrAnimHomme = [list(elem) for elem in list(Outil.objects.order_by('titre').values_list('titre', 'role_instr_anime_homme__nom'))]
+        loflInstrAnimNeutre = [list(elem) for elem in list(Outil.objects.order_by('titre').values_list('titre', 'role_instr_anime_neutre__nom'))]
         
-        total = Outil.objects.all().count()
+        total = Outil.objects.count()
 
         loflFin = [None] * total
 
+        #Construction d'une liste de facteurs pour déterminer le nombre d'itération nécéssaire
+        facteurs = []
+        j = 1
+        for i in range(9):
+            if i != 0:
+                j *= 2
+                facteurs.append([i, j])
+
+        nbIter = 0
 
         # BOUCLES POUR JOINDRE LES "MANYTOMANYFILEDS" DANS UN STRING
-        # un
-        for i in range(3):
-            for item in loflUn:
-                if loflUn.index(item) != len(loflUn) - 1:
-                    prem = loflUn[loflUn.index(item)]
-                    deux = loflUn[loflUn.index(item) + 1]
+
+        # Type de producteur
+        for i in facteurs:
+            if ProdType.objects.count() < i[1]:
+                nbIter = i[0]
+                break
+
+        for i in range(nbIter):
+            for item in loflProdType:
+                if loflProdType.index(item) != len(loflProdType) - 1:
+                    prem = loflProdType[loflProdType.index(item)]
+                    deux = loflProdType[loflProdType.index(item) + 1]
                     if prem[0] == deux[0]:
                         if prem[5] not in deux[5]:
                             prem[5] += ", "
                             prem[5] += deux[5]
-                            loflUn[loflUn.index(item)] = prem
-                            del loflUn[loflUn.index(item) + 1]
+                            loflProdType[loflProdType.index(item)] = prem
+                            del loflProdType[loflProdType.index(item) + 1]
 
-        # UnUn
-        for i in range(3):
-            for item in loflUnUn:
-                if loflUnUn.index(item) != len(loflUnUn) - 1:
-                    prem = loflUnUn[loflUnUn.index(item)]
-                    deux = loflUnUn[loflUnUn.index(item) + 1]
+        # Nom du producteur
+        x = ProducteurNom.objects.count()
+        for i in facteurs:
+            if x < i[1]:
+                nbIter = i[0]
+                break
+
+        for i in range(nbIter):
+            for item in loflProdNom:
+                if loflProdNom.index(item) != len(loflProdNom) - 1:
+                    prem = loflProdNom[loflProdNom.index(item)]
+                    deux = loflProdNom[loflProdNom.index(item) + 1]
                     if prem[0] == deux[0]:
                         if prem[1] not in deux[1]:
                             prem[1] += ", "
                             prem[1] += deux[1]
-                            loflUnUn[loflUnUn.index(item)] = prem
-                            del loflUnUn[loflUnUn.index(item) + 1]
+                            loflProdNom[loflProdNom.index(item)] = prem
+                            del loflProdNom[loflProdNom.index(item) + 1]
 
-        # deux
-        for i in range(3):
-            for item in loflDeux:
-                if loflDeux.index(item) != len(loflDeux) - 1:
-                    prem = loflDeux[loflDeux.index(item)]
-                    deux = loflDeux[loflDeux.index(item) + 1]
+        # support de diffusion
+        x = SupportDiffusion.objects.count()
+        for i in facteurs:
+            if x < i[1]:
+                nbIter = i[0]
+                break
+
+        for i in range(nbIter):
+            for item in loflSupportDiffusion:
+                if loflSupportDiffusion.index(item) != len(loflSupportDiffusion) - 1:
+                    prem = loflSupportDiffusion[loflSupportDiffusion.index(item)]
+                    deux = loflSupportDiffusion[loflSupportDiffusion.index(item) + 1]
                     if prem[0] == deux[0]:
                         if prem[1] not in deux[1]:
                             prem[1] += ", "
                             prem[1] += deux[1]
-                            loflDeux[loflDeux.index(item)] = prem
-                            del loflDeux[loflDeux.index(item) + 1]
+                            loflSupportDiffusion[loflSupportDiffusion.index(item)] = prem
+                            del loflSupportDiffusion[loflSupportDiffusion.index(item) + 1]
 
-        # trois
+        # format
+        for i in facteurs:
+            if FormatOutil.objects.count() < i[1]:
+                nbIter = i[0]
+                break
+
         for i in range(3):
-            for item in loflTrois:
-                if loflTrois.index(item) != len(loflTrois) - 1:
-                    prem = loflTrois[loflTrois.index(item)]
-                    Trois = loflTrois[loflTrois.index(item) + 1]
+            for item in loflFormat:
+                if loflFormat.index(item) != len(loflFormat) - 1:
+                    prem = loflFormat[loflFormat.index(item)]
+                    Trois = loflFormat[loflFormat.index(item) + 1]
                     if prem[0] == Trois[0]:
                         if prem[1] not in Trois[1]:
                             prem[1] += ", "
                             prem[1] += Trois[1]
-                            loflTrois[loflTrois.index(item)] = prem
-                            del loflTrois[loflTrois.index(item) + 1]
+                            loflFormat[loflFormat.index(item)] = prem
+                            del loflFormat[loflFormat.index(item) + 1]
 
-        # quatre
-        for i in range(3):
-            for item in loflQuatre:
-                if loflQuatre.index(item) != len(loflQuatre) - 1:
-                    prem = loflQuatre[loflQuatre.index(item)]
-                    Quatre = loflQuatre[loflQuatre.index(item) + 1]
+        # forme narrative
+        for i in facteurs:
+            if FormeNarrative.objects.count() < i[1]:
+                nbIter = i[0]
+                break
+
+        for i in range(nbIter):
+            for item in loflFormeNarrative:
+                if loflFormeNarrative.index(item) != len(loflFormeNarrative) - 1:
+                    prem = loflFormeNarrative[loflFormeNarrative.index(item)]
+                    Quatre = loflFormeNarrative[loflFormeNarrative.index(item) + 1]
                     if prem[0] == Quatre[0]:
                         if prem[1] not in Quatre[1]:
                             prem[1] += ", "
                             prem[1] += Quatre[1]
-                            loflQuatre[loflQuatre.index(item)] = prem
-                            del loflQuatre[loflQuatre.index(item) + 1]
+                            loflFormeNarrative[loflFormeNarrative.index(item)] = prem
+                            del loflFormeNarrative[loflFormeNarrative.index(item) + 1]
 
-        # cinq
-        for i in range(3):
-            for item in loflCinq:
-                if loflCinq.index(item) != len(loflCinq) - 1:
-                    prem = loflCinq[loflCinq.index(item)]
-                    Cinq = loflCinq[loflCinq.index(item) + 1]
+        # Mode d'hébergement
+        for i in facteurs:
+            if ModeHebergement.objects.count() < i[1]:
+                nbIter = i[0]
+                break
+
+        for i in range(nbIter):
+            for item in loflModeHebergement:
+                if loflModeHebergement.index(item) != len(loflModeHebergement) - 1:
+                    prem = loflModeHebergement[loflModeHebergement.index(item)]
+                    Cinq = loflModeHebergement[loflModeHebergement.index(item) + 1]
                     if prem[0] == Cinq[0]:
                         if prem[1] not in Cinq[1]:
                             prem[1] += ", "
                             prem[1] += Cinq[1]
-                            loflCinq[loflCinq.index(item)] = prem
-                            del loflCinq[loflCinq.index(item) + 1]
+                            loflModeHebergement[loflModeHebergement.index(item)] = prem
+                            del loflModeHebergement[loflModeHebergement.index(item) + 1]
 
-        # six
-        for i in range(3):
-            for item in loflSix:
-                if loflSix.index(item) != len(loflSix) - 1:
-                    prem = loflSix[loflSix.index(item)]
-                    Six = loflSix[loflSix.index(item) + 1]
+        # Mode de consultation
+        for i in facteurs:
+            if ModeConsultation.objects.count() < i[1]:
+                nbIter = i[0]
+                break
+
+        for i in range(nbIter):
+            for item in loflModeConsultation:
+                if loflModeConsultation.index(item) != len(loflModeConsultation) - 1:
+                    prem = loflModeConsultation[loflModeConsultation.index(item)]
+                    Six = loflModeConsultation[loflModeConsultation.index(item) + 1]
                     if prem[0] == Six[0]:
                         if prem[1] not in Six[1]:
                             prem[1] += ", "
                             prem[1] += Six[1]
-                            loflSix[loflSix.index(item)] = prem
-                            del loflSix[loflSix.index(item) + 1]
+                            loflModeConsultation[loflModeConsultation.index(item)] = prem
+                            del loflModeConsultation[loflModeConsultation.index(item) + 1]
 
-        # sept
-        for i in range(3):
-            for item in loflSept:
-                if loflSept.index(item) != len(loflSept) - 1:
-                    prem = loflSept[loflSept.index(item)]
-                    Sept = loflSept[loflSept.index(item) + 1]
+        # Langue
+        for i in facteurs:
+            if LangueNarration.objects.count() < i[1]:
+                nbIter = i[0]
+                break
+
+        for i in range(nbIter):
+            for item in loflLangue:
+                if loflLangue.index(item) != len(loflLangue) - 1:
+                    prem = loflLangue[loflLangue.index(item)]
+                    Sept = loflLangue[loflLangue.index(item) + 1]
                     if prem[0] == Sept[0]:
                         if prem[1] not in Sept[1]:
                             prem[1] += ", "
                             prem[1] += Sept[1]
-                            loflSept[loflSept.index(item)] = prem
-                            del loflSept[loflSept.index(item) + 1]
+                            loflLangue[loflLangue.index(item)] = prem
+                            del loflLangue[loflLangue.index(item) + 1]
 
-        # huit
-        for i in range(3):
-            for item in loflHuit:
-                if loflHuit.index(item) != len(loflHuit) - 1:
-                    prem = loflHuit[loflHuit.index(item)]
-                    Huit = loflHuit[loflHuit.index(item) + 1]
+        # Sous-titres
+        for i in facteurs:
+            if SousTitre.objects.count() < i[1]:
+                nbIter = i[0]
+                break
+
+        for i in range(nbIter):
+            for item in loflSousTitre:
+                if loflSousTitre.index(item) != len(loflSousTitre) - 1:
+                    prem = loflSousTitre[loflSousTitre.index(item)]
+                    Huit = loflSousTitre[loflSousTitre.index(item) + 1]
                     if prem[0] == Huit[0]:
                         if prem[1] not in Huit[1]:
                             prem[1] += ", "
                             prem[1] += Huit[1]
-                            loflHuit[loflHuit.index(item)] = prem
-                            del loflHuit[loflHuit.index(item) + 1]
+                            loflSousTitre[loflSousTitre.index(item)] = prem
+                            del loflSousTitre[loflSousTitre.index(item) + 1]
 
-        # neuf
-        for i in range(3):
-            for item in loflNeuf:
-                if loflNeuf.index(item) != len(loflNeuf) - 1:
-                    prem = loflNeuf[loflNeuf.index(item)]
-                    Neuf = loflNeuf[loflNeuf.index(item) + 1]
+        # Orchestration
+        for i in facteurs:
+            if Orchestration.objects.count() < i[1]:
+                nbIter = i[0]
+                break
+
+        for i in range(nbIter):
+            for item in loflOrchestration:
+                if loflOrchestration.index(item) != len(loflOrchestration) - 1:
+                    prem = loflOrchestration[loflOrchestration.index(item)]
+                    Neuf = loflOrchestration[loflOrchestration.index(item) + 1]
                     if prem[0] == Neuf[0]:
                         if prem[1] not in Neuf[1]:
                             prem[1] += ", "
                             prem[1] += Neuf[1]
-                            loflNeuf[loflNeuf.index(item)] = prem
-                            del loflNeuf[loflNeuf.index(item) + 1]
+                            loflOrchestration[loflOrchestration.index(item)] = prem
+                            del loflOrchestration[loflOrchestration.index(item) + 1]
 
-        # dix
+        # Structure
+        for i in facteurs:
+            if Structure.objects.count() < i[1]:
+                nbIter = i[0]
+                break
+
         for i in range(3):
-            for item in loflDix:
-                if loflDix.index(item) != len(loflDix) - 1:
-                    prem = loflDix[loflDix.index(item)]
-                    Dix = loflDix[loflDix.index(item) + 1]
+            for item in loflStructure:
+                if loflStructure.index(item) != len(loflStructure) - 1:
+                    prem = loflStructure[loflStructure.index(item)]
+                    Dix = loflStructure[loflStructure.index(item) + 1]
                     if prem[0] == Dix[0]:
                         if prem[1] not in Dix[1]:
                             prem[1] += ", "
                             prem[1] += Dix[1]
-                            loflDix[loflDix.index(item)] = prem
-                            del loflDix[loflDix.index(item) + 1]
+                            loflStructure[loflStructure.index(item)] = prem
+                            del loflStructure[loflStructure.index(item) + 1]
 
-        # onze
-        for i in range(3):
-            for item in loflOnze:
-                if loflOnze.index(item) != len(loflOnze) - 1:
-                    prem = loflOnze[loflOnze.index(item)]
-                    Onze = loflOnze[loflOnze.index(item) + 1]
+        # Language musical
+        for i in facteurs:
+            if LanguageMusical.objects.count() < i[1]:
+                nbIter = i[0]
+                break
+
+        for i in range(nbIter):
+            for item in loflLanguageMusical:
+                if loflLanguageMusical.index(item) != len(loflLanguageMusical) - 1:
+                    prem = loflLanguageMusical[loflLanguageMusical.index(item)]
+                    Onze = loflLanguageMusical[loflLanguageMusical.index(item) + 1]
                     if prem[0] == Onze[0]:
                         if prem[1] not in Onze[1]:
                             prem[1] += ", "
                             prem[1] += Onze[1]
-                            loflOnze[loflOnze.index(item)] = prem
-                            del loflOnze[loflOnze.index(item) + 1]
+                            loflLanguageMusical[loflLanguageMusical.index(item)] = prem
+                            del loflLanguageMusical[loflLanguageMusical.index(item) + 1]
 
-        # douze
-        for i in range(3):
-            for item in loflDouze:
-                if loflDouze.index(item) != len(loflDouze) - 1:
-                    prem = loflDouze[loflDouze.index(item)]
-                    Douze = loflDouze[loflDouze.index(item) + 1]
+        # Genre musical
+        for i in facteurs:
+            if GenreMusical.objects.count() < i[1]:
+                nbIter = i[0]
+                break
+
+        for i in range(nbIter):
+            for item in loflGenreMusical:
+                if loflGenreMusical.index(item) != len(loflGenreMusical) - 1:
+                    prem = loflGenreMusical[loflGenreMusical.index(item)]
+                    Douze = loflGenreMusical[loflGenreMusical.index(item) + 1]
                     if prem[0] == Douze[0]:
                         if prem[1] not in Douze[1]:
                             prem[1] += ", "
                             prem[1] += Douze[1]
-                            loflDouze[loflDouze.index(item)] = prem
-                            del loflDouze[loflDouze.index(item) + 1]
+                            loflGenreMusical[loflGenreMusical.index(item)] = prem
+                            del loflGenreMusical[loflGenreMusical.index(item) + 1]
 
-        # treize
-        for i in range(3):
-            for item in loflTreize:
-                if loflTreize.index(item) != len(loflTreize) - 1:
-                    prem = loflTreize[loflTreize.index(item)]
-                    Treize = loflTreize[loflTreize.index(item) + 1]
+        # Style musical
+        for i in facteurs:
+            if StyleMusical.objects.count() < i[1]:
+                nbIter = i[0]
+                break
+
+        for i in range(nbIter):
+            for item in loflStyleMusical:
+                if loflStyleMusical.index(item) != len(loflStyleMusical) - 1:
+                    prem = loflStyleMusical[loflStyleMusical.index(item)]
+                    Treize = loflStyleMusical[loflStyleMusical.index(item) + 1]
                     if prem[0] == Treize[0]:
                         if prem[1] not in Treize[1]:
                             prem[1] += ", "
                             prem[1] += Treize[1]
-                            loflTreize[loflTreize.index(item)] = prem
-                            del loflTreize[loflTreize.index(item) + 1]
+                            loflStyleMusical[loflStyleMusical.index(item)] = prem
+                            del loflStyleMusical[loflStyleMusical.index(item) + 1]
 
-        # quatorze
-        for i in range(3):
-            for item in loflQuatorze:
-                if loflQuatorze.index(item) != len(loflQuatorze) - 1:
-                    prem = loflQuatorze[loflQuatorze.index(item)]
-                    Quatorze = loflQuatorze[loflQuatorze.index(item) + 1]
+        # Experience Musical
+        for i in facteurs:
+            if ExperienceMusicale.objects.count() < i[1]:
+                nbIter = i[0]
+                break
+
+        for i in range(nbIter):
+            for item in loflExperienceMusical:
+                if loflExperienceMusical.index(item) != len(loflExperienceMusical) - 1:
+                    prem = loflExperienceMusical[loflExperienceMusical.index(item)]
+                    Quatorze = loflExperienceMusical[loflExperienceMusical.index(item) + 1]
                     if prem[0] == Quatorze[0]:
                         if prem[1] not in Quatorze[1]:
                             prem[1] += ", "
                             prem[1] += Quatorze[1]
-                            loflQuatorze[loflQuatorze.index(item)] = prem
-                            del loflQuatorze[loflQuatorze.index(item) + 1]
+                            loflExperienceMusical[loflExperienceMusical.index(item)] = prem
+                            del loflExperienceMusical[loflExperienceMusical.index(item) + 1]
 
-        # quinze
-        for i in range(3):
-            for item in loflQuinze:
-                if loflQuinze.index(item) != len(loflQuinze) - 1:
-                    prem = loflQuinze[loflQuinze.index(item)]
-                    Quinze = loflQuinze[loflQuinze.index(item) + 1]
+        # Époque
+        for i in facteurs:
+            if Epoque.objects.count() < i[1]:
+                nbIter = i[0]
+                break
+
+        for i in range(nbIter):
+            for item in loflEpoque:
+                if loflEpoque.index(item) != len(loflEpoque) - 1:
+                    prem = loflEpoque[loflEpoque.index(item)]
+                    deux = loflEpoque[loflEpoque.index(item) + 1]
+                    if prem[0] == deux[0]:
+                        if prem[1] not in deux[1]:
+                            prem[1] += ", "
+                            prem[1] += deux[1]
+                            loflEpoque[loflEpoque.index(item)] = prem
+                            del loflEpoque[loflEpoque.index(item) + 1]
+
+        # Contexte
+        for i in facteurs:
+            if Contexte.objects.count() < i[1]:
+                nbIter = i[0]
+                break
+
+        for i in range(nbIter):
+            for item in loflContexte:
+                if loflContexte.index(item) != len(loflContexte) - 1:
+                    prem = loflContexte[loflContexte.index(item)]
+                    Quinze = loflContexte[loflContexte.index(item) + 1]
                     if prem[0] == Quinze[0]:
                         if prem[1] not in Quinze[1]:
                             prem[1] += ", "
                             prem[1] += Quinze[1]
-                            loflQuinze[loflQuinze.index(item)] = prem
-                            del loflQuinze[loflQuinze.index(item) + 1]
+                            loflContexte[loflContexte.index(item)] = prem
+                            del loflContexte[loflContexte.index(item) + 1]
 
-        # seize
-        for i in range(3):
-            for item in loflSeize:
-                if loflSeize.index(item) != len(loflSeize) - 1:
-                    prem = loflSeize[loflSeize.index(item)]
-                    Seize = loflSeize[loflSeize.index(item) + 1]
+        # Role Evolution
+        for i in facteurs:
+            if RoleEvolution.objects.count() < i[1]:
+                nbIter = i[0]
+                break
+
+        for i in range(nbIter):
+            for item in loflRoleEvolution:
+                if loflRoleEvolution.index(item) != len(loflRoleEvolution) - 1:
+                    prem = loflRoleEvolution[loflRoleEvolution.index(item)]
+                    Seize = loflRoleEvolution[loflRoleEvolution.index(item) + 1]
                     if prem[0] == Seize[0]:
                         if prem[1] not in Seize[1]:
                             prem[1] += ", "
                             prem[1] += Seize[1]
-                            loflSeize[loflSeize.index(item)] = prem
-                            del loflSeize[loflSeize.index(item) + 1]
+                            loflRoleEvolution[loflRoleEvolution.index(item)] = prem
+                            del loflRoleEvolution[loflRoleEvolution.index(item) + 1]
 
-        # seize-deux
-        for i in range(3):
-            for item in loflSeizeDeux:
-                if loflSeizeDeux.index(item) != len(loflSeizeDeux) - 1:
-                    prem = loflSeizeDeux[loflSeizeDeux.index(item)]
-                    SeizeDeux = loflSeizeDeux[loflSeizeDeux.index(item) + 1]
+        # Organologie
+        for i in facteurs:
+            if Orchestration.objects.count() < i[1]:
+                nbIter = i[0]
+                break
+
+        for i in range(nbIter):
+            for item in loflOrganologie:
+                if loflOrganologie.index(item) != len(loflOrganologie) - 1:
+                    prem = loflOrganologie[loflOrganologie.index(item)]
+                    SeizeDeux = loflOrganologie[loflOrganologie.index(item) + 1]
                     if prem[0] == SeizeDeux[0]:
                         if prem[1] not in SeizeDeux[1]:
                             prem[1] += ", "
                             prem[1] += SeizeDeux[1]
-                            loflSeizeDeux[loflSeizeDeux.index(item)] = prem
-                            del loflSeizeDeux[loflSeizeDeux.index(item) + 1]
+                            loflOrganologie[loflOrganologie.index(item)] = prem
+                            del loflOrganologie[loflOrganologie.index(item) + 1]
 
-        # dix-sept
-        for i in range(3):
-            for item in loflDixSept:
-                if loflDixSept.index(item) != len(loflDixSept) - 1:
-                    prem = loflDixSept[loflDixSept.index(item)]
-                    DixSept = loflDixSept[loflDixSept.index(item) + 1]
+        # Sollicitation musicale
+        for i in facteurs:
+            if SollicitationMusicale.objects.count() < i[1]:
+                nbIter = i[0]
+                break
+
+        for i in range(nbIter):
+            for item in loflSollicitationMusicale:
+                if loflSollicitationMusicale.index(item) != len(loflSollicitationMusicale) - 1:
+                    prem = loflSollicitationMusicale[loflSollicitationMusicale.index(item)]
+                    DixSept = loflSollicitationMusicale[loflSollicitationMusicale.index(item) + 1]
                     if prem[0] == DixSept[0]:
                         if prem[1] not in DixSept[1]:
                             prem[1] += ", "
                             prem[1] += DixSept[1]
-                            loflDixSept[loflDixSept.index(item)] = prem
-                            del loflDixSept[loflDixSept.index(item) + 1]
+                            loflSollicitationMusicale[loflSollicitationMusicale.index(item)] = prem
+                            del loflSollicitationMusicale[loflSollicitationMusicale.index(item) + 1]
 
-        # dix-huit
-        for i in range(3):
-            for item in loflDixHuit:
-                if loflDixHuit.index(item) != len(loflDixHuit) - 1:
-                    prem = loflDixHuit[loflDixHuit.index(item)]
-                    DixHuit = loflDixHuit[loflDixHuit.index(item) + 1]
+
+        # Sollicitation générale
+        for i in facteurs:
+            if SollicitationGenerale.objects.count() < i[1]:
+                nbIter = i[0]
+                break
+
+        for i in range(nbIter):
+            for item in loflSollicitationGenerale:
+                if loflSollicitationGenerale.index(item) != len(loflSollicitationGenerale) - 1:
+                    prem = loflSollicitationGenerale[loflSollicitationGenerale.index(item)]
+                    DixHuit = loflSollicitationGenerale[loflSollicitationGenerale.index(item) + 1]
                     if prem[0] == DixHuit[0]:
                         if prem[1] not in DixHuit[1]:
                             prem[1] += ", "
                             prem[1] += DixHuit[1]
-                            loflDixHuit[loflDixHuit.index(item)] = prem
-                            del loflDixHuit[loflDixHuit.index(item) + 1]
+                            loflSollicitationGenerale[loflSollicitationGenerale.index(item)] = prem
+                            del loflSollicitationGenerale[loflSollicitationGenerale.index(item) + 1]
 
-        # dix-Neuf
-        for i in range(3):
-            for item in loflDixNeuf:
-                if loflDixNeuf.index(item) != len(loflDixNeuf) - 1:
-                    prem = loflDixNeuf[loflDixNeuf.index(item)]
-                    DixNeuf = loflDixNeuf[loflDixNeuf.index(item) + 1]
+        # Evocation graphique
+        for i in facteurs:
+            if EvocationGraphique.objects.count() < i[1]:
+                nbIter = i[0]
+                break
+
+        for i in range(nbIter):
+            for item in loflEvocationGraphique:
+                if loflEvocationGraphique.index(item) != len(loflEvocationGraphique) - 1:
+                    prem = loflEvocationGraphique[loflEvocationGraphique.index(item)]
+                    DixNeuf = loflEvocationGraphique[loflEvocationGraphique.index(item) + 1]
                     if prem[0] == DixNeuf[0]:
                         if prem[1] not in DixNeuf[1]:
                             prem[1] += ", "
                             prem[1] += DixNeuf[1]
-                            loflDixNeuf[loflDixNeuf.index(item)] = prem
-                            del loflDixNeuf[loflDixNeuf.index(item) + 1]
+                            loflEvocationGraphique[loflEvocationGraphique.index(item)] = prem
+                            del loflEvocationGraphique[loflEvocationGraphique.index(item) + 1]
 
-        # vingt
-        for i in range(3):
-            for item in loflVingt:
-                if loflVingt.index(item) != len(loflVingt) - 1:
-                    prem = loflVingt[loflVingt.index(item)]
-                    Vingt = loflVingt[loflVingt.index(item) + 1]
+        # Evocation plastique
+        for i in facteurs:
+            if EvocationPlastique.objects.count() < i[1]:
+                nbIter = i[0]
+                break
+
+        for i in range(nbIter):
+            for item in loflEvocationPlastique:
+                if loflEvocationPlastique.index(item) != len(loflEvocationPlastique) - 1:
+                    prem = loflEvocationPlastique[loflEvocationPlastique.index(item)]
+                    Vingt = loflEvocationPlastique[loflEvocationPlastique.index(item) + 1]
                     if prem[0] == Vingt[0]:
                         if prem[1] not in Vingt[1]:
                             prem[1] += ", "
                             prem[1] += Vingt[1]
-                            loflVingt[loflVingt.index(item)] = prem
-                            del loflVingt[loflVingt.index(item) + 1]
+                            loflEvocationPlastique[loflEvocationPlastique.index(item)] = prem
+                            del loflEvocationPlastique[loflEvocationPlastique.index(item) + 1]
 
-        # vingt-et-un
-        for i in range(3):
-            for item in loflVingtEtUn:
-                if loflVingtEtUn.index(item) != len(loflVingtEtUn) - 1:
-                    prem = loflVingtEtUn[loflVingtEtUn.index(item)]
-                    VingtEtUn = loflVingtEtUn[loflVingtEtUn.index(item) + 1]
+        # Evocation autre
+        for i in facteurs:
+            if EvocationAutre.objects.count() < i[1]:
+                nbIter = i[0]
+                break
+
+        for i in range(nbIter):
+            for item in loflEvocationAutre:
+                if loflEvocationAutre.index(item) != len(loflEvocationAutre) - 1:
+                    prem = loflEvocationAutre[loflEvocationAutre.index(item)]
+                    VingtEtUn = loflEvocationAutre[loflEvocationAutre.index(item) + 1]
                     if prem[0] == VingtEtUn[0]:
                         if prem[1] not in VingtEtUn[1]:
                             prem[1] += ", "
                             prem[1] += VingtEtUn[1]
-                            loflVingtEtUn[loflVingtEtUn.index(item)] = prem
-                            del loflVingtEtUn[loflVingtEtUn.index(item) + 1]
+                            loflEvocationAutre[loflEvocationAutre.index(item)] = prem
+                            del loflEvocationAutre[loflEvocationAutre.index(item) + 1]
 
-        # vingt-deux
-        for i in range(3):
-            for item in loflVingtDeux:
-                if loflVingtDeux.index(item) != len(loflVingtDeux) - 1:
-                    prem = loflVingtDeux[loflVingtDeux.index(item)]
-                    VingtDeux = loflVingtDeux[loflVingtDeux.index(item) + 1]
+        # Exemple notions interdisciplinaires
+        for i in facteurs:
+            if NotionsInter.objects.count() < i[1]:
+                nbIter = i[0]
+                break
+
+        for i in range(nbIter):
+            for item in loflExempleNotionInter:
+                if loflExempleNotionInter.index(item) != len(loflExempleNotionInter) - 1:
+                    prem = loflExempleNotionInter[loflExempleNotionInter.index(item)]
+                    VingtDeux = loflExempleNotionInter[loflExempleNotionInter.index(item) + 1]
                     if prem[0] == VingtDeux[0]:
                         if prem[1] not in VingtDeux[1]:
                             prem[1] += ", "
                             prem[1] += VingtDeux[1]
-                            loflVingtDeux[loflVingtDeux.index(item)] = prem
-                            del loflVingtDeux[loflVingtDeux.index(item) + 1]
+                            loflExempleNotionInter[loflExempleNotionInter.index(item)] = prem
+                            del loflExempleNotionInter[loflExempleNotionInter.index(item) + 1]
 
-        # vingt-trois
-        for i in range(3):
-            for item in loflVingtTrois:
-                if loflVingtTrois.index(item) != len(loflVingtTrois) - 1:
-                    prem = loflVingtTrois[loflVingtTrois.index(item)]
-                    VingtTrois = loflVingtTrois[loflVingtTrois.index(item) + 1]
+        # Role femme
+        for i in facteurs:
+            if RoleFemmes.objects.count() < i[1]:
+                nbIter = i[0]
+                break
+
+        for i in range(nbIter):
+            for item in loflRoleFemme:
+                if loflRoleFemme.index(item) != len(loflRoleFemme) - 1:
+                    prem = loflRoleFemme[loflRoleFemme.index(item)]
+                    VingtTrois = loflRoleFemme[loflRoleFemme.index(item) + 1]
                     if prem[0] == VingtTrois[0]:
                         if prem[1] not in VingtTrois[1]:
                             prem[1] += ", "
                             prem[1] += VingtTrois[1]
-                            loflVingtTrois[loflVingtTrois.index(item)] = prem
-                            del loflVingtTrois[loflVingtTrois.index(item) + 1]
+                            loflRoleFemme[loflRoleFemme.index(item)] = prem
+                            del loflRoleFemme[loflRoleFemme.index(item) + 1]
 
-        # vingt-quatre
-        for i in range(3):
-            for item in loflVingtQuatre:
-                if loflVingtQuatre.index(item) != len(loflVingtQuatre) - 1:
-                    prem = loflVingtQuatre[loflVingtQuatre.index(item)]
-                    VingtQuatre = loflVingtQuatre[loflVingtQuatre.index(item) + 1]
+        # Role homme
+        for i in facteurs:
+            if RoleHomme.objects.count() < i[1]:
+                nbIter = i[0]
+                break
+
+        for i in range(nbIter):
+            for item in loflRoleHomme:
+                if loflRoleHomme.index(item) != len(loflRoleHomme) - 1:
+                    prem = loflRoleHomme[loflRoleHomme.index(item)]
+                    VingtQuatre = loflRoleHomme[loflRoleHomme.index(item) + 1]
                     if prem[0] == VingtQuatre[0]:
                         if prem[1] not in VingtQuatre[1]:
                             prem[1] += ", "
                             prem[1] += VingtQuatre[1]
-                            loflVingtQuatre[loflVingtQuatre.index(item)] = prem
-                            del loflVingtQuatre[loflVingtQuatre.index(item) + 1]
+                            loflRoleHomme[loflRoleHomme.index(item)] = prem
+                            del loflRoleHomme[loflRoleHomme.index(item) + 1]
 
-        # vingt-cinq
-        for i in range(3):
-            for item in loflVingtCinq:
-                if loflVingtCinq.index(item) != len(loflVingtCinq) - 1:
-                    prem = loflVingtCinq[loflVingtCinq.index(item)]
-                    VingtCinq = loflVingtCinq[loflVingtCinq.index(item) + 1]
+        # Role humain neutre
+        for i in facteurs:
+            if RoleHumainNeutre.objects.count() < i[1]:
+                nbIter = i[0]
+                break
+
+        for i in range(nbIter):
+            for item in loflRoleHumainNeutre:
+                if loflRoleHumainNeutre.index(item) != len(loflRoleHumainNeutre) - 1:
+                    prem = loflRoleHumainNeutre[loflRoleHumainNeutre.index(item)]
+                    VingtCinq = loflRoleHumainNeutre[loflRoleHumainNeutre.index(item) + 1]
                     if prem[0] == VingtCinq[0]:
                         if prem[1] not in VingtCinq[1]:
                             prem[1] += ", "
                             prem[1] += VingtCinq[1]
-                            loflVingtCinq[loflVingtCinq.index(item)] = prem
-                            del loflVingtCinq[loflVingtCinq.index(item) + 1]
+                            loflRoleHumainNeutre[loflRoleHumainNeutre.index(item)] = prem
+                            del loflRoleHumainNeutre[loflRoleHumainNeutre.index(item) + 1]
 
-        # vingt-six
-        for i in range(3):
-            for item in loflVingtSix:
-                if loflVingtSix.index(item) != len(loflVingtSix) - 1:
-                    prem = loflVingtSix[loflVingtSix.index(item)]
-                    VingtSix = loflVingtSix[loflVingtSix.index(item) + 1]
+        # Role personnage animé femme
+        for i in facteurs:
+            if RolePersAnimFemmes.objects.count() < i[1]:
+                nbIter = i[0]
+                break
+
+        for i in range(nbIter):
+            for item in loflRolePersAnimFemme:
+                if loflRolePersAnimFemme.index(item) != len(loflRolePersAnimFemme) - 1:
+                    prem = loflRolePersAnimFemme[loflRolePersAnimFemme.index(item)]
+                    VingtSix = loflRolePersAnimFemme[loflRolePersAnimFemme.index(item) + 1]
                     if prem[0] == VingtSix[0]:
                         if prem[1] not in VingtSix[1]:
                             prem[1] += ", "
                             prem[1] += VingtSix[1]
-                            loflVingtSix[loflVingtSix.index(item)] = prem
-                            del loflVingtSix[loflVingtSix.index(item) + 1]
+                            loflRolePersAnimFemme[loflRolePersAnimFemme.index(item)] = prem
+                            del loflRolePersAnimFemme[loflRolePersAnimFemme.index(item) + 1]
 
-        # vingt-sept
-        for i in range(3):
-            for item in loflVingtSept:
-                if loflVingtSept.index(item) != len(loflVingtSept) - 1:
-                    prem = loflVingtSept[loflVingtSept.index(item)]
-                    VingtSept = loflVingtSept[loflVingtSept.index(item) + 1]
+        # Role personnage animé homme
+        for i in facteurs:
+            if RolePersAnimHomme.objects.count() < i[1]:
+                nbIter = i[0]
+                break
+
+        for i in range(nbIter):
+            for item in loflRolePersAnimHomme:
+                if loflRolePersAnimHomme.index(item) != len(loflRolePersAnimHomme) - 1:
+                    prem = loflRolePersAnimHomme[loflRolePersAnimHomme.index(item)]
+                    VingtSept = loflRolePersAnimHomme[loflRolePersAnimHomme.index(item) + 1]
                     if prem[0] == VingtSept[0]:
                         if prem[1] not in VingtSept[1]:
                             prem[1] += ", "
                             prem[1] += VingtSept[1]
-                            loflVingtSept[loflVingtSept.index(item)] = prem
-                            del loflVingtSept[loflVingtSept.index(item) + 1]
+                            loflRolePersAnimHomme[loflRolePersAnimHomme.index(item)] = prem
+                            del loflRolePersAnimHomme[loflRolePersAnimHomme.index(item) + 1]
 
-        # vingt-huit
-        for i in range(3):
-            for item in loflVingtHuit:
-                if loflVingtHuit.index(item) != len(loflVingtHuit) - 1:
-                    prem = loflVingtHuit[loflVingtHuit.index(item)]
-                    VingtHuit = loflVingtHuit[loflVingtHuit.index(item) + 1]
+        # Role presonnage animé neutre
+        for i in facteurs:
+            if RolePersAnimNeutre.objects.count() < i[1]:
+                nbIter = i[0]
+                break
+
+        for i in range(nbIter):
+            for item in loflRolePersAnimNeutre:
+                if loflRolePersAnimNeutre.index(item) != len(loflRolePersAnimNeutre) - 1:
+                    prem = loflRolePersAnimNeutre[loflRolePersAnimNeutre.index(item)]
+                    VingtHuit = loflRolePersAnimNeutre[loflRolePersAnimNeutre.index(item) + 1]
                     if prem[0] == VingtHuit[0]:
                         if prem[1] not in VingtHuit[1]:
                             prem[1] += ", "
                             prem[1] += VingtHuit[1]
-                            loflVingtHuit[loflVingtHuit.index(item)] = prem
-                            del loflVingtHuit[loflVingtHuit.index(item) + 1]
+                            loflRolePersAnimNeutre[loflRolePersAnimNeutre.index(item)] = prem
+                            del loflRolePersAnimNeutre[loflRolePersAnimNeutre.index(item) + 1]
 
-        # vingt-neuf
-        for i in range(3):
-            for item in loflVingtNeuf:
-                if loflVingtNeuf.index(item) != len(loflVingtNeuf) - 1:
-                    prem = loflVingtNeuf[loflVingtNeuf.index(item)]
-                    VingtNeuf = loflVingtNeuf[loflVingtNeuf.index(item) + 1]
+        # Role femelles
+        for i in facteurs:
+            if RoleAnimauxFemmes.objects.count() < i[1]:
+                nbIter = i[0]
+                break
+
+        for i in range(nbIter):
+            for item in loflRoleFemelle:
+                if loflRoleFemelle.index(item) != len(loflRoleFemelle) - 1:
+                    prem = loflRoleFemelle[loflRoleFemelle.index(item)]
+                    VingtNeuf = loflRoleFemelle[loflRoleFemelle.index(item) + 1]
                     if prem[0] == VingtNeuf[0]:
                         if prem[1] not in VingtNeuf[1]:
                             prem[1] += ", "
                             prem[1] += VingtNeuf[1]
-                            loflVingtNeuf[loflVingtNeuf.index(item)] = prem
-                            del loflVingtNeuf[loflVingtNeuf.index(item) + 1]
+                            loflRoleFemelle[loflRoleFemelle.index(item)] = prem
+                            del loflRoleFemelle[loflRoleFemelle.index(item) + 1]
 
-        # trente
-        for i in range(3):
-            for item in loflTrente:
-                if loflTrente.index(item) != len(loflTrente) - 1:
-                    prem = loflTrente[loflTrente.index(item)]
-                    Trente = loflTrente[loflTrente.index(item) + 1]
+        # Rôle mâle
+        for i in facteurs:
+            if RoleAnimauxHomme.objects.count() < i[1]:
+                nbIter = i[0]
+                break
+
+        for i in range(nbIter):
+            for item in loflRoleMale:
+                if loflRoleMale.index(item) != len(loflRoleMale) - 1:
+                    prem = loflRoleMale[loflRoleMale.index(item)]
+                    Trente = loflRoleMale[loflRoleMale.index(item) + 1]
                     if prem[0] == Trente[0]:
                         if prem[1] not in Trente[1]:
                             prem[1] += ", "
                             prem[1] += Trente[1]
-                            loflTrente[loflTrente.index(item)] = prem
-                            del loflTrente[loflTrente.index(item) + 1]
+                            loflRoleMale[loflRoleMale.index(item)] = prem
+                            del loflRoleMale[loflRoleMale.index(item) + 1]
 
-        # trente-et-un
-        for i in range(3):
-            for item in loflTrenteEtUn:
-                if loflTrenteEtUn.index(item) != len(loflTrenteEtUn) - 1:
-                    prem = loflTrenteEtUn[loflTrenteEtUn.index(item)]
-                    TrenteEtUn = loflTrenteEtUn[loflTrenteEtUn.index(item) + 1]
+        # Rôle animaux neutre
+        for i in facteurs:
+            if RoleAnimauxNeutre.objects.count() < i[1]:
+                nbIter = i[0]
+                break
+
+        for i in range(nbIter):
+            for item in loflAnimauxNeutre:
+                if loflAnimauxNeutre.index(item) != len(loflAnimauxNeutre) - 1:
+                    prem = loflAnimauxNeutre[loflAnimauxNeutre.index(item)]
+                    TrenteEtUn = loflAnimauxNeutre[loflAnimauxNeutre.index(item) + 1]
                     if prem[0] == TrenteEtUn[0]:
                         if prem[1] not in TrenteEtUn[1]:
                             prem[1] += ", "
                             prem[1] += TrenteEtUn[1]
-                            loflTrenteEtUn[loflTrenteEtUn.index(item)] = prem
-                            del loflTrenteEtUn[loflTrenteEtUn.index(item) + 1]
+                            loflAnimauxNeutre[loflAnimauxNeutre.index(item)] = prem
+                            del loflAnimauxNeutre[loflAnimauxNeutre.index(item) + 1]
 
-        # trente-deux
-        for i in range(3):
-            for item in loflTrenteDeux:
-                if loflTrenteDeux.index(item) != len(loflTrenteDeux) - 1:
-                    prem = loflTrenteDeux[loflTrenteDeux.index(item)]
-                    TrenteDeux = loflTrenteDeux[loflTrenteDeux.index(item) + 1]
+        # Rôle intruments femme
+        for i in facteurs:
+            if RoleInstrFemmes.objects.count() < i[1]:
+                nbIter = i[0]
+                break
+
+        for i in range(nbIter):
+            for item in loflInstrAnimFemme:
+                if loflInstrAnimFemme.index(item) != len(loflInstrAnimFemme) - 1:
+                    prem = loflInstrAnimFemme[loflInstrAnimFemme.index(item)]
+                    TrenteDeux = loflInstrAnimFemme[loflInstrAnimFemme.index(item) + 1]
                     if prem[0] == TrenteDeux[0]:
                         if prem[1] not in TrenteDeux[1]:
                             prem[1] += ", "
                             prem[1] += TrenteDeux[1]
-                            loflTrenteDeux[loflTrenteDeux.index(item)] = prem
-                            del loflTrenteDeux[loflTrenteDeux.index(item) + 1]
+                            loflInstrAnimFemme[loflInstrAnimFemme.index(item)] = prem
+                            del loflInstrAnimFemme[loflInstrAnimFemme.index(item) + 1]
 
-        # trente-trois
-        for i in range(3):
-            for item in loflTrenteTrois:
-                if loflTrenteTrois.index(item) != len(loflTrenteTrois) - 1:
-                    prem = loflTrenteTrois[loflTrenteTrois.index(item)]
-                    TrenteTrois = loflTrenteTrois[loflTrenteTrois.index(item) + 1]
+        # Rôle instruments homme
+        for i in facteurs:
+            if RoleInstrHomme.objects.count() < i[1]:
+                nbIter = i[0]
+                break
+
+        for i in range(nbIter):
+            for item in loflInstrAnimHomme:
+                if loflInstrAnimHomme.index(item) != len(loflInstrAnimHomme) - 1:
+                    prem = loflInstrAnimHomme[loflInstrAnimHomme.index(item)]
+                    TrenteTrois = loflInstrAnimHomme[loflInstrAnimHomme.index(item) + 1]
                     if prem[0] == TrenteTrois[0]:
                         if prem[1] not in TrenteTrois[1]:
                             prem[1] += ", "
                             prem[1] += TrenteTrois[1]
-                            loflTrenteTrois[loflTrenteTrois.index(item)] = prem
-                            del loflTrenteTrois[loflTrenteTrois.index(item) + 1]
+                            loflInstrAnimHomme[loflInstrAnimHomme.index(item)] = prem
+                            del loflInstrAnimHomme[loflInstrAnimHomme.index(item) + 1]
 
-        # trente-quatre
-        for i in range(3):
-            for item in loflTrenteQuatre:
-                if loflTrenteQuatre.index(item) != len(loflTrenteQuatre) - 1:
-                    prem = loflTrenteQuatre[loflTrenteQuatre.index(item)]
-                    TrenteQuatre = loflTrenteQuatre[loflTrenteQuatre.index(item) + 1]
+        # Rôle instruments neutre
+        for i in facteurs:
+            if RoleInstrNeutre.objects.count() < i[1]:
+                nbIter = i[0]
+                break
+
+        for i in range(nbIter):
+            for item in loflInstrAnimNeutre:
+                if loflInstrAnimNeutre.index(item) != len(loflInstrAnimNeutre) - 1:
+                    prem = loflInstrAnimNeutre[loflInstrAnimNeutre.index(item)]
+                    TrenteQuatre = loflInstrAnimNeutre[loflInstrAnimNeutre.index(item) + 1]
                     if prem[0] == TrenteQuatre[0]:
                         if prem[1] not in TrenteQuatre[1]:
                             prem[1] += ", "
                             prem[1] += TrenteQuatre[1]
-                            loflTrenteQuatre[loflTrenteQuatre.index(item)] = prem
-                            del loflTrenteQuatre[loflTrenteQuatre.index(item) + 1]
+                            loflInstrAnimNeutre[loflInstrAnimNeutre.index(item)] = prem
+                            del loflInstrAnimNeutre[loflInstrAnimNeutre.index(item) + 1]
 
+        # création d'une liste à envoyer au xls
         for part in range(total):
-            del loflUnUn[part][0]
-            del loflDeux[part][0]
-            del loflTrois[part][0]
-            del loflQuatre[part][0]
-            del loflCinq[part][0]
-            del loflSix[part][0]
-            del loflSept[part][0]
-            del loflHuit[part][0]
-            del loflNeuf[part][0]
-            del loflDix[part][0]
-            del loflOnze[part][0]
-            del loflDouze[part][0]
-            del loflTreize[part][0]
-            del loflQuatorze[part][0]
-            del loflQuinze[part][0]
-            del loflSeize[part][0]
-            del loflSeizeDeux[part][0]
-            del loflDixSept[part][0]
-            del loflDixHuit[part][0]
-            del loflDixNeuf[part][0]
-            del loflVingt[part][0]
-            del loflVingtEtUn[part][0]
-            del loflVingtDeux[part][0]
-            del loflVingtTrois[part][0]
-            del loflVingtQuatre[part][0]
-            del loflVingtCinq[part][0]
-            del loflVingtSix[part][0]
-            del loflVingtSept[part][0]
-            del loflVingtHuit[part][0]
-            del loflVingtNeuf[part][0]
-            del loflTrente[part][0]
-            del loflTrenteEtUn[part][0]
-            del loflTrenteDeux[part][0]
-            del loflTrenteTrois[part][0]
-            del loflTrenteQuatre[part][0]
-            loflFin[part] = loflUn[part] + loflUnUn[part] + loflDeux[part] + loflTrois[part] + loflQuatre[part] + loflCinq[part] + loflSix[part] + loflSept[part] + loflHuit[part]\
-                            + loflNeuf[part] + loflDix[part] + loflOnze[part] + loflDouze[part] + loflTreize[part] + loflQuatorze[part] + loflQuinze[part] + \
-                            loflSeize[part] + loflSeizeDeux[part] + loflDixSept[part] + loflDixHuit[part] + loflDixNeuf[part] + loflVingt[part] + loflVingtEtUn[part] + \
-                            loflVingtDeux[part] + loflVingtTrois[part] + loflVingtQuatre[part] + loflVingtCinq[part] + loflVingtSix[part] + loflVingtSept[part] + \
-                            loflVingtHuit[part] + loflVingtNeuf[part] + loflTrente[part] + loflTrenteEtUn[part] + loflTrenteDeux[part] + loflTrenteTrois[part] + \
-                            loflTrenteQuatre[part]
+            del loflProdNom[part][0]
+            del loflSupportDiffusion[part][0]
+            del loflFormat[part][0]
+            del loflFormeNarrative[part][0]
+            del loflModeHebergement[part][0]
+            del loflModeConsultation[part][0]
+            del loflLangue[part][0]
+            del loflSousTitre[part][0]
+            del loflOrchestration[part][0]
+            del loflStructure[part][0]
+            del loflLanguageMusical[part][0]
+            del loflGenreMusical[part][0]
+            del loflStyleMusical[part][0]
+            del loflExperienceMusical[part][0]
+            del loflEpoque[part][0]
+            del loflContexte[part][0]
+            del loflRoleEvolution[part][0]
+            del loflOrganologie[part][0]
+            del loflSollicitationMusicale[part][0]
+            del loflSollicitationGenerale[part][0]
+            del loflEvocationGraphique[part][0]
+            del loflEvocationPlastique[part][0]
+            del loflEvocationAutre[part][0]
+            del loflExempleNotionInter[part][0]
+            del loflRoleFemme[part][0]
+            del loflRoleHomme[part][0]
+            del loflRoleHumainNeutre[part][0]
+            del loflRolePersAnimFemme[part][0]
+            del loflRolePersAnimHomme[part][0]
+            del loflRolePersAnimNeutre[part][0]
+            del loflRoleFemelle[part][0]
+            del loflRoleMale[part][0]
+            del loflAnimauxNeutre[part][0]
+            del loflInstrAnimFemme[part][0]
+            del loflInstrAnimHomme[part][0]
+            del loflInstrAnimNeutre[part][0]
+            loflFin[part] = loflProdType[part] + loflProdNom[part] + loflSupportDiffusion[part] + loflFormat[part] + loflFormeNarrative[part] + loflModeHebergement[part] + loflModeConsultation[part] + loflLangue[part] + loflSousTitre[part]\
+                            + loflOrchestration[part] + loflStructure[part] + loflLanguageMusical[part] + loflGenreMusical[part] + loflStyleMusical[part] + loflExperienceMusical[part] + loflEpoque[part] + loflContexte[part] + \
+                            loflRoleEvolution[part] + loflOrganologie[part] + loflSollicitationMusicale[part] + loflSollicitationGenerale[part] + loflEvocationGraphique[part] + loflEvocationPlastique[part] + loflEvocationAutre[part] + \
+                            loflExempleNotionInter[part] + loflRoleFemme[part] + loflRoleHomme[part] + loflRoleHumainNeutre[part] + loflRolePersAnimFemme[part] + loflRolePersAnimHomme[part] + \
+                            loflRolePersAnimNeutre[part] + loflRoleFemelle[part] + loflRoleMale[part] + loflAnimauxNeutre[part] + loflInstrAnimFemme[part] + loflInstrAnimHomme[part] + \
+                            loflInstrAnimNeutre[part]
 
         for row in loflFin:
             row_num += 1
@@ -1252,3 +1517,6 @@ def export_xls(request):
 
         wb.save(response)
         return response
+
+    else:
+        return redirect('/export_erreur')

@@ -4,6 +4,7 @@
 
 {% block admin_change_form_document_ready %}
 {{ block.super }}
+
 <style>
 .field-ensemble_thematique_nom,
 .field-commentaire_nombre,
@@ -15,10 +16,6 @@
 .field-language_musical,
 .field-genre_musical,
 .field-style_musical,
-.field-epoque,
-.field-contexte,
-.field-role_evolution,
-.field-organologie,
 .field-nb_hommes,
 .field-nb_femmes,
 .field-nb_humains_indetermines,
@@ -94,19 +91,7 @@
             $("#add_id_genre_musical").parent().parent().parent().hide(400)
             $("#add_id_style_musical").parent().parent().parent().hide(400)
         }
-        
-        if(document.getElementById("id_elements_socioculturels").value == "Oui"){
-            $("#id_epoque").parent().parent().show(400)
-            $("#add_id_contexte").parent().parent().parent().show(400)
-            $("#add_id_role_evolution").parent().parent().parent().show(400)
-            $("#add_id_organologie").parent().parent().parent().show(400)
-        }
-        else{
-            $("#id_epoque").parent().parent().hide(400)
-            $("#add_id_contexte").parent().parent().parent().hide(400)
-            $("#add_id_role_evolution").parent().parent().parent().hide(400)
-            $("#add_id_organologie").parent().parent().parent().hide(400)
-        }
+
 
         if(document.getElementById("id_nb_humains_total").value != "0"){
             $("#id_nb_hommes").parent().parent().show(400);

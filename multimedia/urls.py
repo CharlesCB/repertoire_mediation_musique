@@ -19,6 +19,9 @@ from django.contrib.auth import views as auth_views
 from bdmultimedia import views
 from django.conf import settings
 from django.conf.urls.static import static
+from django.views.generic import TemplateView
+
+app_name = 'bdmultimedia'
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -26,8 +29,7 @@ urlpatterns = [
     url(r'^$', views.AlaUneView.as_view(), name='aLaUne'),
     url(r'^liste/$', views.ListeView.as_view(), name = 'liste'),
     url(r'^(?P<pk>[0-9]+)/$', views.DetailView.as_view(), name='detail'),
-    url(r'^(?P<pk>[0-9]+)/delete/$', views.DeleteForm.as_view()),
-    url(r'^delete/(?P<pk>\d+)/$', views.OutilDelete.as_view(), name="delete_outil"),
+    url(r'^delete/(?P<pk>[0-9]+)/$', views.outil_delete, name='outil_delete'),
     url('^login/$', auth_views.LoginView.as_view(), name = 'login'),
     url('^logout/$', auth_views.LogoutView.as_view(), name = 'logout'),
     url('^password_change/$',auth_views.PasswordChangeView.as_view(), name='password_change'),
@@ -37,7 +39,8 @@ urlpatterns = [
     url(r'^recherche/$', views.SearchForm.as_view(), name = 'recherche'),
     url(r'^recherche_motcle/$', views.SearchView.as_view(), name= 'recherche_motcle'),
     url(r'^export/xls/$', views.export_xls, name='exporter_xls'),
-    url(r'^gerer/', views.GererView.as_view(), name = 'gerer'),
+    url(r'^export_erreur/$', TemplateView.as_view(template_name='export_erreur.html')),
+    url(r'^gerer/$', TemplateView.as_view(template_name='gerer.html')),
     url(r'^gerer_prodtype/$', views.GererProdType.as_view(), name='gerer_prodType'),
     url(r'^gerer_producteurnom', views.GererProducteurNom.as_view(), name = 'gerer_producteurNom'),
     url(r'^gerer_supportdiffusion/$', views.GererSupportDiffusion.as_view(), name='gerer_supportDiffusion'),

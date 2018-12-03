@@ -133,6 +133,7 @@ EPOQUE_LIST = (
     ("nsp", "nsp")
 )
 
+
 ACCESSIBILITE_LIST = (
     ("Oui", "Oui"),
     ("Non", "Non"),
@@ -317,6 +318,14 @@ class ExperienceMusicale(models.Model):
     class Meta:
         verbose_name = "Experience musicale"
         verbose_name_plural = "Experiences musicales"
+
+
+@python_2_unicode_compatible
+class Epoque(models.Model):
+    nom = models.CharField(max_length=200, unique = True)
+
+    def __str__(self):
+        return self.nom
 
 
 @python_2_unicode_compatible
@@ -569,10 +578,25 @@ class NotionsInter(models.Model):
         verbose_name = "Exemple de notion évoquée de façon interdisciplinaire"
         verbose_name_plural = "Exemples de notions évoquées de façon interdisciplinaires"
 
+@python_2_unicode_compatible
+class Query(models.Model):
+    nom = models.CharField(max_length=400, unique= False)
+
+    def __str__(self):
+        return self.nom
+
+
+liste_q = []
+for i in list(Query.objects.values_list('nom')):
+    liste_q.append(i[0])
 
 # Pour la recherche par mots-clés
 class OutilManager(models.Manager):
     def search(self, query=None):
+        if query not in liste_q:
+            new = Query(nom=query)
+            new.save()
+
         qs = self.get_queryset().prefetch_related('producteur_type','producteur_nom','support_diffusion','format','forme_narrative',
                                                   'mode_hebergement','narration_langue','sous_titre','orchestration','structure',
                                                   'language_musical', 'genre_musical', 'style_musical', 'experience_musicale',
@@ -590,7 +614,7 @@ class OutilManager(models.Manager):
                          Q(ensemble_thematique_nom__icontains=query) |
                          # Q(interactivite__icontains=query) |
                          # Q(elements_socioculturels__icontains=query) |
-                         Q(epoque__icontains=query) |
+                         Q(epoque__nom__icontains=query) |
                          Q(producteur_type__nom__icontains=query) |
                          Q(producteur_nom__nom__icontains=query) |
                          #? Q(support_diffusion__nom__icontains=query) |
@@ -620,12 +644,12 @@ class OutilManager(models.Manager):
                          Q(role_pers_anime_femme__nom__icontains=query) |
                          Q(role_pers_anime_homme__nom__icontains=query) |
                          Q(role_pers_anime_neutre__nom__icontains=query) |
-                        # Q(role_animaux_femme__nom__icontains=query) |
-                         Q(role_animaux_homme__nom__icontains=query) |
-                        # Q(role_animaux_neutre__nom__icontains=query) |
-                         Q(role_instr_anime_femme__nom__icontains=query) |
-                         Q(role_instr_anime_homme__nom__icontains=query)# |
-                        # Q(role_instr_anime_neutre__nom__icontains=query)
+                         # Q(role_animaux_femme__nom__icontains=query) |
+                         Q(role_animaux_homme__nom__icontains=query) # |
+                         # Q(role_animaux_neutre__nom__icontains=query) |
+                         # Q(role_instr_anime_femme__nom__icontains=query) |
+                         # Q(role_instr_anime_homme__nom__icontains=query)# |
+                         # Q(role_instr_anime_neutre__nom__icontains=query)
                          )
             qs = qs.filter(or_lookup).distinct()
         return qs
@@ -736,16 +760,16 @@ class Outil(models.Model):
                                                max_length=200,
                                                default="Non",
                                                verbose_name="M.27 Parle-t-on des éléments socioculturels et historiques?")
-    epoque = MultiSelectField(choices=EPOQUE_LIST, db_index=True, default = 'nsp',
-                              null=True,
-                              max_length=100,
-                              verbose_name="M.27.1 Époque")
-    contexte = models.ManyToManyField(Contexte, db_index=True, default = 1,
+
+    epoque = models.ManyToManyField(Epoque, db_index=True,
+                                        verbose_name="M.27.1 Époque")
+
+    contexte = models.ManyToManyField(Contexte, db_index=True,
                                       verbose_name="M.27.2 Parle-t-on du contexte de composition, création, interprétation de l'oeuvre, de l'instrument...",
                                       help_text='Si il est juste fait mention d’une date sans donner plus d’information sur ce qui se passait à l’époque cocher “Non”.')
-    role_evolution = models.ManyToManyField(RoleEvolution, db_index=True, default = 1,
+    role_evolution = models.ManyToManyField(RoleEvolution, db_index=True,
                                             verbose_name="M.27.3 Parle-t-on du rôle et de l'évolution du [métier liés à la musique précisez]")
-    organologie = models.ManyToManyField(Organologie, db_index=True, default = 6,
+    organologie = models.ManyToManyField(Organologie, db_index=True,
                                          verbose_name = "M.27.4 Parle-t-on d’organologie?")
 
     # SOLLICITATIONS DE L'USAGER
@@ -808,8 +832,8 @@ class Outil(models.Model):
                                         max_length = 10,
                                         default = "0",
                                         help_text = 'On compte tous les humains qui sont 3 ou moins dans le cadre. Si le nombre excède 11, écrire "11 et plus"')
-    nb_hommes = models.PositiveIntegerField(verbose_name="Sté.39.1 Nombre d'hommes", default=0)
     nb_femmes = models.PositiveIntegerField(verbose_name="Sté.39.1 Nombre de femmes", default=0)
+    nb_hommes = models.PositiveIntegerField(verbose_name="Sté.39.1 Nombre d'hommes", default=0)
     nb_humains_indetermines = models.PositiveIntegerField(verbose_name="Sté.39.1 Nombre d'humains au genre indéterminé",
                                                           default=0)
     role_humain_femme = models.ManyToManyField(RoleFemmes, db_index=True,
@@ -822,9 +846,10 @@ class Outil(models.Model):
                                            max_length=10,
                                            default="0",
                                            help_text='Si le nombre excède 11, écrire "11 et plus"')
-    nb_pers_anime_hommes = models.PositiveIntegerField(null=True, verbose_name="Sté.40.1 Nombre de personnages animés hommes",
+    nb_pers_anime_femmes = models.PositiveIntegerField(null=True,
+                                                       verbose_name="Sté.40.1 Nombre de personnages animés femmes",
                                                        default=0)
-    nb_pers_anime_femmes = models.PositiveIntegerField(null=True, verbose_name="Sté.40.1 Nombre de personnages animés femmes",
+    nb_pers_anime_hommes = models.PositiveIntegerField(null=True, verbose_name="Sté.40.1 Nombre de personnages animés hommes",
                                                        default=0)
     nb_pers_anime_indetermines = models.PositiveIntegerField(null=True,
                                                              verbose_name="Sté.40.1 Nombre de personnages animés au genre indéterminé",
@@ -839,8 +864,8 @@ class Outil(models.Model):
                                         max_length=10,
                                         default="0",
                                         help_text='Si le nombre excède 11, écrire "11 et plus"')
-    nb_males = models.PositiveIntegerField(null=True, verbose_name="Sté.41.1 Nombre de mâles", default=0)
     nb_femelles = models.PositiveIntegerField(null=True, verbose_name="Sté.41.1 Nombre de femelles", default=0)
+    nb_males = models.PositiveIntegerField(null=True, verbose_name="Sté.41.1 Nombre de mâles", default=0)
     nb_animaux_indetermines = models.PositiveIntegerField(null=True,
                                                           verbose_name="Sté.41.1 Nombre d'animaux au genre indéterminé",
                                                           default=0)
@@ -854,9 +879,10 @@ class Outil(models.Model):
                                             max_length=10,
                                             default="0",
                                             help_text='cf. anthropomorphe. Si le nombre excède 11, écrire "11 et plus"')
-    nb_instr_anime_hommes = models.PositiveIntegerField(null=True, verbose_name="Sté.42.1 Nombre d'instruments animés masculins",
+    nb_instr_anime_femmes = models.PositiveIntegerField(null=True,
+                                                        verbose_name="Sté.42.1 Nombre d'instruments animés féminins",
                                                         default=0)
-    nb_instr_anime_femmes = models.PositiveIntegerField(null=True, verbose_name="Sté.42.1 Nombre d'instruments animés féminins",
+    nb_instr_anime_hommes = models.PositiveIntegerField(null=True, verbose_name="Sté.42.1 Nombre d'instruments animés masculins",
                                                         default=0)
     nb_instr_anime_indetermines = models.PositiveIntegerField(null=True,
                                                               verbose_name="Sté.42.1 Nombre d'instruments animés au genre indéterminé",
@@ -871,6 +897,18 @@ class Outil(models.Model):
     utilisateur = CurrentUserField(editable = False)
 
     objects = OutilManager()
+
+    def save(self):
+        if "vimeo" in self.integration and "<p" in self.integration:
+            self.integration = self.integration[0:self.integration.find('<p')]
+
+        # if "youtu" in self.url and "?rel=0&amp;showinfo=0" not in self.integration:
+            # self.integration = self.integration[:79] + '?rel=0&amp;showinfo=0' + self.integration[79:]
+
+        if "border:none;" in self.integration:
+            self.integration = self.integration.replace("border:none;", "")
+
+        super(Outil, self).save()
 
     def get_absolute_url(self):
         return reverse('home')

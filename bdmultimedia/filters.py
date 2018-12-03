@@ -88,7 +88,7 @@ class OutilFilter(django_filters.FilterSet):
     experience_musicale__nom = django_filters.MultipleChoiceFilter(choices=EXPERIENCE_MUSICALE_CHOICES, lookup_expr="iexact")
     contexte__nom = django_filters.MultipleChoiceFilter(choices=CONTEXTE_CHOICES, lookup_expr="iexact")
     role_evolution__nom = django_filters.MultipleChoiceFilter(choices=ROLE_EVOLUTION_CHOICES, lookup_expr="iexact")
-    epoque = django_filters.ChoiceFilter(choices=EPOQUE_CHOICES, lookup_expr="icontains")
+    epoque__nom = django_filters.MultipleChoiceFilter(choices=EPOQUE_CHOICES, lookup_expr="icontains")
 
 
     evocation_autre__nom = django_filters.MultipleChoiceFilter(choices=DISCIPLINE_CHOICES, lookup_expr="iexact")
@@ -119,6 +119,6 @@ class OutilFilter(django_filters.FilterSet):
             'experience_musicale__nom',
             'contexte__nom',
             'role_evolution__nom',
-            'epoque',
+            'epoque__nom',
         ]
 

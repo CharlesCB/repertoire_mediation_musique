@@ -5,7 +5,7 @@
 {% load user_agents %}
 {% block title %}
     {% if query is not None %}
-        Recherche par mots-clés : "{{ query }}"
+        Recherche : "{{ query }}"
     {% else %}
         Recherche par mots-clés
     {% endif %}
@@ -49,7 +49,8 @@
                     {% else %}
                         {{ count }} dispositifs trouvés pour
                     {% endif %}
-                        "{{ query }}": </h4>
+                        "{{ query }}" </h4>{% if user.username == "Charles" %}<small>
+                        ({{ temps |floatformat:"-2" }} secondes)</small>{% endif %}
                 </div>
             {% endif %}
            <!--<p class="text-center">Classer par : <a href="{{new_sort_url}}&sort=titre">titre (a)</a> | <a href="{{new_sort_url}}&sort=-titre">titre (d)</a> | <a href="{{new_sort_url}}&sort=mise_en_ligne_date">date (a)</a> | <a href="{{new_sort_url}}&sort=-mise_en_ligne_date">date (d)</a></p>-->

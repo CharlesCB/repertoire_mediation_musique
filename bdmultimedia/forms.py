@@ -3,6 +3,7 @@
 from django import forms
 from models import *
 from django.db.models.fields import BLANK_CHOICE_DASH
+from easy_select2 import Select2Multiple, Select2
 
 
 class Search(forms.ModelForm):
@@ -88,7 +89,7 @@ class Search(forms.ModelForm):
                                       label="Contexte", required=False)
     role_evolution__nom = forms.ChoiceField(widget=forms.CheckboxSelectMultiple, choices=list(ROLE_EVOLUTION_CHOICES),
                                             label="Rôle de l'évolution du [métier lié à la musique]", required=False)
-    epoque = forms.ChoiceField(widget=forms.CheckboxSelectMultiple, choices=EPOQUE_CHOICES,
+    epoque__nom = forms.ChoiceField(widget=forms.CheckboxSelectMultiple, choices=EPOQUE_CHOICES,
                                label="Époque (siècle)", required=False)
 
     # INTERDISCIPLINARITE
@@ -130,5 +131,52 @@ class Search(forms.ModelForm):
             'experience_musicale__nom',
             'contexte__nom',
             'role_evolution__nom',
-            'epoque',
+            'epoque__nom',
         ]
+
+
+class Create(forms.ModelForm):
+
+    def __init__(self, *args, **kwargs):
+        super(Create, self).__init__(*args, **kwargs)
+        self.fields['producteur_nom'].help_text = ''
+        self.fields['narration_langue'].help_text = ''
+        self.fields['sous_titre'].help_text = '<br><br><br>Les sous-titrages automatiques proposés par YouTube n’entrent pas en considération.'
+
+    class Meta:
+        model = Outil
+        fields = '__all__'
+        widgets = {
+            #'producteur_type': forms.CheckboxSelectMultiple,
+            'producteur_nom': Select2Multiple({'width' : '450px'}),
+            # 'support_diffusion': forms.CheckboxSelectMultiple,
+            # 'format': forms.CheckboxSelectMultiple,
+            # 'forme_narrative': forms.CheckboxSelectMultiple,
+            # 'mode_hebergement': forms.CheckboxSelectMultiple,
+            # 'mode_consultation': forms.CheckboxSelectMultiple,
+             'narration_langue': Select2Multiple({'width' : '450px'}),
+             'sous_titre': Select2Multiple({'width' : '450px'}),
+            # 'orchestration': forms.CheckboxSelectMultiple,
+            # 'structure': Select2Multiple({'width': '450px'}),
+            # 'language_musical': Select2Multiple({'width': '450px'}),
+            # 'genre_musical': Select2Multiple({'width': '450px'}),
+            # 'style_musical': Select2Multiple({'width': '450px'}),
+            # 'experience_musicale': Select2Multiple({'width': '450px'}),
+            'epoque': forms.CheckboxSelectMultiple,
+            # 'contexte' : forms.CheckboxSelectMultiple,
+            # 'role_evolution' : forms.CheckboxSelectMultiple,
+            # 'organologie' : forms.CheckboxSelectMultiple,
+            # 'sollicitation_musicale': forms.CheckboxSelectMultiple,
+            # 'sollicitation_generale' : forms.CheckboxSelectMultiple,
+            #
+            # 'evocation_graphique' : forms.CheckboxSelectMultiple,
+            # 'evocation_plastique' : forms.CheckboxSelectMultiple,
+            # 'evocation_autre' : Select2Multiple({'width':'450px'}),
+            # 'exemples_notions_interdisciplinaires' : Select2Multiple({'width':'450px'}),
+            #
+            # 'role_humain_homme' : Select2Multiple({'width':'450px'}),
+            # 'role_humain_femme' : Select2Multiple({'width':'450px'}),
+            # 'role_humain_neutre' : Select2Multiple({'width':'450px'}),
+
+
+        }

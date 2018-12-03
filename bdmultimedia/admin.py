@@ -4,19 +4,24 @@ from __future__ import unicode_literals
 from django.contrib import admin
 from bdmultimedia.models import *
 from easy_select2 import select2_modelform
+from django import forms
+from django.db import models
+from bdmultimedia.forms import Create
 
-#from bdmultimedia.forms import OutilForm
 
 # Register your models here.
 
 
-OutilForm = select2_modelform(Outil, attrs={'width': '480px'})
+# OutilForm = select2_modelform(Outil, attrs={'width': '480px'})
 
 
 class OutilAdmin(admin.ModelAdmin):
     list_display = ('titre',)
     search_fields = ['titre']
-    # form = OutilForm
+    form = Create
+    #formfield_overrides = {
+    #    models.ManyToManyField: {'widget': forms.CheckboxSelectMultiple},
+    #}
     """filter_horizontal = ('producteur_type','producteur_nom','support_diffusion','format','forme_narrative','orchestration',
                          'structure','language_musical','genre_musical','style_musical', 'experience_musicale',
                          'contexte', 'role_evolution', 'sollicitation_musicale', 'sollicitation_generale',
@@ -33,9 +38,8 @@ class OutilAdmin(admin.ModelAdmin):
 #     search_fields = ['titre',]
 
 
-#class CustomTestAdmin(admin.ModelAdmin):
-#    list_display = ('date',)
-#    search_fields = ['date',]
+class QueryAdmin(admin.ModelAdmin):
+    list_display = ('nom',)
 
 
 class ProdTypeAdmin(admin.ModelAdmin):
@@ -260,3 +264,5 @@ admin.site.register(RoleInstrFemmes,RoleInstrFemmeAdmin)
 admin.site.register(RoleInstrNeutre,RoleInstrNeutreAdmin)
 
 admin.site.register(NotionsInter, NotionsInterAdmin)
+
+admin.site.register(Query, QueryAdmin)

@@ -1,34 +1,57 @@
 <!DOCTYPE html>
 <html lang="fr">
 {% extends 'base.html' %}
-{% load bootstrap_pagination %}
-{% load bootstrap3 %}
-{% load bootstrap_tags %}
 {% block body %}
+    <div class="container-fluid">
+        <div class="col-md-10">
+            <div class="page-header">
+                <h4> Liste des dispositifs disponibles:</h4>
+            </div>
+            <p class="col-md-offset-1" align="center" style="color:gray;">
+                <a href="/liste/?csrfmiddlewaretoken={{ csrf_token }}&q=">tout</a> &middot;
+                <a href="/liste/?csrfmiddlewaretoken={{ csrf_token }}&q=a">a</a> &middot;
+                <a href="/liste/?csrfmiddlewaretoken={{ csrf_token }}&q=b">b</a> &middot;
+                <a href="/liste/?csrfmiddlewaretoken={{ csrf_token }}&q=c">c</a> &middot;
+                <a href="/liste/?csrfmiddlewaretoken={{ csrf_token }}&q=d">d</a> &middot;
+                <a href="/liste/?csrfmiddlewaretoken={{ csrf_token }}&q=e">e</a> &middot;
+                <a href="/liste/?csrfmiddlewaretoken={{ csrf_token }}&q=f">f</a> &middot;
+                <a href="/liste/?csrfmiddlewaretoken={{ csrf_token }}&q=g">g</a> &middot;
+                <a href="/liste/?csrfmiddlewaretoken={{ csrf_token }}&q=h">h</a> &middot;
+                <a href="/liste/?csrfmiddlewaretoken={{ csrf_token }}&q=i">i</a> &middot;
+                <a href="/liste/?csrfmiddlewaretoken={{ csrf_token }}&q=j">j</a> &middot;
+                <a href="/liste/?csrfmiddlewaretoken={{ csrf_token }}&q=k">k</a> &middot;
+                <a href="/liste/?csrfmiddlewaretoken={{ csrf_token }}&q=l">l</a> &middot;
+                <a href="/liste/?csrfmiddlewaretoken={{ csrf_token }}&q=m">m</a> &middot;
+                <a href="/liste/?csrfmiddlewaretoken={{ csrf_token }}&q=n">n</a> &middot;
+                <a href="/liste/?csrfmiddlewaretoken={{ csrf_token }}&q=o">o</a> &middot;
+                <a href="/liste/?csrfmiddlewaretoken={{ csrf_token }}&q=p">p</a> &middot;
+                <a href="/liste/?csrfmiddlewaretoken={{ csrf_token }}&q=q">q</a> &middot;
+                <a href="/liste/?csrfmiddlewaretoken={{ csrf_token }}&q=r">r</a> &middot;
+                <a href="/liste/?csrfmiddlewaretoken={{ csrf_token }}&q=s">s</a> &middot;
+                <a href="/liste/?csrfmiddlewaretoken={{ csrf_token }}&q=t">t</a> &middot;
+                <a href="/liste/?csrfmiddlewaretoken={{ csrf_token }}&q=u">u</a> &middot;
+                <a href="/liste/?csrfmiddlewaretoken={{ csrf_token }}&q=v">v</a> &middot;
+                <a href="/liste/?csrfmiddlewaretoken={{ csrf_token }}&q=w">w</a> &middot;
+                <a href="/liste/?csrfmiddlewaretoken={{ csrf_token }}&q=x">x</a> &middot;
+                <a href="/liste/?csrfmiddlewaretoken={{ csrf_token }}&q=y">y</a> &middot;
+                <a href="/liste/?csrfmiddlewaretoken={{ csrf_token }}&q=z">z</a> &middot;
+                <a href="/liste/?csrfmiddlewaretoken={{ csrf_token }}&q=digit">0-9</a>
+            </p>
+            <br>
 
-<div class="container-fluid">
-    <div class="col-md-10">
-        <div class="page-header">
-            <h4> Liste des dispositifs disponibles:</h4>
+            {% if all_outils %}
+                <ul>
+                    {% for outil in all_outils %}
+                    <li><a href="{% url 'detail' outil.id %}"> {{ outil.titre }} </a></li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <div class="text-danger">
+                    <h6> Aucun dispositif n'est disponible </h6>
+                </div>
+            {% endif %}
         </div>
-
-        {% if all_outils %}
-        <ul>
-            {% for outil in all_outils %}
-            <li><a href="{% url 'detail' outil.id %}"> {{ outil.titre }} </a></li>
-            {% endfor %}
-        </ul>
-
-        {% else %}
-
-        <div class="text-danger">
-            <h6> Aucun outil n'est disponible </h6>
-        </div>
-
-        {% endif %}
     </div>
-</div>
-
 {% endblock %}
 
 {% block footer %}
