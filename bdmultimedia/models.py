@@ -9,6 +9,76 @@ from django.core.urlresolvers import reverse
 from django_currentuser.db.models import CurrentUserField
 
 
+PROGRAMMATION_LIST = (
+    ("Je n'ai pas de programmation", "Je n'ai pas de programmation"),
+    ("Oui, en lien avec la programmation de concert", "Oui, en lien avec la programmation de concert"),
+    ("Oui, en lien avec la programmation pédagogique", "Oui, en lien avec la programmation pédagogique"),
+    ("Non", "Non"),
+)
+
+DUREE_LIST = (
+    ("Un mois ou moins","Un mois ou moins"),
+    ("Entre deux et six mois","Entre deux et six mois"),
+    ("Entre six mois et un an","Entre six mois et un an"),
+    ("Entre deux et cinq ans","Entre deux et cinq ans"),
+    ("Plus de cinq ans","Plus de cinq ans"),
+    ("De façon permanente","De façon permanente")
+)
+
+
+MEDIATEUR_LIST = (
+    ("Oui, à temps plein","Oui, à temps plein"),
+    ("Oui, à temps partiel","Oui, à temps partiel"),
+    ("Non", "Non"),
+    ("Ne sais pas","Ne sais pas")
+)
+
+SOUS_TRAITANT_LIST = (
+    ("Oui, entièrement", "Oui, entièrement"),
+    ("Oui, en partie","Oui, en partie"),
+    ("Non", "Non")
+)
+
+FORME_DELEGATION_LIST = (
+    ("Sous-traitance","Sous-traitance"),
+    ("Collaboration (avec une école professionnelle, avec une start up, etc.)", "Collaboration (avec une école professionnelle, avec une start up, etc.)"),
+    ("Partenariat (publicitaire, de recherche, etc.)","Partenariat (publicitaire, de recherche, etc.)"),
+    ("Mecenat (réalisé grâce bénévolat d'employés d'une entreprise privée)", "Mecenat (réalisé grâce bénévolat d'employés d'une entreprise privée)"),
+    ("Autre", "Autre")
+)
+
+USAGER_LIST = (
+    ("Grand public", "Grand public"),
+    ("Vos abonnés actuels", "Vos abonnés actuels"),
+    ("D'anciens abonnés","D'anciens abonnés"),
+    ("Les détenteurs de billets","Les détenteurs de billets"),
+    ("Les groupes scolaires","Les groupes scolaires"),
+    ("Organismes sociocommunautaires", "Organismes sociocommunautaires"),
+    ("Les abonnés de vos médias sociaux", "Les abonnés de vos médias sociaux"),
+    ("Nouveau public", "Nouveau public"),
+    ("Aucun rapport avec mon organime", "Aucun rapport avec mon organime"),
+    ("Autre","Autre")
+)
+
+PUBLIC_CIBLE_LIST = (
+    ("Pas de public cible","Pas de public cible"),
+    ("Nourisson et petite enfance (0 à 3 ans)","Nourisson et petite enfance (0 à 3 ans)"),
+    ("Enfants (4 à 12 ans)","Enfants (4 à 12 ans)"),
+    ("Adolescents (13 à 16 ans)","Adolescents (13 à 16 ans)"),
+    ("Adulescents (16 à 18 ans)","Adulescents (16 à 18 ans)"),
+    ("Jeunes actifs (19 à 25 ans)","Jeunes actifs (19 à 25 ans)"),
+    ("Actifs (25 à 65 ans)","Actifs (25 à 65 ans)"),
+    ("Retraités -(plus de 65 ans)","Retraités -(plus de 65 ans)")
+)
+
+ACTION_LIST = (
+    ("D'éducation musicale","D'éducation musicale"),
+    ("De développement de public","De développement de public"),
+    ("Publicitaire et promotionnelle","Publicitaire et promotionnelle"),
+    ("De médiation de la musique", "De médiation de la musique"),
+    ("Autre", "Autre")
+)
+
 OUINON = (
     ("Oui", "Oui"),
     ("Non", "Non"),
@@ -586,13 +656,15 @@ class Query(models.Model):
         return self.nom
 
 
-liste_q = []
-for i in list(Query.objects.values_list('nom')):
-    liste_q.append(i[0])
+
 
 # Pour la recherche par mots-clés
 class OutilManager(models.Manager):
     def search(self, query=None):
+        liste_q = []
+        for i in list(Query.objects.values_list('nom')):
+            liste_q.append(i[0])
+
         if query not in liste_q:
             new = Query(nom=query)
             new.save()
@@ -612,7 +684,7 @@ class OutilManager(models.Manager):
                          Q(url__icontains=query) |
                          Q(site__icontains=query) |
                          Q(ensemble_thematique_nom__icontains=query) |
-                         # Q(interactivite__icontains=query) |
+                         Q(interactivite__icontains=query) |
                          # Q(elements_socioculturels__icontains=query) |
                          Q(epoque__nom__icontains=query) |
                          Q(producteur_type__nom__icontains=query) |
@@ -651,12 +723,13 @@ class OutilManager(models.Manager):
                          # Q(role_instr_anime_homme__nom__icontains=query)# |
                          # Q(role_instr_anime_neutre__nom__icontains=query)
                          )
-            qs = qs.filter(or_lookup).distinct()
+            qs = qs.filter(or_lookup).distinct().order_by('titre')
         return qs
 
 
 @python_2_unicode_compatible
 class Outil(models.Model):
+
     # RÉFÉRENCEMENT
     titre = models.CharField(max_length=200, verbose_name="R.1 Titre du dispositif", db_index=True,
                              help_text = "Tout support disponible en ligne ne perdant rien à être imprimé n’entre pas dans le corpus analysé ici.")
@@ -893,6 +966,59 @@ class Outil(models.Model):
                                                     verbose_name="Sté.42.2 Rôle des instruments anthropomorphes masculins", default = 1)
     role_instr_anime_neutre = models.ManyToManyField(RoleInstrNeutre, db_index=True,
                                                      verbose_name="Sté.42.4 Rôle des instruments anthropomorphes neutres", default = 1)
+
+    # AJOUT dec 2018
+    email = models.EmailField(verbose_name="Addresse courriel", null=True, blank=True)
+    organisme = models.CharField(max_length=400, verbose_name="Quel est le nom de l'organisme que vous représentez ?",
+                                 null=True, blank=True)
+    outil_nom = models.CharField(max_length=400,
+                                 verbose_name="Quel le nom de l'outil à propos duquel vous allez remplir ce questionnaire ?",
+                                 null=True, blank=True)
+    lien = models.URLField(verbose_name="Lien internet vers cet outil", null=True, blank=True)
+    programmation = MultiSelectField(choices=PROGRAMMATION_LIST,
+                                     verbose_name="Cet outil a-t-il été conçu en lien avec votre programmation ?",
+                                     default="Non", blank=True)
+    duree_conception = models.CharField(max_length=50, choices=DUREE_LIST,
+                                        verbose_name="La conception du contenu de ce outil a été de", null=True, blank=True)
+    duree_realisation = models.CharField(max_length=50, choices=DUREE_LIST,
+                                         verbose_name="La durée du travail nécessaire à sa réalisation/production a été de",
+                                         null=True, blank=True)
+    duree_disponibilite = models.CharField(max_length=50, choices=DUREE_LIST,
+                                           verbose_name="Sa disponibilité en ligne est prévue pour durer", null=True, blank=True)
+    mediateur_professionnel = models.CharField(max_length=50, choices=MEDIATEUR_LIST,
+                                               verbose_name="Avez-vous fait appel à un médiateur professionnel ou à quelqu'un dont les tâches sont associées aux activités de médiation (de votre organisme ou indépendant) pour concevoir ce dispositif ?",
+                                               null=True, blank=True)
+    iniciateur = models.CharField(max_length=400,
+                                  verbose_name="Quelles étaient les personnes à l'initiative de ce projet ? Donner leur fonction et leur statut (ex. le/la responsable du développement des publics)",
+                                  null=True, blank=True)
+    responsable = models.CharField(max_length=400,
+                                   verbose_name="Quels étaient les responsables de ce projet ? Donner leur fonction et leur statut ( ex. un.e stagiaire du département marketing)",
+                                   null=True, blank=True)
+    sous_traitant = models.CharField(max_length=20, choices=SOUS_TRAITANT_LIST,
+                                     verbose_name="Avez-vous confié la réalisation/production de cet outil à des personnes extérieures à votre organisme ?",
+                                     null=True, blank=True)
+    forme_delegation = MultiSelectField(max_length=400, choices=FORME_DELEGATION_LIST,
+                                        verbose_name="Quelle forme a pris la délégation de la réalisation/production de cet outil ?",
+                                        null=True, blank=True)
+    forme_delegation_autre = models.CharField(max_length=400, verbose_name="Autre, précisez.", null=True, blank=True)
+    realisateur = models.CharField(max_length=400,
+                                   verbose_name="Qui a réalisé/produit ce projet ? (nom de l'entreprise si il y a lieu, sinon, fonction et statut du responsable de la mise en œuvre du projet)",
+                                   null=True, blank=True)
+    cout = models.PositiveIntegerField(
+        verbose_name="Quel est le coût approximatif de la réalisation/production de cet outil ? (en nombre ex: 2000$)",
+        default=0, blank=True)
+    usager = MultiSelectField(max_length=400,
+                              verbose_name=" Quel est le rapport entre les usagers que vous imaginiez pour ce dispositif et votre organisme ?",
+                              null=True, blank=True)
+    action_utilisateurs = models.TextField(
+        verbose_name="Complétez cette phrase : en créant ce dispositif notre objectif était que ses utilisateurs...",
+        null=True, blank=True)
+    public_cible = MultiSelectField(max_length=300, choices=PUBLIC_CIBLE_LIST,
+                                    verbose_name="Quelle est la tranche d'âge du public cible de cet outil ?",
+                                    null=True, blank=True)
+    action = MultiSelectField(max_length=200, choices=ACTION_LIST,
+                              verbose_name="Cet outil sert une action (plusieurs choix possibles)", null=True, blank=True)
+    action_delegation_autre = models.CharField(max_length=400, verbose_name="Autre, précisez.", null=True, blank=True)
 
     utilisateur = CurrentUserField(editable = False)
 

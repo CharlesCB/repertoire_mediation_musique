@@ -5,15 +5,16 @@
 
 {% block title %} Dispositif de médiation - {{outil.titre}} {% endblock %}
 {% load i18n customtags %}
+{% load has_group %}
 {% block body %}
 <div class="bggris"></div>
 <div class="modal" id="myModal">
     <div class="modal-content">
         <span class="close">&times;</span><br>
-        <p>Êtes-vous certain/e de vouloir suprimer {{ outil.titre }}?</p>
+        <p>Êtes-vous certain/e de vouloir suprimer "{{ outil.titre }}"?</p>
         <form action="{% url 'outil_delete' outil.id %}" method="post">
             {% csrf_token %}
-            <input class="btn btn-danger" type="submit" value="Suprimer">
+            <input class="btn btn-danger" type="submit" value="Oui, je veux suprimer ce dispositif">
         </form>
     </div>
 </div>
@@ -27,9 +28,10 @@
         {% for i in tout %}
             {% if outil.id == i %}
                 <small style="color:#4eabb4; opacity:0.7;">Résultat {{ forloop.counter }}
+                    de {{ tout|length }}</small>
             {% endif %}
         {% endfor %}
-        de {{ tout|length }}</small>
+
         <br><h3>{{ outil.titre }}</h3></div>
     </div>
 </section>
@@ -55,7 +57,7 @@
                     </div>
             {% endif %}
         {% endfor %}
-    {% if user.is_authenticated %}
+    {% if request.user|has_group:"Chercheur" %}
         <div class="">
             <a href="JavaScript:newPopup('/admin/bdmultimedia/outil/{{ outil.id }}/change/?_to_field=id&amp;_popup=1');">
                 <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>&nbsp; Modifier </a>

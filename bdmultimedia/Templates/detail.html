@@ -5,16 +5,16 @@
 {% block title %} Dispositif de médiation - {{outil.titre}} {% endblock %}
 {% load i18n customtags %}
 {% load user_agents %}
-{% load js %}
+{% load has_group %}
 {% block body %}
 <div class="bggris"></div>
 <div class="modal" id="myModal">
     <div class="modal-content">
         <span class="close">&times;</span><br>
-        <p>Êtes-vous certain/e de vouloir suprimer {{ outil.titre }}?</p>
+        <p>Êtes-vous certain/e de vouloir suprimer "{{ outil.titre }}"?</p>
         <form action="{% url 'outil_delete' outil.id %}" method="post">
             {% csrf_token %}
-            <input class="btn btn-danger" type="submit" value="Suprimer">
+            <input class="btn btn-danger" type="submit" value="Oui, je veux suprimer ce dispositif">
         </form>
     </div>
 </div>
@@ -34,7 +34,7 @@
                 {% assign prev forloop.counter|add:1 %}
             {% endif %}
             {% if forloop.counter == prev %}
-                <div class="" id="nobg">
+                <div class="">
                     <a href="/{{ i.id }}"><span class="glyphicon glyphicon-triangle-left" aria-hidden="true"></span> Précédent </a>
                 </div>
             {% endif %}
@@ -45,17 +45,17 @@
                 {% assign next forloop.counter %}
             {% endif %}
             {% if forloop.counter == next|add:1 %}
-                    <div class="" id="nobg">
+                    <div class="">
                         <a href="/{{ i.id }}"><span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span> Suivant </a>
                     </div>
             {% endif %}
         {% endfor %}
-    {% if user.is_authenticated %}
-        <div class="" id="nobg">
+    {% if request.user|has_group:"Chercheur" %}
+        <div class="">
             <a href="JavaScript:newPopup('/admin/bdmultimedia/outil/{{ outil.id }}/change/?_to_field=id&amp;_popup=1');">
                 <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>&nbsp; Modifier </a>
         </div>
-            <div class="" id="nobg">
+            <div class="">
                 <a href="#" id="delete" onclick="opn()">
                     <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>&nbsp; Suprimer </a>
             </div>
@@ -597,7 +597,6 @@
         'd.getElementsByTagName(\'head\')[0].' +
         'appendChild(d.createElement(\'script\')).src' +
         '=\'http:\/\/1.cuzillion.com\/bin\/resource.cgi?type=js&sleep=2&n=1&t=' + t + '\'">');
-        '=\'{{ outil.url | js }}'">');
 
         doc.close();
     }(document);

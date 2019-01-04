@@ -21,8 +21,6 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.views.generic import TemplateView
 
-app_name = 'bdmultimedia'
-
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^alaune', views.AlaUneView.as_view(), name='aLaUne'),
@@ -34,6 +32,9 @@ urlpatterns = [
     url('^logout/$', auth_views.LogoutView.as_view(), name = 'logout'),
     url('^password_change/$',auth_views.PasswordChangeView.as_view(), name='password_change'),
     url('^password_change/done/$',auth_views.PasswordChangeDoneView.as_view(), name='password_change_done'),
+
+    url(r'^sinscrire/$', views.sinscrire, name='sinscrire'),
+
     url(r'^list/$', views.OutilList.as_view(), name='list'),
     url(r'^result(?P<pk>[0-9]+)/$', views.ListDetailView.as_view(), name='list_detail'),
     url(r'^recherche/$', views.SearchForm.as_view(), name = 'recherche'),

@@ -2,59 +2,626 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3014c590-a354-461d-9433-6c54c6d92512" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/bdmultimedia/Templates/export_erreur.html" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/bdmultimedia/Templates/gererX.html" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/bdmultimedia/static/scripts/modal.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/bdmultimedia/templatetags/js.py" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/bdmultimedia/Templates/password_change_done.html" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/bdmultimedia/Templates/sinscrire.html" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/bdmultimedia/templatetags/has_group.py" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/Django-1.11.15.dist-info/RECORD" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/Django-1.11.15.dist-info/RECORD" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz-2018.3.dist-info/DESCRIPTION.rst" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz-2018.3.dist-info/INSTALLER" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz-2018.3.dist-info/METADATA" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz-2018.3.dist-info/RECORD" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz-2018.3.dist-info/WHEEL" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz-2018.3.dist-info/metadata.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz-2018.3.dist-info/top_level.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz-2018.3.dist-info/zip-safe" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/__init__.py" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/__init__.py" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/lazy.py" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/lazy.py" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/tzinfo.py" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/tzinfo.py" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Africa/Abidjan" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Africa/Abidjan" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Africa/Accra" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Africa/Accra" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Africa/Addis_Ababa" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Africa/Addis_Ababa" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Africa/Algiers" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Africa/Algiers" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Africa/Asmara" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Africa/Asmara" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Africa/Asmera" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Africa/Asmera" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Africa/Bamako" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Africa/Bamako" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Africa/Bangui" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Africa/Bangui" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Africa/Banjul" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Africa/Banjul" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Africa/Bissau" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Africa/Bissau" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Africa/Blantyre" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Africa/Blantyre" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Africa/Brazzaville" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Africa/Brazzaville" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Africa/Bujumbura" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Africa/Bujumbura" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Africa/Cairo" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Africa/Cairo" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Africa/Casablanca" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Africa/Casablanca" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Africa/Ceuta" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Africa/Ceuta" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Africa/Conakry" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Africa/Conakry" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Africa/Dakar" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Africa/Dakar" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Africa/Dar_es_Salaam" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Africa/Dar_es_Salaam" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Africa/Djibouti" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Africa/Djibouti" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Africa/Douala" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Africa/Douala" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Africa/El_Aaiun" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Africa/El_Aaiun" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Africa/Freetown" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Africa/Freetown" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Africa/Gaborone" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Africa/Gaborone" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Africa/Harare" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Africa/Harare" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Africa/Johannesburg" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Africa/Johannesburg" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Africa/Juba" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Africa/Juba" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Africa/Kampala" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Africa/Kampala" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Africa/Khartoum" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Africa/Khartoum" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Africa/Kigali" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Africa/Kigali" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Africa/Kinshasa" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Africa/Kinshasa" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Africa/Lagos" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Africa/Lagos" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Africa/Libreville" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Africa/Libreville" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Africa/Lome" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Africa/Lome" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Africa/Luanda" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Africa/Luanda" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Africa/Lubumbashi" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Africa/Lubumbashi" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Africa/Lusaka" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Africa/Lusaka" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Africa/Malabo" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Africa/Malabo" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Africa/Maputo" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Africa/Maputo" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Africa/Maseru" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Africa/Maseru" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Africa/Mbabane" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Africa/Mbabane" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Africa/Mogadishu" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Africa/Mogadishu" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Africa/Monrovia" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Africa/Monrovia" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Africa/Nairobi" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Africa/Nairobi" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Africa/Ndjamena" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Africa/Ndjamena" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Africa/Niamey" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Africa/Niamey" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Africa/Nouakchott" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Africa/Nouakchott" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Africa/Ouagadougou" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Africa/Ouagadougou" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Africa/Porto-Novo" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Africa/Porto-Novo" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Africa/Sao_Tome" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Africa/Sao_Tome" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Africa/Timbuktu" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Africa/Timbuktu" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Africa/Tripoli" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Africa/Tripoli" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Africa/Tunis" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Africa/Tunis" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Africa/Windhoek" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Africa/Windhoek" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Adak" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Adak" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Anchorage" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Anchorage" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Anguilla" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Anguilla" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Antigua" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Antigua" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Araguaina" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Araguaina" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Argentina/Buenos_Aires" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Argentina/Buenos_Aires" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Argentina/Catamarca" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Argentina/Catamarca" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Argentina/ComodRivadavia" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Argentina/ComodRivadavia" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Argentina/Cordoba" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Argentina/Cordoba" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Argentina/Jujuy" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Argentina/Jujuy" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Argentina/La_Rioja" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Argentina/La_Rioja" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Argentina/Mendoza" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Argentina/Mendoza" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Argentina/Rio_Gallegos" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Argentina/Rio_Gallegos" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Argentina/Salta" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Argentina/Salta" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Argentina/San_Juan" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Argentina/San_Juan" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Argentina/San_Luis" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Argentina/San_Luis" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Argentina/Tucuman" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Argentina/Tucuman" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Argentina/Ushuaia" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Argentina/Ushuaia" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Aruba" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Aruba" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Asuncion" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Asuncion" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Atikokan" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Atikokan" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Atka" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Atka" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Bahia" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Bahia" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Bahia_Banderas" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Bahia_Banderas" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Barbados" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Barbados" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Belem" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Belem" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Belize" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Belize" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Blanc-Sablon" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Blanc-Sablon" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Boa_Vista" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Boa_Vista" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Bogota" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Bogota" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Boise" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Boise" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Buenos_Aires" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Buenos_Aires" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Cambridge_Bay" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Cambridge_Bay" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Campo_Grande" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Campo_Grande" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Cancun" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Cancun" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Caracas" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Caracas" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Catamarca" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Catamarca" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Cayenne" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Cayenne" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Cayman" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Cayman" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Chicago" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Chicago" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Chihuahua" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Chihuahua" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Coral_Harbour" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Coral_Harbour" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Cordoba" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Cordoba" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Costa_Rica" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Costa_Rica" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Creston" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Creston" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Cuiaba" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Cuiaba" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Curacao" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Curacao" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Danmarkshavn" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Danmarkshavn" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Dawson" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Dawson" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Dawson_Creek" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Dawson_Creek" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Denver" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Denver" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Detroit" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Detroit" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Dominica" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Dominica" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Edmonton" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Edmonton" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Eirunepe" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Eirunepe" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/El_Salvador" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/El_Salvador" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Ensenada" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Ensenada" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Fort_Nelson" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Fort_Nelson" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Fort_Wayne" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Fort_Wayne" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Fortaleza" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Fortaleza" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Glace_Bay" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Glace_Bay" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Godthab" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Godthab" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Goose_Bay" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Goose_Bay" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Grand_Turk" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Grand_Turk" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Grenada" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Grenada" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Guadeloupe" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Guadeloupe" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Guatemala" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Guatemala" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Guayaquil" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Guayaquil" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Guyana" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Guyana" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Halifax" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Halifax" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Havana" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Havana" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Hermosillo" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Hermosillo" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Indiana/Indianapolis" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Indiana/Indianapolis" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Indiana/Knox" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Indiana/Knox" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Indiana/Marengo" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Indiana/Marengo" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Indiana/Petersburg" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Indiana/Petersburg" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Indiana/Tell_City" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Indiana/Tell_City" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Indiana/Vevay" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Indiana/Vevay" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Indiana/Vincennes" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Indiana/Vincennes" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Indiana/Winamac" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Indiana/Winamac" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Indianapolis" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Indianapolis" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Inuvik" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Inuvik" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Iqaluit" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Iqaluit" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Jamaica" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Jamaica" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Jujuy" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Jujuy" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Juneau" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Juneau" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Kentucky/Louisville" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Kentucky/Louisville" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Kentucky/Monticello" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Kentucky/Monticello" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Knox_IN" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Knox_IN" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Kralendijk" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Kralendijk" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/La_Paz" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/La_Paz" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Lima" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Lima" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Los_Angeles" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Los_Angeles" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Louisville" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Louisville" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Lower_Princes" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Lower_Princes" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Maceio" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Maceio" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Managua" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Managua" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Manaus" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Manaus" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Marigot" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Marigot" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Martinique" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Martinique" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Matamoros" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Matamoros" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Mazatlan" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Mazatlan" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Mendoza" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Mendoza" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Menominee" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Menominee" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Merida" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Merida" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Metlakatla" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Metlakatla" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Mexico_City" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Mexico_City" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Miquelon" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Miquelon" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Moncton" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Moncton" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Monterrey" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Monterrey" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Montevideo" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Montevideo" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Montreal" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Montreal" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Montserrat" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Montserrat" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Nassau" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Nassau" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/New_York" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/New_York" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Nipigon" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Nipigon" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Nome" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Nome" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Noronha" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Noronha" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/North_Dakota/Beulah" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/North_Dakota/Beulah" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/North_Dakota/Center" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/North_Dakota/Center" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/North_Dakota/New_Salem" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/North_Dakota/New_Salem" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Ojinaga" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Ojinaga" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Panama" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Panama" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Pangnirtung" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Pangnirtung" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Paramaribo" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Paramaribo" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Phoenix" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Phoenix" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Port-au-Prince" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Port-au-Prince" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Port_of_Spain" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Port_of_Spain" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Porto_Acre" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Porto_Acre" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Porto_Velho" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Porto_Velho" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Puerto_Rico" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Puerto_Rico" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Punta_Arenas" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Punta_Arenas" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Rainy_River" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Rainy_River" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Rankin_Inlet" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Rankin_Inlet" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Recife" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Recife" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Regina" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Regina" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Resolute" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Resolute" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Rio_Branco" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Rio_Branco" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Rosario" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Rosario" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Santa_Isabel" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Santa_Isabel" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Santarem" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Santarem" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Santiago" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Santiago" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Santo_Domingo" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Santo_Domingo" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Sao_Paulo" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Sao_Paulo" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Scoresbysund" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Scoresbysund" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Shiprock" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Shiprock" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Sitka" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Sitka" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/St_Barthelemy" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/St_Barthelemy" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/St_Johns" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/St_Johns" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/St_Kitts" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/St_Kitts" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/St_Lucia" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/St_Lucia" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/St_Thomas" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/St_Thomas" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/St_Vincent" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/St_Vincent" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Swift_Current" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Swift_Current" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Tegucigalpa" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Tegucigalpa" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Thule" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Thule" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Thunder_Bay" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Thunder_Bay" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Tijuana" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Tijuana" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Toronto" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Toronto" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Tortola" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Tortola" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Vancouver" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Vancouver" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Virgin" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Virgin" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Whitehorse" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Whitehorse" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Winnipeg" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Winnipeg" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Yakutat" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Yakutat" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Yellowknife" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/America/Yellowknife" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Antarctica/Casey" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Antarctica/Casey" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Antarctica/Davis" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Antarctica/Davis" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Antarctica/DumontDUrville" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Antarctica/DumontDUrville" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Antarctica/Macquarie" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Antarctica/Macquarie" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Antarctica/Mawson" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Antarctica/Mawson" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Antarctica/McMurdo" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Antarctica/McMurdo" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Antarctica/Palmer" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Antarctica/Palmer" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Antarctica/Rothera" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Antarctica/Rothera" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Antarctica/South_Pole" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Antarctica/South_Pole" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Antarctica/Syowa" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Antarctica/Syowa" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Antarctica/Troll" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Antarctica/Troll" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Antarctica/Vostok" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Antarctica/Vostok" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Arctic/Longyearbyen" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Arctic/Longyearbyen" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Aden" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Aden" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Almaty" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Almaty" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Amman" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Amman" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Anadyr" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Anadyr" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Aqtau" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Aqtau" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Aqtobe" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Aqtobe" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Ashgabat" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Ashgabat" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Ashkhabad" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Ashkhabad" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Atyrau" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Atyrau" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Baghdad" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Baghdad" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Bahrain" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Bahrain" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Baku" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Baku" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Bangkok" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Bangkok" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Barnaul" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Barnaul" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Beirut" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Beirut" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Bishkek" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Bishkek" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Brunei" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Brunei" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Calcutta" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Calcutta" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Chita" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Chita" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Choibalsan" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Choibalsan" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Chongqing" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Chongqing" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Chungking" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Chungking" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Colombo" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Colombo" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Dacca" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Dacca" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Damascus" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Damascus" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Dhaka" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Dhaka" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Dili" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Dili" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Dubai" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Dubai" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Dushanbe" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Dushanbe" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Famagusta" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Famagusta" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Gaza" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Gaza" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Harbin" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Harbin" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Hebron" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Hebron" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Ho_Chi_Minh" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Ho_Chi_Minh" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Hong_Kong" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Hong_Kong" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Hovd" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Hovd" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Irkutsk" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Irkutsk" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Istanbul" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Istanbul" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Jakarta" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Jakarta" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Jayapura" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Jayapura" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Jerusalem" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Jerusalem" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Kabul" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Kabul" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Kamchatka" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Kamchatka" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Karachi" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Karachi" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Kashgar" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Kashgar" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Kathmandu" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Kathmandu" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Katmandu" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Katmandu" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Khandyga" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Khandyga" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Kolkata" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Kolkata" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Krasnoyarsk" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Krasnoyarsk" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Kuala_Lumpur" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Kuala_Lumpur" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Kuching" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Kuching" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Kuwait" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Kuwait" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Macao" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Macao" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Macau" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Macau" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Magadan" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Magadan" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Makassar" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Makassar" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Manila" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Manila" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Muscat" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Muscat" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Nicosia" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Nicosia" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Novokuznetsk" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Novokuznetsk" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Novosibirsk" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Novosibirsk" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Omsk" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Omsk" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Oral" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Oral" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Phnom_Penh" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Phnom_Penh" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Pontianak" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Pontianak" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Pyongyang" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Pyongyang" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Qatar" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Qatar" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Qyzylorda" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Qyzylorda" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Rangoon" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Rangoon" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Riyadh" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Riyadh" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Saigon" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Saigon" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Sakhalin" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Sakhalin" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Samarkand" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Samarkand" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Seoul" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Seoul" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Shanghai" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Shanghai" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Singapore" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Singapore" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Srednekolymsk" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Srednekolymsk" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Taipei" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Taipei" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Tashkent" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Tashkent" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Tbilisi" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Tbilisi" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Tehran" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Tehran" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Tel_Aviv" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Tel_Aviv" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Thimbu" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Thimbu" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Thimphu" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Thimphu" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Tokyo" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Tokyo" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Tomsk" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Tomsk" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Ujung_Pandang" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Ujung_Pandang" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Ulaanbaatar" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Ulaanbaatar" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Ulan_Bator" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Ulan_Bator" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Urumqi" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Urumqi" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Ust-Nera" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Ust-Nera" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Vientiane" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Vientiane" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Vladivostok" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Vladivostok" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Yakutsk" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Yakutsk" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Yangon" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Yangon" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Yekaterinburg" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Yekaterinburg" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Yerevan" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Asia/Yerevan" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Atlantic/Azores" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Atlantic/Azores" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Atlantic/Bermuda" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Atlantic/Bermuda" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Atlantic/Canary" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Atlantic/Canary" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Atlantic/Cape_Verde" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Atlantic/Cape_Verde" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Atlantic/Faeroe" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Atlantic/Faeroe" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Atlantic/Faroe" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Atlantic/Faroe" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Atlantic/Jan_Mayen" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Atlantic/Jan_Mayen" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Atlantic/Madeira" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Atlantic/Madeira" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Atlantic/Reykjavik" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Atlantic/Reykjavik" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Atlantic/South_Georgia" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Atlantic/South_Georgia" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Atlantic/St_Helena" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Atlantic/St_Helena" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Atlantic/Stanley" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Atlantic/Stanley" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Australia/ACT" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Australia/ACT" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Australia/Adelaide" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Australia/Adelaide" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Australia/Brisbane" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Australia/Brisbane" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Australia/Broken_Hill" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Australia/Broken_Hill" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Australia/Canberra" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Australia/Canberra" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Australia/Currie" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Australia/Currie" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Australia/Darwin" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Australia/Darwin" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Australia/Eucla" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Australia/Eucla" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Australia/Hobart" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Australia/Hobart" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Australia/LHI" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Australia/LHI" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Australia/Lindeman" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Australia/Lindeman" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Australia/Lord_Howe" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Australia/Lord_Howe" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Australia/Melbourne" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Australia/Melbourne" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Australia/NSW" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Australia/NSW" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Australia/North" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Australia/North" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Australia/Perth" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Australia/Perth" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Australia/Queensland" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Australia/Queensland" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Australia/South" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Australia/South" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Australia/Sydney" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Australia/Sydney" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Australia/Tasmania" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Australia/Tasmania" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Australia/Victoria" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Australia/Victoria" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Australia/West" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Australia/West" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Australia/Yancowinna" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Australia/Yancowinna" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Brazil/Acre" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Brazil/Acre" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Brazil/DeNoronha" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Brazil/DeNoronha" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Brazil/East" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Brazil/East" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Brazil/West" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Brazil/West" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/CET" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/CET" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/CST6CDT" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/CST6CDT" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Canada/Atlantic" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Canada/Atlantic" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Canada/Central" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Canada/Central" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Canada/Eastern" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Canada/Eastern" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Canada/Mountain" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Canada/Mountain" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Canada/Newfoundland" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Canada/Newfoundland" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Canada/Pacific" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Canada/Pacific" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Canada/Saskatchewan" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Canada/Saskatchewan" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Canada/Yukon" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Canada/Yukon" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Chile/Continental" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Chile/Continental" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Chile/EasterIsland" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Chile/EasterIsland" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Cuba" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Cuba" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/EET" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/EET" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/EST" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/EST" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/EST5EDT" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/EST5EDT" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Egypt" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Egypt" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Eire" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Eire" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Etc/GMT" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Etc/GMT" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Etc/GMT+0" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Etc/GMT+0" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Etc/GMT+1" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Etc/GMT+1" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Etc/GMT+10" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Etc/GMT+10" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Etc/GMT+11" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Etc/GMT+11" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Etc/GMT+12" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Etc/GMT+12" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Etc/GMT+2" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Etc/GMT+2" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Etc/GMT+3" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Etc/GMT+3" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Etc/GMT+4" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Etc/GMT+4" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Etc/GMT+5" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Etc/GMT+5" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Etc/GMT+6" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Etc/GMT+6" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Etc/GMT+7" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Etc/GMT+7" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Etc/GMT+8" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Etc/GMT+8" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Etc/GMT+9" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Etc/GMT+9" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Etc/GMT-0" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Etc/GMT-0" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Etc/GMT-1" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Etc/GMT-1" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Etc/GMT-10" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Etc/GMT-10" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Etc/GMT-11" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Etc/GMT-11" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Etc/GMT-12" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Etc/GMT-12" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Etc/GMT-13" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Etc/GMT-13" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Etc/GMT-14" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Etc/GMT-14" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Etc/GMT-2" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Etc/GMT-2" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Etc/GMT-3" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Etc/GMT-3" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Etc/GMT-4" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Etc/GMT-4" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Etc/GMT-5" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Etc/GMT-5" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Etc/GMT-6" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Etc/GMT-6" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Etc/GMT-7" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Etc/GMT-7" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Etc/GMT-8" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Etc/GMT-8" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Etc/GMT-9" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Etc/GMT-9" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Etc/GMT0" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Etc/GMT0" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Etc/Greenwich" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Etc/Greenwich" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Etc/UCT" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Etc/UCT" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Etc/UTC" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Etc/UTC" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Etc/Universal" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Etc/Universal" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Etc/Zulu" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Etc/Zulu" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Europe/Amsterdam" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Europe/Amsterdam" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Europe/Andorra" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Europe/Andorra" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Europe/Astrakhan" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Europe/Astrakhan" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Europe/Athens" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Europe/Athens" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Europe/Belfast" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Europe/Belfast" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Europe/Belgrade" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Europe/Belgrade" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Europe/Berlin" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Europe/Berlin" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Europe/Bratislava" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Europe/Bratislava" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Europe/Brussels" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Europe/Brussels" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Europe/Bucharest" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Europe/Bucharest" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Europe/Budapest" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Europe/Budapest" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Europe/Busingen" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Europe/Busingen" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Europe/Chisinau" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Europe/Chisinau" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Europe/Copenhagen" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Europe/Copenhagen" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Europe/Dublin" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Europe/Dublin" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Europe/Gibraltar" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Europe/Gibraltar" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Europe/Guernsey" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Europe/Guernsey" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Europe/Helsinki" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Europe/Helsinki" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Europe/Isle_of_Man" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Europe/Isle_of_Man" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Europe/Istanbul" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Europe/Istanbul" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Europe/Jersey" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Europe/Jersey" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Europe/Kaliningrad" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Europe/Kaliningrad" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Europe/Kiev" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Europe/Kiev" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Europe/Kirov" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Europe/Kirov" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Europe/Lisbon" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Europe/Lisbon" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Europe/Ljubljana" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Europe/Ljubljana" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Europe/London" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Europe/London" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Europe/Luxembourg" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Europe/Luxembourg" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Europe/Madrid" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Europe/Madrid" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Europe/Malta" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Europe/Malta" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Europe/Mariehamn" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Europe/Mariehamn" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Europe/Minsk" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Europe/Minsk" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Europe/Monaco" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Europe/Monaco" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Europe/Moscow" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Europe/Moscow" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Europe/Nicosia" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Europe/Nicosia" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Europe/Oslo" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Europe/Oslo" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Europe/Paris" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Europe/Paris" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Europe/Podgorica" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Europe/Podgorica" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Europe/Prague" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Europe/Prague" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Europe/Riga" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Europe/Riga" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Europe/Rome" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Europe/Rome" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Europe/Samara" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Europe/Samara" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Europe/San_Marino" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Europe/San_Marino" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Europe/Sarajevo" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Europe/Sarajevo" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Europe/Saratov" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Europe/Saratov" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Europe/Simferopol" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Europe/Simferopol" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Europe/Skopje" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Europe/Skopje" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Europe/Sofia" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Europe/Sofia" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Europe/Stockholm" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Europe/Stockholm" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Europe/Tallinn" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Europe/Tallinn" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Europe/Tirane" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Europe/Tirane" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Europe/Tiraspol" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Europe/Tiraspol" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Europe/Ulyanovsk" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Europe/Ulyanovsk" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Europe/Uzhgorod" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Europe/Uzhgorod" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Europe/Vaduz" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Europe/Vaduz" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Europe/Vatican" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Europe/Vatican" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Europe/Vienna" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Europe/Vienna" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Europe/Vilnius" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Europe/Vilnius" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Europe/Volgograd" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Europe/Volgograd" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Europe/Warsaw" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Europe/Warsaw" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Europe/Zagreb" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Europe/Zagreb" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Europe/Zaporozhye" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Europe/Zaporozhye" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Europe/Zurich" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Europe/Zurich" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Factory" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Factory" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/GB" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/GB" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/GB-Eire" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/GB-Eire" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/GMT" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/GMT" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/GMT+0" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/GMT+0" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/GMT-0" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/GMT-0" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/GMT0" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/GMT0" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Greenwich" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Greenwich" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/HST" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/HST" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Hongkong" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Hongkong" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Iceland" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Iceland" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Indian/Antananarivo" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Indian/Antananarivo" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Indian/Chagos" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Indian/Chagos" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Indian/Christmas" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Indian/Christmas" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Indian/Cocos" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Indian/Cocos" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Indian/Comoro" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Indian/Comoro" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Indian/Kerguelen" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Indian/Kerguelen" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Indian/Mahe" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Indian/Mahe" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Indian/Maldives" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Indian/Maldives" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Indian/Mauritius" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Indian/Mauritius" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Indian/Mayotte" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Indian/Mayotte" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Indian/Reunion" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Indian/Reunion" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Iran" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Iran" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Israel" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Israel" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Jamaica" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Jamaica" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Japan" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Japan" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Kwajalein" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Kwajalein" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Libya" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Libya" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/MET" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/MET" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/MST" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/MST" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/MST7MDT" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/MST7MDT" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Mexico/BajaNorte" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Mexico/BajaNorte" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Mexico/BajaSur" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Mexico/BajaSur" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Mexico/General" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Mexico/General" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/NZ" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/NZ" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/NZ-CHAT" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/NZ-CHAT" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Navajo" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Navajo" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/PRC" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/PRC" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/PST8PDT" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/PST8PDT" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Pacific/Apia" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Pacific/Apia" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Pacific/Auckland" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Pacific/Auckland" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Pacific/Bougainville" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Pacific/Bougainville" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Pacific/Chatham" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Pacific/Chatham" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Pacific/Chuuk" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Pacific/Chuuk" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Pacific/Easter" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Pacific/Easter" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Pacific/Efate" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Pacific/Efate" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Pacific/Enderbury" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Pacific/Enderbury" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Pacific/Fakaofo" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Pacific/Fakaofo" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Pacific/Fiji" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Pacific/Fiji" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Pacific/Funafuti" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Pacific/Funafuti" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Pacific/Galapagos" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Pacific/Galapagos" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Pacific/Gambier" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Pacific/Gambier" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Pacific/Guadalcanal" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Pacific/Guadalcanal" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Pacific/Guam" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Pacific/Guam" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Pacific/Honolulu" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Pacific/Honolulu" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Pacific/Johnston" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Pacific/Johnston" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Pacific/Kiritimati" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Pacific/Kiritimati" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Pacific/Kosrae" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Pacific/Kosrae" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Pacific/Kwajalein" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Pacific/Kwajalein" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Pacific/Majuro" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Pacific/Majuro" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Pacific/Marquesas" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Pacific/Marquesas" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Pacific/Midway" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Pacific/Midway" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Pacific/Nauru" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Pacific/Nauru" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Pacific/Niue" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Pacific/Niue" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Pacific/Norfolk" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Pacific/Norfolk" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Pacific/Noumea" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Pacific/Noumea" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Pacific/Pago_Pago" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Pacific/Pago_Pago" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Pacific/Palau" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Pacific/Palau" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Pacific/Pitcairn" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Pacific/Pitcairn" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Pacific/Pohnpei" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Pacific/Pohnpei" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Pacific/Ponape" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Pacific/Ponape" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Pacific/Port_Moresby" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Pacific/Port_Moresby" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Pacific/Rarotonga" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Pacific/Rarotonga" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Pacific/Saipan" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Pacific/Saipan" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Pacific/Samoa" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Pacific/Samoa" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Pacific/Tahiti" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Pacific/Tahiti" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Pacific/Tarawa" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Pacific/Tarawa" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Pacific/Tongatapu" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Pacific/Tongatapu" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Pacific/Truk" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Pacific/Truk" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Pacific/Wake" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Pacific/Wake" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Pacific/Wallis" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Pacific/Wallis" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Pacific/Yap" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Pacific/Yap" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Poland" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Poland" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Portugal" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Portugal" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/ROC" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/ROC" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/ROK" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/ROK" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Singapore" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Singapore" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Turkey" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Turkey" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/UCT" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/UCT" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/US/Alaska" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/US/Alaska" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/US/Aleutian" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/US/Aleutian" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/US/Arizona" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/US/Arizona" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/US/Central" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/US/Central" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/US/East-Indiana" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/US/East-Indiana" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/US/Eastern" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/US/Eastern" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/US/Hawaii" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/US/Hawaii" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/US/Indiana-Starke" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/US/Indiana-Starke" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/US/Michigan" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/US/Michigan" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/US/Mountain" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/US/Mountain" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/US/Pacific" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/US/Pacific" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/US/Samoa" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/US/Samoa" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/UTC" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/UTC" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Universal" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Universal" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/W-SU" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/W-SU" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/WET" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/WET" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Zulu" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/Zulu" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/leapseconds" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/leapseconds" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/posixrules" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/posixrules" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/tzdata.zi" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/tzdata.zi" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/zone.tab" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/zone.tab" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/zone1970.tab" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pytz/zoneinfo/zone1970.tab" />
       <change beforePath="$PROJECT_DIR$/bdmultimedia/Templates/aLaUne.html" afterPath="$PROJECT_DIR$/bdmultimedia/Templates/aLaUne.html" />
       <change beforePath="$PROJECT_DIR$/bdmultimedia/Templates/admin/bdmultimedia/change_form.html" afterPath="$PROJECT_DIR$/bdmultimedia/Templates/admin/bdmultimedia/change_form.html" />
       <change beforePath="$PROJECT_DIR$/bdmultimedia/Templates/base.html" afterPath="$PROJECT_DIR$/bdmultimedia/Templates/base.html" />
       <change beforePath="$PROJECT_DIR$/bdmultimedia/Templates/detail.html" afterPath="$PROJECT_DIR$/bdmultimedia/Templates/detail.html" />
-      <change beforePath="$PROJECT_DIR$/bdmultimedia/Templates/gerer.html" afterPath="$PROJECT_DIR$/bdmultimedia/Templates/gerer.html" />
-      <change beforePath="$PROJECT_DIR$/bdmultimedia/Templates/gerer_contexte.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/bdmultimedia/Templates/gerer_evocationAutre.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/bdmultimedia/Templates/gerer_evocationGraphique.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/bdmultimedia/Templates/gerer_evocationPlastique.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/bdmultimedia/Templates/gerer_experienceMusicale.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/bdmultimedia/Templates/gerer_formatOutil.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/bdmultimedia/Templates/gerer_formeNarrative.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/bdmultimedia/Templates/gerer_genreMusical.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/bdmultimedia/Templates/gerer_languageMusical.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/bdmultimedia/Templates/gerer_langueNarration.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/bdmultimedia/Templates/gerer_modeConsultation.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/bdmultimedia/Templates/gerer_modeHebergement.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/bdmultimedia/Templates/gerer_notionsInter.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/bdmultimedia/Templates/gerer_orchestration.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/bdmultimedia/Templates/gerer_organologie.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/bdmultimedia/Templates/gerer_prodType.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/bdmultimedia/Templates/gerer_producteurNom.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/bdmultimedia/Templates/gerer_roleAnimauxFemmes.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/bdmultimedia/Templates/gerer_roleAnimauxHommes.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/bdmultimedia/Templates/gerer_roleAnimauxNeutre.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/bdmultimedia/Templates/gerer_roleEvolution.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/bdmultimedia/Templates/gerer_roleFemmes.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/bdmultimedia/Templates/gerer_roleHommes.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/bdmultimedia/Templates/gerer_roleHumainNeutre.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/bdmultimedia/Templates/gerer_roleInstrFemmes.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/bdmultimedia/Templates/gerer_roleInstrHommes.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/bdmultimedia/Templates/gerer_roleInstrNeutre.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/bdmultimedia/Templates/gerer_rolePersAnimFemmes.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/bdmultimedia/Templates/gerer_rolePersAnimHommes.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/bdmultimedia/Templates/gerer_rolePersAnimNeutre.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/bdmultimedia/Templates/gerer_sollicitationGenerale.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/bdmultimedia/Templates/gerer_sollicitationMusicale.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/bdmultimedia/Templates/gerer_sousTitre.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/bdmultimedia/Templates/gerer_structure.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/bdmultimedia/Templates/gerer_styleMusical.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/bdmultimedia/Templates/gerer_supportDiffusion.html" afterPath="" />
       <change beforePath="$PROJECT_DIR$/bdmultimedia/Templates/list_detail.html" afterPath="$PROJECT_DIR$/bdmultimedia/Templates/list_detail.html" />
-      <change beforePath="$PROJECT_DIR$/bdmultimedia/Templates/liste.html" afterPath="$PROJECT_DIR$/bdmultimedia/Templates/liste.html" />
       <change beforePath="$PROJECT_DIR$/bdmultimedia/Templates/recherche_motcle.html" afterPath="$PROJECT_DIR$/bdmultimedia/Templates/recherche_motcle.html" />
-      <change beforePath="$PROJECT_DIR$/bdmultimedia/Templates/registration/login.html" afterPath="$PROJECT_DIR$/bdmultimedia/Templates/registration/login.html" />
       <change beforePath="$PROJECT_DIR$/bdmultimedia/Templates/results.html" afterPath="$PROJECT_DIR$/bdmultimedia/Templates/results.html" />
-      <change beforePath="$PROJECT_DIR$/bdmultimedia/admin.py" afterPath="$PROJECT_DIR$/bdmultimedia/admin.py" />
-      <change beforePath="$PROJECT_DIR$/bdmultimedia/filters.py" afterPath="$PROJECT_DIR$/bdmultimedia/filters.py" />
       <change beforePath="$PROJECT_DIR$/bdmultimedia/forms.py" afterPath="$PROJECT_DIR$/bdmultimedia/forms.py" />
       <change beforePath="$PROJECT_DIR$/bdmultimedia/models.py" afterPath="$PROJECT_DIR$/bdmultimedia/models.py" />
       <change beforePath="$PROJECT_DIR$/bdmultimedia/static/css/style.css" afterPath="$PROJECT_DIR$/bdmultimedia/static/css/style.css" />
@@ -72,23 +639,89 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="urls.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/bdmultimedia/views.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1012">
+              <caret line="216" column="78" lean-forward="false" selection-start-line="216" selection-start-column="78" selection-end-line="216" selection-end-column="78" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="urls.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/multimedia/urls.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="32" column="68" lean-forward="false" selection-start-line="32" selection-start-column="68" selection-end-line="32" selection-end-column="68" />
+            <state relative-caret-position="268">
+              <caret line="28" column="73" lean-forward="false" selection-start-line="28" selection-start-column="73" selection-end-line="28" selection-end-column="73" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="base.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/bdmultimedia/Templates/base.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1755">
+              <caret line="117" column="113" lean-forward="false" selection-start-line="117" selection-start-column="113" selection-end-line="117" selection-end-column="113" />
               <folding>
-                <element signature="e#644#685#0" expanded="true" />
+                <element signature="e#5933#5939#0" expanded="true" />
+                <element signature="e#6232#6238#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="aLaUne.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="aLaUne.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/bdmultimedia/Templates/aLaUne.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="388">
-              <caret line="60" column="40" lean-forward="false" selection-start-line="60" selection-start-column="40" selection-end-line="60" selection-end-column="40" />
+            <state relative-caret-position="177">
+              <caret line="37" column="40" lean-forward="false" selection-start-line="37" selection-start-column="40" selection-end-line="37" selection-end-column="40" />
+              <folding>
+                <element signature="e#378#384#0" expanded="true" />
+                <element signature="e#5236#5242#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="results.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/bdmultimedia/Templates/results.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="570">
+              <caret line="38" column="29" lean-forward="false" selection-start-line="38" selection-start-column="29" selection-end-line="38" selection-end-column="29" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="recherche_motcle.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/bdmultimedia/Templates/recherche_motcle.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1140">
+              <caret line="76" column="65" lean-forward="false" selection-start-line="76" selection-start-column="65" selection-end-line="76" selection-end-column="65" />
+              <folding>
+                <element signature="n#style#0;n#img#0;n#div#1;n#div#2;n#div#0;n#div#4;n#body#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/bdmultimedia/models.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="10185">
+              <caret line="686" column="25" lean-forward="false" selection-start-line="686" selection-start-column="25" selection-end-line="686" selection-end-column="25" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="forms.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/bdmultimedia/forms.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1500">
+              <caret line="103" column="46" lean-forward="false" selection-start-line="103" selection-start-column="46" selection-end-line="103" selection-end-column="46" />
               <folding />
             </state>
           </provider>
@@ -106,13 +739,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>loflDix</find>
-      <find>loflDixHuit</find>
-      <find>loflDixNeuf</find>
-      <find>loflVingt</find>
-      <find>loflVingtDeux</find>
-      <find>loflVingtTrois</find>
-      <find>loflVingtQuatre</find>
       <find>loflVingtCinq</find>
       <find>loflVingtSix</find>
       <find>loflVingtSept</find>
@@ -136,9 +762,15 @@
       <find>&amp;middot</find>
       <find>liste</find>
       <find>?q=</find>
+      <find>outil</find>
+      <find>return</find>
+      <find>lazy</find>
+      <find>alaune</find>
+      <find>asi</find>
+      <find>iframe</find>
+      <find>228</find>
     </findStrings>
     <replaceStrings>
-      <replace>page_obj</replace>
       <replace>$</replace>
       <replace>(&quot;#div</replace>
       <replace>.</replace>
@@ -168,6 +800,7 @@
       <replace>k</replace>
       <replace>&amp;bull</replace>
       <replace>?csrfmiddlewaretoken={{ csrf_token }}&amp;q=</replace>
+      <replace>prodtype</replace>
     </replaceStrings>
     <dirStrings>
       <dir>$PROJECT_DIR$</dir>
@@ -179,11 +812,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/bdmultimedia/Templates/gerer_evocationPlastique.html" />
-        <option value="$PROJECT_DIR$/bdmultimedia/Templates/gerer_evocationGraphique.html" />
-        <option value="$PROJECT_DIR$/bdmultimedia/Templates/gerer_evocationAutre.html" />
-        <option value="$PROJECT_DIR$/bdmultimedia/Templates/gerer_roleFemmes.html" />
-        <option value="$PROJECT_DIR$/bdmultimedia/Templates/gerer_roleHommes.html" />
         <option value="$PROJECT_DIR$/bdmultimedia/Templates/gerer_roleHumainNeutre.html" />
         <option value="$PROJECT_DIR$/bdmultimedia/Templates/gerer_roleInstrFemmes.html" />
         <option value="$PROJECT_DIR$/bdmultimedia/Templates/gerer_roleInstrHommes.html" />
@@ -209,32 +837,36 @@
         <option value="$PROJECT_DIR$/multimedia/settings.py" />
         <option value="$PROJECT_DIR$/requirements.txt" />
         <option value="$PROJECT_DIR$/bdmultimedia/Templates/search.html" />
-        <option value="$PROJECT_DIR$/bdmultimedia/Templates/results.html" />
         <option value="$PROJECT_DIR$/bdmultimedia/filters.py" />
         <option value="$PROJECT_DIR$/bdmultimedia/admin.py" />
-        <option value="$PROJECT_DIR$/bdmultimedia/forms.py" />
-        <option value="$PROJECT_DIR$/bdmultimedia/Templates/admin/bdmultimedia/change_form.html" />
-        <option value="$PROJECT_DIR$/bdmultimedia/Templates/recherche_motcle.html" />
         <option value="$PROJECT_DIR$/bdmultimedia/templatetags/js.py" />
         <option value="$PROJECT_DIR$/bdmultimedia/Templates/gerer.html" />
-        <option value="$PROJECT_DIR$/bdmultimedia/models.py" />
-        <option value="$PROJECT_DIR$/bdmultimedia/Templates/gererX.html" />
-        <option value="$PROJECT_DIR$/bdmultimedia/Templates/base.html" />
         <option value="$PROJECT_DIR$/bdmultimedia/Templates/liste.html" />
         <option value="$PROJECT_DIR$/bdmultimedia/static/scripts/modal.js" />
-        <option value="$PROJECT_DIR$/bdmultimedia/static/css/style.css" />
+        <option value="$PROJECT_DIR$/bdmultimedia/Templates/registration/login.html" />
+        <option value="$PROJECT_DIR$/bdmultimedia/Templates/gererX.html" />
+        <option value="$PROJECT_DIR$/bdmultimedia/Templates/results.html" />
+        <option value="$PROJECT_DIR$/bdmultimedia/Templates/admin/bdmultimedia/registration/password_change_done.html" />
+        <option value="$PROJECT_DIR$/bdmultimedia/Templates/export_erreur.html" />
+        <option value="$PROJECT_DIR$/bdmultimedia/Templates/password_change_done.html" />
+        <option value="$PROJECT_DIR$/bdmultimedia/Templates/prodtype_confirm_delete.html" />
+        <option value="$PROJECT_DIR$/bdmultimedia/templatetags/has_group.py" />
         <option value="$PROJECT_DIR$/bdmultimedia/Templates/list_detail.html" />
         <option value="$PROJECT_DIR$/bdmultimedia/Templates/detail.html" />
-        <option value="$PROJECT_DIR$/multimedia/urls.py" />
-        <option value="$PROJECT_DIR$/bdmultimedia/Templates/registration/login.html" />
-        <option value="$PROJECT_DIR$/bdmultimedia/views.py" />
-        <option value="$PROJECT_DIR$/bdmultimedia/Templates/export_erreur.html" />
+        <option value="$PROJECT_DIR$/bdmultimedia/Templates/sinscrire.html" />
+        <option value="$PROJECT_DIR$/bdmultimedia/static/css/style.css" />
+        <option value="$PROJECT_DIR$/bdmultimedia/Templates/admin/bdmultimedia/change_form.html" />
+        <option value="$PROJECT_DIR$/bdmultimedia/Templates/base.html" />
+        <option value="$PROJECT_DIR$/bdmultimedia/forms.py" />
+        <option value="$PROJECT_DIR$/bdmultimedia/Templates/recherche_motcle.html" />
+        <option value="$PROJECT_DIR$/bdmultimedia/models.py" />
         <option value="$PROJECT_DIR$/bdmultimedia/Templates/aLaUne.html" />
+        <option value="$PROJECT_DIR$/bdmultimedia/views.py" />
+        <option value="$PROJECT_DIR$/multimedia/urls.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="6" />
     <option name="y" value="23" />
     <option name="width" value="1262" />
     <option name="height" value="777" />
@@ -276,8 +908,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -300,7 +930,29 @@
               <item name="repertoire_mediation_musique" type="b2602c69:ProjectViewProjectNode" />
               <item name="repertoire_mediation_musique" type="462c0819:PsiDirectoryNode" />
               <item name="bdmultimedia" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+              <item name="css" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="repertoire_mediation_musique" type="b2602c69:ProjectViewProjectNode" />
+              <item name="repertoire_mediation_musique" type="462c0819:PsiDirectoryNode" />
+              <item name="bdmultimedia" type="462c0819:PsiDirectoryNode" />
               <item name="Templates" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="repertoire_mediation_musique" type="b2602c69:ProjectViewProjectNode" />
+              <item name="repertoire_mediation_musique" type="462c0819:PsiDirectoryNode" />
+              <item name="bdmultimedia" type="462c0819:PsiDirectoryNode" />
+              <item name="Templates" type="462c0819:PsiDirectoryNode" />
+              <item name="admin" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="repertoire_mediation_musique" type="b2602c69:ProjectViewProjectNode" />
+              <item name="repertoire_mediation_musique" type="462c0819:PsiDirectoryNode" />
+              <item name="bdmultimedia" type="462c0819:PsiDirectoryNode" />
+              <item name="Templates" type="462c0819:PsiDirectoryNode" />
+              <item name="admin" type="462c0819:PsiDirectoryNode" />
+              <item name="bdmultimedia" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="repertoire_mediation_musique" type="b2602c69:ProjectViewProjectNode" />
@@ -312,12 +964,20 @@
             <path>
               <item name="repertoire_mediation_musique" type="b2602c69:ProjectViewProjectNode" />
               <item name="repertoire_mediation_musique" type="462c0819:PsiDirectoryNode" />
+              <item name="bdmultimedia" type="462c0819:PsiDirectoryNode" />
+              <item name="templatetags" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="repertoire_mediation_musique" type="b2602c69:ProjectViewProjectNode" />
+              <item name="repertoire_mediation_musique" type="462c0819:PsiDirectoryNode" />
               <item name="multimedia" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -372,19 +1032,19 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="6" y="23" width="1262" height="777" extended-state="0" />
+    <frame x="0" y="23" width="1262" height="777" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18855761" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17566478" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32977098" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3287879" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32928678" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24738115" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32776934" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -405,20 +1065,379 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/bdmultimedia/Templates/detail.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" column="8" lean-forward="false" selection-start-line="14" selection-start-column="8" selection-end-line="17" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bdmultimedia/static/css/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3870">
+          <caret line="258" column="29" lean-forward="false" selection-start-line="258" selection-start-column="29" selection-end-line="258" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/multimedia/urls.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="32" column="68" lean-forward="false" selection-start-line="32" selection-start-column="68" selection-end-line="32" selection-end-column="68" />
-          <folding>
-            <element signature="e#644#685#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bdmultimedia/Templates/base.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="825">
+          <caret line="55" column="58" lean-forward="false" selection-start-line="55" selection-start-column="58" selection-end-line="55" selection-end-column="58" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bdmultimedia/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="13215">
+          <caret line="881" column="41" lean-forward="false" selection-start-line="881" selection-start-column="41" selection-end-line="881" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bdmultimedia/Templates/gererX.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="495">
+          <caret line="33" column="24" lean-forward="false" selection-start-line="33" selection-start-column="24" selection-end-line="33" selection-end-column="24" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/bdmultimedia/Templates/aLaUne.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="388">
+        <state relative-caret-position="900">
+          <caret line="60" column="37" lean-forward="false" selection-start-line="60" selection-start-column="37" selection-end-line="60" selection-end-column="37" />
+          <folding>
+            <element signature="e#378#384#0" expanded="true" />
+            <element signature="e#5236#5242#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bdmultimedia/Templates/results.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="24" column="13" lean-forward="false" selection-start-line="24" selection-start-column="13" selection-end-line="24" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bdmultimedia/Templates/recherche_motcle.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bdmultimedia/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3855">
+          <caret line="257" column="0" lean-forward="false" selection-start-line="257" selection-start-column="0" selection-end-line="257" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bdmultimedia/Templates/detail.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" column="8" lean-forward="false" selection-start-line="14" selection-start-column="8" selection-end-line="17" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/multimedia/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bdmultimedia/Templates/gererX.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="495">
+          <caret line="33" column="24" lean-forward="false" selection-start-line="33" selection-start-column="24" selection-end-line="33" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bdmultimedia/Templates/aLaUne.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="900">
+          <caret line="60" column="37" lean-forward="false" selection-start-line="60" selection-start-column="37" selection-end-line="60" selection-end-column="37" />
+          <folding>
+            <element signature="e#378#384#0" expanded="true" />
+            <element signature="e#5236#5242#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bdmultimedia/Templates/results.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="24" column="13" lean-forward="false" selection-start-line="24" selection-start-column="13" selection-end-line="24" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bdmultimedia/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3855">
+          <caret line="257" column="0" lean-forward="false" selection-start-line="257" selection-start-column="0" selection-end-line="257" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bdmultimedia/Templates/detail.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" column="8" lean-forward="false" selection-start-line="14" selection-start-column="8" selection-end-line="17" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/multimedia/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="33" column="82" lean-forward="false" selection-start-line="33" selection-start-column="82" selection-end-line="33" selection-end-column="82" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bdmultimedia/Templates/gererX.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="495">
+          <caret line="33" column="24" lean-forward="false" selection-start-line="33" selection-start-column="24" selection-end-line="33" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bdmultimedia/Templates/aLaUne.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="900">
+          <caret line="60" column="37" lean-forward="false" selection-start-line="60" selection-start-column="37" selection-end-line="60" selection-end-column="37" />
+          <folding>
+            <element signature="e#378#384#0" expanded="true" />
+            <element signature="e#5236#5242#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bdmultimedia/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3855">
+          <caret line="257" column="0" lean-forward="false" selection-start-line="257" selection-start-column="0" selection-end-line="257" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bdmultimedia/Templates/detail.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" column="8" lean-forward="false" selection-start-line="14" selection-start-column="8" selection-end-line="17" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bdmultimedia/Templates/results.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="24" column="13" lean-forward="false" selection-start-line="24" selection-start-column="13" selection-end-line="24" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/multimedia/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bdmultimedia/Templates/gererX.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="495">
+          <caret line="33" column="24" lean-forward="false" selection-start-line="33" selection-start-column="24" selection-end-line="33" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bdmultimedia/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3855">
+          <caret line="257" column="0" lean-forward="false" selection-start-line="257" selection-start-column="0" selection-end-line="257" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bdmultimedia/Templates/detail.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" column="8" lean-forward="false" selection-start-line="14" selection-start-column="8" selection-end-line="17" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/multimedia/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="390">
+          <caret line="32" column="68" lean-forward="false" selection-start-line="32" selection-start-column="68" selection-end-line="32" selection-end-column="68" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bdmultimedia/Templates/aLaUne.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="900">
           <caret line="60" column="40" lean-forward="false" selection-start-line="60" selection-start-column="40" selection-end-line="60" selection-end-column="40" />
+          <folding>
+            <element signature="e#378#384#0" expanded="true" />
+            <element signature="e#5236#5242#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bdmultimedia/Templates/admin/bdmultimedia/registration/password_change_done.html" />
+    <entry file="file://$PROJECT_DIR$/bdmultimedia/Templates/export_erreur.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bdmultimedia/Templates/prodtype_confirm_delete.html" />
+    <entry file="file://$PROJECT_DIR$/bdmultimedia/Templates/password_change_done.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" column="14" lean-forward="false" selection-start-line="9" selection-start-column="14" selection-end-line="9" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bdmultimedia/templatetags/js.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bdmultimedia/templatetags/has_group.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="34" lean-forward="false" selection-start-line="5" selection-start-column="34" selection-end-line="5" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bdmultimedia/Templates/list_detail.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="25" column="36" lean-forward="false" selection-start-line="25" selection-start-column="36" selection-end-line="25" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bdmultimedia/Templates/detail.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="19" column="6" lean-forward="false" selection-start-line="19" selection-start-column="6" selection-end-line="19" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/multimedia/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1425">
+          <caret line="95" column="54" lean-forward="false" selection-start-line="95" selection-start-column="54" selection-end-line="95" selection-end-column="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bdmultimedia/Templates/sinscrire.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="45" lean-forward="false" selection-start-line="10" selection-start-column="45" selection-end-line="10" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bdmultimedia/Templates/gerer.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bdmultimedia/Templates/gererX.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" column="115" lean-forward="false" selection-start-line="14" selection-start-column="115" selection-end-line="14" selection-end-column="115" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bdmultimedia/static/css/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="0" lean-forward="false" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bdmultimedia/Templates/admin/bdmultimedia/change_form.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="765">
+          <caret line="51" column="71" lean-forward="false" selection-start-line="51" selection-start-column="71" selection-end-line="51" selection-end-column="71" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bdmultimedia/Templates/base.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1755">
+          <caret line="117" column="113" lean-forward="false" selection-start-line="117" selection-start-column="113" selection-end-line="117" selection-end-column="113" />
+          <folding>
+            <element signature="e#5933#5939#0" expanded="true" />
+            <element signature="e#6232#6238#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bdmultimedia/Templates/results.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="570">
+          <caret line="38" column="29" lean-forward="false" selection-start-line="38" selection-start-column="29" selection-end-line="38" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bdmultimedia/forms.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1500">
+          <caret line="103" column="46" lean-forward="false" selection-start-line="103" selection-start-column="46" selection-end-line="103" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bdmultimedia/Templates/recherche_motcle.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1140">
+          <caret line="76" column="65" lean-forward="false" selection-start-line="76" selection-start-column="65" selection-end-line="76" selection-end-column="65" />
+          <folding>
+            <element signature="n#style#0;n#img#0;n#div#1;n#div#2;n#div#0;n#div#4;n#body#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bdmultimedia/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="10185">
+          <caret line="686" column="25" lean-forward="false" selection-start-line="686" selection-start-column="25" selection-end-line="686" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bdmultimedia/Templates/aLaUne.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="177">
+          <caret line="37" column="40" lean-forward="false" selection-start-line="37" selection-start-column="40" selection-end-line="37" selection-end-column="40" />
+          <folding>
+            <element signature="e#378#384#0" expanded="true" />
+            <element signature="e#5236#5242#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bdmultimedia/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1012">
+          <caret line="216" column="78" lean-forward="false" selection-start-line="216" selection-start-column="78" selection-end-line="216" selection-end-column="78" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/multimedia/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="268">
+          <caret line="28" column="73" lean-forward="false" selection-start-line="28" selection-start-column="73" selection-end-line="28" selection-end-column="73" />
           <folding />
         </state>
       </provider>

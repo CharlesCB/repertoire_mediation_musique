@@ -96,9 +96,12 @@ class Search(forms.ModelForm):
     #interdisciplinarite = forms.BooleanField(label='Interdisciplinarité', required=False)
     evocation_autre__nom = forms.ChoiceField(widget=forms.CheckboxSelectMultiple, choices=DISCIPLINE_CHOICES,
                                               label='Discipline(s) évoquée(s)', required=False)
-    notion_concept = forms.ChoiceField(widget=forms.Select, choices =  BLANK_CHOICE_DASH + NOTION_CONCEPT_CHOICES, required=False)
-    notion_experiences = forms.ChoiceField(widget=forms.Select, choices = BLANK_CHOICE_DASH + list(OUINONNSP), required=False)
-    notion_pratiques = forms.ChoiceField(widget=forms.Select, choices = BLANK_CHOICE_DASH + list(OUINONNSP), required=False)
+    notion_concept = forms.ChoiceField(widget=forms.Select, choices =  BLANK_CHOICE_DASH + NOTION_CONCEPT_CHOICES, required=False,
+                                       label="Notions communes (luminosité, transparence, vitesse, mouvement)")
+    notion_experiences = forms.ChoiceField(widget=forms.Select, choices = BLANK_CHOICE_DASH + list(OUINONNSP), required=False,
+                                           label="Expérience (émotions)")
+    notion_pratiques = forms.ChoiceField(widget=forms.Select, choices = BLANK_CHOICE_DASH + list(OUINONNSP), required=False,
+                                         label="Pratique (processus de création)")
 
     # options widgets : Select, SelectMultiple, CheckboxSelectMultiple
 
@@ -152,6 +155,8 @@ class Create(forms.ModelForm):
             # 'support_diffusion': forms.CheckboxSelectMultiple,
             # 'format': forms.CheckboxSelectMultiple,
             # 'forme_narrative': forms.CheckboxSelectMultiple,
+            'duree' : forms.TextInput,
+            'nb_pages' : forms.TextInput,
             # 'mode_hebergement': forms.CheckboxSelectMultiple,
             # 'mode_consultation': forms.CheckboxSelectMultiple,
              'narration_langue': Select2Multiple({'width' : '450px'}),
@@ -162,12 +167,13 @@ class Create(forms.ModelForm):
             # 'genre_musical': Select2Multiple({'width': '450px'}),
             # 'style_musical': Select2Multiple({'width': '450px'}),
             # 'experience_musicale': Select2Multiple({'width': '450px'}),
-            'epoque': forms.CheckboxSelectMultiple,
+            'epoque': forms.CheckboxSelectMultiple(),
             # 'contexte' : forms.CheckboxSelectMultiple,
             # 'role_evolution' : forms.CheckboxSelectMultiple,
             # 'organologie' : forms.CheckboxSelectMultiple,
             # 'sollicitation_musicale': forms.CheckboxSelectMultiple,
             # 'sollicitation_generale' : forms.CheckboxSelectMultiple,
+            'temps_mus' : forms.TextInput,
             #
             # 'evocation_graphique' : forms.CheckboxSelectMultiple,
             # 'evocation_plastique' : forms.CheckboxSelectMultiple,

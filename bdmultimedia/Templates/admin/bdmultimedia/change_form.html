@@ -6,6 +6,8 @@
 {{ block.super }}
 
 <style>
+.field-forme_delegation_autre,
+.field-action_delegation_autre,
 .field-ensemble_thematique_nom,
 .field-commentaire_nombre,
 .field-prem_onglet_autre,
@@ -46,6 +48,20 @@
 </style>
 <script>
     function dynamicForm(){
+        if(document.getElementById("id_forme_delegation_4").checked == true){
+            $("#id_forme_delegation_autre").parent().parent().show(400)
+        }
+        else{
+            $("#id_forme_delegation_autre").parent().parent().hide(400)
+        }
+
+        if(document.getElementById("id_action_4").checked == true){
+            $("#id_action_delegation_autre").parent().parent().show(400)
+        }
+        else{
+            $("#id_action_delegation_autre").parent().parent().hide(400)
+        }
+
         if(document.getElementById("id_ensemble_thematique").value == "Non"){
                 $("#id_ensemble_thematique_nom").parent().parent().hide(400)
         }

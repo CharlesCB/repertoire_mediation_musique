@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<div class="col-md-10">
+  <div class="page-header">
+  <h2>S'inscrire</h2>
+    </div>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">S'inscrire</button>
+  </form>
+  </div>
+{% endblock %}

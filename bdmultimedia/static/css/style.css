@@ -5,6 +5,23 @@ ul {
     list-style-type: circle;
 }
 
+.description{
+    margin-left : 9em;
+    width: 78%;
+    max-width: 1000px;
+    text-align: justify;
+    border: medium solid #4eabb4;
+    border-radius : 8px;
+    box-shadow : 5px 5px 5px lightgray;
+    padding : 1em;
+    Line-Height: 1.1;
+    font-size : 11pt;
+}
+
+input{
+    max-width : 1000px;
+}
+
 li,
 div {
     font-family: 'UniversLTPro-55Roman';
@@ -173,6 +190,7 @@ aside {
     position: fixed;
     left: 83%;
     z-index: 2;
+    background : none;
 }
 
 section {
@@ -266,6 +284,7 @@ center img {
     left: 15px;
     display: inline-block;
     width: 116%;
+    max-width: 1000px;
    /* width : 1000px; */
     height: 25em;
     border: solid medium #4eabb4;
@@ -281,7 +300,6 @@ center img {
     left: 30px;
     display: inline-block;
     width: 94%;
-  /*  width: 1000px;*/
     height: 25em;
     z-index: 5;
 }
@@ -323,6 +341,11 @@ h6.alaune-titre{
 }
 
 @media only screen and (max-width: 991px) {
+
+    .description{
+        margin-left: 2em;
+        width : 80%;
+    }
 
     .modal-content{
         height:50%;
@@ -379,7 +402,7 @@ h6.alaune-titre{
 
 @media only screen and (max-width: 500px) {
     h4.alaune-titre{
-        top : 260px;
+        top : 200px;
     }
     h5.alaune-titre, h6.alaune-titre{
         display : none;

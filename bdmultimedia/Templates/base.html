@@ -8,6 +8,7 @@
     <meta name="author" content="Charles Campeau-Bedford">
     <title>{% block title %}Catalogue raisonné de dispositifs numériques de médiation de la musique{% endblock %}</title>
     {% load staticfiles %}
+    {% load has_group %}
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="../static/css/style.css">
     <link href='https://fonts.googleapis.com/css?family=Satisfy' rel='stylesheet' type='text/css'>
@@ -36,21 +37,52 @@
                     <div class="collapse navbar-collapse" id="barreNav">
 
                         {% if not user.is_authenticated %}
-                            <ul class="nav navbar-nav navbar-right">
+
+                        <ul class="nav navbar-nav navbar-right dropdown">
+                             <li>
+                        <a data-toggle="dropdown" href="#">
+                            <span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp; Utilisateur
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href='/login/?next={{request.path}}'>
+                                        <span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>&nbsp; S'identifier
+                                    </a>
+                            </li>
                                 <li>
-                                    <a href='/login/?next={{request.path}}' id="rouge">
-                                        <span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp; S'identifier
+                                    <a href="/sinscrire">
+                                        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> S'inscrire
                                     </a>
                                 </li>
-                            </ul>
+
+                            </li>
+                        </ul>
+                        </ul>
+
                         {% else %}
-                            <ul class="nav navbar-nav navbar-right">
+
+
+                         <ul class="nav navbar-nav navbar-right dropdown">
+                             <li>
+                        <a data-toggle="dropdown" href="#">
+                            <span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp; {{ user.username }}
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href='/logout/?next=/'>
+                                        <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>&nbsp; Déconnection
+                                    </a>
+                            </li>
                                 <li>
-                                    <a href='/logout/?next=/' id="rouge">
-                                        <span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp; Déconnection
+                                    <a href="/password_change/">
+                                        <span class="glyphicon glyphicon-lock" aria-hidden="true"></span> Changer le mot de passe
                                     </a>
                                 </li>
-                            </ul>
+
+                            </li>
+                        </ul>
+                        </ul>
+                        {% if request.user|has_group:"Chercheur" %}
                             <ul class="nav navbar-nav navbar-right">
                                 <li>
                                     <a href="JavaScript:newPopup('/admin/bdmultimedia/outil/add/?_to_field=id&amp;_popup=1');" id="bleu">
@@ -58,6 +90,7 @@
                                     </a>
                                 </li>
                             </ul>
+                        {% endif %}
                             {% comment %}
                             <ul class="nav navbar-nav navbar-right">
                                 <li>
@@ -68,13 +101,28 @@
                             </ul>
                             {% endcomment %}
                         {% endif %}
-                        <ul class="nav navbar-nav navbar-right">
+
+                          <ul class="nav navbar-nav navbar-right dropdown">
+                             <li>
+                        <a data-toggle="dropdown" href="#">
+                            <span class="glyphicon glyphicon-search" aria-hidden="true"></span>&nbsp; Recherche
+                        </a>
+                        <ul class="dropdown-menu">
                             <li>
-                                <a href='/recherche_motcle/'><span class="glyphicon glyphicon-search" aria-hidden="true"></span>&nbsp; Recherche</a>
+                                <a href='/recherche_motcle'>
+                                        <span class="glyphicon glyphicon-search" aria-hidden="true"></span>&nbsp; Par mots-clés
+                                    </a>
+                            </li>
+                                <li>
+                                    <a href="/recherche/">
+                                        <span class="glyphicon glyphicon-search" aria-hidden="true"></span>&nbsp; Recherche avancée
+                                    </a>
+                                </li>
+
                             </li>
                         </ul>
-                        {% if user.is_authenticated %}
-
+                        </ul>
+                        {% if request.user|has_group:"Chercheur" %}
                             <ul class="nav navbar-nav navbar-right">
                                 <li>
                                     <a href='/export/xls' id="jaune"><span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span>&nbsp; Exporter</a>
@@ -85,56 +133,6 @@
                                     <a href='/gerer' id="vert"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span>&nbsp; Gérer</a>
                                 </li>
                             </ul>
-                        <!--
-                        <ul class="nav navbar-nav navbar-right dropdown">
-                            <li>
-                        <a data-toggle="dropdown" href="#">
-                            <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>&nbsp; Gérer
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li class="dropdown-header">Gérer les </li>
-                            <li>
-                                <li><a href="/gerer_prodtype">Types de producteur</a></li>
-                                    <li><a href="/gerer_producteurnom">Noms de producteur</a></li>
-                                    <li><a href="/gerer_supportdiffusion">Supports de diffusion</a></li>
-                                    <li><a href="/gerer_formatoutil">Formats de dispositifs</a></li>
-                                    <li><a href="/gerer_formenarrative">Formes narratives</a></li>
-                                    <li><a href="/gerer_modehebergement">Modes d'hébergement</a></li>
-                                    <li><a href="/gerer_modeconsultation">Modes de consultation</a></li>
-                                    <li><a href="/gerer_languenarration">Langues de dispositifs</a></li>
-                                    <li><a href="/gerer_soustitre">Sous-titres</a></li>
-                                    <li><a href="/gerer_orchestration">Notions d'orchestration</a></li>
-                                    <li><a href="/gerer_structure">Structures</a></li>
-                                    <li><a href="/gerer_languagemusical">Notions de laguage musical</a></li>
-                                    <li><a href="/gerer_genremusical">Genres musicaux</a></li>
-                                    <li><a href="/gerer_stylemusical">Styles musicaux</a></li>
-                                    <li><a href="/gerer_experiencemusicale">Notions d'expérience musicale</a></li>
-                                    <li><a href="/gerer_contexte">Contexte de composition, création, interprétation, etc.</a></li>
-                                    <li><a href="/gerer_roleevolution">Rôle de l'évolution de ...</a></li>
-                                    <li><a href="/gerer_organologie">Notions d'organologie</a></li>
-                                    <li><a href="/gerer_sollicitationmusicale">Pour comprendre le discours sur la musique</a></li>
-                                    <li><a href="/gerer_sollicitationgenerale">Pour comprendre le discours général</a></li>
-                                    <li><a href="/gerer_evocationgraphique">Évocations graphiques</a></li>
-                                    <li><a href="/gerer_evocationplastique">Évocations plastiques</a></li>
-                                    <li><a href="/gerer_evocationautre">Évocations d'autres disciplines</a></li>
-                                    <li><a href="/gerer_notionsinter">Interdisciplinarité</a></li>
-                                    <li><a href="/gerer_rolefemmes">Rôles des femmes</a></li>
-                                    <li><a href="/gerer_rolehommes">Rôles des hommes</a></li>
-                                    <li><a href="/gerer_rolehumainneutre">Rôles de humains au genre indéterminé</a></li>
-                                    <li><a href="/gerer_rolepersanimfemmes">Rôles des personnages animés femmes</a></li>
-                                    <li><a href="/gerer_rolepersanimhommes">Rôles des personnages animés hommes</a></li>
-                                    <li><a href="/gerer_rolepersanimneutre">Rôles des personnages animés au genre indéterminé</a></li>
-                                    <li><a href="/gerer_roleanimauxfemmes">Rôles des animaux femelles</a></li>
-                                    <li><a href="/gerer_roleanimauxhommes">Rôles des animaux mâles</a></li>
-                                    <li><a href="/gerer_roleanimauxneutre">Rôles des animaux au genre indéterminé</a></li>
-                                    <li><a href="/gerer_roleinstrfemmes">Rôles des instruments "féminins"</a></li>
-                                    <li><a href="/gerer_roleinstrhommes">Rôles des instruments "masculins"</a></li>
-                                    <li><a href="/gerer_roleinstrneutre">Rôles des instruments au genre indéterminé</a></li>
-                                                    </li>
-                            </ul>
-                            </li>
-                        </ul>
-                        -->
                         {% endif %}
                         <ul class="nav navbar-nav navbar-right">
                             <li>
@@ -147,7 +145,9 @@
         </header>
     <script type="text/javascript" src="../static/scripts/popup.js"></script>
     {% endblock %}
-    {% block body%} {% endblock%}
+    {% block body%}
+
+    {% endblock%}
     {% block footer %}
         <footer>
                 <br><br><br>

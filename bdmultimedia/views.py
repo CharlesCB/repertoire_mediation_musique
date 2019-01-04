@@ -12,6 +12,8 @@ from forms import Search
 import datetime
 import time
 from django.db.models import Q
+from django.contrib.auth import login, authenticate
+from django.contrib.auth.forms import UserCreationForm
 
 
 class DetailView(generic.DetailView):
@@ -38,14 +40,19 @@ class AlaUneView(generic.ListView):
         return Outil.objects.order_by('titre')
 
 
-def outil_delete(request, pk):
-    outil = get_object_or_404(Outil, pk=pk)  # Get your current outil
-
-    if request.method == 'POST':         # If method is POST,
-        outil.delete()                     # delete the cat.
-        return redirect('/')             # Finally, redirect to the homepage.
-
-    return render(request, 'detail.html', {'outil': outil})
+def sinscrire(request):
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            username = form.cleaned_data.get('username')
+            raw_password = form.cleaned_data.get('password1')
+            user = authenticate(username=username, password=raw_password, groups=2)
+            login(request, user)
+            return redirect('aLaUne')
+    else:
+        form = UserCreationForm()
+    return render(request, 'sinscrire.html', {'form': form})
 
 
 class ListeView(generic.ListView):
@@ -69,9 +76,14 @@ class ListeView(generic.ListView):
             return Outil.objects.filter(titre__istartswith=lettre).order_by('titre')
 
 
-class DeleteForm(generic.CreateView):
-    model = Outil
-    sucess_url = reverse_lazy('/')
+def outil_delete(request, pk):
+    outil = get_object_or_404(Outil, pk=pk)  # Get your current object
+
+    if request.method == 'POST':         # If method is POST,
+        outil.delete()                     # delete the cat.
+        return redirect('/')             # Finally, redirect to the homepage.
+
+    return render(request, 'detail.html', {'outil': outil})
 
 
 class ListDetailView(generic.DetailView):
@@ -82,7 +94,7 @@ class ListDetailView(generic.DetailView):
         request = self.request
         context = super(ListDetailView, self).get_context_data(**kwargs)
         context['tout'] = request.session.get('listeresultat')
-        context['toutrev'] = list(reversed(request.session.get('listeresultat')))
+        context['toutrev'] = reversed(request.session.get('listeresultat'))
         return context
 
 
@@ -157,6 +169,7 @@ class SearchView(generic.ListView):
                              ("motivique","motif"),
                              #("sérialisme","dodécaphonisme"),
                              #("sérielle", "dodécaphonisme"),
+                             ("participatif","participation"),
                              ("religion","religieu"),
                              ("histoire","histo"),
                              ("historique","histo"),
@@ -201,7 +214,7 @@ class SearchView(generic.ListView):
                          "quelle","quelque","quelquun","quelques","quels","qui","quoi","sans","sauf","selon","ses",
                          "sien","sienne","siennes","siens","soi","soit","sont","sous","suis","sur","tandis","tant","tes",
                          "tienne","tiennes","tiens","toi","ton","tous","tout","toute","toutes","trop","très","une",
-                         "vos","votre","vous","étaient","était","étant","être",
+                         "vos","votre","vous","étaient","était","étant","être"
                     ]
 
         if query is not None:
@@ -236,10 +249,11 @@ class SearchView(generic.ListView):
             self.count = len(qs)
             # pour pouvoir naviguer entre les fiches (précédent + suivant)
             request.session['listeresultat'] = liste
+
             temps = time.time() - temps_initial
             request.session['tempsRequete'] = temps
             return results
-        return Outil.objects.none().order_by('titre')
+        return list(Outil.objects.none().order_by('titre'))
 
 
 class GererProdType(generic.ListView):
@@ -321,6 +335,7 @@ class GererModeConsultation(generic.ListView):
     def get_context_data(self, **kwargs):
         context = super(GererModeConsultation, self).get_context_data(**kwargs)
         context['liste'] = ModeConsultation.objects.order_by('nom')
+
         context['nom'] = 'modeconsultation'
         context['verbose'] = 'modes de consultation'
         return context
