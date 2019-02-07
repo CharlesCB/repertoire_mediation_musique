@@ -12,7 +12,7 @@ ul {
     text-align: justify;
     border: medium solid #4eabb4;
     border-radius : 8px;
-    box-shadow : 5px 5px 5px lightgray;
+    /*box-shadow : 5px 5px 5px lightgray;*/
     padding : 1em;
     Line-Height: 1.1;
     font-size : 11pt;
@@ -162,7 +162,7 @@ h3 {
 #place, #extra-sonore {
     border: medium solid #8db650;
     border-radius : 8px;
-    box-shadow : 10px 10px 10px lightgray;
+    box-shadow : 5px 5px 5px lightgray;
     padding-bottom : 1em;
     margin : 1em;
     width : 80%

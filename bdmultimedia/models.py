@@ -7,6 +7,8 @@ from multiselectfield import MultiSelectField
 from django.utils.encoding import python_2_unicode_compatible
 from django.core.urlresolvers import reverse
 from django_currentuser.db.models import CurrentUserField
+# from django.template.defaultfilters import slugify
+from sortedm2m.fields import SortedManyToManyField
 
 
 PROGRAMMATION_LIST = (
@@ -749,7 +751,9 @@ class Outil(models.Model):
     producteur_nom = models.ManyToManyField(ProducteurNom, db_index=True, verbose_name="R.5 Préciser le nom complet du/des producteur(s)")
     support_diffusion = models.ManyToManyField(SupportDiffusion, db_index=True, verbose_name="R.6 Support de diffusion")
     format = models.ManyToManyField(FormatOutil, db_index=True, verbose_name="R.7 Format du dispositif")
-    forme_narrative = models.ManyToManyField(FormeNarrative, db_index=True, verbose_name="R.8 Formes narratives")
+
+    forme_narrative = SortedManyToManyField(FormeNarrative, db_index=True, verbose_name="R.8 Formes narratives")
+
     duree = models.CharField(max_length=8, null=False, verbose_name="R.9 Durée", default="00:00:00",
                              help_text="nsp = ne s'applique pas, ddv = durée d’écoute variable. La durée d’écoute est variable puisque les utilisateurs peuvent décider, ou non, de regarder les vidéos. Concerne les dispositifs qui allient texte et vidéo.")
     nb_pages = models.CharField(null=True, verbose_name="R.10 Nombre de pages",
@@ -1037,7 +1041,7 @@ class Outil(models.Model):
         super(Outil, self).save()
 
     def get_absolute_url(self):
-        return reverse('home')
+        return reverse('detail', args=[str(self.id)])
 
     def __str__(self):
         return self.titre

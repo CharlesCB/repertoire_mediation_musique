@@ -27,6 +27,7 @@ urlpatterns = [
     url(r'^$', views.AlaUneView.as_view(), name='aLaUne'),
     url(r'^liste/$', views.ListeView.as_view(), name = 'liste'),
     url(r'^(?P<pk>[0-9]+)/$', views.DetailView.as_view(), name='detail'),
+    #url(r'^(?P<slug>[-\w\d]+)/$',views.DetailView.as_view(), name='detail'),
     url(r'^delete/(?P<pk>[0-9]+)/$', views.outil_delete, name='outil_delete'),
     url('^login/$', auth_views.LoginView.as_view(), name = 'login'),
     url('^logout/$', auth_views.LogoutView.as_view(), name = 'logout'),
@@ -36,6 +37,7 @@ urlpatterns = [
     url(r'^sinscrire/$', views.sinscrire, name='sinscrire'),
 
     url(r'^list/$', views.OutilList.as_view(), name='list'),
+    #url(r'^result(?P<slug>[-\w\d]+)/$', views.ListDetailView.as_view(), name='list_detail'),
     url(r'^result(?P<pk>[0-9]+)/$', views.ListDetailView.as_view(), name='list_detail'),
     url(r'^recherche/$', views.SearchForm.as_view(), name = 'recherche'),
     url(r'^recherche_motcle/$', views.SearchView.as_view(), name= 'recherche_motcle'),

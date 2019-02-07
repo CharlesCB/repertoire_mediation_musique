@@ -96,7 +96,7 @@ class Search(forms.ModelForm):
     #interdisciplinarite = forms.BooleanField(label='Interdisciplinarité', required=False)
     evocation_autre__nom = forms.ChoiceField(widget=forms.CheckboxSelectMultiple, choices=DISCIPLINE_CHOICES,
                                               label='Discipline(s) évoquée(s)', required=False)
-    notion_concept = forms.ChoiceField(widget=forms.Select, choices =  BLANK_CHOICE_DASH + NOTION_CONCEPT_CHOICES, required=False,
+    notion_concepts = forms.ChoiceField(widget=forms.Select, choices = BLANK_CHOICE_DASH + list(OUINONNSP), required=False,
                                        label="Notions communes (luminosité, transparence, vitesse, mouvement)")
     notion_experiences = forms.ChoiceField(widget=forms.Select, choices = BLANK_CHOICE_DASH + list(OUINONNSP), required=False,
                                            label="Expérience (émotions)")

@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     'multiselectfield',
     'crispy_forms',
     'django_user_agents',
+    'sortedm2m',
 ]
 
 MIDDLEWARE = [

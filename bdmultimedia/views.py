@@ -109,7 +109,7 @@ class OutilList(generic.View):
         data_total = data.qs.count()
         all_main_registers = OutilFilter(self.request.GET, queryset=Outil.objects.all().order_by('titre'))
         for i in data.qs:
-            liste.append(i.id)
+            liste.append(i.pk)
         request.session['listeresultat'] = liste
 
         paginator = Paginator(data.qs, 40)
@@ -193,7 +193,7 @@ class SearchView(generic.ListView):
                          "dela","depuis","des","dessous","dessus","deux","deca","dix","doit","donc","dont","du","durant",
                          "des","deja","elle","elles","en","encore","enfin","entre","er","est","est-ce","et","etc",
                          "eu","eurent","eut","faut","fur","hormis","hors","huit","il","ils","je",
-                         "la","laquelle","le","lequel","les","lesquels","leur","leurs","lors","lorsque","lui","la",
+                         "la","laquelle","le","lequel","les","lesquels","leur","leurs","lors","lorsque","lui",
                          "mais","malgre","me","melle","mes","mm","mme","moi","moins","mon","mr","meme","memes"
                          "neuf","ni","non-","nos","notamment","notre","nous","neanmoins","notres","on","ont","ou","ou",
                          "par","parce","parfois","parmi","partout","pas","pendant","peu","peut","peut-etre","plus","plutot",

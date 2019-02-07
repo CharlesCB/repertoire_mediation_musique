@@ -92,8 +92,8 @@ class OutilFilter(django_filters.FilterSet):
 
 
     evocation_autre__nom = django_filters.MultipleChoiceFilter(choices=DISCIPLINE_CHOICES, lookup_expr="iexact")
-    notion_concept = django_filters.ChoiceFilter(choices=NOTIONS_CONCEPT_CHOICES, lookup_expr='iexact')
-    notion_experiences = django_filters.ChoiceFilter(choices = BLANK_CHOICE_DASH + list(OUINONNSP), lookup_expr="iexact")
+    notion_concepts = django_filters.ChoiceFilter(choices=NOTIONS_CONCEPT_CHOICES, lookup_expr='iexact')
+    notion_experiences = django_filters.ChoiceFilter(choices = list(OUINONNSP), lookup_expr="iexact")
     notion_pratiques = django_filters.ChoiceFilter(choices = BLANK_CHOICE_DASH + list(OUINONNSP), lookup_expr="iexact")
 
     class Meta:

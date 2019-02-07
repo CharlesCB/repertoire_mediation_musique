@@ -42,7 +42,7 @@
             {% if all_outils %}
                 <ul>
                     {% for outil in all_outils %}
-                    <li><a href="{% url 'detail' outil.id %}"> {{ outil.titre }} </a></li>
+                    <li><a href="{% url 'detail' outil.pk %}"> {{ outil.titre }} </a></li>
                     {% endfor %}
                 </ul>
             {% else %}
