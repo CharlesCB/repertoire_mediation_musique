@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     'crispy_forms',
     'django_user_agents',
     'sortedm2m',
+    'django_cron',
 ]
 
 MIDDLEWARE = [

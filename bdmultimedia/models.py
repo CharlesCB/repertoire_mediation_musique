@@ -190,22 +190,6 @@ TROIS_ONGLET_LIST = (
     ("Autre", "Autre")
 )
 
-EPOQUE_LIST = (
-    ("Avant le XIIè", "Avant le XIIè"),
-    ("XIIè", "XIIè"),
-    ("XIIIè", "XIIIè"),
-    ("XIVè", "XIVè"),
-    ("XVè", "XVè"),
-    ("XVIè", "XVIè"),
-    ("XVIIè", "XVIIè"),
-    ("XVIIIè", "XVIIIè"),
-    ("XIXè", "XIXè"),
-    ("XXè", "XXè"),
-    ("XXIè", "XXIè"),
-    ("nsp", "nsp")
-)
-
-
 ACCESSIBILITE_LIST = (
     ("Oui", "Oui"),
     ("Non", "Non"),
@@ -653,9 +637,13 @@ class NotionsInter(models.Model):
 @python_2_unicode_compatible
 class Query(models.Model):
     nom = models.CharField(max_length=400, unique= False)
+    temps = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         return self.nom
+
+    def get_absolute_url(self):
+        return "/recherche_motcle/?csrfmiddlewaretoken={{ csrf_token }}&q=%s" % self.nom
 
 
 
@@ -814,7 +802,7 @@ class Outil(models.Model):
                                   verbose_name="S.24.2 Ce dispositif est-il intégralement accessible aux malvoyants (audiodescription)")
 
     # DISCOURS SUR LA MUSIQUE
-    ####analyses musicales
+    #### Analyses musicales
     materiau_musical = models.CharField(choices=OUINON,
                                         max_length=200,
                                         default="Non",
@@ -839,7 +827,7 @@ class Outil(models.Model):
                                                verbose_name="M.27 Parle-t-on des éléments socioculturels et historiques?")
 
     epoque = models.ManyToManyField(Epoque, db_index=True,
-                                        verbose_name="M.27.1 Époque")
+                                        verbose_name="M.27.1 Époque", help_text="Inscrire les époques évoquées dans le dispositif (non pas l’époque de tournage du dispositif).<br> Cocher une époque seulement lorsqu'elle est développée. Si un phénomène musical est évoqué de façon transversale et dispersée dans le temps, sans focus, cocher \"hors temps\", un dispositif peut se retrouver dans une case \"temporelle\" et \"hors temps\" cf. <a href = https://www.youtube.com/watch?v=fSKBwjWE7NQ target='_blank'>https://www.youtube.com/watch?v=fSKBwjWE7NQ</a>")
 
     contexte = models.ManyToManyField(Contexte, db_index=True,
                                       verbose_name="M.27.2 Parle-t-on du contexte de composition, création, interprétation de l'oeuvre, de l'instrument...",
@@ -883,7 +871,7 @@ class Outil(models.Model):
 
     # INTERDISCIPLINARITÉ
     evocation_autre = models.ManyToManyField(EvocationAutre, db_index=True,
-                                       verbose_name="I.37 Interdisciplinarité")
+                                       verbose_name="I.37 Autres disciplines évoquées?")
     ####à partir de quelle notion?
     notion_concepts = models.CharField(choices = OUINONNSP,
                                        max_length = 20,

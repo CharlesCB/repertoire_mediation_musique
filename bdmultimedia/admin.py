@@ -65,6 +65,7 @@ class FormatOutilAdmin(admin.ModelAdmin):
 class FormeNarrativeAdmin(admin.ModelAdmin):
     list_display = ('nom',)
     search_fields = ['nom',]
+    ordering = ['nom']
 
 
 class ModeHebergementAdmin(admin.ModelAdmin):
@@ -122,6 +123,8 @@ class ExperienceMusicaleAdmin(admin.ModelAdmin):
     search_fields = ['nom',]
     ordering = ['nom']
 
+class EpoqueAdmin(admin.ModelAdmin):
+    list_display = ('nom',)
 
 class ContexteAdmin(admin.ModelAdmin):
     list_display = ('nom',)
@@ -242,6 +245,7 @@ admin.site.register(LanguageMusical, LanguageMusicalAdmin)
 admin.site.register(GenreMusical, GenreMusicalAdmin)
 admin.site.register(StyleMusical,StyleMusicalAdmin)
 admin.site.register(ExperienceMusicale, ExperienceMusicaleAdmin)
+admin.site.register(Epoque,EpoqueAdmin)
 admin.site.register(Contexte,ContexteAdmin)
 admin.site.register(RoleEvolution, RoleEvolutionAdmin)
 admin.site.register(Organologie, OrganologieAdmin)

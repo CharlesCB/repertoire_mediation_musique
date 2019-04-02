@@ -8,29 +8,28 @@ from easy_select2 import Select2Multiple, Select2
 
 class Search(forms.ModelForm):
 
-    FORMAT_CHOICES = FormatOutil.objects.values_list("nom", "nom")
-    FORME_NARRATIVE_CHOICES = FormeNarrative.objects.values_list("nom", "nom")
-    PRODUCTEUR_TYPE_CHOICES = ProdType.objects.values_list("nom","nom")
-    SUPPORT_DIFFUSION_CHOICES = SupportDiffusion.objects.values_list("nom","nom")
-    LANGUE_CHOICES = LangueNarration.objects.exclude(nom="Ne s'applique pas").values_list("nom", "nom")
-    MODE_CONSULTATION_CHOICES = ModeConsultation.objects.values_list("nom","nom")
+    FORMAT_CHOICES = FormatOutil.objects.values_list("nom", "nom").order_by('nom')
+    FORME_NARRATIVE_CHOICES = FormeNarrative.objects.values_list("nom", "nom").order_by('nom')
+    PRODUCTEUR_TYPE_CHOICES = ProdType.objects.values_list("nom","nom").order_by('nom')
+    SUPPORT_DIFFUSION_CHOICES = SupportDiffusion.objects.values_list("nom","nom").order_by('nom')
+    LANGUE_CHOICES = LangueNarration.objects.exclude(nom="Ne s'applique pas").values_list("nom", "nom").order_by('nom')
+    MODE_CONSULTATION_CHOICES = ModeConsultation.objects.values_list("nom","nom").order_by('nom')
     SONORE_VALEUR_CHOICES = list(SONORE_VALEUR_LIST)
     del SONORE_VALEUR_CHOICES[0]
     EVOCATION_LITTERAIRE_CHOICES = list(EVOCATION_LITTERAIRE_LIST)
     del EVOCATION_LITTERAIRE_CHOICES[0]
-    EVOCATION_GRAPHIQUE_CHOICES = EvocationGraphique.objects.exclude(nom="Non").values_list("nom", "nom")
-    EVOCATION_PLASTIQUE_CHOICES = EvocationPlastique.objects.exclude(nom="Non").values_list("nom", "nom")
-    ORCHESTRATION_CHOICES = Orchestration.objects.exclude(nom="Non").values_list("nom","nom")
-    STRUCTURE_CHOICES = Structure.objects.exclude(nom="Non").values_list("nom","nom")
-    LANGUAGE_MUSICAL_CHOICES = LanguageMusical.objects.exclude(nom="Non").values_list("nom","nom")
-    GENRE_MUSICAL_CHOICES = GenreMusical.objects.exclude(nom="Non").values_list("nom","nom")
-    STYLE_MUSICAL_CHOICES = StyleMusical.objects.exclude(nom="Non").values_list("nom","nom")
-    EXPERIENCE_MUSICALE_CHOICES = ExperienceMusicale.objects.exclude(nom="Non").values_list("nom","nom")
-    CONTEXTE_CHOICES = Contexte.objects.exclude(nom="Non").values_list("nom","nom")
-    ROLE_EVOLUTION_CHOICES = RoleEvolution.objects.exclude(nom="Non").values_list("nom","nom")
-    EPOQUE_CHOICES = list(EPOQUE_LIST)
-    del EPOQUE_CHOICES[11]
-    DISCIPLINE_CHOICES = EvocationAutre.objects.exclude(nom="Aucune").values_list("nom","nom")
+    EVOCATION_GRAPHIQUE_CHOICES = EvocationGraphique.objects.exclude(nom="Non").values_list("nom", "nom").order_by('nom')
+    EVOCATION_PLASTIQUE_CHOICES = EvocationPlastique.objects.exclude(nom="Non").values_list("nom", "nom").order_by('nom')
+    ORCHESTRATION_CHOICES = Orchestration.objects.exclude(nom="Non").values_list("nom","nom").order_by('nom')
+    STRUCTURE_CHOICES = Structure.objects.exclude(nom="Non").values_list("nom","nom").order_by('nom')
+    LANGUAGE_MUSICAL_CHOICES = LanguageMusical.objects.exclude(nom="Non").values_list("nom","nom").order_by('nom')
+    GENRE_MUSICAL_CHOICES = GenreMusical.objects.exclude(nom="Non").values_list("nom","nom").order_by('nom')
+    STYLE_MUSICAL_CHOICES = StyleMusical.objects.exclude(nom="Non").values_list("nom","nom").order_by('nom')
+    EXPERIENCE_MUSICALE_CHOICES = ExperienceMusicale.objects.exclude(nom="Non").values_list("nom","nom").order_by('nom')
+    CONTEXTE_CHOICES = Contexte.objects.exclude(nom="Non").values_list("nom","nom").order_by('nom')
+    ROLE_EVOLUTION_CHOICES = RoleEvolution.objects.exclude(nom="Non").values_list("nom","nom").order_by('nom')
+    EPOQUE_CHOICES = Epoque.objects.values_list("nom","nom").order_by('nom')
+    DISCIPLINE_CHOICES = EvocationAutre.objects.exclude(nom="Aucune").values_list("nom","nom").order_by('nom')
     NOTION_CONCEPT_CHOICES = list(OUINONNSP)
 
     # RÉFÉRENCEMENT
@@ -145,6 +144,7 @@ class Create(forms.ModelForm):
         self.fields['producteur_nom'].help_text = ''
         self.fields['narration_langue'].help_text = ''
         self.fields['sous_titre'].help_text = '<br><br><br>Les sous-titrages automatiques proposés par YouTube n’entrent pas en considération.'
+        self.fields['forme_narrative'].help_text = ''
 
     class Meta:
         model = Outil
@@ -154,7 +154,7 @@ class Create(forms.ModelForm):
             'producteur_nom': Select2Multiple({'width' : '450px'}),
             # 'support_diffusion': forms.CheckboxSelectMultiple,
             # 'format': forms.CheckboxSelectMultiple,
-            # 'forme_narrative': forms.CheckboxSelectMultiple,
+            'forme_narrative': forms.CheckboxSelectMultiple,
             'duree' : forms.TextInput,
             'nb_pages' : forms.TextInput,
             # 'mode_hebergement': forms.CheckboxSelectMultiple,
@@ -168,6 +168,7 @@ class Create(forms.ModelForm):
             # 'style_musical': Select2Multiple({'width': '450px'}),
             # 'experience_musicale': Select2Multiple({'width': '450px'}),
             'epoque': forms.CheckboxSelectMultiple(),
+
             # 'contexte' : forms.CheckboxSelectMultiple,
             # 'role_evolution' : forms.CheckboxSelectMultiple,
             # 'organologie' : forms.CheckboxSelectMultiple,

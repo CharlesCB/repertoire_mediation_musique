@@ -4,7 +4,6 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.views import generic
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from bdmultimedia.models import *
-from django.core.urlresolvers import reverse_lazy
 from django.http import HttpResponse
 import xlwt
 from .filters import OutilFilter
@@ -27,6 +26,19 @@ class DetailView(generic.DetailView):
         return context
 
 
+class ListDetailView(generic.DetailView):
+    model = Outil
+    template_name = 'list_detail.html'
+
+    def get_context_data(self, **kwargs):
+        request = self.request
+        context = super(ListDetailView, self).get_context_data(**kwargs)
+        context['tout'] = request.session.get('listeresultat')
+        context['toutrev'] = reversed(request.session.get('listeresultat'))
+        return context
+
+
+
 class AlaUneView(generic.ListView):
     # 3 jours = 259200 secondes
     model = Outil
@@ -40,19 +52,20 @@ class AlaUneView(generic.ListView):
         return Outil.objects.order_by('titre')
 
 
-def sinscrire(request):
-    if request.method == 'POST':
-        form = UserCreationForm(request.POST)
-        if form.is_valid():
-            form.save()
-            username = form.cleaned_data.get('username')
-            raw_password = form.cleaned_data.get('password1')
-            user = authenticate(username=username, password=raw_password, groups=2)
-            login(request, user)
-            return redirect('aLaUne')
-    else:
-        form = UserCreationForm()
-    return render(request, 'sinscrire.html', {'form': form})
+
+# def sinscrire(request):
+#     if request.method == 'POST':
+#         form = UserCreationForm(request.POST)
+#         if form.is_valid():
+#             form.save()
+#             username = form.cleaned_data.get('username')
+#             raw_password = form.cleaned_data.get('password1')
+#             user = authenticate(username=username, password=raw_password, groups=2)
+#             login(request, user)
+#             return redirect('aLaUne')
+#     else:
+#         form = UserCreationForm()
+#     return render(request, 'sinscrire.html', {'form': form})
 
 
 class ListeView(generic.ListView):
@@ -84,18 +97,6 @@ def outil_delete(request, pk):
         return redirect('/')             # Finally, redirect to the homepage.
 
     return render(request, 'detail.html', {'outil': outil})
-
-
-class ListDetailView(generic.DetailView):
-    model = Outil
-    template_name = 'list_detail.html'
-
-    def get_context_data(self, **kwargs):
-        request = self.request
-        context = super(ListDetailView, self).get_context_data(**kwargs)
-        context['tout'] = request.session.get('listeresultat')
-        context['toutrev'] = reversed(request.session.get('listeresultat'))
-        return context
 
 
 class OutilList(generic.View):
@@ -131,6 +132,27 @@ class SearchForm(generic.View):
     def post(self, request):
         pass
 
+class ListeChrono(generic.ListView):
+    template_name = "epoque.html"
+    paginate_by = 20
+
+    def get_context_data(self, *args, **kwargs):
+        context = super(ListeChrono, self).get_context_data(*args, **kwargs)
+        context['query'] = self.request.GET.get('q')
+        if self.request.GET.get('q') is not None:
+            context['count'] = self.count
+        return context
+
+    def get_queryset(self):
+        request = self.request
+        query = request.GET.get('q')
+        liste = []
+        for i in Outil.objects.filter(epoque__nom = query).order_by('titre'):
+            liste.append(i.pk)
+        request.session['listeresultat'] = liste
+        self.count = len(liste)
+        return Outil.objects.filter(epoque__nom = query).order_by('titre')
+
 
 class SearchView(generic.ListView):
     template_name = 'recherche_motcle.html'
@@ -164,7 +186,6 @@ class SearchView(generic.ListView):
                              ("orientalisme", "orientaliste"),
                              ("orientale", "orientaliste"),
                              ("veriste","verisme"),
-                             ("jeux","jouer"),
                              ("unisson","homophonie"),
                              ("motivique","motif"),
                              #("sérialisme","dodécaphonisme"),
@@ -180,7 +201,7 @@ class SearchView(generic.ListView):
                              ("ieme siecle","è"),("ieme siècle", "è"),("ième siecle", "è"),("ième siècle", "è"),
                              ("e siecle","è"),("e siècle","è"),("è siècle",""),
                              ("d'",""),("c'",""),("j'",""),("l'",""),("m'",""),("jusqu'",""),("n'",""),("puisqu'",""),
-                             ("quelqu'", ""),("qu'", ""),("s'",""),("t'",""),
+                             ("quelqu'", ""),("qu'", ""),("s'",""),("t'",""),("-"," ")
                         ]
         mots_vides =[
                          "musique","elle","il","10ème","1er","1ère","2ème","3ème","4ème","5ème","6ème",
@@ -705,6 +726,7 @@ def export_xls(request):
         font_style.bold = True
         date_style = xlwt.easyxf(num_format_str='dd/mm/yyyy')
 
+        # Entête
         colones = ["R.1 Titre", "R.2 Url", "R.3 Site d'hébergement", "R.3.1 Fait-il partie d'un ensemble thématique?",
                    "R.3.2 Nom de l'ensemble thématique", "R.4 Producteur", "R.5 Nom du producteur",
                    "R.6 Support de diffusion","R.7 Format", "R.8 Forme narrative", "R.9 Durée", "R.10 Nombre de pages",
@@ -714,7 +736,7 @@ def export_xls(request):
                    "S.19 Troisième Onglet","S19.1 Autre Troisième Onglet","S.19. 1 PLUS DE TROIS ONGLETS à ouvrir pour trouver ce dispositif ?","S.20 Mode d'hébergement","S.21 Mode de consultation",
                    "S.22 langue de la narration","S.23 Sous-titrages", "S.24.1 Accessible aux malentendants","S.24.2 Accessible aux malvoyants",
                    "M.25 Matériau musical (parle-t-on)","M.25.1 Orchestration (parle-t-on)",
-                   "M.25.2 Structure (parle-t-on)", "M.25.3 language musical (parle-t-on)","M.25.4 Genre musical (parle-t-on)l", "M.25.5 Style musical (parle-t-on)",
+                   "M.25.2 Structure (parle-t-on)", "M.25.3 language musical (parle-t-on)","M.25.4 Genre musical (parle-t-on)", "M.25.5 Style musical (parle-t-on)",
                    "M.26 Expérience musicale (parle-t-on)", "M.27 Éléments sociocultutrels et historique (parle-t-on)", "M.27.1 Époque",
                    "M.27.2 Contexte de composition, création, interprétation", "U.27.3 Rôle de l'évolution", "M.27.4 Organologie (parle-t-on)",
                    "U.28 Sollicitation musicale", "U.29 Sollicifation générale", "PM.30 Temps de musique", "PM.31 Temps de parole", "PM.32 Temps musique et parole",
@@ -737,64 +759,64 @@ def export_xls(request):
 
         #Construction de listes de liste pour pouvoir manipuler les ManyToMany fields
 
-        loflProdType = [list(elem) for elem in list(Outil.objects.order_by('titre').values_list('titre','url','site','ensemble_thematique',
+        loflProdType = [list(elem) for elem in list(Outil.objects.order_by('titre','producteur_type__nom').values_list('titre','url','site','ensemble_thematique',
                                                                                                 'ensemble_thematique_nom', 'producteur_type__nom'))]
-        loflProdNom = [list(elem) for elem in list(Outil.objects.order_by('titre').values_list('titre','producteur_nom__nom'))]
-        loflSupportDiffusion = [list(elem) for elem in list(Outil.objects.order_by('titre').values_list('titre','support_diffusion__nom'))]
-        loflFormat = [list(elem) for elem in list(Outil.objects.order_by('titre').values_list('titre','format__nom'))]
-        loflFormeNarrative = [list(elem) for elem in list(Outil.objects.order_by('titre').values_list('titre','forme_narrative__nom','duree','nb_pages','mise_en_ligne_date','depouillement_date','interactivite','materiel_imprimer',
+        loflProdNom = [list(elem) for elem in list(Outil.objects.order_by('titre','producteur_nom__nom').values_list('titre','producteur_nom__nom'))]
+        loflSupportDiffusion = [list(elem) for elem in list(Outil.objects.order_by('titre','support_diffusion__nom').values_list('titre','support_diffusion__nom'))]
+        loflFormat = [list(elem) for elem in list(Outil.objects.order_by('titre','format__nom').values_list('titre','format__nom'))]
+        loflFormeNarrative = [list(elem) for elem in list(Outil.objects.order_by('titre','forme_narrative__nom').values_list('titre','forme_narrative__nom','duree','nb_pages','mise_en_ligne_date','depouillement_date','interactivite','materiel_imprimer',
                                                           'personnification_service','commentaire_possible','commentaire_nombre','premier_onglet', 'prem_onglet_autre',
                                                           'deuxieme_onglet', 'deux_onglet_autre', 'troisieme_onglet', 'trois_onglet_autre','plus_de_tois_onglet'))]
-        loflModeHebergement = [list(elem) for elem in list(Outil.objects.order_by('titre').values_list('titre','mode_hebergement__nom'))]
-        loflModeConsultation = [list(elem) for elem in list(Outil.objects.order_by('titre').values_list('titre','mode_consultation__nom'))]
-        loflLangue = [list(elem) for elem in list(Outil.objects.order_by('titre').values_list('titre','narration_langue__nom'))]
-        loflSousTitre = [list(elem) for elem in list(Outil.objects.order_by('titre').values_list('titre','sous_titre__nom', 'malentendants',
+        loflModeHebergement = [list(elem) for elem in list(Outil.objects.order_by('titre','mode_hebergement__nom').values_list('titre','mode_hebergement__nom'))]
+        loflModeConsultation = [list(elem) for elem in list(Outil.objects.order_by('titre','mode_consultation__nom').values_list('titre','mode_consultation__nom'))]
+        loflLangue = [list(elem) for elem in list(Outil.objects.order_by('titre','narration_langue__nom').values_list('titre','narration_langue__nom'))]
+        loflSousTitre = [list(elem) for elem in list(Outil.objects.order_by('titre','sous_titre__nom').values_list('titre','sous_titre__nom', 'malentendants',
                                                                                                  'malvoyants', 'materiau_musical'))]
-        loflOrchestration = [list(elem) for elem in list(Outil.objects.order_by('titre').values_list('titre','orchestration__nom'))]
-        loflStructure = [list(elem) for elem in list(Outil.objects.order_by('titre').values_list('titre','structure__nom'))]
-        loflLanguageMusical = [list(elem) for elem in list(Outil.objects.order_by('titre').values_list('titre','language_musical__nom'))]
-        loflGenreMusical = [list(elem) for elem in list(Outil.objects.order_by('titre').values_list('titre','genre_musical__nom'))]
-        loflStyleMusical = [list(elem) for elem in list(Outil.objects.order_by('titre').values_list('titre','style_musical__nom'))]
-        loflExperienceMusical = [list(elem) for elem in list(Outil.objects.order_by('titre').values_list('titre','experience_musicale__nom', 
+        loflOrchestration = [list(elem) for elem in list(Outil.objects.order_by('titre','orchestration__nom').values_list('titre','orchestration__nom'))]
+        loflStructure = [list(elem) for elem in list(Outil.objects.order_by('titre','structure__nom').values_list('titre','structure__nom'))]
+        loflLanguageMusical = [list(elem) for elem in list(Outil.objects.order_by('titre','language_musical__nom').values_list('titre','language_musical__nom'))]
+        loflGenreMusical = [list(elem) for elem in list(Outil.objects.order_by('titre','genre_musical__nom').values_list('titre','genre_musical__nom'))]
+        loflStyleMusical = [list(elem) for elem in list(Outil.objects.order_by('titre','style_musical__nom').values_list('titre','style_musical__nom'))]
+        loflExperienceMusical = [list(elem) for elem in list(Outil.objects.order_by('titre','experience_musicale__nom').values_list('titre','experience_musicale__nom',
                                                                                                          'elements_socioculturels'))]
-        loflEpoque = [list(elem) for elem in list(Outil.objects.order_by('titre').values_list('titre','epoque__nom'))]
-        loflContexte = [list(elem) for elem in list(Outil.objects.order_by('titre').values_list('titre','contexte__nom'))]
-        loflRoleEvolution = [list(elem) for elem in list(Outil.objects.order_by('titre').values_list('titre','role_evolution__nom'))]
-        loflOrganologie = [list(elem) for elem in list(Outil.objects.order_by('titre').values_list('titre','organologie__nom'))]
-        loflSollicitationMusicale = [list(elem) for elem in list(Outil.objects.order_by('titre').values_list('titre','sollicitation_musicale__nom'))]
-        loflSollicitationGenerale = [list(elem) for elem in list(Outil.objects.order_by('titre').values_list('titre','sollicitation_generale__nom',
+        loflEpoque = [list(elem) for elem in list(Outil.objects.order_by('titre','epoque__nom').values_list('titre','epoque__nom'))]
+        loflContexte = [list(elem) for elem in list(Outil.objects.order_by('titre','contexte__nom').values_list('titre','contexte__nom'))]
+        loflRoleEvolution = [list(elem) for elem in list(Outil.objects.order_by('titre','role_evolution__nom').values_list('titre','role_evolution__nom'))]
+        loflOrganologie = [list(elem) for elem in list(Outil.objects.order_by('titre','organologie__nom').values_list('titre','organologie__nom'))]
+        loflSollicitationMusicale = [list(elem) for elem in list(Outil.objects.order_by('titre','sollicitation_musicale__nom').values_list('titre','sollicitation_musicale__nom'))]
+        loflSollicitationGenerale = [list(elem) for elem in list(Outil.objects.order_by('titre','sollicitation_generale__nom',).values_list('titre','sollicitation_generale__nom',
                                                                                                              'temps_mus', 'temps_par', 'temps_mus_par',
                                                                                                              'sonore_valeur'))]
-        loflEvocationGraphique = [list(elem) for elem in list(Outil.objects.order_by('titre').values_list('titre', 'evocation_graphique__nom'))]
-        loflEvocationPlastique = [list(elem) for elem in list(Outil.objects.order_by('titre').values_list('titre', 'evocation_plastique__nom',
+        loflEvocationGraphique = [list(elem) for elem in list(Outil.objects.order_by('titre', 'evocation_graphique__nom').values_list('titre', 'evocation_graphique__nom'))]
+        loflEvocationPlastique = [list(elem) for elem in list(Outil.objects.order_by('titre', 'evocation_plastique__nom').values_list('titre', 'evocation_plastique__nom',
                                                                                                           'evocation_litteraire'))]
-        loflEvocationAutre = [list(elem) for elem in list(Outil.objects.order_by('titre').values_list('titre', 'evocation_autre__nom', 'notion_concepts',
+        loflEvocationAutre = [list(elem) for elem in list(Outil.objects.order_by('titre', 'evocation_autre__nom').values_list('titre', 'evocation_autre__nom', 'notion_concepts',
                                                                                                       'notion_experiences', 'notion_pratiques'))]
-        loflExempleNotionInter = [list(elem) for elem in list(Outil.objects.order_by('titre').values_list('titre', 'exemples_notions_interdisciplinaires__nom', 'nb_humains_total',
+        loflExempleNotionInter = [list(elem) for elem in list(Outil.objects.order_by('titre', 'exemples_notions_interdisciplinaires__nom').values_list('titre', 'exemples_notions_interdisciplinaires__nom', 'nb_humains_total',
                                                                                                   'nb_femmes', 'nb_hommes', 'nb_humains_indetermines'))]
-        loflRoleFemme = [list(elem) for elem in list(Outil.objects.order_by('titre').values_list('titre', 'role_humain_femme__nom'))]
-        loflRoleHomme = [list(elem) for elem in list(Outil.objects.order_by('titre').values_list('titre', 'role_humain_homme__nom'))]
-        loflRoleHumainNeutre = [list(elem) for elem in list(Outil.objects.order_by('titre').values_list('titre', 'role_humain_neutre__nom',
+        loflRoleFemme = [list(elem) for elem in list(Outil.objects.order_by('titre', 'role_humain_femme__nom').values_list('titre', 'role_humain_femme__nom'))]
+        loflRoleHomme = [list(elem) for elem in list(Outil.objects.order_by('titre', 'role_humain_homme__nom').values_list('titre', 'role_humain_homme__nom'))]
+        loflRoleHumainNeutre = [list(elem) for elem in list(Outil.objects.order_by('titre', 'role_humain_neutre__nom').values_list('titre', 'role_humain_neutre__nom',
                                                                                                  'nb_pers_anime_total','nb_pers_anime_femmes',
                                                                                                  'nb_pers_anime_hommes', 'nb_pers_anime_indetermines'))]
-        loflRolePersAnimFemme = [list(elem) for elem in list(Outil.objects.order_by('titre').values_list('titre', 'role_pers_anime_femme__nom'))]
-        loflRolePersAnimHomme = [list(elem) for elem in list(Outil.objects.order_by('titre').values_list('titre', 'role_pers_anime_homme__nom'))]
-        loflRolePersAnimNeutre = [list(elem) for elem in list(Outil.objects.order_by('titre').values_list('titre', 'role_pers_anime_neutre__nom', 'nb_animaux_total',
+        loflRolePersAnimFemme = [list(elem) for elem in list(Outil.objects.order_by('titre', 'role_pers_anime_femme__nom').values_list('titre', 'role_pers_anime_femme__nom'))]
+        loflRolePersAnimHomme = [list(elem) for elem in list(Outil.objects.order_by('titre', 'role_pers_anime_homme__nom').values_list('titre', 'role_pers_anime_homme__nom'))]
+        loflRolePersAnimNeutre = [list(elem) for elem in list(Outil.objects.order_by('titre', 'role_pers_anime_neutre__nom').values_list('titre', 'role_pers_anime_neutre__nom', 'nb_animaux_total',
                                                                                                 'nb_femelles', 'nb_males', 'nb_animaux_indetermines'))]
-        loflRoleFemelle = [list(elem) for elem in list(Outil.objects.order_by('titre').values_list('titre', 'role_animaux_femme__nom'))]
-        loflRoleMale = [list(elem) for elem in list(Outil.objects.order_by('titre').values_list('titre', 'role_animaux_homme__nom'))]
-        loflAnimauxNeutre = [list(elem) for elem in  list(Outil.objects.order_by('titre').values_list('titre','role_animaux_neutre__nom', 'nb_instr_anime_total',
+        loflRoleFemelle = [list(elem) for elem in list(Outil.objects.order_by('titre', 'role_animaux_femme__nom').values_list('titre', 'role_animaux_femme__nom'))]
+        loflRoleMale = [list(elem) for elem in list(Outil.objects.order_by('titre', 'role_animaux_homme__nom').values_list('titre', 'role_animaux_homme__nom'))]
+        loflAnimauxNeutre = [list(elem) for elem in  list(Outil.objects.order_by('titre','role_animaux_neutre__nom').values_list('titre','role_animaux_neutre__nom', 'nb_instr_anime_total',
                                                                                                     'nb_instr_anime_femmes','nb_instr_anime_hommes',
                                                                                                     'nb_instr_anime_indetermines'))]
-        loflInstrAnimFemme = [list(elem) for elem in list(Outil.objects.order_by('titre').values_list('titre', 'role_instr_anime_femme__nom'))]
-        loflInstrAnimHomme = [list(elem) for elem in list(Outil.objects.order_by('titre').values_list('titre', 'role_instr_anime_homme__nom'))]
-        loflInstrAnimNeutre = [list(elem) for elem in list(Outil.objects.order_by('titre').values_list('titre', 'role_instr_anime_neutre__nom'))]
+        loflInstrAnimFemme = [list(elem) for elem in list(Outil.objects.order_by('titre', 'role_instr_anime_femme__nom').values_list('titre', 'role_instr_anime_femme__nom'))]
+        loflInstrAnimHomme = [list(elem) for elem in list(Outil.objects.order_by('titre', 'role_instr_anime_homme__nom').values_list('titre', 'role_instr_anime_homme__nom'))]
+        loflInstrAnimNeutre = [list(elem) for elem in list(Outil.objects.order_by('titre', 'role_instr_anime_neutre__nom').values_list('titre', 'role_instr_anime_neutre__nom'))]
         
         total = Outil.objects.count()
 
         loflFin = [None] * total
 
-        #Construction d'une liste de facteurs pour déterminer le nombre d'itération nécéssaire
+        # Construction d'une liste de facteurs pour déterminer le nombre d'itération nécéssaire
         facteurs = []
         j = 1
         for i in range(9):
@@ -825,9 +847,8 @@ def export_xls(request):
                             del loflProdType[loflProdType.index(item) + 1]
 
         # Nom du producteur
-        x = ProducteurNom.objects.count()
         for i in facteurs:
-            if x < i[1]:
+            if ProducteurNom.objects.count() < i[1]:
                 nbIter = i[0]
                 break
 
@@ -844,9 +865,8 @@ def export_xls(request):
                             del loflProdNom[loflProdNom.index(item) + 1]
 
         # support de diffusion
-        x = SupportDiffusion.objects.count()
         for i in facteurs:
-            if x < i[1]:
+            if SupportDiffusion.objects.count() < i[1]:
                 nbIter = i[0]
                 break
 
@@ -863,22 +883,35 @@ def export_xls(request):
                             del loflSupportDiffusion[loflSupportDiffusion.index(item) + 1]
 
         # format
-        for i in facteurs:
-            if FormatOutil.objects.count() < i[1]:
-                nbIter = i[0]
-                break
+        for item in loflFormat:
+            item[1] = ''
+            for obj in Outil.objects.get(titre=item[0]).format.all().order_by('nom'):
+                if list(Outil.objects.get(titre=item[0]).format.all().order_by('nom')).index(obj) != 0:
+                    item[1] += ", "
+                item[1] += obj.nom
 
-        for i in range(3):
-            for item in loflFormat:
-                if loflFormat.index(item) != len(loflFormat) - 1:
-                    prem = loflFormat[loflFormat.index(item)]
-                    Trois = loflFormat[loflFormat.index(item) + 1]
-                    if prem[0] == Trois[0]:
-                        if prem[1] not in Trois[1]:
-                            prem[1] += ", "
-                            prem[1] += Trois[1]
-                            loflFormat[loflFormat.index(item)] = prem
-                            del loflFormat[loflFormat.index(item) + 1]
+        copie = []
+        for item in loflFormat:
+            if item not in copie:
+                copie.append(item)
+        loflFormat = copie
+
+        # for i in facteurs:
+        #     if FormatOutil.objects.count() < i[1]:
+        #         nbIter = i[0]
+        #         break
+        #
+        # for i in range(nbIter):
+        #     for item in loflFormat:
+        #         if loflFormat.index(item) != len(loflFormat) - 1:
+        #             prem = loflFormat[loflFormat.index(item)]
+        #             deux = loflFormat[loflFormat.index(item) + 1]
+        #             if prem[0] == deux[0]:
+        #                 if prem[1] not in deux[1]:
+        #                     prem[1] += ", "
+        #                     prem[1] += deux[1]
+        #                     loflFormat[loflFormat.index(item)] = prem
+        #                     del loflFormat[loflFormat.index(item) + 1]
 
         # forme narrative
         for i in facteurs:
@@ -890,13 +923,27 @@ def export_xls(request):
             for item in loflFormeNarrative:
                 if loflFormeNarrative.index(item) != len(loflFormeNarrative) - 1:
                     prem = loflFormeNarrative[loflFormeNarrative.index(item)]
-                    Quatre = loflFormeNarrative[loflFormeNarrative.index(item) + 1]
-                    if prem[0] == Quatre[0]:
-                        if prem[1] not in Quatre[1]:
+                    deux = loflFormeNarrative[loflFormeNarrative.index(item) + 1]
+                    if prem[0] == deux[0]:
+                        if prem[1] not in deux[1]:
                             prem[1] += ", "
-                            prem[1] += Quatre[1]
+                            prem[1] += deux[1]
                             loflFormeNarrative[loflFormeNarrative.index(item)] = prem
                             del loflFormeNarrative[loflFormeNarrative.index(item) + 1]
+
+        # forme narrative (différente méthode pour sortedm2m) ((voir si appliquer à tout??))
+        # for item in loflFormeNarrative:
+        #     item[1] = ''
+        #     for obj in Outil.objects.get(titre=item[0]).forme_narrative.all():
+        #         if list(Outil.objects.get(titre=item[0]).forme_narrative.all()).index(obj) != 0:
+        #             item[1] += ", "
+        #         item[1] += obj.nom
+        #
+        # copie = []
+        # for item in loflFormeNarrative:
+        #     if item not in copie:
+        #         copie.append(item)
+        # loflFormeNarrative = copie
 
         # Mode d'hébergement
         for i in facteurs:
@@ -1534,4 +1581,5 @@ def export_xls(request):
         return response
 
     else:
+        # Si l'utilisateur n'est pas connecté, on l'envoie à la page "export_erreur"
         return redirect('/export_erreur')

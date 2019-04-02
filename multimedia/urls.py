@@ -34,13 +34,14 @@ urlpatterns = [
     url('^password_change/$',auth_views.PasswordChangeView.as_view(), name='password_change'),
     url('^password_change/done/$',auth_views.PasswordChangeDoneView.as_view(), name='password_change_done'),
 
-    url(r'^sinscrire/$', views.sinscrire, name='sinscrire'),
+    #url(r'^sinscrire/$', views.sinscrire, name='sinscrire'),
 
     url(r'^list/$', views.OutilList.as_view(), name='list'),
     #url(r'^result(?P<slug>[-\w\d]+)/$', views.ListDetailView.as_view(), name='list_detail'),
     url(r'^result(?P<pk>[0-9]+)/$', views.ListDetailView.as_view(), name='list_detail'),
     url(r'^recherche/$', views.SearchForm.as_view(), name = 'recherche'),
     url(r'^recherche_motcle/$', views.SearchView.as_view(), name= 'recherche_motcle'),
+    url(r'^chrono/$', views.ListeChrono.as_view()),
     url(r'^export/xls/$', views.export_xls, name='exporter_xls'),
     url(r'^export_erreur/$', TemplateView.as_view(template_name='export_erreur.html')),
     url(r'^gerer/$', TemplateView.as_view(template_name='gerer.html')),

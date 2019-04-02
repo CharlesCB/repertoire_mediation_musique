@@ -1,5 +1,4 @@
 #!/Users/charlescb/repertoire_mediation_musique/ENV/bin/python
-
 # -*- coding: utf-8 -*-
 import re
 import sys

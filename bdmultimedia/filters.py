@@ -45,8 +45,7 @@ class OutilFilter(django_filters.FilterSet):
 
     ROLE_EVOLUTION_CHOICES = BLANK_CHOICE_DASH + list(RoleEvolution.objects.exclude(nom="Non").values_list("nom", "nom"))
 
-    EPOQUE_CHOICES = list(EPOQUE_LIST)
-    del EPOQUE_CHOICES[11]
+    EPOQUE_CHOICES = Epoque.objects.values_list("nom","nom").order_by('nom')
 
     DISCIPLINE_CHOICES = BLANK_CHOICE_DASH + list(EvocationAutre.objects.exclude(nom="Aucune").values_list('nom','nom'))
 

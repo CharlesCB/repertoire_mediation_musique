@@ -24,9 +24,6 @@
         <div class="page-header" id="nobg"><h3>{{ outil.titre }}</h3></div>
     </div>
 
-    <!--<div class="col-md-10" id="nobg"><ul class="list-horizontal"><li><a href="#referencement">Référencement</a></li><li><a href="#decouvrabilite">Découvrabilité/Accessibilité</a></li><li>
-    <a href="#discours">Discours sur la musique</a></li><li><a href="#sollicitation">Sollicitation de l'usager</a></li><li><a href="#place">Place de la musique</a></li>
-    <li><a href="#extra-sonore">Évocation de la musique extra-sonore</a></li><li><a href="#interdisciplinarite">Interdisciplinarité</a></li></ul></div>-->
 </section>
     <aside>
         {% for i in tout.reverse %}
@@ -69,18 +66,31 @@
             <iframe src="{{ outil.url }}" height="400px" width="80%"></iframe>
         {% endif %}
     {% else %}
-    {% autoescape off %}
-        {% if 'youtu' in outil.integration or 'facebook' in outil.integration or 'dailymotion' in outil.integration or 'vimeo' in outil.integration %}
-            <div class="col-md-10 col-md-offset-2" id="nobg">
-            {{ outil.integration }}
-            </div>
-        {% else %}
-            <div class="col-md-10" id="nobg">
+        {% autoescape off %}
+            {% if 'youtu' in outil.integration or 'facebook' in outil.integration or 'dailymotion' in outil.integration or 'vimeo' in outil.integration %}
+                <div class="col-md-10 col-md-offset-2" id="nobg">
                 {{ outil.integration }}
-            </div>
-        {% endif %}
-    {% endautoescape %}
+                </div>
+            {% else %}
+                <div class="col-md-10" id="nobg">
+                    {{ outil.integration }}
+                </div>
+            {% endif %}
+        {% endautoescape %}
     {% endif %}
+    <div class="col-md-10" id="nobg">
+        <ul class="list-horizontal">
+            <li><a href="#referencement">Référencement</a></li>
+            <li><a href="#decouvrabilite">Découvrabilité/Accessibilité</a></li>
+            <li><a href="#discours">Discours sur la musique</a></li>
+            <li><a href="#sollicitation">Sollicitations de l'usager</a></li>
+            <li><a href="#place">Place de la musique</a></li>
+            <li><a href="#extra-sonore">Évocation de la musique extra-sonore</a></li>
+            <li><a href="#interdisciplinarite">Interdisciplinarité</a></li>
+            {% if outil.nb_humains_total != "0" or outil.nb_pers_anime_total != "0" or outil.nb_animaux_total != "0" or outil.nb_instr_anime_total != "0" %}
+                <li><a href="#stereotypes">Stéréotypes de genre</a></li>
+            {% endif %}
+        </ul></div>
     <div class="col-md-10" id="referencement" ><div class="page-header"><h4>Référencement</h4></div>
     <div class="col-md-10"><b> Titre du dispositif : </b> {{ outil.titre }} </div>
     <div class="col-md-10"><b> Url d'accès direct : </b>
@@ -131,9 +141,22 @@
             {% endif %}
         {% endfor %}
     </div>
-    <div class="col-md-10"><b> Forme narrative (en ordre d'importance):</b>
+
+    <!--<div class="col-md-10">
+        {% if outil.forme_narrative.all.count > 1 %}
+        <b> Formes narratives (en ordre d'importance):</b>
+        <ol style="margin : 0px; padding-left : 3em;">
         {% for i in outil.forme_narrative.all %}
-       {% if forloop.first %}{{ i.nom }}{% if not forloop.last %},{% endif %}
+            <li>{{ i.nom }}</li>
+        {% endfor %}
+        </ol>
+        {% else %}
+            <b>Forme narrative : </b>{% for i in outil.forme_narrative.all %}{{i.nom}}{% endfor %}
+        {% endif %}
+    </div>-->
+        <div class="col-md-10"><b> Forme narrative :</b>
+        {% for i in outil.forme_narrative.all %}
+       {% if forloop.first %} {{ i.nom }}{% if not forloop.last %},{% endif %}
             {% else %}
                 {{ i.nom | lower }}{% if not forloop.last %},{% else %}{% endif %}
             {% endif %}
@@ -355,7 +378,13 @@
     <div class="col-md-10"><b> Temps de parole et musique superposées (hh:mm:ss) : </b> {% if outil.temps_mus_par == 'nsp' or outil.temps_mus_par == 'Nsp' %} Ne s'applique pas.
         {% elif outil.temps_mus_par == 'ddv' or outil.temps_mus_par == 'Ddv' %} Durée d'écoute variable.
         {% else %}{{ outil.temps_mus_par }}{%endif%} </div>
-    <div class="col-md-10"><b> Mise en valeur du sonore : </b> {{ outil.sonore_valeur }} </div>
+    <div class="col-md-10"><b> Mise en valeur du sonore : </b>
+        {% if outil.sonore_valeur == "Nsp" %}
+            Ne s'applique pas
+        {% else %}
+            {{ outil.sonore_valeur }}
+        {% endif %}
+    </div>
 </div>
     <div class="col-md-10" id="extra-sonore"><div class="page-header"><h4>Évocation de la musique extra-sonore</h4></div>
 

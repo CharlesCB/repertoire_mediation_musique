@@ -8,7 +8,6 @@ ul {
 .description{
     margin-left : 9em;
     width: 78%;
-    max-width: 1000px;
     text-align: justify;
     border: medium solid #4eabb4;
     border-radius : 8px;
@@ -16,10 +15,6 @@ ul {
     padding : 1em;
     Line-Height: 1.1;
     font-size : 11pt;
-}
-
-input{
-    max-width : 1000px;
 }
 
 li,
@@ -202,9 +197,9 @@ small {
 }
 
 .list-horizontal {
-    width: 120%;
+    width: 100%;
+    text-align : center;
     margin-left: -2em;
-    position : fixed;
     z-index : 10;
     background-color : #e6e6e9;
 
@@ -219,8 +214,7 @@ small {
 
 }
 .list-horizontal li:first-child:before {
-	content: '\00a0\2022\00a0\00a0';
-	color : #aaa;
+	content: none;
 }
 /*
 .form-group{
@@ -284,7 +278,7 @@ center img {
     left: 15px;
     display: inline-block;
     width: 116%;
-    max-width: 1000px;
+
    /* width : 1000px; */
     height: 25em;
     border: solid medium #4eabb4;
@@ -292,11 +286,18 @@ center img {
     background-color : black;
 }
 
+.ligneTemps {
+    width : 7.8%;
+    transition: 0.3s;
+}
+
+.ligneTemps:hover{
+    opacity : 0.7;
+}
 
 #alaune {
     position: absolute;
     top: 20;
-   /* left: 15px;*/
     left: 30px;
     display: inline-block;
     width: 94%;
@@ -338,76 +339,6 @@ h6.alaune-titre{
     top:25em;
     opacity:0.5;
     background-color:#fff;
-}
-
-@media only screen and (max-width: 991px) {
-
-    .description{
-        margin-left: 2em;
-        width : 80%;
-    }
-
-    .modal-content{
-        height:50%;
-    }
-
-    center iframe,
-    center img {
-        position: absolute;
-        top: 20;
-        left: 15px;
-        display: inline-block;
-        width: 90%;
-        height: 20em;
-        border: solid medium #4eabb4;
-    }
-    h2.alaune-titre{
-        top:21px;
-        text-decoration:
-        underline;
-    }
-    h4.alaune-titre{
-        top:220px;
-        max-width: 70%;
-    }
-    h5.alaune-titre{
-        top:249px;
-        z-index : 3;
-        max-width: 70%;
-    }
-    h6.alaune-titre{
-        top:272px;
-        z-index : 3;
-        max-width: 70%;
-    }
-    section iframe{
-        max-width : 80%;
-    }
-    #form-motcle{
-    top : 20em;
-    }
-    #footer{
-        top: 20em;
-    }
-    #alaune {
-        position: absolute;
-        top: 20;
-        left: 30px;
-        display: inline-block;
-        width: 87%;
-        height: 20em;
-        z-index: 5;
-    }
-}
-
-@media only screen and (max-width: 500px) {
-    h4.alaune-titre{
-        top : 200px;
-    }
-    h5.alaune-titre, h6.alaune-titre{
-        display : none;
-    }
-
 }
 
 .infinite-item iframe, .infinite-item img {
@@ -700,3 +631,79 @@ h6.alaune-titre{
         top: -188px;
     }
 }
+
+@media only screen and (max-width: 991px) {
+
+    .description{
+        margin-left: 2em;
+        width : 80%;
+    }
+
+    .ligneTemps {
+        width : 50px;
+        padding-top : 5px;
+    }
+    .modal-content{
+        height:50%;
+    }
+
+    center iframe,
+    center img {
+        position: absolute;
+        top: 20;
+        left: 15px;
+        display: inline-block;
+        width: 90%;
+        height: 20em;
+        border: solid medium #4eabb4;
+    }
+    h2.alaune-titre{
+        top:21px;
+        text-decoration:
+        underline;
+    }
+    h4.alaune-titre{
+        top:220px;
+        max-width: 70%;
+    }
+    h5.alaune-titre{
+        top:249px;
+        z-index : 3;
+        max-width: 70%;
+    }
+    h6.alaune-titre{
+        top:272px;
+        z-index : 3;
+        max-width: 70%;
+    }
+    section iframe{
+        max-width : 80%;
+    }
+    #form-motcle{
+    top : 20em;
+    }
+    #footer{
+        top: 20em;
+    }
+    #alaune {
+        position: absolute;
+        top: 20;
+        left: 30px;
+        display: inline-block;
+        width: 87%;
+        height: 20em;
+        z-index: 5;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    h4.alaune-titre{
+        top : 200px;
+    }
+    h5.alaune-titre, h6.alaune-titre{
+        display : none;
+    }
+
+}
+
+

@@ -45,8 +45,22 @@
 {
     display : none;
 }
+
 </style>
 <script>
+    function titres(){
+        $("[for=id_titre]").parent().parent().before( "<h2>Référencement</h2><br>");
+        $("[for=id_premier_onglet]").parent().parent().before("<h2>Découvrabilité/Accessibilité</h2><br>");
+        $("[for=id_materiau_musical]").parent().parent().before("<h2>Discours sur la musique</h2><br>");
+        $("[for=id_sollicitation_musicale]").parent().parent().before("<h2>Sollicitations de l'usager</h2><br>");
+        $("[for=id_temps_mus]").parent().parent().before("<h2>Place de la musique</h2><br>");
+        $("[for=id_evocation_graphique]").parent().parent().before("<h2>Évocation de la musique extra-sonore</h2><br>");
+        $("[for=id_evocation_autre]").parent().parent().before("<h2>Interdisciplinarité</h2><br>");
+        $("[for=id_nb_humains_total]").parent().parent().before("<h2>Stéréotypes de genre</h2><br>");
+        $("[for=id_email]").parent().parent().before("<h2><br></h2><br>")
+        $("[for=id_orchestration]").parent().before("<small>Pour les questions 25.X on entre toujours les termes les plus spécifiques. Ex. Basse continue et pas Harmonie.<br>Ne sont rentrés dans le catalogue que les notions qui sont explicites visuellements ou auditivement.<br><br></small>");
+    }
+
     function dynamicForm(){
         if(document.getElementById("id_forme_delegation_4").checked == true){
             $("#id_forme_delegation_autre").parent().parent().show(400)
@@ -99,6 +113,7 @@
             $("#add_id_language_musical").parent().parent().parent().show(400)
             $("#add_id_genre_musical").parent().parent().parent().show(400)
             $("#add_id_style_musical").parent().parent().parent().show(400)
+            $(".small").show(400)
         }
         else{
             $("#add_id_orchestration").parent().parent().parent().hide(400)
@@ -106,6 +121,7 @@
             $("#add_id_language_musical").parent().parent().parent().hide(400)
             $("#add_id_genre_musical").parent().parent().parent().hide(400)
             $("#add_id_style_musical").parent().parent().parent().hide(400)
+            $(".small").hide(400)
         }
 
 
@@ -227,5 +243,7 @@
     window.setInterval(function(){
         dynamicForm()
     }, 100);
+    $(document).ready(function(){titres()});
+
 </script>
 {% endblock %}

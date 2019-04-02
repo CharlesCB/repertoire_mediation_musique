@@ -15,7 +15,6 @@
     $(function () {
         add_select2_handlers();
     });
-
     $(document).bind('DOMNodeInserted', function(e) {
         $(e.target).find('div.field-easy-select2:not([id*="__prefix__"])').each(function () {
             redisplay_select2($(this));

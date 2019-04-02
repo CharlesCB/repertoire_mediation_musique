@@ -2,37 +2,162 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3014c590-a354-461d-9433-6c54c6d92512" name="Default" comment="">
+      <change beforePath="" afterPath="$PROJECT_DIR$/bdmultimedia/Templates/epoque.html" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/utils/aLaUne.py" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/Django-1.11.15.dist-info/INSTALLER" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/Django-1.11.15.dist-info/LICENSE.txt" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/Django-1.11.15.dist-info/METADATA" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/Django-1.11.15.dist-info/RECORD" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/Django-1.11.15.dist-info/WHEEL" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/Django-1.11.15.dist-info/entry_points.txt" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/Django-1.11.15.dist-info/top_level.txt" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/django/__init__.py" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/django/__init__.py" />
-      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/django/contrib/admin/widgets.py" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/django/contrib/admin/widgets.py" />
-      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/django/contrib/gis/geos/prototypes/io.py" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/django/contrib/gis/geos/prototypes/io.py" />
-      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/django/db/migrations/loader.py" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/django/db/migrations/loader.py" />
-      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/django/db/migrations/questioner.py" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/django/db/migrations/questioner.py" />
-      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/django/db/models/query.py" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/django/db/models/query.py" />
-      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/django/views/defaults.py" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/django/views/defaults.py" />
+      <change beforePath="$PROJECT_DIR$/ENV/bin/django-admin" afterPath="$PROJECT_DIR$/ENV/bin/django-admin" />
+      <change beforePath="$PROJECT_DIR$/ENV/bin/pip" afterPath="$PROJECT_DIR$/ENV/bin/pip" />
+      <change beforePath="$PROJECT_DIR$/ENV/bin/pip2" afterPath="$PROJECT_DIR$/ENV/bin/pip2" />
+      <change beforePath="$PROJECT_DIR$/ENV/bin/pip2.7" afterPath="$PROJECT_DIR$/ENV/bin/pip2.7" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/Django-1.11.18.dist-info/RECORD" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/Django-1.11.18.dist-info/RECORD" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip-18.1.dist-info/INSTALLER" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip-18.1.dist-info/LICENSE.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip-18.1.dist-info/METADATA" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip-18.1.dist-info/RECORD" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip-18.1.dist-info/WHEEL" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip-18.1.dist-info/entry_points.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip-18.1.dist-info/top_level.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/__init__.py" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/__init__.py" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_internal/build_env.py" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_internal/build_env.py" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_internal/cache.py" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_internal/cache.py" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_internal/cli/base_command.py" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_internal/cli/base_command.py" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_internal/cli/cmdoptions.py" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_internal/cli/cmdoptions.py" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_internal/cli/main_parser.py" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_internal/cli/main_parser.py" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_internal/commands/check.py" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_internal/commands/check.py" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_internal/commands/download.py" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_internal/commands/download.py" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_internal/commands/install.py" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_internal/commands/install.py" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_internal/commands/list.py" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_internal/commands/list.py" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_internal/commands/wheel.py" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_internal/commands/wheel.py" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_internal/download.py" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_internal/download.py" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_internal/exceptions.py" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_internal/exceptions.py" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_internal/index.py" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_internal/index.py" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_internal/locations.py" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_internal/locations.py" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_internal/models/candidate.py" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_internal/models/candidate.py" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_internal/models/format_control.py" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_internal/models/format_control.py" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_internal/models/index.py" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_internal/models/index.py" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_internal/models/link.py" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_internal/models/link.py" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_internal/operations/check.py" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_internal/operations/check.py" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_internal/operations/freeze.py" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_internal/operations/freeze.py" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_internal/operations/prepare.py" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_internal/operations/prepare.py" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_internal/pep425tags.py" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_internal/pep425tags.py" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_internal/pyproject.py" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_internal/pyproject.py" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_internal/req/__init__.py" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_internal/req/__init__.py" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_internal/req/constructors.py" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_internal/req/constructors.py" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_internal/req/req_file.py" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_internal/req/req_file.py" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_internal/req/req_install.py" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_internal/req/req_install.py" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_internal/req/req_set.py" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_internal/req/req_set.py" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_internal/req/req_tracker.py" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_internal/req/req_tracker.py" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_internal/req/req_uninstall.py" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_internal/req/req_uninstall.py" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_internal/resolve.py" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_internal/resolve.py" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_internal/utils/appdirs.py" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_internal/utils/appdirs.py" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_internal/utils/compat.py" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_internal/utils/compat.py" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_internal/utils/deprecation.py" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_internal/utils/deprecation.py" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_internal/utils/encoding.py" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_internal/utils/encoding.py" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_internal/utils/filesystem.py" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_internal/utils/filesystem.py" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_internal/utils/glibc.py" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_internal/utils/glibc.py" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_internal/utils/hashes.py" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_internal/utils/hashes.py" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_internal/utils/logging.py" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_internal/utils/logging.py" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_internal/utils/misc.py" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_internal/utils/misc.py" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_internal/utils/outdated.py" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_internal/utils/outdated.py" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_internal/utils/packaging.py" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_internal/utils/packaging.py" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_internal/utils/temp_dir.py" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_internal/utils/temp_dir.py" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_internal/utils/ui.py" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_internal/utils/ui.py" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_internal/vcs/__init__.py" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_internal/vcs/__init__.py" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_internal/vcs/bazaar.py" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_internal/vcs/bazaar.py" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_internal/vcs/git.py" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_internal/vcs/git.py" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_internal/vcs/mercurial.py" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_internal/vcs/mercurial.py" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_internal/vcs/subversion.py" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_internal/vcs/subversion.py" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_internal/wheel.py" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_internal/wheel.py" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_vendor/__init__.py" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_vendor/__init__.py" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_vendor/certifi/__init__.py" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_vendor/certifi/__init__.py" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_vendor/certifi/cacert.pem" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_vendor/certifi/cacert.pem" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_vendor/certifi/core.py" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_vendor/certifi/core.py" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_vendor/colorama/__init__.py" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_vendor/colorama/__init__.py" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_vendor/colorama/ansitowin32.py" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_vendor/colorama/ansitowin32.py" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_vendor/colorama/initialise.py" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_vendor/colorama/initialise.py" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_vendor/colorama/win32.py" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_vendor/colorama/win32.py" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_vendor/colorama/winterm.py" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_vendor/colorama/winterm.py" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_vendor/distlib/__init__.py" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_vendor/distlib/__init__.py" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_vendor/distlib/database.py" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_vendor/distlib/database.py" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_vendor/distlib/locators.py" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_vendor/distlib/locators.py" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_vendor/distlib/metadata.py" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_vendor/distlib/metadata.py" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_vendor/distlib/scripts.py" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_vendor/distlib/scripts.py" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_vendor/distlib/util.py" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_vendor/distlib/util.py" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_vendor/distlib/wheel.py" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_vendor/distlib/wheel.py" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_vendor/idna/core.py" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_vendor/idna/core.py" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_vendor/idna/idnadata.py" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_vendor/idna/idnadata.py" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_vendor/idna/package_data.py" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_vendor/idna/package_data.py" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_vendor/idna/uts46data.py" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_vendor/idna/uts46data.py" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_vendor/packaging/__about__.py" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_vendor/packaging/__about__.py" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_vendor/packaging/__init__.py" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_vendor/packaging/__init__.py" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_vendor/packaging/_compat.py" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_vendor/packaging/_compat.py" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_vendor/packaging/_structures.py" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_vendor/packaging/_structures.py" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_vendor/packaging/markers.py" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_vendor/packaging/markers.py" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_vendor/packaging/requirements.py" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_vendor/packaging/requirements.py" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_vendor/packaging/specifiers.py" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_vendor/packaging/specifiers.py" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_vendor/packaging/utils.py" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_vendor/packaging/utils.py" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_vendor/packaging/version.py" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_vendor/packaging/version.py" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_vendor/pep517/__init__.py" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_vendor/pep517/__init__.py" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_vendor/pep517/_in_process.py" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_vendor/pep517/_in_process.py" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_vendor/pep517/check.py" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_vendor/pep517/check.py" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_vendor/pep517/colorlog.py" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_vendor/pep517/colorlog.py" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_vendor/pep517/envbuild.py" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_vendor/pep517/envbuild.py" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_vendor/pep517/wrappers.py" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_vendor/pep517/wrappers.py" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_vendor/pkg_resources/__init__.py" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_vendor/pkg_resources/__init__.py" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_vendor/pyparsing.py" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_vendor/pyparsing.py" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_vendor/pytoml/__init__.py" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_vendor/pytoml/__init__.py" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_vendor/pytoml/parser.py" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_vendor/pytoml/parser.py" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_vendor/pytoml/writer.py" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_vendor/pytoml/writer.py" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_vendor/requests/__init__.py" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_vendor/requests/__init__.py" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_vendor/requests/__version__.py" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_vendor/requests/__version__.py" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_vendor/requests/adapters.py" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_vendor/requests/adapters.py" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_vendor/requests/api.py" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_vendor/requests/api.py" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_vendor/requests/auth.py" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_vendor/requests/auth.py" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_vendor/requests/compat.py" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_vendor/requests/compat.py" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_vendor/requests/cookies.py" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_vendor/requests/cookies.py" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_vendor/requests/help.py" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_vendor/requests/help.py" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_vendor/requests/hooks.py" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_vendor/requests/hooks.py" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_vendor/requests/models.py" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_vendor/requests/models.py" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_vendor/requests/sessions.py" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_vendor/requests/sessions.py" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_vendor/requests/status_codes.py" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_vendor/requests/status_codes.py" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_vendor/requests/utils.py" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_vendor/requests/utils.py" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_vendor/six.py" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_vendor/six.py" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_vendor/urllib3/__init__.py" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_vendor/urllib3/__init__.py" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_vendor/urllib3/_collections.py" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_vendor/urllib3/_collections.py" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_vendor/urllib3/connection.py" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_vendor/urllib3/connection.py" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_vendor/urllib3/connectionpool.py" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_vendor/urllib3/connectionpool.py" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_vendor/urllib3/contrib/appengine.py" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_vendor/urllib3/contrib/appengine.py" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_vendor/urllib3/contrib/ntlmpool.py" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_vendor/urllib3/contrib/ntlmpool.py" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_vendor/urllib3/contrib/pyopenssl.py" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_vendor/urllib3/contrib/pyopenssl.py" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_vendor/urllib3/packages/backports/makefile.py" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_vendor/urllib3/packages/backports/makefile.py" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_vendor/urllib3/packages/ordered_dict.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_vendor/urllib3/packages/ssl_match_hostname/_implementation.py" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_vendor/urllib3/packages/ssl_match_hostname/_implementation.py" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_vendor/urllib3/poolmanager.py" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_vendor/urllib3/poolmanager.py" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_vendor/urllib3/request.py" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_vendor/urllib3/request.py" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_vendor/urllib3/response.py" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_vendor/urllib3/response.py" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_vendor/urllib3/util/connection.py" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_vendor/urllib3/util/connection.py" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_vendor/urllib3/util/response.py" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_vendor/urllib3/util/response.py" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_vendor/urllib3/util/retry.py" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_vendor/urllib3/util/retry.py" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_vendor/urllib3/util/ssl_.py" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_vendor/urllib3/util/ssl_.py" />
+      <change beforePath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_vendor/urllib3/util/wait.py" afterPath="$PROJECT_DIR$/ENV/lib/python2.7/site-packages/pip/_vendor/urllib3/util/wait.py" />
       <change beforePath="$PROJECT_DIR$/bdmultimedia/Templates/aLaUne.html" afterPath="$PROJECT_DIR$/bdmultimedia/Templates/aLaUne.html" />
+      <change beforePath="$PROJECT_DIR$/bdmultimedia/Templates/admin/bdmultimedia/change_form.html" afterPath="$PROJECT_DIR$/bdmultimedia/Templates/admin/bdmultimedia/change_form.html" />
       <change beforePath="$PROJECT_DIR$/bdmultimedia/Templates/detail.html" afterPath="$PROJECT_DIR$/bdmultimedia/Templates/detail.html" />
       <change beforePath="$PROJECT_DIR$/bdmultimedia/Templates/list_detail.html" afterPath="$PROJECT_DIR$/bdmultimedia/Templates/list_detail.html" />
-      <change beforePath="$PROJECT_DIR$/bdmultimedia/Templates/liste.html" afterPath="$PROJECT_DIR$/bdmultimedia/Templates/liste.html" />
       <change beforePath="$PROJECT_DIR$/bdmultimedia/Templates/recherche_motcle.html" afterPath="$PROJECT_DIR$/bdmultimedia/Templates/recherche_motcle.html" />
       <change beforePath="$PROJECT_DIR$/bdmultimedia/Templates/results.html" afterPath="$PROJECT_DIR$/bdmultimedia/Templates/results.html" />
+      <change beforePath="$PROJECT_DIR$/bdmultimedia/admin.py" afterPath="$PROJECT_DIR$/bdmultimedia/admin.py" />
       <change beforePath="$PROJECT_DIR$/bdmultimedia/filters.py" afterPath="$PROJECT_DIR$/bdmultimedia/filters.py" />
       <change beforePath="$PROJECT_DIR$/bdmultimedia/forms.py" afterPath="$PROJECT_DIR$/bdmultimedia/forms.py" />
+      <change beforePath="$PROJECT_DIR$/bdmultimedia/media/Capture_decran_2018-03-01_a_16.43.57.png" afterPath="" />
       <change beforePath="$PROJECT_DIR$/bdmultimedia/models.py" afterPath="$PROJECT_DIR$/bdmultimedia/models.py" />
       <change beforePath="$PROJECT_DIR$/bdmultimedia/static/css/style.css" afterPath="$PROJECT_DIR$/bdmultimedia/static/css/style.css" />
+      <change beforePath="$PROJECT_DIR$/bdmultimedia/static/easy_select2/js/init.js" afterPath="$PROJECT_DIR$/bdmultimedia/static/easy_select2/js/init.js" />
       <change beforePath="$PROJECT_DIR$/bdmultimedia/views.py" afterPath="$PROJECT_DIR$/bdmultimedia/views.py" />
       <change beforePath="$PROJECT_DIR$/db.json" afterPath="$PROJECT_DIR$/db.json" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" afterPath="$PROJECT_DIR$/db.sqlite3" />
       <change beforePath="$PROJECT_DIR$/multimedia/settings.py" afterPath="$PROJECT_DIR$/multimedia/settings.py" />
       <change beforePath="$PROJECT_DIR$/multimedia/urls.py" afterPath="$PROJECT_DIR$/multimedia/urls.py" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" afterPath="$PROJECT_DIR$/requirements.txt" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -43,47 +168,58 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="style.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/bdmultimedia/static/css/style.css">
+      <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/bdmultimedia/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2460">
-              <caret line="164" column="26" lean-forward="false" selection-start-line="164" selection-start-column="26" selection-end-line="164" selection-end-column="26" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="aLaUne.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/bdmultimedia/Templates/aLaUne.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="33" column="51" lean-forward="false" selection-start-line="33" selection-start-column="51" selection-end-line="33" selection-end-column="51" />
+            <state relative-caret-position="176">
+              <caret line="720" column="26" lean-forward="false" selection-start-line="720" selection-start-column="26" selection-end-line="720" selection-end-column="26" />
               <folding>
-                <element signature="n#h4#0;n#div#0;n#div#0;n#div#3;n#!!top" expanded="false" />
-                <element signature="e#378#384#0" expanded="true" />
-                <element signature="e#5236#5242#0" expanded="true" />
+                <element signature="e#24#63#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/bdmultimedia/models.py">
+      <file leaf-file-name="aLaUne.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/bdmultimedia/Templates/aLaUne.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1230">
-              <caret line="91" column="9" lean-forward="false" selection-start-line="91" selection-start-column="9" selection-end-line="91" selection-end-column="9" />
+            <state relative-caret-position="855">
+              <caret line="57" column="75" lean-forward="false" selection-start-line="57" selection-start-column="75" selection-end-line="57" selection-end-column="75" />
+              <folding>
+                <element signature="e#378#384#0" expanded="true" />
+                <element signature="e#7493#7499#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="style.css" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/bdmultimedia/static/css/style.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="210">
+              <caret line="14" column="18" lean-forward="true" selection-start-line="14" selection-start-column="18" selection-end-line="14" selection-end-column="18" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="filters.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/bdmultimedia/filters.py">
+      <file leaf-file-name="detail.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/bdmultimedia/Templates/detail.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1545">
-              <caret line="105" column="35" lean-forward="false" selection-start-line="105" selection-start-column="35" selection-end-line="105" selection-end-column="35" />
+            <state relative-caret-position="5760">
+              <caret line="384" column="37" lean-forward="false" selection-start-line="384" selection-start-column="37" selection-end-line="384" selection-end-column="37" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/bdmultimedia/views.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2850">
+              <caret line="203" column="86" lean-forward="false" selection-start-line="203" selection-start-column="86" selection-end-line="203" selection-end-column="86" />
               <folding>
-                <element signature="e#25#46#0" expanded="true" />
+                <element signature="e#24#63#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -92,8 +228,28 @@
       <file leaf-file-name="forms.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/bdmultimedia/forms.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="436">
-              <caret line="108" column="21" lean-forward="false" selection-start-line="108" selection-start-column="21" selection-end-line="108" selection-end-column="21" />
+            <state relative-caret-position="405">
+              <caret line="30" column="21" lean-forward="false" selection-start-line="30" selection-start-column="21" selection-end-line="30" selection-end-column="76" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="filters.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/bdmultimedia/filters.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="675">
+              <caret line="47" column="76" lean-forward="false" selection-start-line="47" selection-start-column="76" selection-end-line="47" selection-end-column="76" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="admin.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/bdmultimedia/admin.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="3600">
+              <caret line="247" column="39" lean-forward="false" selection-start-line="247" selection-start-column="39" selection-end-line="247" selection-end-column="39" />
               <folding />
             </state>
           </provider>
@@ -104,24 +260,13 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Python Script" />
         <option value="HTML File" />
+        <option value="Python Script" />
       </list>
     </option>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>loflOnze</find>
-      <find>loflTreize</find>
-      <find>loflQuatorze</find>
-      <find>loflQuinze</find>
-      <find>loflSeize</find>
-      <find>all().count</find>
-      <find>range(3)</find>
-      <find>renage</find>
-      <find>contexte</find>
-      <find>-</find>
-      <find>j</find>
       <find>&amp;middot</find>
       <find>liste</find>
       <find>?q=</find>
@@ -141,20 +286,25 @@
       <find>box-shadow : 5px 5px 5px lightgray;</find>
       <find>box-shadow</find>
       <find>/*box-shadow : 5px 5px 5px lightgray;*/</find>
+      <find>tra</find>
+      <find>.desc</find>
+      <find>list</find>
+      <find>list-ho</find>
+      <find>.format</find>
+      <find>sma</find>
+      <find>SupportDiffusion</find>
+      <find>ala</find>
+      <find>epoque</find>
+      <find>place</find>
+      <find>Mise en</find>
     </findStrings>
     <replaceStrings>
-      <replace>show(800).css(&quot;display&quot;, &quot;inline-block&quot;)</replace>
-      <replace>400</replace>
-      <replace>hide</replace>
-      <replace>contexte</replace>
-      <replace>role_evolution</replace>
       <replace>organologie</replace>
       <replace />
       <replace>epoque</replace>
       <replace>450px</replace>
       <replace>/recherche_motcle/?q</replace>
       <replace>loflProdType</replace>
-      <replace>loflProdNom</replace>
       <replace>lofl</replace>
       <replace>loflStructure</replace>
       <replace>loflEvocationGraphique</replace>
@@ -173,6 +323,12 @@
       <replace>pk</replace>
       <replace>/*box-shadow : 5px 5px 5px lightgray;*/</replace>
       <replace>box-shadow : 5px 5px 5px lightgray;</replace>
+      <replace>q</replace>
+      <replace>chrono</replace>
+      <replace>loflProdNom</replace>
+      <replace>.producteur_nom</replace>
+      <replace>Format</replace>
+      <replace>format</replace>
     </replaceStrings>
     <dirStrings>
       <dir>$PROJECT_DIR$</dir>
@@ -184,10 +340,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/bdmultimedia/Templates/gerer_roleInstrHommes.html" />
-        <option value="$PROJECT_DIR$/bdmultimedia/Templates/gerer_roleInstrNeutre.html" />
-        <option value="$PROJECT_DIR$/bdmultimedia/Templates/gerer_rolePersAnimFemmes.html" />
-        <option value="$PROJECT_DIR$/bdmultimedia/Templates/gerer_rolePersAnimHommes.html" />
         <option value="$PROJECT_DIR$/bdmultimedia/Templates/gerer_rolePersAnimNeutre.html" />
         <option value="$PROJECT_DIR$/bdmultimedia/Templates/gerer_roleEvolution.html" />
         <option value="$PROJECT_DIR$/bdmultimedia/Templates/gerer_roleAnimauxNeutre.html" />
@@ -217,24 +369,28 @@
         <option value="$PROJECT_DIR$/bdmultimedia/Templates/prodtype_confirm_delete.html" />
         <option value="$PROJECT_DIR$/bdmultimedia/templatetags/has_group.py" />
         <option value="$PROJECT_DIR$/bdmultimedia/Templates/sinscrire.html" />
-        <option value="$PROJECT_DIR$/bdmultimedia/Templates/admin/bdmultimedia/change_form.html" />
         <option value="$PROJECT_DIR$/bdmultimedia/Templates/base.html" />
-        <option value="$PROJECT_DIR$/bdmultimedia/admin.py" />
-        <option value="$PROJECT_DIR$/multimedia/urls.py" />
         <option value="$PROJECT_DIR$/bdmultimedia/Templates/liste.html" />
-        <option value="$PROJECT_DIR$/bdmultimedia/Templates/results.html" />
-        <option value="$PROJECT_DIR$/bdmultimedia/Templates/recherche_motcle.html" />
         <option value="$PROJECT_DIR$/bdmultimedia/migrations/0159_auto_20190109_1601.py" />
-        <option value="$PROJECT_DIR$/multimedia/settings.py" />
         <option value="$PROJECT_DIR$/bdmultimedia/migrations/0159_auto_20190111_1511.py" />
-        <option value="$PROJECT_DIR$/bdmultimedia/models.py" />
+        <option value="$PROJECT_DIR$/bdmultimedia/Templates/results.html" />
+        <option value="$PROJECT_DIR$/multimedia/urls.py" />
+        <option value="$PROJECT_DIR$/bdmultimedia/Templates/recherche_motcle.html" />
         <option value="$PROJECT_DIR$/bdmultimedia/Templates/detail.html" />
         <option value="$PROJECT_DIR$/bdmultimedia/Templates/list_detail.html" />
-        <option value="$PROJECT_DIR$/bdmultimedia/views.py" />
-        <option value="$PROJECT_DIR$/bdmultimedia/static/css/style.css" />
-        <option value="$PROJECT_DIR$/bdmultimedia/Templates/aLaUne.html" />
+        <option value="$PROJECT_DIR$/multimedia/settings.py" />
+        <option value="$PROJECT_DIR$/bdmultimedia/cron.py" />
+        <option value="$PROJECT_DIR$/utils/aLaUne.py" />
+        <option value="$PROJECT_DIR$/bdmultimedia/Templates/admin/bdmultimedia/change_form.html" />
+        <option value="$PROJECT_DIR$/bdmultimedia/static/easy_select2/js/init.js" />
+        <option value="$PROJECT_DIR$/bdmultimedia/admin.py" />
         <option value="$PROJECT_DIR$/bdmultimedia/forms.py" />
         <option value="$PROJECT_DIR$/bdmultimedia/filters.py" />
+        <option value="$PROJECT_DIR$/bdmultimedia/views.py" />
+        <option value="$PROJECT_DIR$/bdmultimedia/Templates/epoque.html" />
+        <option value="$PROJECT_DIR$/bdmultimedia/Templates/aLaUne.html" />
+        <option value="$PROJECT_DIR$/bdmultimedia/models.py" />
+        <option value="$PROJECT_DIR$/bdmultimedia/static/css/style.css" />
       </list>
     </option>
   </component>
@@ -281,6 +437,7 @@
     </navigator>
     <panes>
       <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -299,11 +456,20 @@
               <item name="bdmultimedia" type="462c0819:PsiDirectoryNode" />
               <item name="Templates" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="repertoire_mediation_musique" type="b2602c69:ProjectViewProjectNode" />
+              <item name="repertoire_mediation_musique" type="462c0819:PsiDirectoryNode" />
+              <item name="multimedia" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="repertoire_mediation_musique" type="b2602c69:ProjectViewProjectNode" />
+              <item name="repertoire_mediation_musique" type="462c0819:PsiDirectoryNode" />
+              <item name="utils" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -361,14 +527,14 @@
     <frame x="0" y="23" width="1262" height="777" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17566478" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32977098" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20467365" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32928678" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3287879" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32928678" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32776934" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24738115" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32776934" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32928678" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -391,86 +557,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/bdmultimedia/Templates/aLaUne.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="900">
-          <caret line="60" column="37" lean-forward="false" selection-start-line="60" selection-start-column="37" selection-end-line="60" selection-end-column="37" />
-          <folding>
-            <element signature="n#h4#0;n#div#0;n#div#0;n#div#3;n#!!top" expanded="false" />
-            <element signature="e#378#384#0" expanded="true" />
-            <element signature="e#5236#5242#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bdmultimedia/Templates/results.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="24" column="13" lean-forward="false" selection-start-line="24" selection-start-column="13" selection-end-line="24" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bdmultimedia/Templates/recherche_motcle.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bdmultimedia/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3855">
-          <caret line="257" column="0" lean-forward="false" selection-start-line="257" selection-start-column="0" selection-end-line="257" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bdmultimedia/Templates/detail.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" column="8" lean-forward="false" selection-start-line="14" selection-start-column="8" selection-end-line="17" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/multimedia/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bdmultimedia/Templates/gererX.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="495">
-          <caret line="33" column="24" lean-forward="false" selection-start-line="33" selection-start-column="24" selection-end-line="33" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bdmultimedia/Templates/aLaUne.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="900">
-          <caret line="60" column="37" lean-forward="false" selection-start-line="60" selection-start-column="37" selection-end-line="60" selection-end-column="37" />
-          <folding>
-            <element signature="n#h4#0;n#div#0;n#div#0;n#div#3;n#!!top" expanded="false" />
-            <element signature="e#378#384#0" expanded="true" />
-            <element signature="e#5236#5242#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bdmultimedia/Templates/results.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="24" column="13" lean-forward="false" selection-start-line="24" selection-start-column="13" selection-end-line="24" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bdmultimedia/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3855">
-          <caret line="257" column="0" lean-forward="false" selection-start-line="257" selection-start-column="0" selection-end-line="257" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/bdmultimedia/Templates/detail.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
@@ -496,11 +582,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="900">
           <caret line="60" column="37" lean-forward="false" selection-start-line="60" selection-start-column="37" selection-end-line="60" selection-end-column="37" />
-          <folding>
-            <element signature="n#h4#0;n#div#0;n#div#0;n#div#3;n#!!top" expanded="false" />
-            <element signature="e#378#384#0" expanded="true" />
-            <element signature="e#5236#5242#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -564,11 +645,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="900">
           <caret line="60" column="40" lean-forward="false" selection-start-line="60" selection-start-column="40" selection-end-line="60" selection-end-column="40" />
-          <folding>
-            <element signature="n#h4#0;n#div#0;n#div#0;n#div#3;n#!!top" expanded="false" />
-            <element signature="e#378#384#0" expanded="true" />
-            <element signature="e#5236#5242#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -623,24 +699,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/bdmultimedia/Templates/admin/bdmultimedia/change_form.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="765">
-          <caret line="51" column="71" lean-forward="false" selection-start-line="51" selection-start-column="71" selection-end-line="51" selection-end-column="71" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/bdmultimedia/Templates/base.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1755">
           <caret line="117" column="113" lean-forward="false" selection-start-line="117" selection-start-column="113" selection-end-line="117" selection-end-column="113" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bdmultimedia/Templates/results.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="630">
-          <caret line="42" column="48" lean-forward="false" selection-start-line="42" selection-start-column="48" selection-end-line="42" selection-end-column="48" />
         </state>
       </provider>
     </entry>
@@ -652,112 +714,194 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/bdmultimedia/migrations/0159_auto_20190109_1601.py" />
-    <entry file="file://$PROJECT_DIR$/bdmultimedia/Templates/recherche_motcle.html">
+    <entry file="file://$PROJECT_DIR$/bdmultimedia/Templates/liste.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1350">
-          <caret line="90" column="63" lean-forward="false" selection-start-line="90" selection-start-column="63" selection-end-line="90" selection-end-column="63" />
+        <state relative-caret-position="150">
+          <caret line="10" column="32" lean-forward="false" selection-start-line="10" selection-start-column="32" selection-end-line="10" selection-end-column="69" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/multimedia/settings.py">
+    <entry file="file://$PROJECT_DIR$/bdmultimedia/Templates/results.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="675">
-          <caret line="45" column="29" lean-forward="false" selection-start-line="45" selection-start-column="29" selection-end-line="45" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bdmultimedia/admin.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="885">
-          <caret line="66" column="28" lean-forward="false" selection-start-line="66" selection-start-column="28" selection-end-line="66" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bdmultimedia/Templates/detail.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1995">
-          <caret line="133" column="75" lean-forward="false" selection-start-line="133" selection-start-column="75" selection-end-line="133" selection-end-column="75" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bdmultimedia/migrations/0159_auto_20190111_1511.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="22" column="0" lean-forward="false" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bdmultimedia/Templates/list_detail.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1965">
-          <caret line="131" column="10" lean-forward="false" selection-start-line="131" selection-start-column="10" selection-end-line="131" selection-end-column="10" />
+        <state relative-caret-position="427">
+          <caret line="35" column="228" lean-forward="false" selection-start-line="35" selection-start-column="228" selection-end-line="35" selection-end-column="228" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/multimedia/urls.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="326">
-          <caret line="29" column="5" lean-forward="false" selection-start-line="29" selection-start-column="5" selection-end-line="29" selection-end-column="5" />
+        <state relative-caret-position="555">
+          <caret line="43" column="51" lean-forward="false" selection-start-line="43" selection-start-column="51" selection-end-line="43" selection-end-column="51" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/bdmultimedia/Templates/liste.html">
+    <entry file="file://$PROJECT_DIR$/bdmultimedia/Templates/recherche_motcle.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="249">
-          <caret line="44" column="59" lean-forward="false" selection-start-line="44" selection-start-column="59" selection-end-line="44" selection-end-column="59" />
+        <state relative-caret-position="199">
+          <caret line="55" column="0" lean-forward="false" selection-start-line="55" selection-start-column="0" selection-end-line="55" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/bdmultimedia/views.py">
+    <entry file="file://$PROJECT_DIR$/bdmultimedia/migrations/0159_auto_20190111_1511.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="21" column="5" lean-forward="false" selection-start-line="21" selection-start-column="5" selection-end-line="21" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bdmultimedia/static/easy_select2/vendor/select2/css/select2.min.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
-          <caret line="207" column="104" lean-forward="false" selection-start-line="207" selection-start-column="104" selection-end-line="207" selection-end-column="104" />
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/bdmultimedia/static/css/style.css">
+    <entry file="file://$PROJECT_DIR$/bdmultimedia/static/easy_select2/vendor/select2/css/select2.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2460">
-          <caret line="164" column="26" lean-forward="false" selection-start-line="164" selection-start-column="26" selection-end-line="164" selection-end-column="26" />
+        <state relative-caret-position="-275">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bdmultimedia/Templates/list_detail.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="297">
+          <caret line="393" column="19" lean-forward="false" selection-start-line="393" selection-start-column="19" selection-end-line="393" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bdmultimedia/cron.py" />
+    <entry file="file://$PROJECT_DIR$/utils/aLaUne.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="22" column="21" lean-forward="false" selection-start-line="22" selection-start-column="21" selection-end-line="22" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/multimedia/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="650">
+          <caret line="48" column="1" lean-forward="false" selection-start-line="48" selection-start-column="1" selection-end-line="48" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bdmultimedia/Templates/admin/bdmultimedia/change_form.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="395">
+          <caret line="60" column="60" lean-forward="false" selection-start-line="60" selection-start-column="60" selection-end-line="60" selection-end-column="60" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bdmultimedia/static/easy_select2/js/lookup_override.1.8.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bdmultimedia/static/easy_select2/js/lookup_override.1.7.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bdmultimedia/static/easy_select2/js/init.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="21" column="7" lean-forward="false" selection-start-line="21" selection-start-column="7" selection-end-line="21" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bdmultimedia/static/easy_select2/js/easy_select2.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" column="19" lean-forward="false" selection-start-line="9" selection-start-column="19" selection-end-line="9" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bdmultimedia/static/easy_select2/css/easy_select2.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bdmultimedia/admin.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3600">
+          <caret line="247" column="39" lean-forward="false" selection-start-line="247" selection-start-column="39" selection-end-line="247" selection-end-column="39" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/bdmultimedia/models.py">
+    <entry file="file://$PROJECT_DIR$/bdmultimedia/forms.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1230">
-          <caret line="91" column="9" lean-forward="false" selection-start-line="91" selection-start-column="9" selection-end-line="91" selection-end-column="9" />
+        <state relative-caret-position="405">
+          <caret line="30" column="21" lean-forward="false" selection-start-line="30" selection-start-column="21" selection-end-line="30" selection-end-column="76" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/bdmultimedia/filters.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1545">
-          <caret line="105" column="35" lean-forward="false" selection-start-line="105" selection-start-column="35" selection-end-line="105" selection-end-column="35" />
-          <folding>
-            <element signature="e#25#46#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="675">
+          <caret line="47" column="76" lean-forward="false" selection-start-line="47" selection-start-column="76" selection-end-line="47" selection-end-column="76" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/bdmultimedia/forms.py">
+    <entry file="file://$PROJECT_DIR$/bdmultimedia/Templates/detail.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="436">
-          <caret line="108" column="21" lean-forward="false" selection-start-line="108" selection-start-column="21" selection-end-line="108" selection-end-column="21" />
+        <state relative-caret-position="5760">
+          <caret line="384" column="37" lean-forward="false" selection-start-line="384" selection-start-column="37" selection-end-line="384" selection-end-column="37" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bdmultimedia/Templates/epoque.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="12" column="14" lean-forward="false" selection-start-line="12" selection-start-column="14" selection-end-line="12" selection-end-column="14" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/bdmultimedia/Templates/aLaUne.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="33" column="51" lean-forward="false" selection-start-line="33" selection-start-column="51" selection-end-line="33" selection-end-column="51" />
+        <state relative-caret-position="855">
+          <caret line="57" column="75" lean-forward="false" selection-start-line="57" selection-start-column="75" selection-end-line="57" selection-end-column="75" />
           <folding>
-            <element signature="n#h4#0;n#div#0;n#div#0;n#div#3;n#!!top" expanded="false" />
             <element signature="e#378#384#0" expanded="true" />
-            <element signature="e#5236#5242#0" expanded="true" />
+            <element signature="e#7493#7499#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bdmultimedia/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2850">
+          <caret line="203" column="86" lean-forward="false" selection-start-line="203" selection-start-column="86" selection-end-line="203" selection-end-column="86" />
+          <folding>
+            <element signature="e#24#63#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bdmultimedia/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="720" column="26" lean-forward="false" selection-start-line="720" selection-start-column="26" selection-end-line="720" selection-end-column="26" />
+          <folding>
+            <element signature="e#24#63#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bdmultimedia/static/css/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" column="18" lean-forward="true" selection-start-line="14" selection-start-column="18" selection-end-line="14" selection-end-column="18" />
+          <folding />
         </state>
       </provider>
     </entry>
