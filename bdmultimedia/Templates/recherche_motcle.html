@@ -27,9 +27,9 @@
                             <i class="fa fa-search" aria-hidden="true"></i>
                         </span>
                         {% if query is not None %}
-                            <input id="input" type="text" name="q" data-toggle="popover" data-placement="bottom" data-content='Appuyez sur la touche "enter" pour lancer la recherche' class="form-control cfe-nav mt-0 py-3" placeholder="Recherche par mots-clés" value="{{query}}" autofocus>
+                            <input id="input" type="text" name="q" data-toggle="popover" data-placement="bottom" data-content='Appuyez sur la touche "enter" pour lancer la recherche' class="form-control cfe-nav mt-0 py-3" placeholder="Recherche par mots-clés (si vous cherchez une expression, insérez là entre guillemet)" value="{{query}}" autofocus>
                         {% else %}
-                            <input id="input" type="text" name="q" data-toggle="popover" data-placement="bottom" data-content='Appuyez sur la touche "enter" pour lancer la recherche' class="form-control cfe-nav mt-0 py-3" placeholder="Recherche par mots-clés" autofocus>
+                            <input id="input" type="text" name="q" data-toggle="popover" data-placement="bottom" data-content='Appuyez sur la touche "enter" pour lancer la recherche' class="form-control cfe-nav mt-0 py-3" placeholder="Recherche par mots-clés (si vous cherchez une expression, insérez là entre guillemet)" autofocus>
                         {% endif %}
 
                     </div>

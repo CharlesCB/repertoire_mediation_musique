@@ -11,7 +11,6 @@ ul {
     text-align: justify;
     border: medium solid #4eabb4;
     border-radius : 8px;
-    /*box-shadow : 5px 5px 5px lightgray;*/
     padding : 1em;
     Line-Height: 1.1;
     font-size : 11pt;
@@ -55,29 +54,6 @@ h6 {
 .page-header{
     border-bottom : thin solid #ccc;
 }
-
-
-/*
-.navbar .navbar-nav li #rouge{
-    color : #b96540;
-}
-.navbar .navbar-nav li #bleu{
-    color : #4eabb4;
-}
-.navbar .navbar-nav li #jaune{
-    color : #ebc400;
-}
-.navbar .navbar-nav li #vert{
-    color : #8db650;
-}
-
-.navbar .navbar-nav li a{
-    opacity : 0.6;
-}
-.navbar .navbar-nav li a{
-    opacity : 0.6;
-}
-*/
 
 h4 {
     font-size: 13pt;
@@ -640,7 +616,7 @@ h6.alaune-titre{
     }
 
     .ligneTemps {
-        width : 50px;
+        width : 60px;
         padding-top : 5px;
     }
     .modal-content{

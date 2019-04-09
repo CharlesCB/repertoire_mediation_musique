@@ -225,11 +225,7 @@ class NotionsInterAdmin(admin.ModelAdmin):
     search_fields = ['nom',]
 
 
-
-#admin.site.register(CustomTest, CustomTestAdmin)
-
 admin.site.register(Outil, OutilAdmin)
-#admin.site.register(ContreExemple, ContreExempleAdmin)
 admin.site.register(ProdType, ProdTypeAdmin)
 admin.site.register(SupportDiffusion,SupportDiffusionAdmin)
 admin.site.register(ProducteurNom,ProducteurNomAdmin)

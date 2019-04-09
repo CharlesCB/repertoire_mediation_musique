@@ -239,29 +239,44 @@ class SearchView(generic.ListView):
                     ]
 
         if query is not None:
-            query = query.lower()
-            for i in remplacements:
-                if i[0] in query:
-                    query = query.replace(i[0], i[1])
-
-            mots = dum = query.split(" ")
-            for i in dum:
-                if i in mots_vides:
-                    mots.remove(i)
-
-            if len(mots) >= 1 and query != "":
-                results = Outil.objects.search(query=mots[0])
+            if '"' in query:
+                expr = query.split('"')
+                for i in expr:
+                    if i == '' or i == ' ':
+                        expr.remove(i)
+                results = Outil.objects.search(expr[0])
                 tempo = []
-                for i in mots:
-                    if i != mots[0]:
+                for i in expr:
+                    if i != expr[0]:
                         for j in Outil.objects.search(query=i):
                             if j in results:
                                 tempo.append(j)
                         results = tempo
                         tempo = []
-
             else:
-                results = Outil.objects.order_by('titre')
+                query = query.lower()
+                for i in remplacements:
+                    if i[0] in query:
+                        query = query.replace(i[0], i[1])
+
+                mots = dum = query.split(" ")
+                for i in dum:
+                    if i in mots_vides:
+                        mots.remove(i)
+
+                if len(mots) >= 1 and query != "":
+                    results = Outil.objects.search(query=mots[0])
+                    tempo = []
+                    for i in mots:
+                        if i != mots[0]:
+                            for j in Outil.objects.search(query=i):
+                                if j in results:
+                                    tempo.append(j)
+                            results = tempo
+                            tempo = []
+
+                else:
+                    results = Outil.objects.order_by('titre')
 
             qs = list(results)
             liste = []

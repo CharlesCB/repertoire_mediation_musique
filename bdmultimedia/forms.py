@@ -2,98 +2,85 @@
 
 from django import forms
 from models import *
+from filters import OutilFilter
 from django.db.models.fields import BLANK_CHOICE_DASH
 from easy_select2 import Select2Multiple, Select2
 
 
 class Search(forms.ModelForm):
 
-    FORMAT_CHOICES = FormatOutil.objects.values_list("nom", "nom").order_by('nom')
-    FORME_NARRATIVE_CHOICES = FormeNarrative.objects.values_list("nom", "nom").order_by('nom')
-    PRODUCTEUR_TYPE_CHOICES = ProdType.objects.values_list("nom","nom").order_by('nom')
-    SUPPORT_DIFFUSION_CHOICES = SupportDiffusion.objects.values_list("nom","nom").order_by('nom')
-    LANGUE_CHOICES = LangueNarration.objects.exclude(nom="Ne s'applique pas").values_list("nom", "nom").order_by('nom')
-    MODE_CONSULTATION_CHOICES = ModeConsultation.objects.values_list("nom","nom").order_by('nom')
     SONORE_VALEUR_CHOICES = list(SONORE_VALEUR_LIST)
     del SONORE_VALEUR_CHOICES[0]
     EVOCATION_LITTERAIRE_CHOICES = list(EVOCATION_LITTERAIRE_LIST)
     del EVOCATION_LITTERAIRE_CHOICES[0]
-    EVOCATION_GRAPHIQUE_CHOICES = EvocationGraphique.objects.exclude(nom="Non").values_list("nom", "nom").order_by('nom')
-    EVOCATION_PLASTIQUE_CHOICES = EvocationPlastique.objects.exclude(nom="Non").values_list("nom", "nom").order_by('nom')
-    ORCHESTRATION_CHOICES = Orchestration.objects.exclude(nom="Non").values_list("nom","nom").order_by('nom')
-    STRUCTURE_CHOICES = Structure.objects.exclude(nom="Non").values_list("nom","nom").order_by('nom')
-    LANGUAGE_MUSICAL_CHOICES = LanguageMusical.objects.exclude(nom="Non").values_list("nom","nom").order_by('nom')
-    GENRE_MUSICAL_CHOICES = GenreMusical.objects.exclude(nom="Non").values_list("nom","nom").order_by('nom')
-    STYLE_MUSICAL_CHOICES = StyleMusical.objects.exclude(nom="Non").values_list("nom","nom").order_by('nom')
-    EXPERIENCE_MUSICALE_CHOICES = ExperienceMusicale.objects.exclude(nom="Non").values_list("nom","nom").order_by('nom')
-    CONTEXTE_CHOICES = Contexte.objects.exclude(nom="Non").values_list("nom","nom").order_by('nom')
-    ROLE_EVOLUTION_CHOICES = RoleEvolution.objects.exclude(nom="Non").values_list("nom","nom").order_by('nom')
-    EPOQUE_CHOICES = Epoque.objects.values_list("nom","nom").order_by('nom')
-    DISCIPLINE_CHOICES = EvocationAutre.objects.exclude(nom="Aucune").values_list("nom","nom").order_by('nom')
-    NOTION_CONCEPT_CHOICES = list(OUINONNSP)
 
     # RÉFÉRENCEMENT
     #referencement = forms.BooleanField(label="Référencement", required = False)
-    format__nom = forms.ChoiceField(widget = forms.CheckboxSelectMultiple, choices=list(FORMAT_CHOICES),
+    format__nom = forms.ChoiceField(widget = forms.CheckboxSelectMultiple, choices=OutilFilter.FORMAT_CHOICES,
                                           label="Format", required = False)
-    forme_narrative__nom = forms.ChoiceField(widget=forms.CheckboxSelectMultiple, choices=list(FORME_NARRATIVE_CHOICES),
+    forme_narrative__nom = forms.ChoiceField(widget=forms.CheckboxSelectMultiple, choices=OutilFilter.FORME_NARRATIVE_CHOICES,
                                              label = "Forme narrative", required = False)
     interactivite = forms.ChoiceField(widget=forms.Select, choices=BLANK_CHOICE_DASH + list(INTERACTIVITE_LIST),
                                       label="Interactivité", required=False)
     personnification_service = forms.ChoiceField(widget=forms.Select, choices=BLANK_CHOICE_DASH + list(PERSONNIFICATION_LIST),
                                       label="Degré de personnification du service", required=False)
-    producteur_type__nom = forms.ChoiceField(widget=forms.CheckboxSelectMultiple, choices=list(PRODUCTEUR_TYPE_CHOICES),
+    producteur_type__nom = forms.ChoiceField(widget=forms.CheckboxSelectMultiple, choices=OutilFilter.PRODUCTEUR_TYPE_CHOICES,
                                              label="Type de producteur", required=False)
-    support_diffusion__nom = forms.ChoiceField(widget=forms.CheckboxSelectMultiple, choices=list(SUPPORT_DIFFUSION_CHOICES),
+    support_diffusion__nom = forms.ChoiceField(widget=forms.CheckboxSelectMultiple, choices=OutilFilter.SUPPORT_DIFFUSION_CHOICES,
                                                label="Support de diffusion", required=False)
     ensemble_thematique = forms.ChoiceField(widget=forms.Select,label="Fait partie d'un ensemble de dispositifs du même type",
                                             choices=BLANK_CHOICE_DASH + list(OUINON), required=False)
 
     # DÉCOUVRABILITÉ/ACCESSIBILITÉ
     #decouvrabilite = forms.BooleanField(label="Découvrabilité/Accessibilité", required = False)
-    narration_langue__nom = forms.ChoiceField(widget = forms.CheckboxSelectMultiple, choices=list(LANGUE_CHOICES),
+    narration_langue__nom = forms.ChoiceField(widget = forms.CheckboxSelectMultiple, choices=OutilFilter.LANGUE_CHOICES,
                                               label = "Langue", required = False)
-    mode_consultation__nom = forms.ChoiceField(widget = forms.CheckboxSelectMultiple, choices=list(MODE_CONSULTATION_CHOICES),
+    mode_consultation__nom = forms.ChoiceField(widget = forms.CheckboxSelectMultiple, choices=OutilFilter.MODE_CONSULTATION_CHOICES,
                                               label = "Mode de consultation", required = False)
 
-    sonore_valeur = forms.ChoiceField(widget=forms.Select, choices=BLANK_CHOICE_DASH + SONORE_VALEUR_CHOICES,
+    sonore_valeur = forms.ChoiceField(widget=forms.Select, choices=BLANK_CHOICE_DASH + list(SONORE_VALEUR_CHOICES),
                                       label="Mise en valeur du sonore", required=False)
 
     # EVOCATION DE LA MUSIQUE EXTTRA_SONORE
     #evocations = forms.BooleanField(label = "Évocation de la musique extra-sonore", required = False)
     evocation_litteraire = forms.ChoiceField(widget=forms.Select, choices=BLANK_CHOICE_DASH + EVOCATION_LITTERAIRE_CHOICES,
                                              label = "Évocation littéraire", required=False)
-    evocation_graphique__nom = forms.ChoiceField(widget=forms.CheckboxSelectMultiple, choices=list(EVOCATION_GRAPHIQUE_CHOICES),
+    evocation_graphique__nom = forms.ChoiceField(widget=forms.CheckboxSelectMultiple, choices=OutilFilter.EVOCATION_GRAPHIQUE_CHOICES,
                                                  label="Évocation graphique", required=False)
-    evocation_plastique__nom = forms.ChoiceField(widget=forms.CheckboxSelectMultiple, choices=list(EVOCATION_PLASTIQUE_CHOICES),
+    evocation_plastique__nom = forms.ChoiceField(widget=forms.CheckboxSelectMultiple, choices=OutilFilter.EVOCATION_PLASTIQUE_CHOICES,
                                                  label="Évocation plastique", required=False)
     # ANALYSE MUSICALE
     #analyse_musicale = forms.BooleanField(label="Analyse Musicale", required=False)
 
-    orchestration__nom = forms.ChoiceField(widget=forms.CheckboxSelectMultiple,choices=list(ORCHESTRATION_CHOICES),
+    orchestration__nom = forms.ChoiceField(widget=forms.CheckboxSelectMultiple,choices=OutilFilter.ORCHESTRATION_CHOICES,
                                            label="Orchestration", required=False)
-    structure__nom = forms.ChoiceField(widget=forms.CheckboxSelectMultiple, choices=list(STRUCTURE_CHOICES),
+    structure__nom = forms.ChoiceField(widget=forms.CheckboxSelectMultiple, choices=OutilFilter.STRUCTURE_CHOICES,
                                        label="Structure", required=False)
-    language_musical__nom = forms.ChoiceField(widget=forms.CheckboxSelectMultiple, choices=list(LANGUAGE_MUSICAL_CHOICES),
+    language_musical__nom = forms.ChoiceField(widget=forms.CheckboxSelectMultiple, choices=OutilFilter.LANGUAGE_MUSICAL_CHOICES,
                                               label="Language musical", required=False)
-    genre_musical__nom = forms.ChoiceField(widget=forms.CheckboxSelectMultiple, choices=list(GENRE_MUSICAL_CHOICES),
+    genre_musical__nom = forms.ChoiceField(widget=forms.CheckboxSelectMultiple, choices=OutilFilter.GENRE_MUSICAL_CHOICES,
                                            label="Genre musical", required=False)
-    style_musical__nom = forms.ChoiceField(widget=forms.CheckboxSelectMultiple, choices=list(STYLE_MUSICAL_CHOICES),
+    style_musical__nom = forms.ChoiceField(widget=forms.CheckboxSelectMultiple, choices=OutilFilter.STYLE_MUSICAL_CHOICES,
                                            label="Style musical", required=False)
     # ÉLÉMENTS CONTEXTUELS
     #elements_contextuels = forms.BooleanField(label="Éléments contextuels", required = False)
-    experience_musicale__nom = forms.ChoiceField(widget=forms.CheckboxSelectMultiple, choices=list(EXPERIENCE_MUSICALE_CHOICES),
+    experience_musicale__nom = forms.ChoiceField(widget=forms.CheckboxSelectMultiple, choices=OutilFilter.EXPERIENCE_MUSICALE_CHOICES,
                                                  label="Expérience musicale", required=False)
-    contexte__nom = forms.ChoiceField(widget=forms.CheckboxSelectMultiple, choices=list(CONTEXTE_CHOICES),
+    contexte__nom = forms.ChoiceField(widget=forms.CheckboxSelectMultiple, choices=OutilFilter.CONTEXTE_CHOICES,
                                       label="Contexte", required=False)
-    role_evolution__nom = forms.ChoiceField(widget=forms.CheckboxSelectMultiple, choices=list(ROLE_EVOLUTION_CHOICES),
+    role_evolution__nom = forms.ChoiceField(widget=forms.CheckboxSelectMultiple, choices=OutilFilter.ROLE_EVOLUTION_CHOICES,
                                             label="Rôle de l'évolution du [métier lié à la musique]", required=False)
-    epoque__nom = forms.ChoiceField(widget=forms.CheckboxSelectMultiple, choices=EPOQUE_CHOICES,
+    epoque__nom = forms.ChoiceField(widget=forms.CheckboxSelectMultiple, choices=OutilFilter.EPOQUE_CHOICES,
                                label="Époque (siècle)", required=False)
+
+    sollicitation_musicale__nom = forms.ChoiceField(widget=forms.CheckboxSelectMultiple, choices=OutilFilter.SOLLICITATION_MUSICALE_CHOICES,
+                                                    label="Sollicitation musicale", required=False)
+    sollicitation_generale__nom = forms.ChoiceField(widget=forms.CheckboxSelectMultiple, choices=OutilFilter.SOLLICITATION_GENERALE_CHOICES,
+                                                    label="Sollicitation de l'usager")
 
     # INTERDISCIPLINARITE
     #interdisciplinarite = forms.BooleanField(label='Interdisciplinarité', required=False)
-    evocation_autre__nom = forms.ChoiceField(widget=forms.CheckboxSelectMultiple, choices=DISCIPLINE_CHOICES,
+    evocation_autre__nom = forms.ChoiceField(widget=forms.CheckboxSelectMultiple, choices=OutilFilter.DISCIPLINE_CHOICES,
                                               label='Discipline(s) évoquée(s)', required=False)
     notion_concepts = forms.ChoiceField(widget=forms.Select, choices = BLANK_CHOICE_DASH + list(OUINONNSP), required=False,
                                        label="Notions communes (luminosité, transparence, vitesse, mouvement)")

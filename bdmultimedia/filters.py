@@ -7,17 +7,17 @@ from .models import *
 
 class OutilFilter(django_filters.FilterSet):
 
-    FORMAT_CHOICES = BLANK_CHOICE_DASH + list(FormatOutil.objects.all().values_list("nom","nom"))
+    FORMAT_CHOICES = list(FormatOutil.objects.all().values_list("nom","nom"))
 
-    FORME_NARRATIVE_CHOICES = BLANK_CHOICE_DASH + list(FormeNarrative.objects.values_list("nom","nom"))
+    FORME_NARRATIVE_CHOICES = list(FormeNarrative.objects.values_list("nom","nom"))
 
-    PRODUCTEUR_TYPE_CHOICES = BLANK_CHOICE_DASH + list(ProdType.objects.values_list("nom","nom"))
+    PRODUCTEUR_TYPE_CHOICES = list(ProdType.objects.values_list("nom","nom"))
 
-    SUPPORT_DIFFUSION_CHOICES = BLANK_CHOICE_DASH + list(SupportDiffusion.objects.values_list("nom","nom"))
+    SUPPORT_DIFFUSION_CHOICES = list(SupportDiffusion.objects.values_list("nom","nom"))
 
-    LANGUE_CHOICES = BLANK_CHOICE_DASH + list(LangueNarration.objects.exclude(nom = "Ne s'applique pas").values_list("nom","nom"))
+    LANGUE_CHOICES = list(LangueNarration.objects.exclude(nom = "Ne s'applique pas").values_list("nom","nom"))
 
-    MODE_CONSULTATION_CHOICES = BLANK_CHOICE_DASH + list(ModeConsultation.objects.values_list("nom","nom"))
+    MODE_CONSULTATION_CHOICES = list(ModeConsultation.objects.values_list("nom","nom"))
 
     SONORE_VALEUR_CHOICES = list(SONORE_VALEUR_LIST)
     del SONORE_VALEUR_CHOICES[0]
@@ -25,27 +25,31 @@ class OutilFilter(django_filters.FilterSet):
     EVOCATION_LITTERAIRE_CHOICES =  list(EVOCATION_LITTERAIRE_LIST)
     del EVOCATION_LITTERAIRE_CHOICES[0]
 
-    EVOCATION_GRAPHIQUE_CHOICES = BLANK_CHOICE_DASH + list(EvocationGraphique.objects.exclude(nom="Non").values_list("nom","nom"))
+    EVOCATION_GRAPHIQUE_CHOICES = list(EvocationGraphique.objects.exclude(nom="Non").values_list("nom","nom"))
 
-    EVOCATION_PLASTIQUE_CHOICES = BLANK_CHOICE_DASH + list(EvocationPlastique.objects.exclude(nom="Non").values_list("nom", "nom"))
+    EVOCATION_PLASTIQUE_CHOICES = list(EvocationPlastique.objects.exclude(nom="Non").values_list("nom", "nom"))
 
-    ORCHESTRATION_CHOICES = BLANK_CHOICE_DASH + list(Orchestration.objects.exclude(nom="Non").values_list("nom","nom"))
+    ORCHESTRATION_CHOICES = list(Orchestration.objects.exclude(nom="Non").values_list("nom","nom"))
 
-    STRUCTURE_CHOICES = BLANK_CHOICE_DASH + list(Structure.objects.exclude(nom="Non").values_list("nom", "nom"))
+    STRUCTURE_CHOICES = list(Structure.objects.exclude(nom="Non").values_list("nom", "nom"))
 
-    LANGUAGE_MUSICAL_CHOICES = BLANK_CHOICE_DASH + list(LanguageMusical.objects.exclude(nom="Non").values_list("nom", "nom"))
+    LANGUAGE_MUSICAL_CHOICES = list(LanguageMusical.objects.exclude(nom="Non").values_list("nom", "nom"))
 
-    GENRE_MUSICAL_CHOICES = BLANK_CHOICE_DASH + list(GenreMusical.objects.exclude(nom="Non").values_list("nom", "nom"))
+    GENRE_MUSICAL_CHOICES = list(GenreMusical.objects.exclude(nom="Non").values_list("nom", "nom"))
 
-    STYLE_MUSICAL_CHOICES = BLANK_CHOICE_DASH + list(StyleMusical.objects.exclude(nom="Non").values_list("nom", "nom"))
+    STYLE_MUSICAL_CHOICES = list(StyleMusical.objects.exclude(nom="Non").values_list("nom", "nom"))
 
-    EXPERIENCE_MUSICALE_CHOICES = BLANK_CHOICE_DASH + list(ExperienceMusicale.objects.exclude(nom="Non").values_list("nom", "nom"))
+    EXPERIENCE_MUSICALE_CHOICES = list(ExperienceMusicale.objects.exclude(nom="Non").values_list("nom", "nom"))
 
-    CONTEXTE_CHOICES = BLANK_CHOICE_DASH + list(Contexte.objects.exclude(nom="Non").values_list("nom","nom"))
+    CONTEXTE_CHOICES = list(Contexte.objects.exclude(nom="Non").values_list("nom","nom"))
 
-    ROLE_EVOLUTION_CHOICES = BLANK_CHOICE_DASH + list(RoleEvolution.objects.exclude(nom="Non").values_list("nom", "nom"))
+    ROLE_EVOLUTION_CHOICES = list(RoleEvolution.objects.exclude(nom="Non").values_list("nom", "nom"))
 
     EPOQUE_CHOICES = Epoque.objects.values_list("nom","nom").order_by('nom')
+
+    SOLLICITATION_MUSICALE_CHOICES = SollicitationMusicale.objects.values_list("nom","nom").order_by("nom")
+
+    SOLLICITATION_GENERALE_CHOICES = SollicitationGenerale.objects.values_list("nom","nom").order_by("nom")
 
     DISCIPLINE_CHOICES = BLANK_CHOICE_DASH + list(EvocationAutre.objects.exclude(nom="Aucune").values_list('nom','nom'))
 
@@ -89,6 +93,10 @@ class OutilFilter(django_filters.FilterSet):
     role_evolution__nom = django_filters.MultipleChoiceFilter(choices=ROLE_EVOLUTION_CHOICES, lookup_expr="iexact")
     epoque__nom = django_filters.MultipleChoiceFilter(choices=EPOQUE_CHOICES, lookup_expr="icontains")
 
+    sollicitation_musicale__nom = django_filters.MultipleChoiceFilter(choices=SOLLICITATION_MUSICALE_CHOICES,
+                                                                      lookup_expr="iexact")
+    sollicitation_generale__nom = django_filters.MultipleChoiceFilter(choices=SOLLICITATION_GENERALE_CHOICES,
+                                                                      lookup_expr="iexact")
 
     evocation_autre__nom = django_filters.MultipleChoiceFilter(choices=DISCIPLINE_CHOICES, lookup_expr="iexact")
     notion_concepts = django_filters.ChoiceFilter(choices=NOTIONS_CONCEPT_CHOICES, lookup_expr='iexact')

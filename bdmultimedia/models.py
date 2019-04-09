@@ -190,10 +190,95 @@ TROIS_ONGLET_LIST = (
     ("Autre", "Autre")
 )
 
-ACCESSIBILITE_LIST = (
-    ("Oui", "Oui"),
-    ("Non", "Non"),
-    ("Ne s'applique pas", "Ne s'applique pas")
+GENRE_LARGE_LIST = (
+    ("Musique populaire", "Musique populaire"),
+    ("Musique classique et contemporaine", "Musique classique et contemporaine"),
+    ("Musique à l'image", "Musique à l'image"),
+    ("Pas de genre évoqué", "Pas de genre évoqué"),
+)
+
+POP_MOYEN_LIST = (
+    ("Hip-Hop/Rap","Hip-Hop/Rap"),
+    ("Chant, chanson hymne","Chant, chanson hymne"),
+    ("Électro/ Techno","Électro/ Techno"),
+    ("Pop","Pop"),
+    ("Blues","Blues"),
+    ("Disco","Disco"),
+    ("Folk/Indie","Folk/Indie"),
+    ("Jazz","Jazz"),
+    ("Musiques du monde et trad.","Musiques du monde et trad."),
+    ("Rock","Rock"),
+    ("R&B","R&B"),
+    ("Soul/Gospel","Soul/Gospel"),
+    ("Western/Country","Western/Country"),
+    ("Musique d'ambiance","Musique d'ambiance"),
+    ("Comédie-musicale","Comédie-musicale"),
+)
+
+CLASSIQUE_MOYEN_LIST = (
+    ("Musique de danse","Musique de danse"),
+    ("Musique sacrée","Musique sacrée"),
+    ("Musique chorale", "Musique chorale"),
+    ("Voix seule accompagnée", "Voix seule accompagnée"),
+    ("Opéra", "Opéra"),
+    ("Musique symphonique", "Musique symphonique"),
+    ("Musique de chambre", "Musique de chambre"),
+    ("Électroacoustique", "Électroacoustique"),
+    ("Autre musique instrumentale","Autre musique instrumentale")
+)
+
+IMAGE_MOYEN_LIST = (
+    ("Musique de jeu vidéo", "Musique de jeu vidéo"),
+    ("Musique de film", "Musique de film"),
+)
+
+CHANT_PRECIS_LIST = (
+    ("Chant","Chant"),
+    ("Chanson","Chanson"),
+    ("Hymnes nationaux ou sportifs","Hymnes nationaux ou sportifs")
+)
+
+DANSE_PRECIS_LIST = (
+    ("Ballet","Ballet"),
+    ("Comédie ballet", "Comédie ballet"),
+    ("Danse","Danse"),
+    ("Suite de danse","Suite de danse")
+)
+
+SACREE_PRECIS_LIST = (
+    ("Cantate","Cantate"),
+    ("Oratorio","Oratorio"),
+    ("Passion","Passion"),
+    ("Messe","Messe"),
+    ("Requiem","Requiem"),
+    ("Motet","Motet"),
+)
+
+CHORALE_PRECIS_LIST = (
+    ("Motet","Motet"),
+    ("Madrigal","Madrigal"),
+)
+
+VOIX_ACCOMPAGNEE_PRECIS_LIST = (
+    ("Romance","Romance"),
+    ("Air de cour", "Air de cour"),
+    ("Lied et Mélodie","Lied et Mélodie")
+)
+
+OPERA_PRECIS_LIST = (
+    ("Opéra","Opéra"),
+    ("Semi-Opéra","Semi-Opéra"),
+    ("Opérette","Opérette"),
+    ("Grand opéra français","Grand opéra français"),
+    ("Opéra-comique et Singspiel","Opéra-comique et Singspiel"),
+    ("Ouverture","Ouverture")
+)
+
+SYMPHONIQUE_PRECIS_LIST = (
+    ("Ouverture","Ouverture"),
+    ("Symphonie","Symphonie"),
+    ("Poème symphonique","Poème symphonique"),
+    ("Concerto","Concerto")
 )
 
 SONORE_VALEUR_LIST = (
@@ -814,8 +899,37 @@ class Outil(models.Model):
                                        verbose_name="M.25.2 Parle-t-on de la structure, si oui précisez.")
     language_musical = models.ManyToManyField(LanguageMusical, db_index=True, default = 1,
                                               verbose_name="M.25.3 Parle-t-on du language musical, si oui précisez.")
+
+
     genre_musical = models.ManyToManyField(GenreMusical, db_index=True, default = 1,
                                            verbose_name="M.25.4 Parle-t-on du genre musical, si oui précisez.")
+
+    genre_large = MultiSelectField(choices=GENRE_LARGE_LIST, null=True,
+                                   verbose_name="M.25.4 Parle-t-on du genre musical, si oui précisez.")
+
+    pop_moyen = MultiSelectField(choices=POP_MOYEN_LIST, blank=True,
+                                 verbose_name="Musique populaire. Si possible, précisez.")
+    chant_precis = MultiSelectField(choices=CHANT_PRECIS_LIST, blank=True, )
+
+    classique_moyen = MultiSelectField(choices=CLASSIQUE_MOYEN_LIST, blank=True,
+                                       verbose_name="Musique classique. Si possible, précisez.")
+    danse_precis = MultiSelectField(choices=DANSE_PRECIS_LIST, blank=True,
+                                    verbose_name="Musique de danse. Si possible, précisez.")
+    sacree_precis = MultiSelectField(choices=SACREE_PRECIS_LIST, blank=True,
+                                     verbose_name="Musique sacrée. Si possible, précisez.")
+    chorale_precis = MultiSelectField(choices=CHORALE_PRECIS_LIST, blank=True,
+                                      verbose_name="Musique chorale. Si possible, précisez.")
+    voix_accompagnee_precis = MultiSelectField(choices=VOIX_ACCOMPAGNEE_PRECIS_LIST, blank=True,
+                                               verbose_name="Voix seule accompagnée. Si possible, précisez.")
+    opera_precis = MultiSelectField(choices=OPERA_PRECIS_LIST, blank=True,
+                                    verbose_name="Opera. Si possible, précisez.")
+    symphonique_precis = MultiSelectField(choices=SYMPHONIQUE_PRECIS_LIST, blank=True,
+                                          verbose_name="Musique symphonique. Si possible, précisez.")
+
+    image_moyen = MultiSelectField(choices=IMAGE_MOYEN_LIST, blank=True,
+                                   verbose_name="Musique à l'image. Si possible, précisez.")
+
+
     style_musical = models.ManyToManyField(StyleMusical, db_index=True, default = 1,
                                            verbose_name="M.25.5 Parle-t-on du style musical, si oui précisez.")
     #### Éléments contextuels

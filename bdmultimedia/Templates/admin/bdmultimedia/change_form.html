@@ -41,9 +41,35 @@
 .field-nb_instr_anime_indetermines,
 .field-role_instr_anime_femme,
 .field-role_instr_anime_homme,
-.field-role_instr_anime_neutre
+.field-role_instr_anime_neutre,
+.field-pop_moyen,
+.field-classique_moyen,
+.field-image_moyen,
+.field-chant_precis,
+.field-danse_precis,
+.field-sacree_precis,
+.field-chorale_precis,
+.field-voix_accompagnee_precis,
+.field-opera_precis,
+.field-symphonique_precis
 {
     display : none;
+}
+.field-pop_moyen,
+.field-classique_moyen,
+.field-image_moyen
+{
+    margin-left: 50px;
+}
+.field-chant_precis,
+.field-danse_precis,
+.field-sacree_precis,
+.field-chorale_precis,
+.field-voix_accompagnee_precis,
+.field-opera_precis,
+.field-symphonique_precis
+{
+    margin-left: 100px;
 }
 
 </style>
@@ -62,6 +88,121 @@
     }
 
     function dynamicForm(){
+        if(document.getElementById("id_genre_large_0").checked == true){
+            $("#id_pop_moyen").parent().parent().show(400)
+        }
+        else{
+            $("#id_pop_moyen").parent().parent().hide(400)
+            document.getElementById("id_pop_moyen_0").checked = false
+            document.getElementById("id_pop_moyen_1").checked = false
+            document.getElementById("id_pop_moyen_2").checked = false
+            document.getElementById("id_pop_moyen_3").checked = false
+            document.getElementById("id_pop_moyen_4").checked = false
+            document.getElementById("id_pop_moyen_5").checked = false
+            document.getElementById("id_pop_moyen_6").checked = false
+            document.getElementById("id_pop_moyen_7").checked = false
+            document.getElementById("id_pop_moyen_8").checked = false
+            document.getElementById("id_pop_moyen_9").checked = false
+            document.getElementById("id_pop_moyen_10").checked = false
+            document.getElementById("id_pop_moyen_11").checked = false
+            document.getElementById("id_pop_moyen_12").checked = false
+            document.getElementById("id_pop_moyen_13").checked = false
+            document.getElementById("id_pop_moyen_14").checked = false
+        }
+        if(document.getElementById("id_genre_large_1").checked == true){
+            $("#id_classique_moyen").parent().parent().show(400)
+        }
+        else{
+            $("#id_classique_moyen").parent().parent().hide(400)
+            document.getElementById("id_classique_moyen_0").checked = false
+            document.getElementById("id_classique_moyen_1").checked = false
+            document.getElementById("id_classique_moyen_2").checked = false
+            document.getElementById("id_classique_moyen_3").checked = false
+            document.getElementById("id_classique_moyen_4").checked = false
+            document.getElementById("id_classique_moyen_5").checked = false
+            document.getElementById("id_classique_moyen_6").checked = false
+            document.getElementById("id_classique_moyen_7").checked = false
+            document.getElementById("id_classique_moyen_8").checked = false
+        }
+        if(document.getElementById("id_genre_large_2").checked == true){
+            $("#id_image_moyen").parent().parent().show(400)
+        }
+        else{
+            $("#id_image_moyen").parent().parent().hide(400)
+            document.getElementById("id_image_moyen_0").checked = false
+            document.getElementById("id_image_moyen_1").checked = false
+        }
+        if(document.getElementById("id_pop_moyen_1").checked == true){
+            $("#id_chant_precis").parent().parent().show(400)
+        }
+        else{
+            $("#id_chant_precis").parent().parent().hide(400)
+            document.getElementById("id_chant_precis_0").checked = false
+            document.getElementById("id_chant_precis_1").checked = false
+            document.getElementById("id_chant_precis_2").checked = false
+        }
+        if(document.getElementById("id_classique_moyen_0").checked == true){
+            $("#id_danse_precis").parent().parent().show(400)
+        }
+        else{
+            $("#id_danse_precis").parent().parent().hide(400)
+            document.getElementById("id_danse_precis_0").checked = false
+            document.getElementById("id_danse_precis_1").checked = false
+            document.getElementById("id_danse_precis_2").checked = false
+            document.getElementById("id_danse_precis_3").checked = false
+        }
+        if(document.getElementById("id_classique_moyen_1").checked == true){
+            $("#id_sacree_precis").parent().parent().show(400)
+        }
+        else{
+            $("#id_sacree_precis").parent().parent().hide(400)
+            document.getElementById("id_sacree_precis_0").checked = false
+            document.getElementById("id_sacree_precis_1").checked = false
+            document.getElementById("id_sacree_precis_2").checked = false
+            document.getElementById("id_sacree_precis_3").checked = false
+            document.getElementById("id_sacree_precis_4").checked = false
+            document.getElementById("id_sacree_precis_5").checked = false
+        }
+        if(document.getElementById("id_classique_moyen_2").checked == true){
+            $("#id_chorale_precis").parent().parent().show(400)
+        }
+        else{
+            $("#id_chorale_precis").parent().parent().hide(400)
+            document.getElementById("id_chorale_precis_0").checked = false
+            document.getElementById("id_chorale_precis_1").checked = false
+        }
+        if(document.getElementById("id_classique_moyen_3").checked == true){
+            $("#id_voix_accompagnee_precis").parent().parent().show(400)
+        }
+        else{
+            $("#id_voix_accompagnee_precis").parent().parent().hide(400)
+			document.getElementById("id_voix_accompagnee_precis_0").checked = false
+			document.getElementById("id_voix_accompagnee_precis_1").checked = false
+			document.getElementById("id_voix_accompagnee_precis_2").checked = false
+        }
+        if(document.getElementById("id_classique_moyen_4").checked == true){
+            $("#id_opera_precis").parent().parent().show(400)
+        }
+        else{
+            $("#id_opera_precis").parent().parent().hide(400)
+			document.getElementById("id_opera_precis_0").checked = false
+			document.getElementById("id_opera_precis_1").checked = false
+			document.getElementById("id_opera_precis_2").checked = false
+			document.getElementById("id_opera_precis_3").checked = false
+			document.getElementById("id_opera_precis_4").checked = false
+			document.getElementById("id_opera_precis_5").checked = false
+        }
+        if(document.getElementById("id_classique_moyen_5").checked == true){
+            $("#id_symphonique_precis").parent().parent().show(400)
+        }
+        else{
+            $("#id_symphonique_precis").parent().parent().hide(400)
+			document.getElementById("id_symphonique_precis_0").checked = false
+			document.getElementById("id_symphonique_precis_1").checked = false
+			document.getElementById("id_symphonique_precis_2").checked = false
+			document.getElementById("id_symphonique_precis_3").checked = false
+        }
+
         if(document.getElementById("id_forme_delegation_4").checked == true){
             $("#id_forme_delegation_autre").parent().parent().show(400)
         }
